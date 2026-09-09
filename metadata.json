@@ -1,0 +1,8 @@
+{
+  "name": "TN Farmer Schemes AI",
+  "description": "AI-Powered Government Scheme Recommendation System for Farmers in Tamil Nadu",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

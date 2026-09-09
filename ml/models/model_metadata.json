@@ -1,0 +1,26 @@
+{
+  "modelName": "RandomForestClassifier",
+  "algorithm": "Random Forest Ensemble",
+  "trainingSamples": 1200,
+  "testSamples": 300,
+  "classes": [
+    "TN-SCH-01",
+    "TN-SCH-02",
+    "TN-SCH-03",
+    "TN-SCH-04",
+    "TN-SCH-05",
+    "TN-SCH-06",
+    "TN-SCH-07",
+    "TN-SCH-08",
+    "TN-SCH-09",
+    "TN-SCH-11",
+    "TN-SCH-12"
+  ],
+  "metrics": {
+    "accuracy": 0.3933,
+    "precision": 0.3981,
+    "recall": 0.3933,
+    "f1Score": 0.3765
+  },
+  "targetState": "Tamil Nadu"
+}

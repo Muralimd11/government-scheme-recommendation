@@ -1,0 +1,1501 @@
+age,gender,income,landSize,landOwnership,cropType,farmingType,district,irrigationType,farmerType,socialCategory,livestock,horticulture,machinery,schemeId
+53,Male,116754,2.56,Owned,Banana,Conventional,Coimbatore,Rainfed,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+46,Male,191723,3.85,Leased,Vegetables,Organic,Pudukkottai,Borewell,Small,OBC,Yes,Yes,Yes,TN-SCH-03
+55,Male,42265,1.88,Leased,Sugarcane,Organic,Cuddalore,Open Well,Marginal,SC,No,No,No,TN-SCH-01
+66,Female,77790,4.19,Owned,Groundnut,Conventional,Coimbatore,Canal,Small,SC,No,Yes,Yes,TN-SCH-04
+45,Male,111617,3.78,Owned,Vegetables,Organic,Vellore,Open Well,Small,ST,No,Yes,No,TN-SCH-09
+45,Male,55317,0.79,Leased,Millets,Conventional,Ramanathapuram,Borewell,Marginal,MBC,Yes,Yes,No,TN-SCH-03
+66,Female,137898,4.65,Leased,Banana,Conventional,Coimbatore,Sprinkler,Small,OBC,Yes,Yes,No,TN-SCH-03
+57,Male,112740,3.62,Owned,Paddy,Conventional,Pudukkottai,Rainfed,Small,MBC,No,Yes,Yes,TN-SCH-07
+42,Female,458033,23.14,Owned,Banana,Conventional,Krishnagiri,Sprinkler,Large,SC,No,Yes,Yes,TN-SCH-01
+54,Male,296581,7.93,Owned,Millets,Conventional,Mayiladuthurai,Open Well,Medium,OBC,No,No,No,TN-SCH-06
+42,Female,98071,4.77,Owned,Pulses,Organic,Krishnagiri,Drip,Small,SC,No,No,No,TN-SCH-01
+42,Male,32524,0.34,Owned,Cotton,Conventional,Pudukkottai,Sprinkler,Marginal,OBC,No,No,Yes,TN-SCH-06
+50,Male,92493,3.01,Owned,Pulses,Conventional,Ramanathapuram,Drip,Small,OBC,No,No,Yes,TN-SCH-01
+25,Female,107541,1.64,Owned,Vegetables,Conventional,Tiruvarur,Rainfed,Marginal,OBC,Yes,Yes,No,TN-SCH-07
+27,Male,83175,2.23,Owned,Sugarcane,Conventional,Pudukkottai,Canal,Marginal,MBC,No,Yes,No,TN-SCH-07
+41,Female,199391,9.42,Owned,Vegetables,Organic,Thanjavur,Open Well,Medium,SC,No,Yes,No,TN-SCH-07
+35,Male,37017,0.68,Owned,Paddy,Integrated,Pudukkottai,Rainfed,Marginal,OBC,No,Yes,No,TN-SCH-08
+51,Male,78453,2.1,Owned,Cotton,Conventional,Ramanathapuram,Sprinkler,Marginal,MBC,No,No,No,TN-SCH-08
+37,Female,65999,1.68,Shared,Sugarcane,Conventional,Dindigul,Canal,Marginal,OBC,Yes,No,No,TN-SCH-01
+31,Male,114424,2.03,Leased,Coconut,Conventional,Sivaganga,Canal,Marginal,MBC,No,Yes,No,TN-SCH-04
+65,Female,71145,0.66,Owned,Coconut,Conventional,Erode,Drip,Marginal,OBC,No,Yes,Yes,TN-SCH-03
+45,Male,49389,2.36,Owned,Coconut,Integrated,Vellore,Rainfed,Marginal,OBC,No,Yes,No,TN-SCH-01
+48,Male,91665,2.86,Owned,Millets,Conventional,Tirunelveli,Canal,Small,SC,No,No,No,TN-SCH-02
+30,Female,442861,9.24,Owned,Vegetables,Conventional,Tiruchirappalli,Canal,Medium,OBC,No,Yes,No,TN-SCH-07
+41,Male,76583,3.42,Owned,Cotton,Organic,Dharmapuri,Borewell,Small,SC,Yes,Yes,Yes,TN-SCH-03
+49,Male,233737,9.74,Leased,Vegetables,Conventional,Krishnagiri,Rainfed,Medium,ST,No,Yes,Yes,TN-SCH-06
+34,Male,117425,1.16,Leased,Vegetables,Conventional,Dindigul,Sprinkler,Marginal,ST,Yes,Yes,No,TN-SCH-01
+52,Male,143320,2.97,Leased,Pulses,Conventional,Dindigul,Open Well,Small,MBC,No,No,No,TN-SCH-06
+40,Male,197182,3.41,Owned,Pulses,Conventional,Tiruchirappalli,Sprinkler,Small,OBC,Yes,No,No,TN-SCH-11
+44,Male,138141,1.24,Owned,Sugarcane,Integrated,Tiruchirappalli,Open Well,Marginal,OBC,No,No,No,TN-SCH-09
+40,Male,87016,0.74,Owned,Flowers,Conventional,Nagapattinam,Drip,Marginal,SC,Yes,Yes,Yes,TN-SCH-01
+70,Female,113509,1.97,Owned,Paddy,Integrated,Vellore,Sprinkler,Marginal,OBC,No,No,No,TN-SCH-01
+47,Male,365782,8.0,Leased,Vegetables,Conventional,Krishnagiri,Sprinkler,Medium,OBC,No,Yes,No,TN-SCH-07
+35,Male,115625,1.17,Owned,Groundnut,Conventional,Coimbatore,Open Well,Marginal,OBC,No,No,Yes,TN-SCH-08
+57,Female,169293,4.67,Owned,Pulses,Conventional,Thanjavur,Drip,Small,OBC,No,No,Yes,TN-SCH-01
+33,Male,296468,9.4,Owned,Vegetables,Conventional,Erode,Drip,Medium,General,Yes,Yes,Yes,TN-SCH-03
+50,Male,136983,2.56,Owned,Paddy,Conventional,Ramanathapuram,Canal,Small,MBC,Yes,Yes,No,TN-SCH-11
+24,Male,225681,9.08,Shared,Flowers,Conventional,Nagapattinam,Canal,Medium,MBC,Yes,Yes,Yes,TN-SCH-07
+32,Male,104560,2.05,Owned,Banana,Organic,Coimbatore,Drip,Marginal,MBC,No,Yes,Yes,TN-SCH-06
+50,Female,182429,9.73,Owned,Groundnut,Organic,Thanjavur,Sprinkler,Medium,MBC,Yes,No,Yes,TN-SCH-01
+56,Male,319779,8.9,Owned,Millets,Conventional,Tiruvarur,Sprinkler,Medium,OBC,No,No,Yes,TN-SCH-02
+50,Male,194745,3.55,Leased,Pulses,Conventional,Erode,Sprinkler,Small,MBC,Yes,Yes,No,TN-SCH-04
+46,Male,152883,3.28,Leased,Groundnut,Conventional,Theni,Open Well,Small,OBC,No,Yes,Yes,TN-SCH-06
+44,Male,146189,4.21,Owned,Sugarcane,Conventional,Thanjavur,Open Well,Small,OBC,No,No,Yes,TN-SCH-06
+30,Male,112738,3.15,Owned,Cotton,Conventional,Mayiladuthurai,Open Well,Small,OBC,Yes,No,No,TN-SCH-11
+39,Male,57297,0.63,Owned,Groundnut,Conventional,Tiruchirappalli,Canal,Marginal,MBC,Yes,No,No,TN-SCH-02
+42,Female,87445,0.83,Owned,Banana,Conventional,Dindigul,Canal,Marginal,OBC,No,Yes,No,TN-SCH-02
+60,Male,175554,9.65,Owned,Sugarcane,Conventional,Coimbatore,Sprinkler,Medium,MBC,No,No,Yes,TN-SCH-08
+52,Male,195815,3.96,Owned,Cotton,Conventional,Salem,Open Well,Small,MBC,Yes,No,No,TN-SCH-09
+26,Female,147185,4.19,Owned,Groundnut,Conventional,Coimbatore,Rainfed,Small,MBC,Yes,Yes,Yes,TN-SCH-07
+51,Male,101405,1.94,Owned,Groundnut,Integrated,Ramanathapuram,Drip,Marginal,OBC,No,No,Yes,TN-SCH-06
+43,Male,112562,3.27,Shared,Cotton,Natural,Nagapattinam,Rainfed,Small,SC,No,No,Yes,TN-SCH-01
+39,Male,325598,5.89,Owned,Sugarcane,Integrated,Dharmapuri,Drip,Medium,OBC,Yes,No,Yes,TN-SCH-02
+55,Male,43910,0.76,Owned,Coconut,Conventional,Cuddalore,Canal,Marginal,MBC,Yes,Yes,No,TN-SCH-02
+60,Male,144479,4.73,Owned,Sugarcane,Conventional,Dharmapuri,Canal,Small,SC,No,No,Yes,TN-SCH-08
+59,Female,364980,7.44,Owned,Groundnut,Conventional,Krishnagiri,Drip,Medium,SC,Yes,No,Yes,TN-SCH-02
+37,Male,251962,9.19,Owned,Groundnut,Natural,Krishnagiri,Canal,Medium,OBC,No,Yes,Yes,TN-SCH-07
+44,Male,147408,3.8,Leased,Cotton,Conventional,Dindigul,Rainfed,Small,OBC,Yes,No,No,TN-SCH-01
+51,Male,45149,2.32,Owned,Millets,Conventional,Ramanathapuram,Canal,Marginal,SC,No,No,No,TN-SCH-02
+59,Female,127555,4.83,Owned,Sugarcane,Conventional,Cuddalore,Open Well,Small,SC,No,No,Yes,TN-SCH-09
+42,Male,239562,4.71,Owned,Vegetables,Conventional,Nagapattinam,Canal,Small,MBC,Yes,Yes,Yes,TN-SCH-07
+45,Female,81682,0.99,Owned,Coconut,Conventional,Coimbatore,Drip,Marginal,MBC,No,Yes,No,TN-SCH-03
+34,Female,288344,5.7,Owned,Flowers,Conventional,Erode,Open Well,Medium,MBC,No,Yes,Yes,TN-SCH-02
+33,Male,574101,20.35,Owned,Cotton,Conventional,Tirunelveli,Drip,Large,SC,Yes,No,Yes,TN-SCH-12
+57,Female,196593,4.15,Owned,Pulses,Organic,Tiruvarur,Rainfed,Small,OBC,No,No,No,TN-SCH-01
+64,Male,212517,4.08,Owned,Paddy,Conventional,Mayiladuthurai,Open Well,Small,MBC,No,No,Yes,TN-SCH-05
+47,Female,259757,9.29,Owned,Groundnut,Integrated,Krishnagiri,Borewell,Medium,OBC,No,No,Yes,TN-SCH-02
+60,Male,734530,22.9,Owned,Coconut,Conventional,Cuddalore,Open Well,Large,General,Yes,Yes,No,TN-SCH-07
+52,Male,184722,3.39,Leased,Paddy,Conventional,Dharmapuri,Sprinkler,Small,SC,Yes,No,No,TN-SCH-11
+40,Male,66523,2.28,Owned,Sugarcane,Conventional,Dharmapuri,Canal,Marginal,OBC,No,No,No,TN-SCH-01
+52,Male,400107,8.21,Owned,Vegetables,Natural,Sivaganga,Open Well,Medium,General,No,Yes,Yes,TN-SCH-02
+66,Male,146184,0.81,Shared,Sugarcane,Conventional,Vellore,Rainfed,Marginal,OBC,Yes,No,No,TN-SCH-11
+47,Male,325914,7.72,Owned,Millets,Natural,Coimbatore,Borewell,Medium,MBC,No,No,Yes,TN-SCH-02
+66,Male,100662,1.93,Owned,Banana,Organic,Thanjavur,Open Well,Marginal,General,No,Yes,No,TN-SCH-07
+18,Male,77372,4.77,Shared,Groundnut,Integrated,Krishnagiri,Drip,Small,MBC,Yes,Yes,No,TN-SCH-07
+57,Female,104918,0.48,Owned,Coconut,Conventional,Ramanathapuram,Rainfed,Marginal,OBC,No,Yes,Yes,TN-SCH-01
+49,Male,192542,4.35,Leased,Vegetables,Conventional,Salem,Drip,Small,SC,No,Yes,Yes,TN-SCH-03
+44,Male,112418,2.3,Owned,Sugarcane,Organic,Dharmapuri,Canal,Marginal,SC,No,No,No,TN-SCH-04
+49,Male,109840,0.98,Owned,Paddy,Conventional,Villupuram,Open Well,Marginal,MBC,No,Yes,Yes,TN-SCH-07
+24,Male,392166,7.81,Owned,Pulses,Organic,Pudukkottai,Sprinkler,Medium,MBC,No,Yes,Yes,TN-SCH-06
+45,Male,108881,0.52,Owned,Banana,Conventional,Nagapattinam,Rainfed,Marginal,MBC,Yes,Yes,No,TN-SCH-07
+52,Male,166490,4.36,Owned,Paddy,Conventional,Nagapattinam,Borewell,Small,OBC,No,No,Yes,TN-SCH-05
+65,Male,278974,5.56,Owned,Pulses,Natural,Tirunelveli,Drip,Medium,OBC,Yes,Yes,No,TN-SCH-07
+41,Male,81678,1.29,Leased,Vegetables,Integrated,Madurai,Sprinkler,Marginal,MBC,Yes,Yes,No,TN-SCH-03
+38,Male,133453,2.23,Owned,Vegetables,Conventional,Ramanathapuram,Sprinkler,Marginal,OBC,No,Yes,Yes,TN-SCH-07
+41,Male,144241,3.37,Owned,Cotton,Conventional,Mayiladuthurai,Drip,Small,MBC,Yes,No,Yes,TN-SCH-06
+58,Male,129393,4.67,Owned,Cotton,Organic,Madurai,Canal,Small,OBC,No,Yes,No,TN-SCH-01
+51,Male,176168,4.02,Owned,Banana,Conventional,Dindigul,Drip,Small,General,Yes,Yes,Yes,TN-SCH-03
+41,Male,211388,2.64,Owned,Sugarcane,Natural,Nagapattinam,Sprinkler,Small,MBC,No,Yes,No,TN-SCH-07
+54,Male,232812,3.7,Owned,Sugarcane,Conventional,Vellore,Open Well,Small,ST,No,No,Yes,TN-SCH-06
+49,Male,382339,6.9,Owned,Paddy,Organic,Sivaganga,Rainfed,Medium,MBC,Yes,No,No,TN-SCH-08
+59,Male,129469,2.84,Owned,Banana,Conventional,Cuddalore,Sprinkler,Small,MBC,Yes,Yes,Yes,TN-SCH-04
+39,Female,73099,3.72,Owned,Banana,Natural,Tirunelveli,Borewell,Small,OBC,Yes,Yes,Yes,TN-SCH-01
+44,Female,329173,8.03,Leased,Banana,Conventional,Madurai,Borewell,Medium,SC,Yes,Yes,Yes,TN-SCH-07
+43,Female,197251,3.18,Owned,Cotton,Integrated,Vellore,Sprinkler,Small,OBC,Yes,No,No,TN-SCH-01
+30,Male,103948,2.89,Owned,Banana,Integrated,Sivaganga,Open Well,Small,General,No,Yes,No,TN-SCH-09
+51,Female,83918,0.55,Leased,Banana,Integrated,Krishnagiri,Drip,Marginal,General,No,Yes,No,TN-SCH-03
+51,Female,39792,1.05,Owned,Paddy,Organic,Coimbatore,Open Well,Marginal,SC,Yes,No,No,TN-SCH-11
+48,Male,70892,3.58,Leased,Paddy,Conventional,Nagapattinam,Open Well,Small,OBC,Yes,No,Yes,TN-SCH-05
+45,Male,104737,1.61,Owned,Sugarcane,Conventional,Nagapattinam,Drip,Marginal,MBC,Yes,No,No,TN-SCH-03
+31,Female,84554,4.09,Owned,Sugarcane,Conventional,Theni,Sprinkler,Small,OBC,No,Yes,Yes,TN-SCH-03
+42,Male,81485,3.36,Owned,Sugarcane,Conventional,Coimbatore,Sprinkler,Small,MBC,No,Yes,No,TN-SCH-04
+43,Male,238032,7.24,Owned,Cotton,Integrated,Tiruvarur,Canal,Medium,OBC,No,Yes,No,TN-SCH-06
+38,Female,205888,3.16,Owned,Vegetables,Conventional,Villupuram,Rainfed,Small,OBC,No,Yes,Yes,TN-SCH-06
+46,Male,81672,1.13,Owned,Coconut,Conventional,Tiruchirappalli,Open Well,Marginal,OBC,No,Yes,No,TN-SCH-07
+52,Female,72307,2.11,Owned,Groundnut,Conventional,Villupuram,Rainfed,Marginal,ST,Yes,No,No,TN-SCH-04
+70,Male,75915,4.38,Owned,Cotton,Conventional,Nagapattinam,Rainfed,Small,OBC,No,No,Yes,TN-SCH-01
+50,Male,180425,3.46,Owned,Sugarcane,Conventional,Coimbatore,Canal,Small,MBC,Yes,No,Yes,TN-SCH-06
+51,Male,186791,7.41,Owned,Flowers,Organic,Nagapattinam,Borewell,Medium,SC,No,Yes,Yes,TN-SCH-03
+47,Male,136959,1.39,Owned,Banana,Conventional,Tiruchirappalli,Open Well,Marginal,OBC,No,Yes,Yes,TN-SCH-07
+24,Male,333584,7.7,Owned,Sugarcane,Conventional,Nagapattinam,Open Well,Medium,OBC,Yes,No,Yes,TN-SCH-06
+47,Female,92083,1.22,Owned,Coconut,Conventional,Madurai,Rainfed,Marginal,MBC,No,Yes,No,TN-SCH-04
+48,Male,57056,2.26,Owned,Groundnut,Conventional,Krishnagiri,Canal,Marginal,OBC,Yes,No,No,TN-SCH-11
+77,Female,695239,12.31,Owned,Millets,Integrated,Sivaganga,Sprinkler,Large,General,No,No,Yes,TN-SCH-12
+45,Male,119244,4.01,Owned,Flowers,Conventional,Tirunelveli,Borewell,Small,SC,Yes,Yes,Yes,TN-SCH-09
+51,Male,192121,3.25,Owned,Vegetables,Conventional,Theni,Borewell,Small,MBC,Yes,Yes,Yes,TN-SCH-03
+47,Female,133699,2.28,Owned,Cotton,Conventional,Villupuram,Borewell,Marginal,SC,Yes,No,No,TN-SCH-11
+33,Male,84867,1.07,Owned,Cotton,Integrated,Coimbatore,Sprinkler,Marginal,OBC,No,No,No,TN-SCH-01
+61,Male,193676,4.62,Owned,Millets,Conventional,Cuddalore,Canal,Small,OBC,Yes,No,No,TN-SCH-02
+57,Male,776938,15.91,Owned,Coconut,Conventional,Dindigul,Open Well,Large,MBC,Yes,Yes,Yes,TN-SCH-07
+57,Male,173064,3.6,Owned,Banana,Conventional,Krishnagiri,Open Well,Small,SC,No,Yes,No,TN-SCH-07
+37,Female,72828,3.64,Owned,Sugarcane,Organic,Dindigul,Drip,Small,MBC,Yes,No,No,TN-SCH-08
+64,Male,212998,3.99,Owned,Cotton,Conventional,Madurai,Canal,Small,MBC,Yes,No,Yes,TN-SCH-01
+31,Male,165350,3.74,Leased,Coconut,Conventional,Dharmapuri,Drip,Small,OBC,Yes,Yes,No,TN-SCH-06
+55,Male,56984,1.43,Owned,Groundnut,Conventional,Tirunelveli,Rainfed,Marginal,OBC,No,No,No,TN-SCH-08
+74,Female,236627,3.41,Owned,Banana,Integrated,Theni,Open Well,Small,General,No,Yes,No,TN-SCH-07
+36,Female,88568,3.15,Owned,Cotton,Conventional,Ramanathapuram,Borewell,Small,General,Yes,No,Yes,TN-SCH-11
+41,Female,394764,24.67,Owned,Flowers,Conventional,Dharmapuri,Rainfed,Large,OBC,No,Yes,Yes,TN-SCH-01
+49,Male,426441,5.18,Owned,Banana,Integrated,Villupuram,Canal,Medium,ST,No,Yes,No,TN-SCH-07
+41,Male,237108,2.76,Leased,Flowers,Integrated,Tirunelveli,Rainfed,Small,OBC,No,Yes,Yes,TN-SCH-07
+29,Male,60871,1.21,Owned,Paddy,Conventional,Tiruchirappalli,Rainfed,Marginal,OBC,No,No,No,TN-SCH-01
+48,Male,41446,1.08,Owned,Flowers,Conventional,Madurai,Open Well,Marginal,SC,Yes,Yes,No,TN-SCH-11
+35,Male,110134,0.72,Leased,Groundnut,Organic,Vellore,Borewell,Marginal,OBC,Yes,Yes,No,TN-SCH-03
+53,Male,92706,3.03,Owned,Flowers,Integrated,Madurai,Rainfed,Small,ST,No,Yes,No,TN-SCH-01
+36,Female,308451,7.57,Leased,Sugarcane,Conventional,Theni,Sprinkler,Medium,OBC,No,Yes,No,TN-SCH-02
+66,Male,303974,7.22,Owned,Pulses,Conventional,Vellore,Canal,Medium,MBC,Yes,Yes,Yes,TN-SCH-07
+38,Male,161997,4.18,Owned,Sugarcane,Organic,Tiruvarur,Drip,Small,General,No,No,Yes,TN-SCH-06
+44,Male,262693,9.44,Shared,Banana,Conventional,Pudukkottai,Rainfed,Medium,SC,Yes,Yes,No,TN-SCH-02
+57,Male,160428,3.81,Leased,Cotton,Organic,Coimbatore,Drip,Small,OBC,Yes,No,Yes,TN-SCH-08
+33,Male,34029,0.42,Owned,Paddy,Conventional,Sivaganga,Borewell,Marginal,MBC,No,Yes,No,TN-SCH-03
+50,Male,245671,8.58,Owned,Millets,Conventional,Sivaganga,Borewell,Medium,OBC,Yes,Yes,No,TN-SCH-01
+63,Male,124184,4.39,Owned,Vegetables,Conventional,Villupuram,Borewell,Small,OBC,Yes,Yes,Yes,TN-SCH-09
+28,Male,160098,3.5,Leased,Cotton,Integrated,Cuddalore,Open Well,Small,OBC,Yes,No,Yes,TN-SCH-09
+50,Male,218515,3.95,Owned,Pulses,Integrated,Salem,Rainfed,Small,MBC,Yes,No,Yes,TN-SCH-11
+51,Female,198236,4.29,Owned,Pulses,Organic,Coimbatore,Rainfed,Small,OBC,Yes,No,Yes,TN-SCH-11
+57,Male,86763,3.69,Owned,Millets,Conventional,Dharmapuri,Borewell,Small,OBC,Yes,No,No,TN-SCH-11
+33,Male,130003,1.04,Owned,Coconut,Conventional,Dharmapuri,Rainfed,Marginal,SC,No,Yes,No,TN-SCH-07
+32,Male,93792,3.35,Owned,Flowers,Conventional,Pudukkottai,Borewell,Small,SC,Yes,Yes,No,TN-SCH-07
+54,Male,362150,6.13,Owned,Cotton,Integrated,Thanjavur,Sprinkler,Medium,OBC,No,No,Yes,TN-SCH-12
+51,Female,236171,3.16,Leased,Coconut,Conventional,Thanjavur,Rainfed,Small,MBC,Yes,Yes,Yes,TN-SCH-07
+51,Male,115445,4.46,Owned,Sugarcane,Organic,Cuddalore,Open Well,Small,SC,Yes,No,Yes,TN-SCH-06
+52,Male,150920,3.41,Owned,Banana,Conventional,Thanjavur,Canal,Small,OBC,No,Yes,Yes,TN-SCH-06
+39,Male,136506,2.11,Owned,Groundnut,Conventional,Dharmapuri,Canal,Marginal,SC,No,Yes,No,TN-SCH-07
+50,Male,128482,0.52,Leased,Sugarcane,Conventional,Cuddalore,Open Well,Marginal,OBC,No,No,No,TN-SCH-09
+51,Female,600475,20.86,Owned,Paddy,Organic,Theni,Canal,Large,OBC,No,No,Yes,TN-SCH-06
+39,Male,513486,17.36,Owned,Vegetables,Conventional,Cuddalore,Borewell,Large,MBC,No,Yes,Yes,TN-SCH-03
+70,Female,195741,4.02,Owned,Millets,Organic,Dindigul,Canal,Small,General,Yes,Yes,Yes,TN-SCH-06
+53,Male,101630,1.42,Owned,Vegetables,Integrated,Dindigul,Canal,Marginal,OBC,No,Yes,No,TN-SCH-02
+33,Male,66135,0.51,Owned,Banana,Organic,Dharmapuri,Canal,Marginal,OBC,Yes,Yes,No,TN-SCH-11
+55,Male,93033,3.6,Leased,Vegetables,Conventional,Thanjavur,Open Well,Small,SC,Yes,Yes,No,TN-SCH-07
+36,Male,151431,4.17,Owned,Vegetables,Conventional,Tiruchirappalli,Open Well,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+57,Male,101067,1.44,Owned,Banana,Integrated,Pudukkottai,Rainfed,Marginal,MBC,Yes,Yes,No,TN-SCH-11
+61,Male,351893,8.9,Owned,Groundnut,Conventional,Madurai,Borewell,Medium,OBC,Yes,No,No,TN-SCH-12
+38,Male,418650,6.76,Owned,Pulses,Organic,Pudukkottai,Rainfed,Medium,SC,Yes,No,No,TN-SCH-02
+59,Male,306328,16.46,Owned,Cotton,Conventional,Erode,Sprinkler,Large,MBC,Yes,No,No,TN-SCH-06
+52,Male,477259,17.24,Owned,Sugarcane,Conventional,Nagapattinam,Rainfed,Large,OBC,No,No,Yes,TN-SCH-08
+57,Female,43810,1.98,Owned,Sugarcane,Conventional,Dindigul,Rainfed,Marginal,SC,No,No,No,TN-SCH-01
+70,Male,181742,2.95,Owned,Paddy,Conventional,Cuddalore,Rainfed,Small,MBC,No,Yes,No,TN-SCH-07
+45,Male,52435,2.12,Owned,Cotton,Natural,Dindigul,Drip,Marginal,OBC,Yes,No,No,TN-SCH-11
+38,Male,50703,1.21,Owned,Pulses,Conventional,Tirunelveli,Sprinkler,Marginal,General,Yes,No,No,TN-SCH-11
+37,Male,52290,1.04,Owned,Banana,Integrated,Pudukkottai,Sprinkler,Marginal,OBC,No,Yes,No,TN-SCH-07
+38,Male,97389,1.04,Owned,Vegetables,Conventional,Dharmapuri,Rainfed,Marginal,OBC,No,Yes,No,TN-SCH-07
+47,Male,64640,0.69,Owned,Pulses,Conventional,Vellore,Rainfed,Marginal,MBC,Yes,No,No,TN-SCH-01
+52,Female,215562,7.16,Owned,Sugarcane,Natural,Villupuram,Rainfed,Medium,SC,Yes,No,No,TN-SCH-12
+51,Female,112696,1.82,Leased,Vegetables,Integrated,Sivaganga,Borewell,Marginal,MBC,No,Yes,No,TN-SCH-09
+57,Female,643641,14.39,Leased,Sugarcane,Natural,Krishnagiri,Borewell,Large,SC,No,Yes,No,TN-SCH-01
+48,Male,133779,4.01,Leased,Sugarcane,Conventional,Nagapattinam,Drip,Small,OBC,No,No,Yes,TN-SCH-01
+65,Male,130897,4.09,Owned,Coconut,Conventional,Nagapattinam,Drip,Small,OBC,No,Yes,Yes,TN-SCH-01
+44,Female,35809,1.7,Owned,Flowers,Conventional,Mayiladuthurai,Canal,Marginal,OBC,No,Yes,No,TN-SCH-02
+80,Male,228563,2.88,Owned,Sugarcane,Conventional,Erode,Rainfed,Small,OBC,Yes,No,No,TN-SCH-08
+55,Male,39352,0.67,Owned,Cotton,Integrated,Ramanathapuram,Sprinkler,Marginal,MBC,No,No,Yes,TN-SCH-06
+37,Female,42291,1.81,Owned,Millets,Conventional,Dindigul,Open Well,Marginal,OBC,No,Yes,No,TN-SCH-09
+35,Female,192813,3.56,Owned,Vegetables,Conventional,Madurai,Sprinkler,Small,MBC,No,Yes,No,TN-SCH-07
+53,Male,40109,0.81,Leased,Pulses,Conventional,Pudukkottai,Sprinkler,Marginal,MBC,No,No,No,TN-SCH-01
+45,Male,107540,1.06,Owned,Flowers,Conventional,Coimbatore,Drip,Marginal,OBC,No,Yes,No,TN-SCH-07
+56,Male,259623,7.79,Owned,Flowers,Conventional,Tiruchirappalli,Canal,Medium,General,Yes,Yes,No,TN-SCH-01
+53,Male,161401,4.04,Owned,Groundnut,Integrated,Madurai,Canal,Small,OBC,No,No,No,TN-SCH-02
+47,Male,213899,4.25,Owned,Cotton,Conventional,Tiruvarur,Canal,Small,SC,No,No,Yes,TN-SCH-06
+37,Male,89569,0.22,Owned,Coconut,Conventional,Theni,Sprinkler,Marginal,MBC,No,Yes,No,TN-SCH-04
+29,Male,169161,6.33,Owned,Sugarcane,Conventional,Ramanathapuram,Drip,Medium,OBC,Yes,No,Yes,TN-SCH-08
+42,Female,216697,2.61,Owned,Paddy,Natural,Coimbatore,Drip,Small,OBC,Yes,No,No,TN-SCH-06
+58,Male,68392,2.21,Owned,Pulses,Conventional,Nagapattinam,Open Well,Marginal,OBC,No,Yes,No,TN-SCH-01
+50,Male,84809,0.39,Owned,Cotton,Conventional,Theni,Open Well,Marginal,MBC,No,No,No,TN-SCH-09
+33,Male,223538,8.73,Leased,Vegetables,Integrated,Thanjavur,Canal,Medium,OBC,No,Yes,Yes,TN-SCH-12
+50,Male,80377,2.36,Owned,Banana,Integrated,Tiruvarur,Rainfed,Marginal,OBC,Yes,Yes,No,TN-SCH-07
+52,Male,155922,3.89,Shared,Sugarcane,Conventional,Cuddalore,Sprinkler,Small,MBC,Yes,No,No,TN-SCH-11
+37,Male,54325,0.36,Owned,Sugarcane,Conventional,Ramanathapuram,Borewell,Marginal,OBC,Yes,No,No,TN-SCH-11
+49,Male,361411,6.49,Owned,Paddy,Conventional,Sivaganga,Borewell,Medium,SC,Yes,No,No,TN-SCH-02
+48,Female,197173,3.59,Owned,Sugarcane,Conventional,Coimbatore,Drip,Small,OBC,No,Yes,Yes,TN-SCH-03
+34,Male,84286,4.75,Leased,Groundnut,Conventional,Ramanathapuram,Canal,Small,General,Yes,No,No,TN-SCH-11
+52,Male,167560,2.9,Owned,Flowers,Integrated,Cuddalore,Canal,Small,OBC,Yes,Yes,No,TN-SCH-07
+54,Male,180037,3.98,Owned,Vegetables,Conventional,Dharmapuri,Sprinkler,Small,OBC,No,Yes,No,TN-SCH-06
+60,Male,87562,1.77,Owned,Millets,Conventional,Dharmapuri,Sprinkler,Marginal,OBC,Yes,No,No,TN-SCH-11
+60,Male,760105,17.94,Owned,Banana,Organic,Coimbatore,Canal,Large,OBC,No,Yes,No,TN-SCH-02
+31,Male,404227,24.87,Leased,Pulses,Conventional,Coimbatore,Open Well,Large,SC,No,No,No,TN-SCH-06
+36,Male,595336,23.22,Owned,Banana,Conventional,Tirunelveli,Drip,Large,General,No,Yes,Yes,TN-SCH-06
+54,Female,134186,1.97,Owned,Paddy,Integrated,Tiruvarur,Borewell,Marginal,MBC,No,No,No,TN-SCH-02
+54,Male,48900,0.5,Owned,Flowers,Integrated,Villupuram,Rainfed,Marginal,OBC,No,Yes,No,TN-SCH-01
+54,Female,370198,6.85,Leased,Banana,Conventional,Tirunelveli,Borewell,Medium,MBC,No,Yes,Yes,TN-SCH-02
+80,Male,93909,4.75,Leased,Cotton,Conventional,Nagapattinam,Open Well,Small,ST,No,No,No,TN-SCH-09
+54,Male,60798,0.35,Shared,Paddy,Integrated,Mayiladuthurai,Canal,Marginal,OBC,No,No,No,TN-SCH-05
+61,Female,180664,4.57,Owned,Banana,Conventional,Coimbatore,Drip,Small,General,No,Yes,Yes,TN-SCH-03
+59,Female,95645,1.81,Owned,Millets,Conventional,Nagapattinam,Sprinkler,Marginal,ST,No,No,No,TN-SCH-04
+55,Male,79113,2.34,Owned,Coconut,Conventional,Pudukkottai,Open Well,Marginal,MBC,No,Yes,No,TN-SCH-09
+44,Male,128867,0.39,Owned,Flowers,Natural,Sivaganga,Borewell,Marginal,General,No,Yes,Yes,TN-SCH-06
+57,Male,133073,3.43,Owned,Millets,Conventional,Cuddalore,Borewell,Small,OBC,Yes,Yes,No,TN-SCH-03
+38,Male,146484,1.39,Owned,Cotton,Natural,Ramanathapuram,Sprinkler,Marginal,General,No,No,No,TN-SCH-08
+45,Female,132472,1.07,Owned,Coconut,Conventional,Tiruvarur,Sprinkler,Marginal,SC,Yes,Yes,No,TN-SCH-03
+42,Male,785076,24.58,Owned,Paddy,Integrated,Madurai,Drip,Large,General,Yes,No,Yes,TN-SCH-12
+48,Male,69135,1.07,Owned,Coconut,Conventional,Erode,Drip,Marginal,SC,No,Yes,Yes,TN-SCH-03
+75,Female,234021,3.9,Leased,Sugarcane,Integrated,Mayiladuthurai,Sprinkler,Small,MBC,No,No,No,TN-SCH-06
+25,Male,185738,3.98,Owned,Paddy,Organic,Cuddalore,Drip,Small,SC,No,No,Yes,TN-SCH-06
+56,Male,113541,1.28,Owned,Cotton,Conventional,Mayiladuthurai,Borewell,Marginal,OBC,No,No,Yes,TN-SCH-01
+28,Male,79554,3.4,Owned,Sugarcane,Conventional,Tiruchirappalli,Open Well,Small,MBC,No,Yes,No,TN-SCH-09
+42,Male,73245,0.31,Owned,Groundnut,Conventional,Salem,Open Well,Marginal,SC,Yes,No,No,TN-SCH-09
+61,Male,254927,7.88,Owned,Groundnut,Conventional,Tiruchirappalli,Rainfed,Medium,SC,No,No,Yes,TN-SCH-06
+48,Female,108190,0.65,Owned,Paddy,Conventional,Krishnagiri,Rainfed,Marginal,General,Yes,No,No,TN-SCH-11
+35,Male,554284,19.64,Owned,Millets,Integrated,Cuddalore,Drip,Large,OBC,Yes,Yes,Yes,TN-SCH-06
+39,Male,120740,3.96,Owned,Flowers,Conventional,Mayiladuthurai,Canal,Small,OBC,No,Yes,No,TN-SCH-07
+56,Male,79651,3.08,Owned,Vegetables,Conventional,Sivaganga,Rainfed,Small,OBC,Yes,Yes,No,TN-SCH-01
+39,Male,364010,6.68,Owned,Flowers,Organic,Pudukkottai,Rainfed,Medium,OBC,No,Yes,Yes,TN-SCH-07
+50,Male,165035,4.24,Owned,Millets,Conventional,Tiruchirappalli,Rainfed,Small,General,No,No,Yes,TN-SCH-06
+48,Female,409918,7.31,Owned,Pulses,Integrated,Ramanathapuram,Sprinkler,Medium,General,Yes,No,Yes,TN-SCH-12
+40,Male,892314,15.14,Owned,Banana,Conventional,Vellore,Open Well,Large,SC,No,Yes,Yes,TN-SCH-07
+73,Female,201502,3.0,Owned,Banana,Conventional,Ramanathapuram,Drip,Small,MBC,Yes,Yes,No,TN-SCH-07
+55,Male,231511,4.25,Owned,Coconut,Conventional,Dindigul,Borewell,Small,General,No,Yes,Yes,TN-SCH-03
+23,Male,81098,3.23,Owned,Groundnut,Conventional,Tiruvarur,Open Well,Small,OBC,No,Yes,No,TN-SCH-07
+50,Male,155737,8.98,Owned,Banana,Conventional,Coimbatore,Borewell,Medium,MBC,No,Yes,Yes,TN-SCH-07
+40,Male,239095,2.62,Owned,Paddy,Conventional,Mayiladuthurai,Canal,Small,MBC,No,Yes,No,TN-SCH-07
+58,Male,115896,4.09,Owned,Banana,Conventional,Sivaganga,Drip,Small,SC,Yes,Yes,Yes,TN-SCH-03
+38,Male,92777,0.78,Owned,Millets,Integrated,Salem,Rainfed,Marginal,OBC,No,No,No,TN-SCH-08
+46,Male,98898,0.44,Owned,Banana,Integrated,Dharmapuri,Canal,Marginal,MBC,No,Yes,No,TN-SCH-02
+54,Male,134896,1.99,Owned,Millets,Organic,Tirunelveli,Rainfed,Marginal,OBC,Yes,No,No,TN-SCH-11
+58,Male,104616,1.16,Shared,Millets,Conventional,Nagapattinam,Open Well,Marginal,OBC,Yes,No,No,TN-SCH-02
+33,Male,230219,2.64,Owned,Sugarcane,Conventional,Tiruchirappalli,Drip,Small,SC,No,No,No,TN-SCH-01
+43,Male,220890,3.67,Owned,Paddy,Organic,Vellore,Canal,Small,OBC,No,No,No,TN-SCH-02
+42,Male,86191,4.18,Owned,Flowers,Integrated,Coimbatore,Open Well,Small,MBC,No,Yes,Yes,TN-SCH-04
+40,Male,249268,6.57,Owned,Paddy,Conventional,Erode,Sprinkler,Medium,OBC,No,No,Yes,TN-SCH-12
+69,Male,310661,21.18,Owned,Vegetables,Conventional,Cuddalore,Canal,Large,MBC,No,Yes,Yes,TN-SCH-06
+52,Female,131768,4.78,Owned,Cotton,Organic,Tiruvarur,Drip,Small,OBC,Yes,No,Yes,TN-SCH-06
+32,Male,125989,1.59,Owned,Coconut,Conventional,Pudukkottai,Open Well,Marginal,MBC,No,Yes,No,TN-SCH-09
+59,Male,228136,2.95,Owned,Cotton,Organic,Cuddalore,Drip,Small,SC,Yes,No,No,TN-SCH-11
+73,Male,326794,7.24,Owned,Banana,Conventional,Krishnagiri,Drip,Medium,General,No,Yes,No,TN-SCH-06
+60,Male,347256,5.51,Owned,Millets,Organic,Sivaganga,Sprinkler,Medium,SC,Yes,No,Yes,TN-SCH-06
+29,Male,330757,5.68,Owned,Groundnut,Conventional,Krishnagiri,Rainfed,Medium,OBC,Yes,Yes,No,TN-SCH-06
+42,Male,100228,4.84,Owned,Millets,Conventional,Pudukkottai,Rainfed,Small,OBC,No,No,No,TN-SCH-06
+63,Male,306818,8.96,Owned,Vegetables,Organic,Thanjavur,Borewell,Medium,General,No,Yes,Yes,TN-SCH-03
+39,Male,312351,6.0,Owned,Flowers,Conventional,Theni,Canal,Medium,MBC,No,Yes,Yes,TN-SCH-01
+53,Male,135884,4.72,Owned,Coconut,Organic,Dindigul,Canal,Small,General,No,Yes,No,TN-SCH-01
+57,Male,201944,3.95,Owned,Groundnut,Conventional,Salem,Drip,Small,OBC,No,No,Yes,TN-SCH-08
+36,Male,126195,3.11,Owned,Paddy,Conventional,Madurai,Borewell,Small,SC,No,No,No,TN-SCH-09
+47,Male,232687,3.76,Owned,Sugarcane,Conventional,Krishnagiri,Sprinkler,Small,OBC,No,No,Yes,TN-SCH-03
+18,Male,584914,19.27,Leased,Paddy,Conventional,Pudukkottai,Canal,Large,MBC,No,No,No,TN-SCH-01
+35,Male,157867,2.56,Leased,Coconut,Conventional,Theni,Sprinkler,Small,OBC,No,Yes,No,TN-SCH-03
+44,Male,304398,18.07,Owned,Cotton,Integrated,Nagapattinam,Rainfed,Large,MBC,Yes,No,No,TN-SCH-12
+33,Male,148068,2.87,Owned,Paddy,Conventional,Dindigul,Canal,Small,General,No,No,No,TN-SCH-08
+67,Male,30707,0.46,Owned,Sugarcane,Integrated,Sivaganga,Rainfed,Marginal,MBC,Yes,No,No,TN-SCH-11
+30,Male,268533,7.14,Owned,Flowers,Organic,Thanjavur,Borewell,Medium,OBC,No,Yes,Yes,TN-SCH-02
+42,Male,824860,10.17,Owned,Sugarcane,Integrated,Madurai,Canal,Large,General,Yes,No,No,TN-SCH-12
+49,Female,60329,1.56,Leased,Banana,Integrated,Mayiladuthurai,Rainfed,Marginal,MBC,No,Yes,No,TN-SCH-04
+65,Male,117070,0.42,Owned,Millets,Conventional,Dharmapuri,Open Well,Marginal,OBC,No,No,No,TN-SCH-02
+30,Male,131963,3.86,Owned,Vegetables,Organic,Dindigul,Borewell,Small,General,Yes,Yes,Yes,TN-SCH-07
+61,Female,96200,0.87,Owned,Pulses,Conventional,Tiruchirappalli,Canal,Marginal,SC,Yes,No,Yes,TN-SCH-11
+48,Male,33743,1.32,Owned,Pulses,Conventional,Ramanathapuram,Drip,Marginal,MBC,No,No,No,TN-SCH-04
+36,Male,100752,2.16,Owned,Banana,Conventional,Tirunelveli,Drip,Marginal,OBC,Yes,Yes,No,TN-SCH-01
+53,Female,97962,0.55,Owned,Banana,Organic,Ramanathapuram,Rainfed,Marginal,MBC,Yes,Yes,No,TN-SCH-07
+50,Male,204548,3.74,Owned,Flowers,Conventional,Cuddalore,Drip,Small,SC,No,Yes,No,TN-SCH-04
+40,Female,137787,1.49,Owned,Coconut,Conventional,Nagapattinam,Open Well,Marginal,OBC,No,Yes,No,TN-SCH-01
+48,Male,39250,0.56,Owned,Cotton,Conventional,Erode,Borewell,Marginal,OBC,Yes,No,No,TN-SCH-11
+43,Male,130003,0.55,Owned,Cotton,Conventional,Thanjavur,Canal,Marginal,OBC,No,Yes,Yes,TN-SCH-01
+49,Female,193755,4.61,Leased,Sugarcane,Conventional,Tirunelveli,Borewell,Small,OBC,No,No,No,TN-SCH-03
+55,Male,193111,3.13,Owned,Flowers,Conventional,Dindigul,Sprinkler,Small,MBC,Yes,Yes,No,TN-SCH-03
+67,Male,87104,0.41,Owned,Pulses,Conventional,Sivaganga,Canal,Marginal,SC,No,No,No,TN-SCH-02
+33,Male,558898,20.18,Leased,Millets,Conventional,Villupuram,Canal,Large,MBC,No,No,No,TN-SCH-02
+73,Male,216039,3.06,Owned,Pulses,Organic,Tirunelveli,Sprinkler,Small,OBC,No,Yes,Yes,TN-SCH-06
+24,Male,108189,0.54,Owned,Groundnut,Organic,Erode,Sprinkler,Marginal,OBC,No,No,No,TN-SCH-01
+46,Male,60453,1.42,Owned,Pulses,Integrated,Tirunelveli,Open Well,Marginal,MBC,Yes,Yes,No,TN-SCH-07
+55,Male,206145,4.39,Leased,Paddy,Integrated,Sivaganga,Borewell,Small,OBC,No,No,Yes,TN-SCH-09
+51,Male,116939,1.54,Owned,Pulses,Integrated,Cuddalore,Rainfed,Marginal,OBC,No,No,No,TN-SCH-01
+40,Male,126469,1.65,Owned,Cotton,Conventional,Tirunelveli,Canal,Marginal,MBC,No,No,No,TN-SCH-04
+45,Male,110359,1.08,Owned,Pulses,Conventional,Cuddalore,Borewell,Marginal,OBC,Yes,No,No,TN-SCH-09
+42,Male,663818,14.15,Owned,Flowers,Conventional,Salem,Drip,Large,MBC,Yes,Yes,Yes,TN-SCH-01
+40,Female,358257,7.82,Shared,Pulses,Conventional,Cuddalore,Drip,Medium,MBC,No,No,Yes,TN-SCH-06
+58,Male,149303,1.59,Owned,Millets,Integrated,Coimbatore,Drip,Marginal,SC,Yes,Yes,No,TN-SCH-07
+52,Male,512122,17.15,Leased,Groundnut,Conventional,Ramanathapuram,Borewell,Large,SC,Yes,No,No,TN-SCH-06
+39,Male,48719,1.56,Owned,Sugarcane,Organic,Mayiladuthurai,Canal,Marginal,MBC,No,Yes,No,TN-SCH-01
+58,Male,445318,7.4,Owned,Groundnut,Organic,Krishnagiri,Drip,Medium,OBC,No,No,Yes,TN-SCH-06
+51,Male,236006,2.92,Owned,Flowers,Conventional,Krishnagiri,Open Well,Small,MBC,Yes,Yes,No,TN-SCH-09
+57,Male,150128,3.07,Owned,Millets,Organic,Sivaganga,Open Well,Small,OBC,Yes,No,Yes,TN-SCH-01
+55,Female,406892,7.72,Owned,Banana,Conventional,Salem,Rainfed,Medium,OBC,No,Yes,No,TN-SCH-02
+38,Male,35725,2.09,Leased,Banana,Conventional,Mayiladuthurai,Canal,Marginal,OBC,No,Yes,No,TN-SCH-07
+41,Female,128503,4.44,Owned,Sugarcane,Conventional,Villupuram,Open Well,Small,SC,No,Yes,No,TN-SCH-07
+56,Female,134782,4.64,Owned,Flowers,Integrated,Tirunelveli,Rainfed,Small,SC,Yes,Yes,No,TN-SCH-11
+55,Female,108361,0.89,Owned,Pulses,Integrated,Erode,Rainfed,Marginal,OBC,No,No,No,TN-SCH-01
+47,Male,45004,2.08,Owned,Groundnut,Conventional,Coimbatore,Rainfed,Marginal,MBC,Yes,No,No,TN-SCH-11
+49,Female,39990,1.88,Owned,Pulses,Conventional,Erode,Borewell,Marginal,General,No,No,Yes,TN-SCH-06
+63,Male,139832,0.99,Owned,Flowers,Integrated,Dharmapuri,Sprinkler,Marginal,SC,No,Yes,No,TN-SCH-01
+40,Male,160743,4.04,Owned,Flowers,Conventional,Theni,Sprinkler,Small,OBC,Yes,Yes,Yes,TN-SCH-11
+54,Male,112532,1.38,Owned,Flowers,Conventional,Dharmapuri,Open Well,Marginal,General,Yes,Yes,No,TN-SCH-11
+45,Male,76766,1.82,Owned,Cotton,Organic,Cuddalore,Open Well,Marginal,General,No,No,No,TN-SCH-08
+45,Male,46394,0.35,Owned,Flowers,Conventional,Mayiladuthurai,Sprinkler,Marginal,OBC,Yes,Yes,No,TN-SCH-03
+61,Male,375023,14.23,Owned,Paddy,Conventional,Vellore,Borewell,Large,General,No,No,Yes,TN-SCH-02
+57,Male,47530,1.85,Leased,Vegetables,Conventional,Erode,Canal,Marginal,OBC,Yes,Yes,Yes,TN-SCH-06
+57,Male,896721,13.71,Shared,Flowers,Conventional,Salem,Rainfed,Large,MBC,No,Yes,Yes,TN-SCH-07
+63,Male,229361,2.6,Owned,Sugarcane,Conventional,Krishnagiri,Open Well,Small,OBC,No,No,No,TN-SCH-06
+48,Male,268742,7.87,Owned,Paddy,Conventional,Coimbatore,Canal,Medium,MBC,No,Yes,Yes,TN-SCH-06
+56,Male,336031,21.39,Owned,Banana,Conventional,Theni,Rainfed,Large,OBC,No,Yes,No,TN-SCH-12
+44,Male,92904,3.36,Owned,Flowers,Conventional,Tiruvarur,Rainfed,Small,OBC,Yes,Yes,Yes,TN-SCH-11
+51,Female,316356,9.48,Owned,Coconut,Conventional,Nagapattinam,Borewell,Medium,OBC,No,Yes,Yes,TN-SCH-02
+46,Male,80768,3.27,Owned,Vegetables,Conventional,Pudukkottai,Borewell,Small,OBC,Yes,Yes,Yes,TN-SCH-09
+49,Male,412047,5.64,Owned,Sugarcane,Conventional,Salem,Drip,Medium,OBC,No,No,Yes,TN-SCH-03
+55,Male,226575,2.53,Owned,Sugarcane,Integrated,Dharmapuri,Drip,Small,SC,Yes,No,No,TN-SCH-11
+38,Male,66468,0.35,Owned,Coconut,Conventional,Salem,Canal,Marginal,OBC,No,Yes,No,TN-SCH-01
+73,Male,200268,4.29,Leased,Millets,Conventional,Ramanathapuram,Rainfed,Small,OBC,Yes,No,Yes,TN-SCH-11
+35,Male,511394,16.65,Owned,Coconut,Integrated,Dindigul,Open Well,Large,SC,Yes,Yes,Yes,TN-SCH-06
+33,Male,131201,4.29,Owned,Flowers,Conventional,Vellore,Drip,Small,General,Yes,Yes,Yes,TN-SCH-07
+61,Female,143201,1.9,Owned,Coconut,Conventional,Erode,Sprinkler,Marginal,MBC,Yes,Yes,Yes,TN-SCH-03
+57,Male,207882,3.06,Owned,Pulses,Conventional,Nagapattinam,Drip,Small,MBC,No,No,No,TN-SCH-04
+55,Male,207417,2.59,Leased,Sugarcane,Conventional,Cuddalore,Canal,Small,SC,No,Yes,No,TN-SCH-01
+55,Male,68317,1.35,Owned,Banana,Organic,Ramanathapuram,Open Well,Marginal,OBC,Yes,Yes,No,TN-SCH-11
+47,Male,45862,1.07,Owned,Flowers,Conventional,Nagapattinam,Sprinkler,Marginal,MBC,Yes,Yes,No,TN-SCH-07
+37,Male,98559,1.07,Owned,Pulses,Conventional,Pudukkottai,Rainfed,Marginal,OBC,No,No,Yes,TN-SCH-01
+48,Male,71342,0.62,Shared,Groundnut,Conventional,Thanjavur,Borewell,Marginal,ST,Yes,Yes,No,TN-SCH-03
+39,Female,132331,1.87,Leased,Paddy,Integrated,Mayiladuthurai,Borewell,Marginal,SC,Yes,No,Yes,TN-SCH-09
+59,Male,54456,1.38,Owned,Groundnut,Organic,Krishnagiri,Sprinkler,Marginal,OBC,Yes,No,No,TN-SCH-11
+46,Female,124702,0.82,Owned,Groundnut,Organic,Sivaganga,Canal,Marginal,OBC,No,No,No,TN-SCH-02
+38,Male,76382,2.14,Leased,Coconut,Conventional,Cuddalore,Rainfed,Marginal,General,Yes,Yes,No,TN-SCH-07
+44,Male,224217,5.11,Owned,Groundnut,Organic,Krishnagiri,Open Well,Medium,OBC,Yes,No,No,TN-SCH-06
+52,Male,76460,0.77,Owned,Coconut,Conventional,Thanjavur,Open Well,Marginal,OBC,No,Yes,No,TN-SCH-01
+41,Male,142499,3.87,Owned,Pulses,Conventional,Tirunelveli,Open Well,Small,OBC,No,Yes,Yes,TN-SCH-01
+38,Male,346869,8.77,Owned,Banana,Conventional,Ramanathapuram,Open Well,Medium,General,No,Yes,Yes,TN-SCH-07
+50,Female,145343,2.34,Leased,Flowers,Conventional,Tirunelveli,Rainfed,Marginal,SC,No,Yes,Yes,TN-SCH-07
+50,Male,230058,8.0,Owned,Pulses,Conventional,Ramanathapuram,Borewell,Medium,MBC,No,Yes,No,TN-SCH-07
+41,Male,49654,1.24,Owned,Paddy,Conventional,Coimbatore,Drip,Marginal,MBC,No,No,No,TN-SCH-04
+42,Male,410138,9.83,Owned,Millets,Conventional,Dharmapuri,Drip,Medium,SC,No,No,Yes,TN-SCH-01
+50,Female,203776,4.6,Leased,Sugarcane,Conventional,Krishnagiri,Drip,Small,OBC,No,No,Yes,TN-SCH-03
+30,Male,206955,9.72,Owned,Vegetables,Conventional,Vellore,Open Well,Medium,MBC,No,Yes,No,TN-SCH-07
+31,Male,155111,2.72,Owned,Pulses,Conventional,Tiruchirappalli,Rainfed,Small,OBC,No,No,No,TN-SCH-01
+39,Male,107829,0.91,Owned,Sugarcane,Conventional,Tiruchirappalli,Canal,Marginal,OBC,Yes,No,No,TN-SCH-02
+45,Male,139470,1.89,Owned,Banana,Conventional,Ramanathapuram,Borewell,Marginal,SC,Yes,Yes,No,TN-SCH-03
+51,Male,92367,2.78,Owned,Paddy,Conventional,Salem,Sprinkler,Small,MBC,No,No,No,TN-SCH-06
+65,Male,145118,3.59,Owned,Pulses,Conventional,Sivaganga,Canal,Small,OBC,No,Yes,Yes,TN-SCH-06
+58,Male,401404,8.27,Owned,Millets,Organic,Tirunelveli,Canal,Medium,General,No,No,No,TN-SCH-06
+46,Male,228351,3.89,Owned,Groundnut,Conventional,Nagapattinam,Open Well,Small,OBC,No,No,Yes,TN-SCH-06
+47,Female,188291,3.76,Owned,Paddy,Conventional,Sivaganga,Canal,Small,MBC,No,No,No,TN-SCH-04
+35,Male,227607,4.0,Owned,Pulses,Conventional,Sivaganga,Drip,Small,OBC,No,No,Yes,TN-SCH-06
+47,Male,214171,2.78,Leased,Vegetables,Conventional,Sivaganga,Drip,Small,General,No,Yes,No,TN-SCH-03
+44,Male,95999,0.86,Owned,Sugarcane,Natural,Thanjavur,Rainfed,Marginal,OBC,No,Yes,No,TN-SCH-01
+51,Male,93078,2.59,Leased,Flowers,Integrated,Madurai,Sprinkler,Small,SC,Yes,Yes,No,TN-SCH-06
+38,Male,225751,3.3,Shared,Sugarcane,Conventional,Theni,Borewell,Small,OBC,No,No,Yes,TN-SCH-08
+54,Male,89646,1.11,Owned,Millets,Conventional,Coimbatore,Drip,Marginal,SC,Yes,Yes,No,TN-SCH-03
+66,Male,223842,4.42,Owned,Cotton,Organic,Madurai,Open Well,Small,SC,Yes,No,No,TN-SCH-11
+46,Male,191325,3.6,Leased,Sugarcane,Integrated,Krishnagiri,Canal,Small,OBC,Yes,No,Yes,TN-SCH-02
+52,Male,212953,8.13,Owned,Cotton,Conventional,Salem,Open Well,Medium,OBC,Yes,No,Yes,TN-SCH-08
+56,Male,46986,0.9,Leased,Pulses,Conventional,Tirunelveli,Borewell,Marginal,OBC,Yes,Yes,No,TN-SCH-03
+43,Male,77030,0.39,Owned,Pulses,Conventional,Sivaganga,Rainfed,Marginal,SC,No,No,No,TN-SCH-01
+50,Male,579417,21.34,Owned,Sugarcane,Organic,Madurai,Rainfed,Large,OBC,No,Yes,Yes,TN-SCH-02
+48,Male,69639,2.22,Owned,Flowers,Conventional,Dindigul,Drip,Marginal,General,Yes,Yes,No,TN-SCH-07
+49,Male,125610,2.0,Owned,Coconut,Conventional,Dindigul,Rainfed,Marginal,General,Yes,Yes,No,TN-SCH-07
+38,Male,105400,2.66,Owned,Vegetables,Conventional,Ramanathapuram,Drip,Small,MBC,No,Yes,No,TN-SCH-06
+48,Male,86601,3.28,Owned,Banana,Integrated,Vellore,Open Well,Small,SC,No,Yes,Yes,TN-SCH-06
+53,Male,420976,9.35,Owned,Banana,Conventional,Thanjavur,Rainfed,Medium,OBC,Yes,Yes,No,TN-SCH-02
+65,Female,365337,9.59,Owned,Sugarcane,Conventional,Theni,Sprinkler,Medium,General,Yes,No,Yes,TN-SCH-03
+59,Male,131071,4.47,Owned,Paddy,Organic,Tirunelveli,Borewell,Small,OBC,Yes,No,Yes,TN-SCH-09
+73,Female,131199,1.42,Owned,Vegetables,Conventional,Theni,Borewell,Marginal,OBC,No,Yes,Yes,TN-SCH-06
+38,Male,133218,1.97,Owned,Vegetables,Conventional,Sivaganga,Sprinkler,Marginal,OBC,Yes,Yes,Yes,TN-SCH-06
+58,Male,162848,3.49,Owned,Paddy,Conventional,Theni,Canal,Small,MBC,No,Yes,No,TN-SCH-04
+50,Male,291735,5.43,Owned,Coconut,Organic,Nagapattinam,Sprinkler,Medium,OBC,No,Yes,Yes,TN-SCH-02
+74,Male,140743,0.28,Owned,Pulses,Conventional,Tirunelveli,Open Well,Marginal,General,No,No,No,TN-SCH-09
+38,Male,132173,1.31,Owned,Groundnut,Organic,Erode,Borewell,Marginal,MBC,No,No,No,TN-SCH-02
+37,Male,58343,1.92,Owned,Coconut,Integrated,Tiruchirappalli,Canal,Marginal,OBC,Yes,Yes,No,TN-SCH-02
+40,Female,105845,4.03,Owned,Paddy,Conventional,Theni,Rainfed,Small,OBC,No,No,No,TN-SCH-06
+22,Female,114646,3.44,Owned,Vegetables,Conventional,Krishnagiri,Canal,Small,OBC,No,Yes,Yes,TN-SCH-06
+41,Male,345619,7.99,Owned,Millets,Conventional,Erode,Open Well,Medium,OBC,No,No,No,TN-SCH-06
+38,Male,51589,1.72,Owned,Paddy,Conventional,Pudukkottai,Rainfed,Marginal,General,No,No,No,TN-SCH-08
+49,Male,36825,1.56,Owned,Cotton,Integrated,Sivaganga,Sprinkler,Marginal,MBC,Yes,No,No,TN-SCH-01
+52,Male,149382,3.11,Owned,Flowers,Organic,Nagapattinam,Open Well,Small,MBC,Yes,Yes,No,TN-SCH-09
+70,Female,60988,2.39,Owned,Banana,Conventional,Erode,Drip,Marginal,General,No,Yes,Yes,TN-SCH-07
+59,Male,145068,2.75,Owned,Sugarcane,Conventional,Erode,Canal,Small,General,No,Yes,No,TN-SCH-02
+41,Female,167688,4.67,Owned,Flowers,Organic,Krishnagiri,Drip,Small,OBC,No,Yes,Yes,TN-SCH-01
+37,Female,131016,4.74,Owned,Vegetables,Conventional,Tirunelveli,Canal,Small,MBC,No,Yes,Yes,TN-SCH-07
+53,Male,202985,8.17,Leased,Vegetables,Conventional,Tiruvarur,Rainfed,Medium,OBC,Yes,Yes,Yes,TN-SCH-12
+32,Male,149566,0.26,Owned,Flowers,Conventional,Coimbatore,Drip,Marginal,General,No,Yes,No,TN-SCH-07
+69,Male,35137,1.93,Owned,Cotton,Integrated,Mayiladuthurai,Rainfed,Marginal,MBC,Yes,No,No,TN-SCH-11
+62,Male,86546,1.64,Owned,Paddy,Conventional,Sivaganga,Borewell,Marginal,MBC,Yes,No,No,TN-SCH-09
+42,Female,88076,4.46,Owned,Pulses,Integrated,Dharmapuri,Sprinkler,Small,OBC,No,No,Yes,TN-SCH-01
+27,Male,212192,2.83,Owned,Paddy,Organic,Salem,Sprinkler,Small,OBC,Yes,No,Yes,TN-SCH-11
+64,Male,204478,2.82,Owned,Vegetables,Conventional,Sivaganga,Borewell,Small,General,Yes,Yes,No,TN-SCH-02
+46,Male,140045,3.76,Owned,Pulses,Natural,Tiruchirappalli,Rainfed,Small,General,No,No,Yes,TN-SCH-06
+62,Female,93623,0.46,Owned,Pulses,Conventional,Mayiladuthurai,Open Well,Marginal,SC,No,Yes,Yes,TN-SCH-09
+28,Male,139378,2.06,Owned,Banana,Conventional,Dharmapuri,Borewell,Marginal,MBC,Yes,Yes,No,TN-SCH-07
+40,Female,99900,4.72,Owned,Flowers,Conventional,Thanjavur,Sprinkler,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+48,Male,179419,6.6,Owned,Cotton,Conventional,Villupuram,Drip,Medium,SC,Yes,Yes,Yes,TN-SCH-03
+48,Male,130960,2.97,Owned,Cotton,Conventional,Erode,Open Well,Small,OBC,No,No,Yes,TN-SCH-09
+42,Female,386864,7.96,Owned,Banana,Integrated,Sivaganga,Sprinkler,Medium,SC,No,Yes,No,TN-SCH-07
+55,Female,111931,4.27,Leased,Vegetables,Integrated,Dindigul,Sprinkler,Small,OBC,No,Yes,Yes,TN-SCH-03
+35,Female,602529,21.0,Leased,Coconut,Conventional,Villupuram,Drip,Large,OBC,Yes,Yes,Yes,TN-SCH-06
+46,Female,40887,1.62,Owned,Groundnut,Conventional,Dharmapuri,Borewell,Marginal,MBC,No,No,No,TN-SCH-04
+49,Male,216265,4.02,Owned,Vegetables,Conventional,Nagapattinam,Rainfed,Small,OBC,No,Yes,Yes,TN-SCH-01
+54,Male,118291,2.14,Owned,Coconut,Conventional,Tiruvarur,Rainfed,Marginal,OBC,Yes,Yes,No,TN-SCH-01
+56,Male,93528,4.36,Leased,Cotton,Conventional,Dindigul,Sprinkler,Small,OBC,No,Yes,No,TN-SCH-03
+34,Male,63257,1.7,Leased,Millets,Conventional,Nagapattinam,Open Well,Marginal,OBC,No,No,No,TN-SCH-02
+29,Male,236274,4.16,Owned,Cotton,Natural,Nagapattinam,Drip,Small,General,Yes,Yes,Yes,TN-SCH-03
+63,Male,144252,0.65,Owned,Groundnut,Conventional,Thanjavur,Drip,Marginal,SC,Yes,No,No,TN-SCH-11
+51,Male,434234,6.14,Owned,Vegetables,Conventional,Dindigul,Sprinkler,Medium,OBC,No,Yes,No,TN-SCH-03
+39,Male,50608,1.94,Leased,Cotton,Conventional,Erode,Drip,Marginal,OBC,Yes,No,No,TN-SCH-11
+66,Female,99811,2.94,Owned,Banana,Conventional,Madurai,Borewell,Small,OBC,Yes,Yes,No,TN-SCH-11
+49,Female,160719,4.84,Leased,Paddy,Integrated,Mayiladuthurai,Drip,Small,SC,Yes,No,Yes,TN-SCH-06
+62,Female,376248,9.75,Owned,Banana,Conventional,Ramanathapuram,Sprinkler,Medium,MBC,No,Yes,Yes,TN-SCH-07
+48,Male,56443,1.56,Owned,Sugarcane,Conventional,Theni,Open Well,Marginal,General,No,No,Yes,TN-SCH-08
+72,Male,124018,2.97,Owned,Coconut,Integrated,Sivaganga,Canal,Small,SC,Yes,Yes,No,TN-SCH-07
+69,Male,134916,2.35,Owned,Cotton,Conventional,Nagapattinam,Rainfed,Marginal,SC,Yes,No,No,TN-SCH-04
+45,Male,193091,7.93,Shared,Flowers,Organic,Tirunelveli,Sprinkler,Medium,ST,Yes,Yes,Yes,TN-SCH-07
+59,Male,198391,4.2,Owned,Cotton,Integrated,Madurai,Borewell,Small,SC,Yes,No,Yes,TN-SCH-11
+55,Male,240050,5.75,Owned,Sugarcane,Integrated,Dharmapuri,Rainfed,Medium,MBC,No,Yes,No,TN-SCH-02
+64,Male,176759,4.58,Leased,Sugarcane,Conventional,Dharmapuri,Open Well,Small,OBC,Yes,No,Yes,TN-SCH-09
+36,Male,139452,1.12,Owned,Paddy,Conventional,Theni,Open Well,Marginal,OBC,No,No,No,TN-SCH-09
+56,Male,131399,0.9,Owned,Groundnut,Conventional,Tirunelveli,Rainfed,Marginal,MBC,Yes,Yes,No,TN-SCH-11
+60,Male,215362,5.8,Owned,Cotton,Natural,Krishnagiri,Borewell,Medium,MBC,No,No,No,TN-SCH-08
+26,Male,71785,0.24,Owned,Banana,Conventional,Theni,Drip,Marginal,SC,No,Yes,Yes,TN-SCH-07
+33,Male,217972,5.7,Owned,Cotton,Conventional,Madurai,Borewell,Medium,ST,Yes,No,Yes,TN-SCH-06
+23,Male,101181,1.65,Owned,Sugarcane,Conventional,Dharmapuri,Open Well,Marginal,General,Yes,No,No,TN-SCH-09
+44,Female,94744,2.57,Owned,Pulses,Conventional,Erode,Open Well,Small,OBC,No,Yes,No,TN-SCH-01
+56,Male,30519,1.86,Owned,Cotton,Conventional,Mayiladuthurai,Sprinkler,Marginal,SC,No,Yes,No,TN-SCH-07
+66,Male,199439,3.48,Owned,Sugarcane,Organic,Dindigul,Drip,Small,OBC,No,Yes,Yes,TN-SCH-03
+48,Female,67440,1.52,Owned,Cotton,Integrated,Vellore,Sprinkler,Marginal,OBC,No,No,No,TN-SCH-01
+67,Male,110651,1.68,Owned,Flowers,Conventional,Cuddalore,Sprinkler,Marginal,MBC,No,Yes,Yes,TN-SCH-06
+31,Male,656976,15.08,Owned,Sugarcane,Organic,Cuddalore,Borewell,Large,SC,No,No,No,TN-SCH-03
+27,Male,138755,3.95,Owned,Coconut,Conventional,Dharmapuri,Open Well,Small,OBC,Yes,Yes,Yes,TN-SCH-11
+47,Male,102550,0.59,Owned,Banana,Organic,Dindigul,Open Well,Marginal,MBC,No,Yes,No,TN-SCH-09
+52,Female,114483,3.68,Shared,Coconut,Integrated,Dindigul,Sprinkler,Small,General,Yes,Yes,Yes,TN-SCH-07
+47,Male,109129,0.59,Owned,Banana,Organic,Tirunelveli,Drip,Marginal,OBC,No,Yes,No,TN-SCH-01
+23,Female,96572,3.85,Owned,Vegetables,Conventional,Tiruvarur,Open Well,Small,OBC,No,Yes,Yes,TN-SCH-09
+46,Male,71865,2.04,Owned,Paddy,Conventional,Ramanathapuram,Rainfed,Marginal,OBC,Yes,No,No,TN-SCH-01
+32,Male,241473,5.32,Owned,Banana,Conventional,Dindigul,Canal,Medium,OBC,No,Yes,Yes,TN-SCH-07
+56,Female,123807,2.55,Owned,Vegetables,Organic,Ramanathapuram,Open Well,Small,MBC,Yes,Yes,No,TN-SCH-07
+52,Male,144118,3.37,Owned,Sugarcane,Conventional,Dharmapuri,Sprinkler,Small,OBC,No,No,No,TN-SCH-08
+36,Male,142608,3.77,Owned,Sugarcane,Organic,Theni,Rainfed,Small,SC,Yes,No,Yes,TN-SCH-01
+41,Male,101711,3.74,Owned,Cotton,Integrated,Dharmapuri,Rainfed,Small,SC,No,No,No,TN-SCH-01
+35,Female,48056,0.53,Owned,Vegetables,Conventional,Tirunelveli,Drip,Marginal,OBC,Yes,Yes,No,TN-SCH-07
+47,Male,89304,3.47,Owned,Paddy,Natural,Salem,Borewell,Small,MBC,Yes,No,Yes,TN-SCH-09
+59,Female,63332,1.94,Owned,Banana,Conventional,Pudukkottai,Rainfed,Marginal,SC,No,Yes,Yes,TN-SCH-01
+36,Male,181763,3.37,Owned,Vegetables,Conventional,Nagapattinam,Rainfed,Small,SC,Yes,Yes,No,TN-SCH-04
+54,Female,123279,4.36,Owned,Vegetables,Conventional,Ramanathapuram,Rainfed,Small,MBC,Yes,Yes,Yes,TN-SCH-07
+41,Male,310040,5.27,Shared,Millets,Integrated,Mayiladuthurai,Sprinkler,Medium,OBC,No,No,No,TN-SCH-06
+38,Male,804883,19.09,Shared,Cotton,Conventional,Tiruvarur,Open Well,Large,MBC,No,Yes,No,TN-SCH-07
+46,Female,443397,6.93,Owned,Groundnut,Integrated,Erode,Canal,Medium,SC,Yes,No,Yes,TN-SCH-02
+35,Female,432148,9.03,Leased,Vegetables,Integrated,Dharmapuri,Open Well,Medium,MBC,No,Yes,Yes,TN-SCH-07
+41,Male,195423,4.45,Owned,Paddy,Conventional,Vellore,Canal,Small,MBC,Yes,Yes,Yes,TN-SCH-11
+33,Female,122112,1.77,Owned,Pulses,Integrated,Madurai,Rainfed,Marginal,OBC,Yes,Yes,No,TN-SCH-07
+71,Female,74111,0.39,Leased,Vegetables,Conventional,Cuddalore,Sprinkler,Marginal,OBC,No,Yes,No,TN-SCH-07
+48,Female,138175,2.91,Owned,Pulses,Conventional,Villupuram,Open Well,Small,OBC,Yes,No,No,TN-SCH-02
+39,Male,127609,2.28,Leased,Groundnut,Conventional,Erode,Rainfed,Marginal,OBC,No,No,No,TN-SCH-01
+50,Male,119332,2.85,Owned,Cotton,Conventional,Erode,Sprinkler,Small,OBC,Yes,No,No,TN-SCH-06
+46,Male,80794,1.04,Owned,Groundnut,Conventional,Sivaganga,Canal,Marginal,General,No,No,No,TN-SCH-01
+45,Male,113121,2.61,Owned,Vegetables,Integrated,Sivaganga,Open Well,Small,SC,Yes,Yes,Yes,TN-SCH-09
+55,Male,149574,3.31,Owned,Millets,Conventional,Nagapattinam,Rainfed,Small,OBC,Yes,No,No,TN-SCH-06
+57,Male,378469,8.0,Owned,Coconut,Conventional,Erode,Open Well,Medium,OBC,No,Yes,No,TN-SCH-02
+41,Female,86429,0.6,Owned,Flowers,Conventional,Tiruchirappalli,Drip,Marginal,OBC,No,Yes,No,TN-SCH-07
+41,Male,129432,2.86,Leased,Groundnut,Conventional,Salem,Borewell,Small,SC,No,Yes,No,TN-SCH-03
+44,Male,426123,5.88,Owned,Flowers,Natural,Coimbatore,Rainfed,Medium,General,Yes,Yes,Yes,TN-SCH-06
+20,Male,85227,0.26,Owned,Flowers,Natural,Dharmapuri,Rainfed,Marginal,SC,No,Yes,No,TN-SCH-07
+29,Female,232758,4.26,Owned,Banana,Organic,Ramanathapuram,Borewell,Small,SC,No,Yes,Yes,TN-SCH-09
+64,Male,122505,0.73,Owned,Sugarcane,Conventional,Cuddalore,Canal,Marginal,SC,No,No,Yes,TN-SCH-08
+67,Female,183138,2.82,Owned,Coconut,Conventional,Theni,Borewell,Small,OBC,Yes,Yes,No,TN-SCH-07
+45,Male,128096,2.6,Owned,Cotton,Conventional,Vellore,Rainfed,Small,MBC,No,No,No,TN-SCH-08
+54,Male,130984,2.19,Leased,Vegetables,Conventional,Krishnagiri,Open Well,Marginal,MBC,No,Yes,No,TN-SCH-04
+51,Male,72765,4.34,Owned,Banana,Organic,Vellore,Borewell,Small,SC,Yes,Yes,No,TN-SCH-03
+80,Female,425433,6.67,Owned,Cotton,Organic,Tiruchirappalli,Borewell,Medium,General,Yes,Yes,Yes,TN-SCH-03
+61,Female,138865,3.6,Owned,Flowers,Organic,Sivaganga,Open Well,Small,MBC,No,Yes,Yes,TN-SCH-09
+46,Male,43429,0.23,Owned,Cotton,Conventional,Thanjavur,Canal,Marginal,OBC,No,No,Yes,TN-SCH-06
+36,Female,73708,3.64,Owned,Banana,Integrated,Tiruchirappalli,Rainfed,Small,MBC,No,Yes,Yes,TN-SCH-04
+28,Male,115571,1.59,Shared,Flowers,Conventional,Villupuram,Rainfed,Marginal,MBC,Yes,Yes,No,TN-SCH-01
+50,Male,168211,6.14,Leased,Vegetables,Conventional,Thanjavur,Sprinkler,Medium,OBC,No,Yes,Yes,TN-SCH-07
+38,Male,118961,2.55,Owned,Flowers,Organic,Salem,Open Well,Small,OBC,No,Yes,No,TN-SCH-07
+30,Female,267111,8.54,Owned,Millets,Conventional,Villupuram,Drip,Medium,MBC,No,No,Yes,TN-SCH-06
+40,Male,140717,2.74,Owned,Groundnut,Integrated,Dharmapuri,Borewell,Small,OBC,Yes,Yes,No,TN-SCH-09
+35,Female,104107,1.15,Owned,Coconut,Organic,Mayiladuthurai,Borewell,Marginal,OBC,No,Yes,No,TN-SCH-01
+68,Male,143552,0.31,Leased,Sugarcane,Conventional,Vellore,Canal,Marginal,MBC,No,No,Yes,TN-SCH-06
+58,Male,117401,1.0,Owned,Coconut,Conventional,Vellore,Drip,Marginal,MBC,Yes,Yes,No,TN-SCH-03
+47,Male,111703,4.35,Owned,Millets,Organic,Dharmapuri,Open Well,Small,OBC,Yes,No,Yes,TN-SCH-11
+65,Male,79609,1.96,Owned,Flowers,Conventional,Villupuram,Sprinkler,Marginal,MBC,Yes,Yes,No,TN-SCH-07
+48,Male,49718,2.36,Leased,Vegetables,Conventional,Tiruvarur,Canal,Marginal,MBC,No,Yes,No,TN-SCH-04
+37,Male,164113,4.13,Owned,Millets,Integrated,Tirunelveli,Open Well,Small,General,No,No,Yes,TN-SCH-01
+66,Male,271351,8.83,Owned,Groundnut,Organic,Salem,Canal,Medium,General,Yes,No,Yes,TN-SCH-06
+54,Male,198697,3.75,Owned,Paddy,Integrated,Tiruchirappalli,Canal,Small,SC,Yes,No,Yes,TN-SCH-02
+35,Male,198615,2.8,Owned,Flowers,Conventional,Mayiladuthurai,Open Well,Small,MBC,No,Yes,No,TN-SCH-04
+45,Male,127809,1.67,Owned,Banana,Conventional,Ramanathapuram,Rainfed,Marginal,OBC,Yes,Yes,No,TN-SCH-07
+37,Male,79446,1.14,Owned,Paddy,Conventional,Nagapattinam,Drip,Marginal,SC,No,No,No,TN-SCH-05
+31,Female,80810,1.3,Owned,Flowers,Conventional,Vellore,Rainfed,Marginal,SC,No,Yes,Yes,TN-SCH-04
+59,Male,119579,1.24,Owned,Millets,Conventional,Pudukkottai,Canal,Marginal,MBC,Yes,Yes,No,TN-SCH-11
+70,Male,94163,4.4,Owned,Vegetables,Conventional,Ramanathapuram,Canal,Small,SC,No,Yes,Yes,TN-SCH-06
+31,Male,67164,1.26,Owned,Millets,Organic,Vellore,Drip,Marginal,OBC,No,No,No,TN-SCH-01
+54,Male,389943,6.59,Owned,Vegetables,Natural,Sivaganga,Drip,Medium,OBC,No,Yes,No,TN-SCH-01
+40,Female,107269,1.62,Shared,Cotton,Conventional,Nagapattinam,Sprinkler,Marginal,OBC,No,No,Yes,TN-SCH-01
+42,Male,423482,14.12,Owned,Flowers,Conventional,Ramanathapuram,Canal,Large,SC,No,Yes,Yes,TN-SCH-07
+40,Male,123955,4.56,Owned,Sugarcane,Conventional,Erode,Canal,Small,SC,No,Yes,No,TN-SCH-07
+37,Male,727980,12.72,Owned,Vegetables,Conventional,Tirunelveli,Canal,Large,OBC,No,Yes,Yes,TN-SCH-07
+48,Male,297893,7.87,Owned,Vegetables,Conventional,Krishnagiri,Canal,Medium,OBC,Yes,Yes,No,TN-SCH-07
+38,Male,87256,3.91,Leased,Banana,Conventional,Pudukkottai,Open Well,Small,MBC,No,Yes,Yes,TN-SCH-07
+51,Male,145362,2.3,Leased,Flowers,Conventional,Pudukkottai,Canal,Marginal,General,No,Yes,Yes,TN-SCH-01
+47,Male,255425,6.86,Owned,Pulses,Conventional,Salem,Sprinkler,Medium,OBC,Yes,No,No,TN-SCH-02
+45,Male,126246,1.31,Shared,Groundnut,Conventional,Dindigul,Rainfed,Marginal,OBC,No,No,Yes,TN-SCH-01
+37,Male,138173,1.25,Owned,Vegetables,Conventional,Tiruchirappalli,Sprinkler,Marginal,SC,No,Yes,No,TN-SCH-03
+41,Male,110593,2.03,Owned,Millets,Organic,Mayiladuthurai,Drip,Marginal,SC,No,Yes,No,TN-SCH-07
+57,Male,63736,0.24,Leased,Cotton,Conventional,Theni,Canal,Marginal,SC,No,No,Yes,TN-SCH-08
+54,Male,366567,19.58,Owned,Pulses,Conventional,Erode,Sprinkler,Large,OBC,No,No,Yes,TN-SCH-06
+36,Male,98388,0.77,Owned,Coconut,Natural,Coimbatore,Rainfed,Marginal,MBC,No,Yes,No,TN-SCH-07
+49,Male,229441,3.59,Owned,Millets,Conventional,Tiruvarur,Drip,Small,SC,No,No,Yes,TN-SCH-04
+57,Male,244872,7.61,Owned,Cotton,Organic,Cuddalore,Open Well,Medium,General,No,No,Yes,TN-SCH-06
+27,Male,105119,0.88,Owned,Paddy,Integrated,Mayiladuthurai,Drip,Marginal,OBC,No,Yes,No,TN-SCH-01
+54,Male,101995,0.36,Shared,Sugarcane,Integrated,Vellore,Rainfed,Marginal,OBC,Yes,No,No,TN-SCH-08
+40,Male,333221,5.27,Owned,Sugarcane,Conventional,Villupuram,Canal,Medium,MBC,Yes,No,Yes,TN-SCH-08
+54,Male,135592,1.95,Owned,Sugarcane,Conventional,Sivaganga,Open Well,Marginal,MBC,No,Yes,Yes,TN-SCH-04
+38,Female,151837,3.35,Owned,Flowers,Conventional,Sivaganga,Borewell,Small,OBC,Yes,Yes,No,TN-SCH-03
+26,Female,194222,8.8,Owned,Pulses,Organic,Tirunelveli,Open Well,Medium,OBC,Yes,Yes,No,TN-SCH-07
+28,Male,106866,2.35,Owned,Sugarcane,Conventional,Salem,Open Well,Marginal,OBC,No,No,No,TN-SCH-09
+48,Male,42581,0.92,Owned,Flowers,Conventional,Tiruvarur,Borewell,Marginal,SC,Yes,Yes,No,TN-SCH-11
+51,Male,71143,4.48,Owned,Sugarcane,Conventional,Thanjavur,Open Well,Small,General,No,No,Yes,TN-SCH-09
+37,Male,136245,0.58,Owned,Millets,Conventional,Tiruchirappalli,Sprinkler,Marginal,OBC,Yes,No,Yes,TN-SCH-08
+55,Female,74356,1.2,Leased,Banana,Integrated,Theni,Sprinkler,Marginal,SC,Yes,Yes,Yes,TN-SCH-11
+28,Female,101945,1.02,Owned,Paddy,Conventional,Coimbatore,Sprinkler,Marginal,MBC,Yes,No,No,TN-SCH-11
+47,Male,153128,3.9,Owned,Flowers,Integrated,Nagapattinam,Rainfed,Small,MBC,No,Yes,Yes,TN-SCH-06
+33,Male,152160,3.76,Owned,Flowers,Conventional,Dharmapuri,Open Well,Small,MBC,Yes,Yes,No,TN-SCH-09
+40,Male,75249,1.14,Owned,Millets,Conventional,Tiruchirappalli,Open Well,Marginal,MBC,Yes,No,No,TN-SCH-11
+48,Male,206765,3.48,Owned,Groundnut,Conventional,Dindigul,Drip,Small,General,No,No,Yes,TN-SCH-08
+37,Male,44230,0.7,Owned,Paddy,Conventional,Theni,Sprinkler,Marginal,OBC,No,No,No,TN-SCH-01
+43,Male,751430,24.98,Owned,Groundnut,Natural,Pudukkottai,Canal,Large,MBC,No,No,Yes,TN-SCH-02
+60,Female,55185,1.79,Owned,Coconut,Conventional,Coimbatore,Sprinkler,Marginal,MBC,No,Yes,No,TN-SCH-03
+41,Male,212875,8.42,Owned,Coconut,Integrated,Vellore,Canal,Medium,OBC,Yes,Yes,No,TN-SCH-07
+58,Male,138572,4.15,Owned,Groundnut,Conventional,Pudukkottai,Open Well,Small,MBC,No,No,No,TN-SCH-02
+34,Male,37645,2.29,Owned,Cotton,Integrated,Cuddalore,Drip,Marginal,OBC,Yes,Yes,No,TN-SCH-03
+54,Male,101737,3.67,Owned,Vegetables,Conventional,Nagapattinam,Open Well,Small,OBC,Yes,Yes,Yes,TN-SCH-09
+65,Male,446878,6.92,Shared,Coconut,Integrated,Madurai,Drip,Medium,OBC,Yes,Yes,Yes,TN-SCH-03
+18,Male,172630,3.64,Owned,Pulses,Conventional,Tirunelveli,Borewell,Small,OBC,Yes,Yes,Yes,TN-SCH-01
+38,Female,219768,3.19,Owned,Millets,Integrated,Vellore,Rainfed,Small,SC,No,No,Yes,TN-SCH-04
+54,Male,113822,1.65,Leased,Vegetables,Conventional,Mayiladuthurai,Rainfed,Marginal,SC,No,Yes,No,TN-SCH-01
+45,Male,153892,3.02,Owned,Sugarcane,Conventional,Pudukkottai,Open Well,Small,General,No,No,Yes,TN-SCH-06
+52,Male,134796,4.3,Owned,Cotton,Conventional,Cuddalore,Drip,Small,General,No,No,Yes,TN-SCH-06
+40,Male,144413,4.21,Owned,Groundnut,Conventional,Dharmapuri,Borewell,Small,OBC,No,No,Yes,TN-SCH-02
+49,Female,34133,0.68,Leased,Cotton,Conventional,Pudukkottai,Drip,Marginal,MBC,No,No,No,TN-SCH-04
+46,Male,122689,0.21,Owned,Cotton,Conventional,Salem,Open Well,Marginal,SC,Yes,No,No,TN-SCH-09
+62,Male,801231,11.45,Owned,Banana,Conventional,Tiruchirappalli,Canal,Large,OBC,Yes,Yes,Yes,TN-SCH-02
+51,Male,50834,0.98,Owned,Millets,Integrated,Cuddalore,Canal,Marginal,OBC,No,No,Yes,TN-SCH-06
+52,Female,147972,1.52,Owned,Coconut,Natural,Mayiladuthurai,Sprinkler,Marginal,OBC,No,Yes,No,TN-SCH-01
+43,Male,136076,1.6,Owned,Flowers,Conventional,Dindigul,Canal,Marginal,OBC,No,Yes,No,TN-SCH-01
+42,Male,137613,1.56,Owned,Cotton,Conventional,Tirunelveli,Rainfed,Marginal,OBC,No,Yes,No,TN-SCH-08
+42,Female,145433,4.87,Owned,Banana,Organic,Dindigul,Open Well,Small,OBC,Yes,Yes,No,TN-SCH-09
+52,Male,104988,3.32,Leased,Cotton,Conventional,Tiruvarur,Rainfed,Small,MBC,Yes,No,Yes,TN-SCH-11
+42,Male,895207,10.78,Owned,Banana,Conventional,Salem,Canal,Large,OBC,No,Yes,Yes,TN-SCH-07
+51,Male,80882,0.63,Owned,Cotton,Conventional,Sivaganga,Open Well,Marginal,OBC,No,Yes,No,TN-SCH-07
+72,Male,194937,3.71,Owned,Flowers,Integrated,Madurai,Canal,Small,MBC,Yes,Yes,Yes,TN-SCH-11
+58,Male,63987,0.87,Owned,Pulses,Conventional,Pudukkottai,Drip,Marginal,General,Yes,Yes,No,TN-SCH-07
+44,Female,441147,9.61,Owned,Vegetables,Integrated,Theni,Drip,Medium,OBC,No,Yes,Yes,TN-SCH-07
+62,Male,381381,9.69,Owned,Coconut,Organic,Theni,Rainfed,Medium,OBC,No,Yes,No,TN-SCH-07
+43,Male,352927,8.09,Owned,Groundnut,Conventional,Madurai,Sprinkler,Medium,OBC,No,No,Yes,TN-SCH-02
+23,Male,138119,1.49,Owned,Cotton,Conventional,Krishnagiri,Drip,Marginal,OBC,No,No,No,TN-SCH-01
+35,Male,410825,9.53,Owned,Pulses,Organic,Mayiladuthurai,Open Well,Medium,SC,No,Yes,Yes,TN-SCH-07
+25,Male,80140,1.9,Owned,Groundnut,Conventional,Villupuram,Rainfed,Marginal,OBC,No,No,Yes,TN-SCH-08
+43,Female,127101,1.85,Owned,Groundnut,Conventional,Salem,Drip,Marginal,OBC,Yes,Yes,Yes,TN-SCH-03
+48,Female,88223,0.72,Owned,Paddy,Organic,Mayiladuthurai,Canal,Marginal,OBC,Yes,Yes,No,TN-SCH-05
+68,Male,115192,4.81,Owned,Flowers,Conventional,Dharmapuri,Open Well,Small,MBC,Yes,Yes,Yes,TN-SCH-07
+51,Male,218423,4.84,Leased,Paddy,Integrated,Mayiladuthurai,Drip,Small,SC,Yes,Yes,Yes,TN-SCH-07
+45,Female,217875,4.15,Shared,Vegetables,Integrated,Krishnagiri,Rainfed,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+57,Female,283291,6.6,Owned,Flowers,Integrated,Sivaganga,Drip,Medium,MBC,No,Yes,Yes,TN-SCH-06
+21,Male,115433,1.54,Owned,Pulses,Conventional,Krishnagiri,Rainfed,Marginal,OBC,No,No,No,TN-SCH-01
+50,Female,43881,1.18,Owned,Cotton,Conventional,Pudukkottai,Borewell,Marginal,OBC,Yes,No,Yes,TN-SCH-02
+57,Male,137701,1.25,Owned,Banana,Conventional,Mayiladuthurai,Sprinkler,Marginal,MBC,Yes,Yes,No,TN-SCH-07
+30,Male,119156,2.2,Owned,Coconut,Conventional,Cuddalore,Drip,Marginal,SC,Yes,Yes,No,TN-SCH-11
+61,Male,144488,2.08,Leased,Paddy,Natural,Ramanathapuram,Open Well,Marginal,General,Yes,No,No,TN-SCH-08
+52,Male,85272,1.38,Owned,Groundnut,Conventional,Madurai,Borewell,Marginal,OBC,No,No,No,TN-SCH-02
+43,Male,898109,11.85,Owned,Flowers,Conventional,Ramanathapuram,Rainfed,Large,SC,No,Yes,Yes,TN-SCH-06
+55,Male,189069,4.45,Leased,Banana,Integrated,Tiruvarur,Drip,Small,MBC,Yes,Yes,Yes,TN-SCH-03
+75,Male,129212,3.64,Owned,Vegetables,Conventional,Cuddalore,Canal,Small,OBC,No,Yes,Yes,TN-SCH-07
+50,Male,391521,7.84,Owned,Flowers,Conventional,Tirunelveli,Rainfed,Medium,OBC,Yes,Yes,Yes,TN-SCH-12
+50,Male,42233,2.08,Owned,Vegetables,Conventional,Madurai,Drip,Marginal,MBC,No,Yes,No,TN-SCH-03
+42,Male,143749,3.31,Owned,Vegetables,Organic,Madurai,Borewell,Small,General,No,Yes,No,TN-SCH-01
+37,Male,181043,3.16,Owned,Paddy,Integrated,Theni,Canal,Small,OBC,Yes,No,No,TN-SCH-06
+57,Male,239992,3.42,Owned,Groundnut,Integrated,Villupuram,Sprinkler,Small,OBC,No,No,No,TN-SCH-01
+37,Female,212314,2.65,Owned,Sugarcane,Conventional,Pudukkottai,Borewell,Small,SC,Yes,No,No,TN-SCH-03
+48,Male,49345,0.65,Owned,Groundnut,Natural,Pudukkottai,Canal,Marginal,General,Yes,No,No,TN-SCH-11
+42,Male,138554,2.28,Owned,Coconut,Integrated,Tirunelveli,Drip,Marginal,OBC,No,Yes,No,TN-SCH-01
+53,Male,76244,2.61,Owned,Groundnut,Conventional,Madurai,Borewell,Small,SC,Yes,No,Yes,TN-SCH-09
+52,Male,78007,2.19,Owned,Groundnut,Conventional,Nagapattinam,Rainfed,Marginal,OBC,No,No,No,TN-SCH-08
+60,Male,128460,1.65,Owned,Banana,Conventional,Sivaganga,Drip,Marginal,SC,No,Yes,No,TN-SCH-03
+41,Female,139152,4.14,Owned,Sugarcane,Organic,Dindigul,Open Well,Small,SC,Yes,Yes,No,TN-SCH-11
+44,Male,170100,4.6,Owned,Sugarcane,Conventional,Dharmapuri,Sprinkler,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+36,Male,386624,8.32,Owned,Pulses,Conventional,Pudukkottai,Drip,Medium,OBC,Yes,Yes,Yes,TN-SCH-07
+42,Male,190275,4.84,Shared,Pulses,Organic,Coimbatore,Drip,Small,MBC,No,No,Yes,TN-SCH-01
+52,Male,407376,6.5,Owned,Vegetables,Conventional,Tirunelveli,Open Well,Medium,SC,Yes,Yes,Yes,TN-SCH-07
+57,Male,153208,8.96,Owned,Coconut,Organic,Villupuram,Rainfed,Medium,OBC,No,Yes,Yes,TN-SCH-07
+36,Female,30874,2.03,Owned,Coconut,Integrated,Villupuram,Rainfed,Marginal,OBC,No,Yes,No,TN-SCH-01
+58,Female,50223,1.19,Owned,Cotton,Natural,Krishnagiri,Borewell,Marginal,General,Yes,No,No,TN-SCH-09
+64,Male,311735,6.22,Owned,Groundnut,Conventional,Mayiladuthurai,Open Well,Medium,OBC,Yes,No,No,TN-SCH-01
+52,Male,151767,5.28,Leased,Millets,Conventional,Vellore,Open Well,Medium,OBC,Yes,Yes,Yes,TN-SCH-07
+70,Male,91053,2.87,Owned,Paddy,Conventional,Dharmapuri,Borewell,Small,MBC,Yes,No,No,TN-SCH-09
+38,Male,563614,19.84,Leased,Millets,Conventional,Madurai,Rainfed,Large,OBC,Yes,Yes,Yes,TN-SCH-08
+33,Male,109829,1.25,Owned,Sugarcane,Conventional,Erode,Drip,Marginal,OBC,No,No,No,TN-SCH-01
+26,Male,437303,5.64,Owned,Banana,Conventional,Thanjavur,Borewell,Medium,OBC,No,Yes,Yes,TN-SCH-07
+65,Male,84044,3.18,Owned,Cotton,Organic,Villupuram,Sprinkler,Small,OBC,No,No,Yes,TN-SCH-08
+55,Female,189194,4.44,Owned,Pulses,Conventional,Krishnagiri,Borewell,Small,OBC,Yes,No,Yes,TN-SCH-09
+47,Male,53957,0.24,Shared,Vegetables,Conventional,Tiruvarur,Drip,Marginal,OBC,Yes,Yes,Yes,TN-SCH-03
+51,Male,73629,0.44,Owned,Vegetables,Conventional,Theni,Borewell,Marginal,OBC,No,Yes,No,TN-SCH-07
+34,Male,73629,2.29,Owned,Sugarcane,Conventional,Tirunelveli,Canal,Marginal,MBC,Yes,No,No,TN-SCH-04
+77,Male,40467,1.49,Owned,Banana,Integrated,Mayiladuthurai,Rainfed,Marginal,MBC,No,Yes,Yes,TN-SCH-04
+49,Male,193309,3.32,Owned,Coconut,Organic,Salem,Rainfed,Small,OBC,No,Yes,No,TN-SCH-06
+49,Female,44091,1.59,Owned,Sugarcane,Conventional,Villupuram,Drip,Marginal,OBC,No,No,Yes,TN-SCH-03
+56,Male,187946,4.41,Owned,Flowers,Conventional,Cuddalore,Rainfed,Small,OBC,No,Yes,No,TN-SCH-06
+53,Male,101053,1.46,Owned,Coconut,Integrated,Thanjavur,Drip,Marginal,OBC,Yes,Yes,No,TN-SCH-03
+50,Female,65021,1.37,Owned,Groundnut,Conventional,Madurai,Borewell,Marginal,OBC,No,No,Yes,TN-SCH-09
+38,Female,84151,3.39,Owned,Groundnut,Natural,Pudukkottai,Rainfed,Small,OBC,No,Yes,Yes,TN-SCH-06
+53,Male,108878,0.23,Owned,Sugarcane,Integrated,Ramanathapuram,Rainfed,Marginal,MBC,No,No,No,TN-SCH-04
+70,Male,126927,1.48,Owned,Banana,Integrated,Cuddalore,Drip,Marginal,OBC,Yes,Yes,Yes,TN-SCH-03
+64,Female,297155,5.93,Leased,Groundnut,Organic,Tiruchirappalli,Canal,Medium,OBC,Yes,Yes,Yes,TN-SCH-07
+67,Male,193132,3.47,Owned,Paddy,Conventional,Madurai,Sprinkler,Small,General,No,No,Yes,TN-SCH-08
+41,Male,775440,18.99,Owned,Sugarcane,Conventional,Thanjavur,Sprinkler,Large,MBC,No,No,Yes,TN-SCH-03
+36,Male,36705,0.54,Owned,Coconut,Conventional,Erode,Canal,Marginal,General,No,Yes,No,TN-SCH-07
+46,Male,76245,0.7,Owned,Groundnut,Organic,Theni,Borewell,Marginal,SC,No,No,No,TN-SCH-09
+48,Female,345773,14.23,Leased,Sugarcane,Conventional,Dindigul,Open Well,Large,SC,Yes,No,No,TN-SCH-06
+61,Male,208985,3.22,Leased,Sugarcane,Integrated,Theni,Open Well,Small,SC,No,Yes,Yes,TN-SCH-07
+27,Female,136401,3.27,Owned,Sugarcane,Conventional,Dharmapuri,Canal,Small,MBC,No,Yes,Yes,TN-SCH-07
+66,Male,140370,4.16,Owned,Banana,Conventional,Dindigul,Rainfed,Small,SC,No,Yes,Yes,TN-SCH-07
+46,Male,93233,1.77,Leased,Sugarcane,Conventional,Coimbatore,Borewell,Marginal,OBC,No,Yes,Yes,TN-SCH-02
+42,Male,163755,4.5,Owned,Cotton,Natural,Villupuram,Borewell,Small,SC,No,No,Yes,TN-SCH-06
+35,Male,82540,4.09,Owned,Banana,Conventional,Sivaganga,Canal,Small,OBC,No,Yes,Yes,TN-SCH-02
+28,Male,149931,4.78,Owned,Flowers,Integrated,Dindigul,Rainfed,Small,MBC,Yes,Yes,No,TN-SCH-07
+57,Male,412792,8.33,Owned,Groundnut,Conventional,Pudukkottai,Sprinkler,Medium,OBC,No,No,Yes,TN-SCH-06
+48,Male,101227,3.03,Owned,Pulses,Conventional,Pudukkottai,Canal,Small,SC,No,Yes,No,TN-SCH-07
+32,Male,102382,0.37,Owned,Paddy,Conventional,Dindigul,Borewell,Marginal,OBC,No,No,No,TN-SCH-02
+32,Male,97775,2.35,Owned,Flowers,Natural,Ramanathapuram,Canal,Marginal,General,No,Yes,No,TN-SCH-02
+43,Male,45542,0.98,Owned,Millets,Organic,Mayiladuthurai,Drip,Marginal,SC,Yes,No,No,TN-SCH-04
+68,Male,39450,1.7,Owned,Cotton,Conventional,Nagapattinam,Borewell,Marginal,SC,No,No,No,TN-SCH-04
+44,Male,258094,6.66,Owned,Paddy,Conventional,Villupuram,Rainfed,Medium,MBC,Yes,Yes,No,TN-SCH-06
+29,Male,440684,7.68,Owned,Flowers,Conventional,Nagapattinam,Canal,Medium,OBC,No,Yes,Yes,TN-SCH-07
+45,Female,237644,3.61,Shared,Flowers,Conventional,Erode,Rainfed,Small,SC,Yes,Yes,Yes,TN-SCH-07
+44,Male,144940,4.13,Owned,Pulses,Conventional,Krishnagiri,Open Well,Small,OBC,No,No,No,TN-SCH-06
+18,Female,405917,5.04,Owned,Vegetables,Integrated,Tirunelveli,Borewell,Medium,MBC,No,Yes,Yes,TN-SCH-02
+47,Male,145145,0.44,Owned,Vegetables,Conventional,Cuddalore,Borewell,Marginal,OBC,Yes,Yes,No,TN-SCH-03
+45,Female,231250,3.81,Owned,Cotton,Conventional,Madurai,Open Well,Small,MBC,No,No,No,TN-SCH-09
+56,Male,80750,1.87,Owned,Banana,Integrated,Erode,Canal,Marginal,OBC,No,Yes,No,TN-SCH-07
+70,Male,166122,5.9,Owned,Millets,Conventional,Villupuram,Open Well,Medium,OBC,No,Yes,No,TN-SCH-06
+61,Male,101655,1.92,Leased,Pulses,Organic,Nagapattinam,Sprinkler,Marginal,OBC,No,No,Yes,TN-SCH-01
+44,Female,489844,17.49,Leased,Groundnut,Integrated,Villupuram,Sprinkler,Large,MBC,No,No,Yes,TN-SCH-08
+34,Female,172160,4.36,Owned,Millets,Conventional,Salem,Borewell,Small,SC,No,Yes,No,TN-SCH-04
+78,Male,200063,3.76,Owned,Banana,Conventional,Mayiladuthurai,Drip,Small,OBC,Yes,Yes,No,TN-SCH-03
+48,Male,141016,1.56,Leased,Sugarcane,Conventional,Mayiladuthurai,Canal,Marginal,General,No,No,No,TN-SCH-01
+48,Male,405511,8.27,Leased,Cotton,Natural,Salem,Drip,Medium,MBC,Yes,No,Yes,TN-SCH-01
+47,Male,123863,2.27,Leased,Groundnut,Organic,Krishnagiri,Open Well,Marginal,SC,Yes,Yes,No,TN-SCH-07
+50,Male,128004,1.02,Owned,Millets,Conventional,Sivaganga,Open Well,Marginal,OBC,Yes,No,No,TN-SCH-09
+46,Male,863635,16.44,Owned,Banana,Conventional,Cuddalore,Drip,Large,SC,No,Yes,Yes,TN-SCH-01
+41,Male,197715,9.1,Owned,Cotton,Conventional,Dindigul,Canal,Medium,General,Yes,No,Yes,TN-SCH-06
+41,Male,147130,2.81,Owned,Banana,Integrated,Theni,Borewell,Small,MBC,No,Yes,No,TN-SCH-03
+47,Female,39955,0.31,Owned,Paddy,Integrated,Madurai,Rainfed,Marginal,ST,Yes,Yes,No,TN-SCH-07
+41,Male,139526,2.06,Owned,Vegetables,Natural,Salem,Canal,Marginal,OBC,Yes,Yes,No,TN-SCH-07
+39,Male,127025,2.2,Owned,Groundnut,Integrated,Tiruchirappalli,Canal,Marginal,SC,Yes,No,No,TN-SCH-04
+49,Male,90670,3.11,Owned,Paddy,Integrated,Sivaganga,Sprinkler,Small,General,Yes,Yes,Yes,TN-SCH-03
+44,Male,115490,4.76,Owned,Cotton,Organic,Dharmapuri,Canal,Small,OBC,No,No,Yes,TN-SCH-06
+66,Female,136477,1.71,Owned,Vegetables,Organic,Erode,Canal,Marginal,MBC,No,Yes,No,TN-SCH-01
+18,Female,332188,8.05,Leased,Cotton,Conventional,Villupuram,Sprinkler,Medium,OBC,No,No,Yes,TN-SCH-01
+61,Male,538984,17.96,Owned,Banana,Conventional,Mayiladuthurai,Open Well,Large,OBC,Yes,Yes,Yes,TN-SCH-07
+62,Female,116016,1.71,Owned,Flowers,Conventional,Salem,Sprinkler,Marginal,MBC,No,Yes,No,TN-SCH-03
+23,Female,136003,1.54,Owned,Pulses,Conventional,Nagapattinam,Rainfed,Marginal,OBC,Yes,No,No,TN-SCH-01
+43,Male,99093,2.8,Owned,Pulses,Organic,Dindigul,Drip,Small,OBC,No,Yes,No,TN-SCH-03
+43,Male,620080,10.56,Owned,Paddy,Integrated,Krishnagiri,Open Well,Large,MBC,No,No,No,TN-SCH-02
+31,Male,188397,3.44,Owned,Flowers,Conventional,Vellore,Rainfed,Small,SC,Yes,Yes,Yes,TN-SCH-07
+38,Male,112511,0.91,Leased,Cotton,Integrated,Villupuram,Borewell,Marginal,General,No,Yes,No,TN-SCH-03
+34,Male,164401,5.21,Leased,Sugarcane,Conventional,Tirunelveli,Open Well,Medium,OBC,Yes,Yes,Yes,TN-SCH-07
+69,Male,416339,8.69,Owned,Flowers,Organic,Villupuram,Rainfed,Medium,OBC,No,Yes,Yes,TN-SCH-06
+59,Female,39935,0.85,Owned,Cotton,Conventional,Pudukkottai,Rainfed,Marginal,MBC,No,Yes,No,TN-SCH-07
+63,Female,70854,1.27,Owned,Coconut,Conventional,Ramanathapuram,Sprinkler,Marginal,SC,Yes,Yes,No,TN-SCH-07
+56,Male,134143,2.35,Owned,Cotton,Conventional,Krishnagiri,Drip,Marginal,OBC,No,No,Yes,TN-SCH-01
+34,Male,52443,2.17,Owned,Flowers,Conventional,Thanjavur,Rainfed,Marginal,OBC,Yes,Yes,No,TN-SCH-07
+41,Male,145027,3.3,Owned,Sugarcane,Conventional,Theni,Canal,Small,MBC,Yes,No,Yes,TN-SCH-11
+53,Male,179878,4.13,Owned,Cotton,Conventional,Mayiladuthurai,Canal,Small,General,Yes,Yes,No,TN-SCH-07
+33,Male,135543,1.81,Owned,Flowers,Organic,Erode,Borewell,Marginal,OBC,Yes,Yes,Yes,TN-SCH-03
+56,Male,371727,8.05,Owned,Banana,Conventional,Coimbatore,Open Well,Medium,MBC,No,Yes,No,TN-SCH-07
+45,Male,402435,23.22,Owned,Pulses,Conventional,Thanjavur,Open Well,Large,SC,Yes,No,No,TN-SCH-12
+43,Female,179997,8.8,Owned,Flowers,Conventional,Dindigul,Drip,Medium,MBC,Yes,Yes,Yes,TN-SCH-03
+56,Male,201669,4.64,Owned,Flowers,Conventional,Sivaganga,Canal,Small,OBC,Yes,Yes,Yes,TN-SCH-11
+53,Male,113496,1.47,Shared,Millets,Conventional,Villupuram,Borewell,Marginal,MBC,No,No,No,TN-SCH-01
+43,Male,136559,1.69,Owned,Pulses,Conventional,Cuddalore,Drip,Marginal,SC,No,No,Yes,TN-SCH-01
+61,Male,183057,6.7,Owned,Flowers,Conventional,Thanjavur,Rainfed,Medium,OBC,No,Yes,Yes,TN-SCH-07
+35,Male,84462,0.85,Owned,Groundnut,Conventional,Salem,Sprinkler,Marginal,OBC,No,Yes,Yes,TN-SCH-01
+55,Male,191243,4.79,Owned,Cotton,Conventional,Madurai,Drip,Small,MBC,Yes,No,No,TN-SCH-06
+55,Female,67288,0.86,Owned,Vegetables,Organic,Ramanathapuram,Rainfed,Marginal,SC,Yes,Yes,No,TN-SCH-07
+44,Female,141254,0.85,Owned,Coconut,Conventional,Vellore,Borewell,Marginal,OBC,Yes,Yes,No,TN-SCH-07
+51,Male,139743,3.51,Owned,Coconut,Conventional,Thanjavur,Canal,Small,SC,Yes,Yes,Yes,TN-SCH-11
+32,Male,119868,3.86,Owned,Banana,Conventional,Cuddalore,Drip,Small,MBC,No,Yes,Yes,TN-SCH-03
+59,Female,656603,11.61,Owned,Pulses,Conventional,Tirunelveli,Drip,Large,MBC,No,No,No,TN-SCH-02
+45,Female,106760,2.17,Owned,Groundnut,Conventional,Madurai,Rainfed,Marginal,OBC,No,Yes,Yes,TN-SCH-06
+41,Male,86849,0.65,Owned,Flowers,Natural,Krishnagiri,Drip,Marginal,General,No,Yes,No,TN-SCH-01
+60,Male,174916,4.56,Owned,Banana,Conventional,Villupuram,Rainfed,Small,General,No,Yes,No,TN-SCH-07
+39,Female,100651,0.42,Owned,Groundnut,Integrated,Theni,Drip,Marginal,OBC,Yes,No,Yes,TN-SCH-11
+31,Male,180571,2.58,Owned,Flowers,Integrated,Sivaganga,Canal,Small,SC,No,Yes,Yes,TN-SCH-07
+29,Male,105832,4.57,Owned,Vegetables,Organic,Krishnagiri,Sprinkler,Small,General,Yes,Yes,No,TN-SCH-03
+55,Male,268178,6.48,Owned,Vegetables,Conventional,Dharmapuri,Drip,Medium,MBC,No,Yes,Yes,TN-SCH-01
+32,Male,77637,3.47,Owned,Cotton,Conventional,Tiruchirappalli,Canal,Small,MBC,Yes,No,No,TN-SCH-11
+69,Male,265225,8.57,Leased,Sugarcane,Conventional,Villupuram,Canal,Medium,MBC,No,No,No,TN-SCH-06
+23,Male,238108,3.41,Owned,Coconut,Conventional,Ramanathapuram,Borewell,Small,OBC,No,Yes,Yes,TN-SCH-07
+68,Male,41544,2.31,Owned,Banana,Conventional,Tiruvarur,Canal,Marginal,OBC,Yes,Yes,No,TN-SCH-01
+50,Female,292119,7.79,Leased,Millets,Conventional,Theni,Sprinkler,Medium,SC,No,No,Yes,TN-SCH-08
+46,Male,161891,2.62,Owned,Cotton,Conventional,Thanjavur,Open Well,Small,SC,No,No,Yes,TN-SCH-01
+41,Male,43304,1.73,Owned,Groundnut,Conventional,Dharmapuri,Rainfed,Marginal,General,No,Yes,No,TN-SCH-01
+52,Female,110054,4.61,Owned,Pulses,Natural,Nagapattinam,Sprinkler,Small,MBC,No,No,Yes,TN-SCH-01
+47,Male,34272,0.29,Owned,Cotton,Integrated,Krishnagiri,Rainfed,Marginal,OBC,Yes,No,Yes,TN-SCH-06
+61,Female,186211,3.41,Owned,Coconut,Conventional,Thanjavur,Drip,Small,General,Yes,Yes,Yes,TN-SCH-03
+49,Male,260312,9.81,Owned,Millets,Conventional,Salem,Drip,Medium,SC,Yes,No,No,TN-SCH-06
+49,Male,224976,9.28,Owned,Sugarcane,Conventional,Tiruvarur,Canal,Medium,OBC,No,Yes,Yes,TN-SCH-02
+43,Male,95237,0.75,Owned,Millets,Conventional,Dharmapuri,Borewell,Marginal,OBC,No,Yes,No,TN-SCH-03
+47,Male,128928,2.75,Owned,Pulses,Natural,Villupuram,Drip,Small,OBC,Yes,No,No,TN-SCH-11
+51,Female,443372,5.7,Owned,Flowers,Conventional,Vellore,Canal,Medium,General,Yes,Yes,Yes,TN-SCH-06
+27,Male,83282,1.04,Owned,Cotton,Conventional,Coimbatore,Drip,Marginal,OBC,No,No,Yes,TN-SCH-01
+31,Female,393073,9.45,Owned,Cotton,Conventional,Ramanathapuram,Canal,Medium,OBC,No,No,Yes,TN-SCH-06
+56,Male,111356,1.79,Owned,Flowers,Conventional,Pudukkottai,Drip,Marginal,MBC,Yes,Yes,No,TN-SCH-07
+50,Male,144116,1.96,Owned,Cotton,Conventional,Nagapattinam,Sprinkler,Marginal,OBC,Yes,No,No,TN-SCH-08
+45,Male,130319,1.65,Owned,Flowers,Conventional,Tiruchirappalli,Drip,Marginal,General,No,Yes,No,TN-SCH-03
+48,Male,222497,2.69,Owned,Millets,Conventional,Pudukkottai,Canal,Small,OBC,No,Yes,Yes,TN-SCH-02
+52,Male,156142,2.94,Owned,Pulses,Organic,Vellore,Open Well,Small,General,Yes,No,No,TN-SCH-11
+41,Male,129454,3.94,Owned,Coconut,Conventional,Nagapattinam,Drip,Small,OBC,No,Yes,Yes,TN-SCH-03
+38,Male,102836,0.25,Leased,Millets,Conventional,Theni,Drip,Marginal,SC,Yes,No,No,TN-SCH-11
+50,Male,105951,2.75,Owned,Coconut,Conventional,Dindigul,Rainfed,Small,MBC,Yes,Yes,No,TN-SCH-07
+36,Female,239629,3.41,Owned,Sugarcane,Organic,Nagapattinam,Borewell,Small,MBC,No,Yes,No,TN-SCH-06
+52,Male,139328,1.47,Shared,Cotton,Organic,Dindigul,Open Well,Marginal,OBC,Yes,No,No,TN-SCH-09
+27,Male,131590,2.68,Owned,Pulses,Integrated,Dharmapuri,Borewell,Small,OBC,Yes,No,No,TN-SCH-06
+60,Male,67661,0.83,Owned,Vegetables,Integrated,Nagapattinam,Drip,Marginal,OBC,Yes,Yes,Yes,TN-SCH-07
+53,Female,190934,4.34,Owned,Sugarcane,Conventional,Dharmapuri,Borewell,Small,SC,Yes,No,Yes,TN-SCH-03
+51,Female,188477,2.81,Owned,Groundnut,Conventional,Coimbatore,Canal,Small,OBC,Yes,No,Yes,TN-SCH-01
+59,Female,198802,3.55,Leased,Banana,Conventional,Madurai,Rainfed,Small,MBC,No,Yes,No,TN-SCH-06
+67,Male,169973,3.72,Owned,Cotton,Conventional,Mayiladuthurai,Open Well,Small,OBC,No,No,Yes,TN-SCH-08
+60,Male,738590,23.24,Owned,Coconut,Conventional,Villupuram,Open Well,Large,MBC,Yes,Yes,Yes,TN-SCH-07
+25,Male,425307,6.41,Owned,Sugarcane,Integrated,Sivaganga,Borewell,Medium,MBC,No,Yes,No,TN-SCH-06
+32,Male,210942,5.13,Owned,Vegetables,Integrated,Ramanathapuram,Rainfed,Medium,OBC,No,Yes,Yes,TN-SCH-12
+40,Male,369490,9.87,Owned,Millets,Conventional,Mayiladuthurai,Canal,Medium,MBC,Yes,No,No,TN-SCH-06
+48,Male,76520,4.64,Leased,Coconut,Conventional,Mayiladuthurai,Open Well,Small,OBC,No,Yes,No,TN-SCH-06
+54,Male,88140,1.23,Owned,Flowers,Conventional,Tiruchirappalli,Open Well,Marginal,OBC,No,Yes,No,TN-SCH-07
+39,Male,76598,4.2,Owned,Pulses,Conventional,Erode,Drip,Small,MBC,No,No,No,TN-SCH-01
+50,Female,162380,3.93,Owned,Sugarcane,Conventional,Tirunelveli,Borewell,Small,OBC,No,No,Yes,TN-SCH-09
+38,Male,114578,1.73,Owned,Flowers,Conventional,Dharmapuri,Sprinkler,Marginal,OBC,No,Yes,No,TN-SCH-03
+40,Female,245285,6.28,Owned,Flowers,Organic,Cuddalore,Drip,Medium,OBC,Yes,Yes,No,TN-SCH-03
+31,Male,105054,2.9,Owned,Pulses,Organic,Mayiladuthurai,Sprinkler,Small,OBC,No,Yes,No,TN-SCH-01
+36,Male,131556,3.74,Owned,Banana,Conventional,Salem,Sprinkler,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+31,Male,120614,2.06,Owned,Sugarcane,Conventional,Krishnagiri,Sprinkler,Marginal,OBC,Yes,No,No,TN-SCH-03
+36,Male,108633,1.92,Owned,Groundnut,Organic,Madurai,Canal,Marginal,General,Yes,No,No,TN-SCH-02
+60,Male,211350,3.44,Owned,Millets,Conventional,Tirunelveli,Drip,Small,OBC,Yes,No,Yes,TN-SCH-11
+36,Male,97319,2.33,Owned,Groundnut,Conventional,Dharmapuri,Rainfed,Marginal,OBC,Yes,No,No,TN-SCH-11
+79,Male,77681,2.35,Owned,Flowers,Conventional,Coimbatore,Open Well,Marginal,OBC,No,Yes,Yes,TN-SCH-07
+53,Female,350333,18.9,Owned,Pulses,Conventional,Cuddalore,Drip,Large,OBC,No,No,No,TN-SCH-06
+50,Male,218142,3.94,Owned,Cotton,Organic,Erode,Sprinkler,Small,MBC,Yes,No,Yes,TN-SCH-04
+37,Male,75082,1.74,Owned,Banana,Natural,Thanjavur,Sprinkler,Marginal,MBC,Yes,Yes,No,TN-SCH-03
+56,Male,374698,7.39,Shared,Vegetables,Organic,Pudukkottai,Drip,Medium,General,No,Yes,Yes,TN-SCH-03
+41,Male,199783,7.76,Owned,Coconut,Conventional,Tirunelveli,Rainfed,Medium,OBC,Yes,Yes,Yes,TN-SCH-01
+49,Male,398542,23.92,Owned,Paddy,Natural,Dharmapuri,Open Well,Large,OBC,Yes,Yes,No,TN-SCH-07
+78,Male,48774,1.23,Owned,Coconut,Conventional,Theni,Borewell,Marginal,OBC,No,Yes,No,TN-SCH-01
+46,Male,104439,4.04,Owned,Banana,Conventional,Ramanathapuram,Canal,Small,MBC,No,Yes,No,TN-SCH-07
+61,Female,233171,7.9,Shared,Flowers,Conventional,Sivaganga,Borewell,Medium,OBC,No,Yes,Yes,TN-SCH-03
+39,Male,418786,6.58,Owned,Banana,Conventional,Tiruvarur,Sprinkler,Medium,SC,No,Yes,Yes,TN-SCH-03
+47,Male,256497,8.46,Owned,Millets,Conventional,Krishnagiri,Sprinkler,Medium,General,No,No,Yes,TN-SCH-01
+69,Male,317371,8.36,Owned,Millets,Organic,Villupuram,Borewell,Medium,General,No,Yes,No,TN-SCH-07
+40,Male,31280,1.84,Owned,Millets,Integrated,Vellore,Sprinkler,Marginal,OBC,No,No,Yes,TN-SCH-06
+69,Male,137709,4.04,Owned,Groundnut,Organic,Erode,Rainfed,Small,General,No,No,Yes,TN-SCH-06
+56,Female,162749,4.05,Owned,Paddy,Organic,Mayiladuthurai,Open Well,Small,General,No,Yes,Yes,TN-SCH-09
+41,Male,86570,2.65,Owned,Groundnut,Organic,Pudukkottai,Borewell,Small,MBC,No,No,Yes,TN-SCH-02
+55,Male,79965,1.66,Owned,Sugarcane,Conventional,Tiruvarur,Borewell,Marginal,SC,Yes,No,Yes,TN-SCH-09
+59,Male,70548,4.51,Leased,Coconut,Conventional,Erode,Open Well,Small,OBC,No,Yes,Yes,TN-SCH-07
+55,Male,105194,0.9,Owned,Banana,Organic,Thanjavur,Canal,Marginal,OBC,Yes,Yes,No,TN-SCH-02
+29,Male,166000,5.65,Owned,Banana,Conventional,Tirunelveli,Open Well,Medium,OBC,No,Yes,Yes,TN-SCH-07
+39,Male,153280,3.13,Leased,Millets,Organic,Ramanathapuram,Open Well,Small,MBC,Yes,No,Yes,TN-SCH-08
+45,Male,96193,2.33,Owned,Sugarcane,Conventional,Erode,Sprinkler,Marginal,MBC,Yes,No,Yes,TN-SCH-03
+47,Male,134244,3.39,Leased,Paddy,Conventional,Ramanathapuram,Open Well,Small,MBC,Yes,No,Yes,TN-SCH-11
+55,Male,73697,2.95,Owned,Flowers,Integrated,Sivaganga,Sprinkler,Small,MBC,Yes,Yes,No,TN-SCH-03
+50,Female,235030,3.22,Shared,Coconut,Conventional,Coimbatore,Canal,Small,OBC,Yes,Yes,Yes,TN-SCH-01
+31,Male,120222,2.34,Owned,Millets,Integrated,Madurai,Canal,Marginal,SC,No,Yes,Yes,TN-SCH-07
+52,Male,174112,6.48,Owned,Cotton,Integrated,Coimbatore,Drip,Medium,General,Yes,No,Yes,TN-SCH-01
+55,Male,75154,1.24,Leased,Cotton,Conventional,Vellore,Canal,Marginal,OBC,Yes,No,No,TN-SCH-01
+54,Male,146427,1.67,Owned,Cotton,Conventional,Thanjavur,Sprinkler,Marginal,OBC,Yes,No,No,TN-SCH-11
+60,Male,35309,1.3,Owned,Vegetables,Conventional,Tirunelveli,Canal,Marginal,OBC,Yes,Yes,No,TN-SCH-07
+58,Male,398125,16.33,Owned,Sugarcane,Organic,Krishnagiri,Drip,Large,SC,Yes,No,Yes,TN-SCH-03
+53,Male,71970,4.15,Owned,Vegetables,Conventional,Cuddalore,Canal,Small,OBC,No,Yes,Yes,TN-SCH-07
+47,Male,160954,3.3,Owned,Sugarcane,Organic,Theni,Borewell,Small,ST,Yes,No,No,TN-SCH-03
+28,Female,286496,8.57,Owned,Flowers,Conventional,Tiruvarur,Open Well,Medium,General,No,Yes,Yes,TN-SCH-07
+53,Male,74000,4.34,Owned,Banana,Conventional,Erode,Open Well,Small,OBC,No,Yes,Yes,TN-SCH-09
+50,Male,84287,3.1,Leased,Banana,Conventional,Mayiladuthurai,Rainfed,Small,OBC,No,Yes,No,TN-SCH-01
+51,Female,162192,7.79,Owned,Millets,Integrated,Dindigul,Canal,Medium,OBC,Yes,No,Yes,TN-SCH-12
+32,Male,116591,1.84,Shared,Vegetables,Conventional,Nagapattinam,Canal,Marginal,MBC,No,Yes,No,TN-SCH-02
+35,Male,229031,3.02,Owned,Banana,Conventional,Erode,Open Well,Small,OBC,Yes,Yes,Yes,TN-SCH-09
+60,Male,232430,8.22,Owned,Pulses,Conventional,Vellore,Rainfed,Medium,OBC,Yes,No,No,TN-SCH-01
+47,Male,150852,3.8,Owned,Paddy,Conventional,Pudukkottai,Open Well,Small,OBC,No,Yes,No,TN-SCH-09
+56,Male,146126,2.08,Owned,Coconut,Conventional,Dharmapuri,Open Well,Marginal,General,No,Yes,No,TN-SCH-07
+48,Male,166031,4.0,Owned,Paddy,Integrated,Villupuram,Open Well,Small,MBC,Yes,No,Yes,TN-SCH-09
+48,Female,407173,18.56,Owned,Vegetables,Conventional,Tiruchirappalli,Sprinkler,Large,OBC,Yes,Yes,Yes,TN-SCH-03
+59,Male,378525,9.71,Owned,Coconut,Organic,Dindigul,Sprinkler,Medium,OBC,Yes,Yes,Yes,TN-SCH-07
+41,Male,121552,2.03,Owned,Sugarcane,Conventional,Tiruchirappalli,Drip,Marginal,MBC,Yes,Yes,No,TN-SCH-07
+49,Male,73881,3.48,Owned,Cotton,Conventional,Sivaganga,Borewell,Small,MBC,No,No,No,TN-SCH-02
+42,Female,51025,2.12,Owned,Millets,Conventional,Salem,Borewell,Marginal,OBC,Yes,No,No,TN-SCH-08
+42,Male,226426,3.3,Owned,Cotton,Organic,Tiruchirappalli,Drip,Small,MBC,Yes,No,Yes,TN-SCH-11
+44,Male,415007,9.69,Owned,Sugarcane,Conventional,Pudukkottai,Rainfed,Medium,MBC,No,No,Yes,TN-SCH-06
+50,Male,259011,8.77,Leased,Flowers,Organic,Krishnagiri,Drip,Medium,MBC,No,Yes,No,TN-SCH-03
+42,Male,111321,2.84,Owned,Cotton,Integrated,Dharmapuri,Open Well,Small,General,No,Yes,No,TN-SCH-09
+63,Male,188925,4.39,Owned,Groundnut,Conventional,Ramanathapuram,Sprinkler,Small,General,No,No,No,TN-SCH-01
+37,Female,110793,1.77,Owned,Banana,Conventional,Madurai,Borewell,Marginal,MBC,No,Yes,No,TN-SCH-03
+45,Male,91030,1.0,Owned,Vegetables,Conventional,Krishnagiri,Drip,Marginal,MBC,No,Yes,No,TN-SCH-03
+42,Male,200736,7.38,Owned,Flowers,Conventional,Krishnagiri,Borewell,Medium,OBC,Yes,Yes,Yes,TN-SCH-03
+65,Female,90330,4.25,Leased,Millets,Integrated,Salem,Drip,Small,OBC,No,No,Yes,TN-SCH-06
+50,Male,77818,1.66,Owned,Millets,Organic,Mayiladuthurai,Sprinkler,Marginal,General,No,No,Yes,TN-SCH-08
+60,Male,112763,1.83,Shared,Cotton,Conventional,Coimbatore,Rainfed,Marginal,MBC,Yes,No,No,TN-SCH-08
+30,Female,59272,0.66,Owned,Flowers,Organic,Ramanathapuram,Drip,Marginal,General,Yes,Yes,No,TN-SCH-03
+51,Male,170193,2.74,Leased,Flowers,Conventional,Sivaganga,Open Well,Small,MBC,No,Yes,No,TN-SCH-09
+58,Male,286876,8.01,Owned,Groundnut,Conventional,Thanjavur,Drip,Medium,MBC,No,No,Yes,TN-SCH-08
+48,Male,67056,1.43,Shared,Sugarcane,Conventional,Vellore,Borewell,Marginal,OBC,Yes,Yes,No,TN-SCH-03
+60,Female,341364,7.17,Owned,Banana,Conventional,Pudukkottai,Borewell,Medium,MBC,Yes,Yes,Yes,TN-SCH-03
+41,Male,98521,1.54,Owned,Millets,Conventional,Madurai,Borewell,Marginal,OBC,No,No,No,TN-SCH-01
+64,Male,114685,3.05,Leased,Millets,Conventional,Tirunelveli,Borewell,Small,OBC,Yes,No,Yes,TN-SCH-11
+75,Male,93788,4.05,Owned,Groundnut,Conventional,Vellore,Canal,Small,SC,No,Yes,Yes,TN-SCH-07
+43,Male,205570,4.27,Owned,Coconut,Conventional,Sivaganga,Drip,Small,SC,No,Yes,No,TN-SCH-07
+42,Male,224510,4.15,Owned,Cotton,Conventional,Dharmapuri,Open Well,Small,ST,Yes,No,Yes,TN-SCH-09
+65,Male,82578,4.61,Owned,Banana,Conventional,Villupuram,Borewell,Small,MBC,Yes,Yes,Yes,TN-SCH-06
+66,Male,359775,9.27,Owned,Millets,Conventional,Dindigul,Drip,Medium,MBC,Yes,Yes,No,TN-SCH-06
+41,Male,207031,3.53,Owned,Coconut,Conventional,Tiruvarur,Canal,Small,SC,Yes,Yes,Yes,TN-SCH-01
+42,Female,235618,3.86,Owned,Coconut,Integrated,Mayiladuthurai,Borewell,Small,MBC,No,Yes,No,TN-SCH-07
+44,Male,195619,4.61,Owned,Sugarcane,Organic,Dindigul,Borewell,Small,MBC,No,No,Yes,TN-SCH-09
+31,Male,217568,5.09,Owned,Banana,Conventional,Villupuram,Open Well,Medium,SC,No,Yes,Yes,TN-SCH-01
+36,Male,381897,5.75,Leased,Groundnut,Conventional,Salem,Borewell,Medium,OBC,Yes,No,Yes,TN-SCH-12
+35,Female,62529,1.13,Owned,Millets,Integrated,Salem,Canal,Marginal,OBC,Yes,No,No,TN-SCH-02
+38,Male,104957,3.46,Leased,Pulses,Organic,Cuddalore,Canal,Small,General,Yes,No,Yes,TN-SCH-11
+47,Male,123869,4.3,Owned,Cotton,Conventional,Salem,Canal,Small,MBC,No,Yes,No,TN-SCH-06
+50,Male,560489,22.55,Owned,Cotton,Conventional,Tirunelveli,Rainfed,Large,General,No,No,No,TN-SCH-06
+66,Male,45353,1.44,Owned,Banana,Conventional,Madurai,Rainfed,Marginal,OBC,No,Yes,No,TN-SCH-01
+36,Male,202391,7.05,Owned,Banana,Integrated,Krishnagiri,Rainfed,Medium,SC,No,Yes,Yes,TN-SCH-07
+59,Male,213042,3.4,Leased,Millets,Conventional,Sivaganga,Canal,Small,MBC,No,No,Yes,TN-SCH-06
+45,Female,96889,3.76,Owned,Millets,Conventional,Thanjavur,Borewell,Small,General,No,No,Yes,TN-SCH-09
+47,Male,122943,4.03,Shared,Groundnut,Organic,Dharmapuri,Borewell,Small,OBC,Yes,No,No,TN-SCH-09
+56,Female,94241,4.43,Owned,Sugarcane,Conventional,Nagapattinam,Rainfed,Small,OBC,Yes,No,Yes,TN-SCH-01
+34,Male,199181,4.62,Owned,Millets,Integrated,Madurai,Drip,Small,OBC,No,No,No,TN-SCH-08
+52,Male,110430,4.5,Owned,Millets,Conventional,Cuddalore,Canal,Small,MBC,No,No,Yes,TN-SCH-06
+49,Female,90029,3.81,Owned,Coconut,Integrated,Erode,Open Well,Small,OBC,No,Yes,Yes,TN-SCH-06
+53,Female,132121,2.65,Leased,Coconut,Conventional,Thanjavur,Borewell,Small,General,No,Yes,Yes,TN-SCH-03
+51,Female,229723,3.83,Owned,Banana,Conventional,Krishnagiri,Drip,Small,SC,No,Yes,Yes,TN-SCH-01
+77,Male,160636,2.61,Owned,Cotton,Conventional,Pudukkottai,Rainfed,Small,SC,Yes,No,No,TN-SCH-04
+40,Female,814977,19.14,Shared,Paddy,Integrated,Erode,Drip,Large,OBC,No,Yes,Yes,TN-SCH-03
+41,Male,226918,3.25,Owned,Pulses,Integrated,Sivaganga,Canal,Small,General,No,No,No,TN-SCH-01
+40,Male,130119,0.63,Owned,Cotton,Conventional,Nagapattinam,Open Well,Marginal,OBC,No,Yes,Yes,TN-SCH-09
+41,Male,92474,1.6,Owned,Sugarcane,Integrated,Krishnagiri,Rainfed,Marginal,MBC,No,No,Yes,TN-SCH-01
+40,Male,162291,9.65,Leased,Sugarcane,Organic,Erode,Rainfed,Medium,OBC,No,No,Yes,TN-SCH-06
+62,Male,659428,19.05,Owned,Cotton,Conventional,Theni,Rainfed,Large,OBC,Yes,No,No,TN-SCH-02
+65,Male,237124,4.51,Owned,Paddy,Conventional,Nagapattinam,Canal,Small,MBC,Yes,No,No,TN-SCH-01
+41,Female,130584,0.44,Owned,Pulses,Organic,Mayiladuthurai,Canal,Marginal,OBC,No,No,No,TN-SCH-01
+38,Female,132267,1.93,Owned,Coconut,Organic,Ramanathapuram,Canal,Marginal,SC,No,Yes,Yes,TN-SCH-06
+53,Male,852401,11.48,Owned,Flowers,Natural,Thanjavur,Open Well,Large,OBC,Yes,Yes,No,TN-SCH-12
+41,Male,95673,1.9,Owned,Vegetables,Conventional,Dindigul,Open Well,Marginal,MBC,Yes,Yes,No,TN-SCH-11
+55,Male,40851,2.21,Owned,Millets,Conventional,Cuddalore,Sprinkler,Marginal,OBC,No,No,No,TN-SCH-01
+50,Male,246827,9.7,Owned,Cotton,Conventional,Mayiladuthurai,Sprinkler,Medium,OBC,No,Yes,Yes,TN-SCH-03
+29,Male,182742,4.7,Owned,Banana,Conventional,Erode,Rainfed,Small,OBC,No,Yes,No,TN-SCH-01
+66,Female,434894,14.86,Owned,Cotton,Conventional,Tiruvarur,Sprinkler,Large,OBC,No,Yes,No,TN-SCH-07
+69,Female,132903,2.32,Owned,Flowers,Conventional,Dharmapuri,Drip,Marginal,MBC,No,Yes,No,TN-SCH-04
+40,Female,73676,1.95,Owned,Vegetables,Conventional,Erode,Open Well,Marginal,OBC,Yes,Yes,No,TN-SCH-09
+43,Female,388667,8.44,Owned,Banana,Conventional,Ramanathapuram,Canal,Medium,ST,Yes,Yes,No,TN-SCH-01
+51,Male,230740,6.1,Owned,Flowers,Natural,Tiruvarur,Sprinkler,Medium,OBC,Yes,Yes,Yes,TN-SCH-01
+52,Male,37849,1.7,Owned,Pulses,Conventional,Erode,Open Well,Marginal,SC,No,No,No,TN-SCH-09
+55,Male,184693,3.79,Owned,Cotton,Organic,Dindigul,Sprinkler,Small,MBC,No,No,No,TN-SCH-06
+72,Male,382386,7.88,Owned,Pulses,Conventional,Nagapattinam,Canal,Medium,OBC,No,No,Yes,TN-SCH-06
+45,Female,90315,3.69,Owned,Sugarcane,Conventional,Nagapattinam,Drip,Small,MBC,No,Yes,Yes,TN-SCH-03
+38,Male,135487,1.76,Owned,Sugarcane,Conventional,Dharmapuri,Borewell,Marginal,OBC,Yes,No,Yes,TN-SCH-03
+31,Female,317138,5.3,Owned,Sugarcane,Conventional,Theni,Borewell,Medium,General,Yes,No,No,TN-SCH-03
+39,Male,89784,1.6,Owned,Cotton,Conventional,Pudukkottai,Open Well,Marginal,General,Yes,No,No,TN-SCH-01
+47,Male,220999,4.74,Owned,Groundnut,Conventional,Mayiladuthurai,Open Well,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+69,Male,211400,4.08,Owned,Sugarcane,Conventional,Vellore,Rainfed,Small,MBC,No,Yes,Yes,TN-SCH-07
+41,Male,393272,9.51,Leased,Sugarcane,Conventional,Ramanathapuram,Sprinkler,Medium,General,No,No,No,TN-SCH-03
+50,Male,65155,1.88,Owned,Vegetables,Conventional,Villupuram,Drip,Marginal,OBC,No,Yes,No,TN-SCH-01
+47,Male,36613,1.7,Leased,Cotton,Conventional,Tiruvarur,Canal,Marginal,OBC,No,No,No,TN-SCH-02
+62,Female,145702,0.61,Owned,Vegetables,Organic,Tiruvarur,Rainfed,Marginal,OBC,Yes,Yes,No,TN-SCH-07
+78,Male,68437,0.69,Owned,Flowers,Conventional,Salem,Borewell,Marginal,MBC,No,Yes,Yes,TN-SCH-03
+41,Male,424573,8.23,Leased,Banana,Conventional,Dindigul,Drip,Medium,SC,Yes,Yes,Yes,TN-SCH-01
+42,Female,122655,4.67,Owned,Vegetables,Integrated,Erode,Rainfed,Small,General,Yes,Yes,No,TN-SCH-07
+60,Male,200411,2.6,Leased,Cotton,Conventional,Madurai,Canal,Small,MBC,Yes,No,No,TN-SCH-11
+56,Male,137694,4.73,Owned,Groundnut,Conventional,Pudukkottai,Open Well,Small,SC,No,Yes,Yes,TN-SCH-07
+70,Male,151399,2.59,Owned,Cotton,Integrated,Mayiladuthurai,Canal,Small,SC,Yes,No,No,TN-SCH-11
+55,Male,228714,2.6,Leased,Cotton,Conventional,Salem,Rainfed,Small,OBC,No,No,No,TN-SCH-06
+43,Male,96026,3.44,Owned,Coconut,Organic,Tirunelveli,Canal,Small,OBC,Yes,Yes,Yes,TN-SCH-06
+55,Male,68106,1.4,Owned,Sugarcane,Organic,Mayiladuthurai,Drip,Marginal,OBC,Yes,Yes,No,TN-SCH-07
+61,Male,76503,0.33,Owned,Sugarcane,Conventional,Ramanathapuram,Borewell,Marginal,MBC,No,No,No,TN-SCH-03
+57,Female,224740,3.43,Owned,Flowers,Conventional,Coimbatore,Sprinkler,Small,OBC,No,Yes,Yes,TN-SCH-07
+54,Male,145564,1.81,Leased,Groundnut,Conventional,Cuddalore,Borewell,Marginal,OBC,No,No,No,TN-SCH-09
+60,Male,130000,4.52,Shared,Vegetables,Conventional,Cuddalore,Drip,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+62,Female,231160,3.86,Owned,Millets,Conventional,Sivaganga,Drip,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+64,Female,337078,8.8,Owned,Cotton,Integrated,Tiruvarur,Borewell,Medium,OBC,Yes,No,Yes,TN-SCH-06
+55,Female,237217,2.91,Owned,Banana,Conventional,Ramanathapuram,Rainfed,Small,OBC,No,Yes,No,TN-SCH-07
+45,Male,859812,14.74,Owned,Coconut,Conventional,Sivaganga,Rainfed,Large,MBC,Yes,Yes,No,TN-SCH-07
+49,Male,72803,2.25,Leased,Cotton,Conventional,Madurai,Open Well,Marginal,SC,No,No,No,TN-SCH-09
+62,Female,138098,1.44,Owned,Banana,Conventional,Madurai,Drip,Marginal,OBC,No,Yes,No,TN-SCH-03
+38,Male,184008,6.22,Owned,Flowers,Conventional,Madurai,Canal,Medium,MBC,Yes,Yes,Yes,TN-SCH-01
+52,Female,73375,3.57,Leased,Pulses,Conventional,Dharmapuri,Open Well,Small,SC,Yes,No,Yes,TN-SCH-09
+43,Female,701342,21.86,Owned,Groundnut,Natural,Dindigul,Rainfed,Large,MBC,No,No,No,TN-SCH-06
+48,Male,147844,1.33,Owned,Flowers,Conventional,Thanjavur,Open Well,Marginal,SC,Yes,Yes,No,TN-SCH-09
+63,Female,147874,4.32,Leased,Millets,Conventional,Nagapattinam,Sprinkler,Small,General,No,No,Yes,TN-SCH-01
+50,Male,133774,3.15,Leased,Coconut,Organic,Theni,Drip,Small,OBC,No,Yes,Yes,TN-SCH-03
+48,Male,175438,9.5,Owned,Coconut,Conventional,Dindigul,Canal,Medium,General,Yes,Yes,Yes,TN-SCH-06
+31,Male,116772,0.37,Leased,Pulses,Conventional,Dindigul,Canal,Marginal,OBC,No,No,Yes,TN-SCH-06
+56,Male,196830,2.98,Owned,Banana,Organic,Nagapattinam,Canal,Small,MBC,Yes,Yes,No,TN-SCH-07
+55,Male,208983,2.96,Owned,Pulses,Integrated,Dharmapuri,Rainfed,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+73,Male,95039,0.52,Leased,Sugarcane,Organic,Salem,Rainfed,Marginal,MBC,Yes,No,No,TN-SCH-11
+44,Male,107103,4.04,Leased,Millets,Organic,Erode,Rainfed,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+50,Male,376695,5.3,Owned,Sugarcane,Organic,Villupuram,Rainfed,Medium,MBC,Yes,No,No,TN-SCH-12
+50,Female,124240,4.25,Owned,Flowers,Natural,Theni,Open Well,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+66,Male,213901,4.72,Owned,Flowers,Conventional,Cuddalore,Drip,Small,OBC,Yes,Yes,Yes,TN-SCH-03
+46,Male,539650,19.48,Leased,Vegetables,Conventional,Thanjavur,Rainfed,Large,SC,Yes,Yes,Yes,TN-SCH-07
+51,Male,48997,1.29,Owned,Groundnut,Conventional,Pudukkottai,Borewell,Marginal,OBC,No,No,No,TN-SCH-02
+55,Female,664690,20.59,Owned,Cotton,Conventional,Madurai,Sprinkler,Large,SC,Yes,Yes,No,TN-SCH-03
+50,Male,63827,0.48,Owned,Banana,Conventional,Theni,Open Well,Marginal,MBC,Yes,Yes,No,TN-SCH-01
+42,Female,127928,3.17,Owned,Cotton,Integrated,Dindigul,Borewell,Small,SC,No,No,No,TN-SCH-02
+50,Male,194506,6.88,Leased,Sugarcane,Natural,Dindigul,Sprinkler,Medium,OBC,Yes,No,No,TN-SCH-03
+60,Male,37082,2.07,Owned,Cotton,Conventional,Coimbatore,Rainfed,Marginal,General,No,No,No,TN-SCH-08
+35,Male,393218,5.98,Owned,Pulses,Conventional,Salem,Sprinkler,Medium,OBC,No,No,No,TN-SCH-12
+49,Female,65532,0.65,Shared,Vegetables,Conventional,Thanjavur,Canal,Marginal,OBC,Yes,Yes,Yes,TN-SCH-07
+39,Male,84713,2.26,Owned,Pulses,Conventional,Salem,Drip,Marginal,OBC,Yes,No,No,TN-SCH-11
+62,Male,157639,6.84,Owned,Millets,Conventional,Villupuram,Drip,Medium,OBC,Yes,No,Yes,TN-SCH-01
+29,Male,38147,0.34,Owned,Sugarcane,Conventional,Madurai,Sprinkler,Marginal,OBC,Yes,Yes,No,TN-SCH-03
+41,Female,140779,2.65,Owned,Banana,Conventional,Cuddalore,Sprinkler,Small,SC,No,Yes,No,TN-SCH-03
+52,Female,78922,3.84,Leased,Flowers,Natural,Coimbatore,Canal,Small,General,Yes,Yes,Yes,TN-SCH-07
+66,Male,156741,3.45,Owned,Flowers,Conventional,Tirunelveli,Canal,Small,MBC,No,Yes,Yes,TN-SCH-06
+47,Male,132580,3.9,Owned,Vegetables,Conventional,Tiruchirappalli,Borewell,Small,OBC,Yes,Yes,Yes,TN-SCH-03
+41,Male,226883,8.7,Owned,Millets,Conventional,Salem,Open Well,Medium,OBC,No,No,No,TN-SCH-06
+70,Male,141970,0.43,Owned,Cotton,Conventional,Salem,Sprinkler,Marginal,MBC,No,No,No,TN-SCH-08
+30,Male,215041,9.13,Owned,Groundnut,Conventional,Thanjavur,Canal,Medium,OBC,No,No,Yes,TN-SCH-06
+21,Male,294052,9.51,Owned,Groundnut,Integrated,Sivaganga,Rainfed,Medium,SC,No,No,No,TN-SCH-08
+53,Female,49138,1.45,Owned,Millets,Conventional,Tiruvarur,Borewell,Marginal,MBC,Yes,No,No,TN-SCH-09
+41,Male,84831,0.51,Owned,Sugarcane,Integrated,Salem,Rainfed,Marginal,MBC,No,Yes,Yes,TN-SCH-07
+35,Male,317233,7.84,Owned,Paddy,Conventional,Erode,Rainfed,Medium,MBC,Yes,No,Yes,TN-SCH-12
+56,Male,326420,18.65,Leased,Groundnut,Conventional,Nagapattinam,Rainfed,Large,OBC,Yes,No,Yes,TN-SCH-08
+50,Male,212016,4.6,Leased,Coconut,Conventional,Villupuram,Rainfed,Small,OBC,Yes,Yes,No,TN-SCH-07
+41,Male,74552,1.65,Owned,Coconut,Conventional,Pudukkottai,Borewell,Marginal,OBC,Yes,Yes,No,TN-SCH-09
+32,Male,184870,4.63,Owned,Millets,Integrated,Villupuram,Drip,Small,General,No,No,Yes,TN-SCH-01
+58,Female,147925,2.22,Owned,Pulses,Organic,Madurai,Open Well,Marginal,OBC,Yes,No,No,TN-SCH-11
+55,Male,155235,2.77,Owned,Coconut,Integrated,Tiruvarur,Canal,Small,MBC,No,Yes,No,TN-SCH-02
+46,Male,431078,6.83,Owned,Vegetables,Natural,Krishnagiri,Borewell,Medium,MBC,Yes,Yes,Yes,TN-SCH-01
+70,Male,424753,7.43,Owned,Cotton,Natural,Tirunelveli,Drip,Medium,OBC,Yes,Yes,Yes,TN-SCH-03
+35,Male,170106,8.33,Owned,Sugarcane,Conventional,Vellore,Drip,Medium,SC,Yes,No,Yes,TN-SCH-01
+29,Male,33782,1.28,Owned,Millets,Organic,Dindigul,Canal,Marginal,OBC,No,No,No,TN-SCH-01
+39,Male,134594,4.89,Owned,Sugarcane,Integrated,Dharmapuri,Drip,Small,OBC,No,Yes,Yes,TN-SCH-03
+47,Male,124888,3.63,Owned,Flowers,Conventional,Pudukkottai,Borewell,Small,MBC,No,Yes,Yes,TN-SCH-09
+50,Male,97805,0.8,Owned,Paddy,Integrated,Pudukkottai,Open Well,Marginal,MBC,Yes,Yes,No,TN-SCH-09
+45,Male,130484,0.54,Owned,Flowers,Organic,Salem,Drip,Marginal,OBC,Yes,Yes,No,TN-SCH-03
+52,Male,100028,2.1,Leased,Cotton,Conventional,Dharmapuri,Rainfed,Marginal,OBC,Yes,No,No,TN-SCH-01
+32,Male,32464,1.74,Owned,Millets,Conventional,Krishnagiri,Rainfed,Marginal,OBC,No,Yes,Yes,TN-SCH-01
+65,Male,227737,3.08,Owned,Sugarcane,Conventional,Madurai,Canal,Small,OBC,No,No,Yes,TN-SCH-06
+47,Male,273976,5.91,Owned,Paddy,Conventional,Pudukkottai,Borewell,Medium,OBC,Yes,No,Yes,TN-SCH-02
+61,Male,207948,3.23,Owned,Cotton,Conventional,Dindigul,Drip,Small,SC,Yes,No,No,TN-SCH-06
+52,Male,133342,1.32,Owned,Flowers,Conventional,Nagapattinam,Sprinkler,Marginal,ST,Yes,Yes,No,TN-SCH-11
+53,Female,246146,5.21,Owned,Paddy,Conventional,Cuddalore,Borewell,Medium,MBC,No,No,Yes,TN-SCH-01
+54,Male,64515,1.52,Owned,Vegetables,Integrated,Nagapattinam,Sprinkler,Marginal,General,Yes,Yes,No,TN-SCH-03
+53,Female,126817,1.22,Leased,Groundnut,Conventional,Dindigul,Sprinkler,Marginal,MBC,No,No,No,TN-SCH-01
+55,Male,203588,3.94,Owned,Flowers,Conventional,Madurai,Open Well,Small,General,No,Yes,Yes,TN-SCH-09
+63,Male,91622,0.84,Owned,Millets,Integrated,Dindigul,Borewell,Marginal,MBC,No,No,No,TN-SCH-01
+50,Female,65401,1.89,Owned,Coconut,Conventional,Theni,Sprinkler,Marginal,OBC,No,Yes,No,TN-SCH-07
+56,Male,204923,9.07,Leased,Millets,Conventional,Dharmapuri,Borewell,Medium,OBC,Yes,No,Yes,TN-SCH-06
+46,Male,77169,1.41,Shared,Cotton,Conventional,Nagapattinam,Open Well,Marginal,SC,Yes,No,Yes,TN-SCH-09
+65,Male,171196,4.86,Owned,Vegetables,Organic,Dharmapuri,Drip,Small,OBC,No,Yes,Yes,TN-SCH-03
+39,Male,45290,1.38,Owned,Vegetables,Conventional,Mayiladuthurai,Borewell,Marginal,General,No,Yes,No,TN-SCH-03
+69,Male,102439,0.68,Owned,Coconut,Conventional,Erode,Open Well,Marginal,SC,Yes,Yes,No,TN-SCH-07
+47,Male,85500,4.79,Owned,Groundnut,Conventional,Sivaganga,Drip,Small,OBC,No,No,No,TN-SCH-06
+30,Female,216352,3.54,Owned,Flowers,Conventional,Cuddalore,Borewell,Small,OBC,Yes,Yes,No,TN-SCH-09
+49,Male,351993,6.01,Owned,Coconut,Integrated,Villupuram,Open Well,Medium,OBC,No,Yes,Yes,TN-SCH-02
+39,Male,56151,1.09,Owned,Vegetables,Conventional,Theni,Open Well,Marginal,OBC,No,Yes,Yes,TN-SCH-07
+58,Male,206017,3.59,Owned,Pulses,Conventional,Cuddalore,Open Well,Small,OBC,Yes,No,Yes,TN-SCH-09
+40,Male,197429,6.27,Owned,Pulses,Conventional,Coimbatore,Rainfed,Medium,OBC,Yes,Yes,Yes,TN-SCH-06
+42,Male,112566,3.83,Owned,Groundnut,Integrated,Krishnagiri,Drip,Small,OBC,Yes,No,Yes,TN-SCH-11
+25,Male,321782,8.04,Owned,Groundnut,Conventional,Tiruchirappalli,Sprinkler,Medium,OBC,No,No,Yes,TN-SCH-08
+42,Male,383717,7.62,Owned,Millets,Organic,Pudukkottai,Rainfed,Medium,OBC,Yes,Yes,Yes,TN-SCH-02
+18,Male,48709,0.31,Owned,Cotton,Conventional,Madurai,Sprinkler,Marginal,SC,Yes,Yes,No,TN-SCH-11
+28,Male,85292,0.2,Owned,Vegetables,Natural,Dharmapuri,Sprinkler,Marginal,OBC,No,Yes,No,TN-SCH-01
+57,Male,158989,4.3,Owned,Banana,Conventional,Villupuram,Sprinkler,Small,SC,No,Yes,Yes,TN-SCH-07
+57,Female,88466,0.25,Owned,Cotton,Conventional,Thanjavur,Drip,Marginal,MBC,No,Yes,No,TN-SCH-03
+53,Male,138439,2.18,Leased,Flowers,Conventional,Erode,Drip,Marginal,OBC,Yes,Yes,Yes,TN-SCH-06
+36,Female,76386,1.22,Owned,Sugarcane,Conventional,Villupuram,Sprinkler,Marginal,OBC,No,No,Yes,TN-SCH-03
+47,Male,31326,1.31,Owned,Banana,Conventional,Mayiladuthurai,Rainfed,Marginal,MBC,No,Yes,Yes,TN-SCH-07
+47,Male,336531,7.26,Leased,Millets,Organic,Tirunelveli,Canal,Medium,SC,Yes,No,No,TN-SCH-12
+34,Female,696369,15.67,Owned,Groundnut,Conventional,Vellore,Borewell,Large,OBC,Yes,Yes,Yes,TN-SCH-07
+66,Female,210406,3.5,Owned,Vegetables,Natural,Madurai,Sprinkler,Small,MBC,Yes,Yes,Yes,TN-SCH-11
+58,Female,351783,5.81,Owned,Sugarcane,Natural,Mayiladuthurai,Rainfed,Medium,OBC,No,No,Yes,TN-SCH-01
+45,Male,93205,1.66,Leased,Coconut,Conventional,Ramanathapuram,Rainfed,Marginal,OBC,Yes,Yes,No,TN-SCH-07
+48,Female,193127,3.7,Owned,Paddy,Conventional,Cuddalore,Sprinkler,Small,OBC,Yes,No,No,TN-SCH-01
+50,Male,166317,3.46,Leased,Sugarcane,Conventional,Tirunelveli,Borewell,Small,OBC,Yes,No,Yes,TN-SCH-09
+23,Female,229390,2.57,Leased,Groundnut,Conventional,Mayiladuthurai,Borewell,Small,OBC,Yes,No,No,TN-SCH-09
+45,Male,329394,6.65,Owned,Vegetables,Conventional,Ramanathapuram,Canal,Medium,OBC,Yes,Yes,No,TN-SCH-02
+39,Female,33922,1.24,Owned,Millets,Conventional,Tirunelveli,Rainfed,Marginal,MBC,Yes,No,No,TN-SCH-11
+35,Male,174441,4.87,Owned,Banana,Conventional,Salem,Drip,Small,SC,No,Yes,Yes,TN-SCH-07
+44,Male,96756,4.55,Owned,Sugarcane,Integrated,Krishnagiri,Drip,Small,MBC,No,No,No,TN-SCH-06
+69,Male,207184,3.46,Owned,Groundnut,Conventional,Coimbatore,Rainfed,Small,OBC,Yes,No,Yes,TN-SCH-11
+55,Male,82485,2.86,Owned,Millets,Integrated,Dindigul,Sprinkler,Small,OBC,No,No,No,TN-SCH-06
+41,Male,181550,4.65,Owned,Banana,Integrated,Theni,Drip,Small,OBC,Yes,Yes,Yes,TN-SCH-11
+54,Female,92593,3.28,Owned,Vegetables,Organic,Dindigul,Rainfed,Small,OBC,Yes,Yes,No,TN-SCH-07
+64,Female,95188,4.87,Leased,Cotton,Organic,Madurai,Sprinkler,Small,MBC,Yes,No,No,TN-SCH-06
+59,Male,128918,1.26,Leased,Cotton,Organic,Krishnagiri,Borewell,Marginal,OBC,Yes,No,No,TN-SCH-02
+48,Female,161827,8.58,Owned,Coconut,Conventional,Ramanathapuram,Open Well,Medium,OBC,Yes,Yes,No,TN-SCH-07
+40,Female,424231,9.55,Owned,Pulses,Conventional,Sivaganga,Borewell,Medium,SC,No,No,No,TN-SCH-02
+56,Male,56616,0.7,Owned,Cotton,Integrated,Vellore,Drip,Marginal,General,No,No,No,TN-SCH-08
+52,Female,380033,8.59,Owned,Pulses,Organic,Tirunelveli,Rainfed,Medium,General,Yes,Yes,Yes,TN-SCH-02
+58,Female,31705,1.64,Owned,Sugarcane,Conventional,Villupuram,Open Well,Marginal,MBC,No,No,No,TN-SCH-08
+55,Male,141808,0.41,Shared,Coconut,Integrated,Tirunelveli,Rainfed,Marginal,OBC,No,Yes,Yes,TN-SCH-07
+60,Male,433309,8.89,Leased,Sugarcane,Conventional,Tiruchirappalli,Drip,Medium,OBC,No,No,No,TN-SCH-03
+41,Female,126792,0.59,Leased,Groundnut,Organic,Pudukkottai,Rainfed,Marginal,General,Yes,Yes,Yes,TN-SCH-07
+63,Female,293607,7.62,Owned,Paddy,Integrated,Theni,Open Well,Medium,SC,No,No,Yes,TN-SCH-01
+50,Male,57210,2.38,Owned,Coconut,Conventional,Dharmapuri,Drip,Marginal,OBC,No,Yes,Yes,TN-SCH-03
+72,Male,689230,24.01,Leased,Paddy,Conventional,Villupuram,Open Well,Large,SC,No,Yes,Yes,TN-SCH-07
+39,Male,504421,20.89,Leased,Paddy,Conventional,Sivaganga,Rainfed,Large,OBC,No,Yes,Yes,TN-SCH-06
+68,Male,48364,1.04,Owned,Vegetables,Organic,Dindigul,Canal,Marginal,SC,Yes,Yes,Yes,TN-SCH-07
+50,Male,46490,0.4,Owned,Pulses,Conventional,Krishnagiri,Sprinkler,Marginal,SC,Yes,No,Yes,TN-SCH-11
+40,Male,232954,6.13,Owned,Coconut,Organic,Pudukkottai,Canal,Medium,SC,Yes,Yes,No,TN-SCH-02
+42,Female,347369,7.06,Owned,Paddy,Conventional,Erode,Borewell,Medium,General,No,No,Yes,TN-SCH-02
+44,Female,204998,3.85,Owned,Millets,Conventional,Nagapattinam,Borewell,Small,OBC,No,No,Yes,TN-SCH-08
+53,Male,218762,4.14,Owned,Cotton,Organic,Ramanathapuram,Drip,Small,OBC,Yes,No,Yes,TN-SCH-11
+54,Male,118902,4.69,Owned,Pulses,Conventional,Coimbatore,Canal,Small,MBC,Yes,No,No,TN-SCH-01
+41,Male,57702,1.76,Shared,Paddy,Conventional,Coimbatore,Rainfed,Marginal,General,Yes,Yes,No,TN-SCH-07
+47,Female,128030,3.49,Leased,Banana,Conventional,Vellore,Borewell,Small,MBC,Yes,Yes,No,TN-SCH-03
+73,Male,54813,1.6,Owned,Cotton,Integrated,Theni,Rainfed,Marginal,SC,Yes,No,No,TN-SCH-11
+68,Female,374497,9.09,Owned,Groundnut,Conventional,Krishnagiri,Borewell,Medium,OBC,Yes,Yes,No,TN-SCH-07
+53,Male,187033,3.58,Owned,Flowers,Conventional,Erode,Drip,Small,OBC,No,Yes,No,TN-SCH-01
+48,Male,74500,0.79,Owned,Sugarcane,Conventional,Erode,Open Well,Marginal,SC,Yes,No,Yes,TN-SCH-11
+49,Male,141764,2.31,Shared,Pulses,Conventional,Sivaganga,Sprinkler,Marginal,SC,No,No,No,TN-SCH-01
+55,Male,102881,2.5,Leased,Groundnut,Conventional,Mayiladuthurai,Rainfed,Small,MBC,No,No,No,TN-SCH-04
+35,Female,136830,1.57,Owned,Paddy,Conventional,Dindigul,Open Well,Marginal,OBC,Yes,No,No,TN-SCH-09
+44,Male,409965,6.13,Owned,Flowers,Natural,Salem,Drip,Medium,OBC,No,Yes,No,TN-SCH-03
+27,Male,31403,0.28,Leased,Vegetables,Integrated,Ramanathapuram,Canal,Marginal,ST,Yes,Yes,No,TN-SCH-11
+52,Male,119570,1.52,Owned,Paddy,Organic,Coimbatore,Drip,Marginal,MBC,Yes,No,No,TN-SCH-11
+55,Male,85080,3.29,Owned,Cotton,Conventional,Ramanathapuram,Sprinkler,Small,OBC,No,No,Yes,TN-SCH-06
+42,Male,116793,2.55,Owned,Banana,Conventional,Tiruchirappalli,Borewell,Small,MBC,Yes,Yes,No,TN-SCH-09
+66,Female,139468,0.46,Leased,Millets,Conventional,Salem,Rainfed,Marginal,MBC,No,No,Yes,TN-SCH-06
+33,Male,51011,0.28,Owned,Sugarcane,Conventional,Villupuram,Canal,Marginal,MBC,Yes,No,No,TN-SCH-01
+30,Male,850282,23.48,Owned,Flowers,Conventional,Dindigul,Borewell,Large,SC,Yes,Yes,Yes,TN-SCH-07
+50,Female,141145,1.53,Owned,Cotton,Conventional,Thanjavur,Drip,Marginal,OBC,No,No,Yes,TN-SCH-06
+60,Male,215719,3.78,Owned,Flowers,Conventional,Pudukkottai,Drip,Small,SC,No,Yes,Yes,TN-SCH-03
+68,Male,91009,2.2,Owned,Coconut,Conventional,Sivaganga,Canal,Marginal,OBC,Yes,Yes,No,TN-SCH-07
+42,Male,132029,1.14,Owned,Banana,Conventional,Salem,Borewell,Marginal,MBC,Yes,Yes,No,TN-SCH-03
+60,Female,354401,7.26,Owned,Paddy,Organic,Dindigul,Canal,Medium,MBC,No,No,Yes,TN-SCH-06
+47,Female,83780,4.03,Owned,Flowers,Conventional,Salem,Canal,Small,OBC,No,Yes,Yes,TN-SCH-07
+45,Male,43818,1.03,Leased,Groundnut,Conventional,Krishnagiri,Open Well,Marginal,OBC,No,No,No,TN-SCH-02
+58,Male,90169,1.88,Owned,Millets,Conventional,Tiruvarur,Drip,Marginal,OBC,Yes,No,No,TN-SCH-11
+55,Male,193062,2.71,Owned,Coconut,Conventional,Erode,Borewell,Small,OBC,Yes,Yes,No,TN-SCH-03
+29,Male,209668,3.38,Owned,Vegetables,Conventional,Ramanathapuram,Rainfed,Small,General,Yes,Yes,Yes,TN-SCH-01
+65,Male,337319,5.08,Owned,Banana,Conventional,Krishnagiri,Borewell,Medium,General,Yes,Yes,Yes,TN-SCH-06
+64,Female,215680,3.12,Owned,Coconut,Conventional,Tiruchirappalli,Drip,Small,OBC,No,Yes,Yes,TN-SCH-03
+40,Male,37863,0.54,Owned,Pulses,Organic,Cuddalore,Rainfed,Marginal,OBC,No,No,Yes,TN-SCH-06
+52,Female,132603,4.22,Owned,Vegetables,Conventional,Krishnagiri,Borewell,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+53,Male,474367,15.6,Owned,Banana,Conventional,Tiruvarur,Drip,Large,MBC,Yes,Yes,Yes,TN-SCH-02
+51,Male,63574,1.1,Leased,Coconut,Conventional,Tirunelveli,Sprinkler,Marginal,SC,Yes,Yes,Yes,TN-SCH-03
+41,Male,211170,3.74,Leased,Millets,Conventional,Erode,Rainfed,Small,SC,No,Yes,Yes,TN-SCH-06
+39,Male,379513,6.02,Owned,Cotton,Conventional,Theni,Sprinkler,Medium,OBC,Yes,Yes,Yes,TN-SCH-03
+47,Male,192612,3.76,Owned,Coconut,Conventional,Mayiladuthurai,Canal,Small,MBC,Yes,Yes,Yes,TN-SCH-07
+62,Male,135885,0.7,Owned,Sugarcane,Organic,Tiruvarur,Canal,Marginal,SC,Yes,No,No,TN-SCH-01
+54,Female,205448,5.05,Owned,Paddy,Conventional,Thanjavur,Sprinkler,Medium,OBC,No,No,Yes,TN-SCH-05
+43,Female,114860,4.19,Leased,Pulses,Integrated,Tirunelveli,Canal,Small,SC,No,No,No,TN-SCH-02
+57,Male,218043,4.44,Owned,Groundnut,Conventional,Ramanathapuram,Canal,Small,OBC,No,No,No,TN-SCH-06
+18,Male,173116,4.76,Owned,Banana,Conventional,Krishnagiri,Canal,Small,OBC,Yes,Yes,Yes,TN-SCH-06
+61,Female,77285,4.76,Owned,Paddy,Natural,Theni,Open Well,Small,OBC,No,No,Yes,TN-SCH-01
+27,Male,333232,23.12,Leased,Millets,Organic,Salem,Drip,Large,OBC,Yes,No,Yes,TN-SCH-08
+43,Male,452416,21.51,Owned,Millets,Conventional,Dindigul,Canal,Large,SC,No,No,Yes,TN-SCH-01
+34,Male,438938,6.42,Owned,Cotton,Conventional,Mayiladuthurai,Open Well,Medium,SC,Yes,No,Yes,TN-SCH-12
+32,Male,179673,3.01,Owned,Sugarcane,Conventional,Sivaganga,Canal,Small,OBC,No,No,No,TN-SCH-06
+61,Male,142195,1.46,Owned,Groundnut,Conventional,Vellore,Sprinkler,Marginal,SC,No,No,No,TN-SCH-01
+42,Male,179097,4.49,Owned,Flowers,Conventional,Sivaganga,Canal,Small,SC,Yes,Yes,No,TN-SCH-07
+52,Female,90052,0.25,Shared,Pulses,Integrated,Tirunelveli,Sprinkler,Marginal,MBC,Yes,No,No,TN-SCH-11
+47,Male,278962,8.8,Shared,Coconut,Conventional,Ramanathapuram,Canal,Medium,OBC,Yes,Yes,Yes,TN-SCH-02
+53,Male,122615,4.3,Owned,Coconut,Conventional,Coimbatore,Sprinkler,Small,OBC,Yes,Yes,Yes,TN-SCH-01
+48,Male,438006,9.4,Owned,Banana,Integrated,Mayiladuthurai,Rainfed,Medium,MBC,No,Yes,Yes,TN-SCH-12
+32,Male,203212,3.14,Leased,Pulses,Conventional,Cuddalore,Drip,Small,OBC,No,No,Yes,TN-SCH-01
+59,Female,392169,8.76,Owned,Pulses,Conventional,Dindigul,Open Well,Medium,ST,Yes,No,Yes,TN-SCH-02
+42,Male,76895,4.0,Owned,Banana,Conventional,Thanjavur,Drip,Small,MBC,No,Yes,No,TN-SCH-07
+29,Female,421235,15.81,Leased,Cotton,Conventional,Nagapattinam,Sprinkler,Large,OBC,Yes,No,No,TN-SCH-06
+42,Male,124636,4.56,Leased,Vegetables,Integrated,Vellore,Borewell,Small,SC,No,Yes,Yes,TN-SCH-03
+66,Male,222272,3.15,Owned,Flowers,Conventional,Vellore,Sprinkler,Small,OBC,Yes,Yes,Yes,TN-SCH-06
+58,Male,218316,2.72,Leased,Vegetables,Conventional,Dharmapuri,Canal,Small,ST,No,Yes,Yes,TN-SCH-02
+43,Female,572319,12.98,Owned,Banana,Integrated,Nagapattinam,Open Well,Large,OBC,Yes,Yes,Yes,TN-SCH-02
+43,Male,706819,23.61,Owned,Pulses,Conventional,Nagapattinam,Borewell,Large,General,No,No,Yes,TN-SCH-02
+44,Male,83698,0.62,Shared,Groundnut,Integrated,Pudukkottai,Open Well,Marginal,OBC,Yes,Yes,No,TN-SCH-11
+72,Male,58380,2.39,Leased,Groundnut,Integrated,Salem,Canal,Marginal,OBC,No,No,No,TN-SCH-08
+52,Male,413454,8.13,Owned,Coconut,Natural,Ramanathapuram,Borewell,Medium,OBC,Yes,Yes,Yes,TN-SCH-07
+53,Male,109756,3.96,Owned,Cotton,Conventional,Villupuram,Sprinkler,Small,OBC,No,No,Yes,TN-SCH-01
+60,Female,189479,3.68,Owned,Vegetables,Organic,Pudukkottai,Drip,Small,MBC,Yes,Yes,No,TN-SCH-03
+50,Male,387721,5.72,Leased,Paddy,Conventional,Theni,Drip,Medium,OBC,No,No,Yes,TN-SCH-01
+44,Male,94688,1.91,Owned,Sugarcane,Conventional,Vellore,Rainfed,Marginal,OBC,No,Yes,No,TN-SCH-07
+45,Male,198343,4.83,Owned,Coconut,Conventional,Tiruvarur,Sprinkler,Small,OBC,No,Yes,No,TN-SCH-07
+47,Male,389515,9.17,Owned,Cotton,Organic,Sivaganga,Rainfed,Medium,SC,Yes,No,No,TN-SCH-01
+47,Male,180036,4.01,Shared,Millets,Organic,Tirunelveli,Drip,Small,MBC,Yes,No,Yes,TN-SCH-06
+56,Male,151192,3.57,Owned,Banana,Conventional,Pudukkottai,Canal,Small,SC,No,Yes,No,TN-SCH-07
+48,Male,162136,3.68,Owned,Pulses,Integrated,Sivaganga,Drip,Small,OBC,Yes,No,Yes,TN-SCH-01
+56,Male,70111,4.14,Owned,Cotton,Integrated,Tiruchirappalli,Open Well,Small,General,Yes,No,Yes,TN-SCH-02
+47,Female,95012,0.82,Owned,Millets,Conventional,Dindigul,Open Well,Marginal,OBC,Yes,No,No,TN-SCH-09
+48,Female,92626,4.02,Owned,Pulses,Integrated,Pudukkottai,Open Well,Small,MBC,No,No,Yes,TN-SCH-06
+24,Male,101722,4.7,Owned,Flowers,Conventional,Dindigul,Borewell,Small,SC,Yes,Yes,No,TN-SCH-03
+58,Male,132908,4.38,Owned,Coconut,Natural,Coimbatore,Canal,Small,MBC,No,Yes,Yes,TN-SCH-07
+52,Male,332965,6.59,Owned,Groundnut,Conventional,Dharmapuri,Open Well,Medium,OBC,No,No,No,TN-SCH-06
+59,Female,77971,3.66,Owned,Millets,Conventional,Krishnagiri,Sprinkler,Small,OBC,Yes,Yes,Yes,TN-SCH-03
+18,Female,214978,5.99,Owned,Millets,Integrated,Tiruchirappalli,Sprinkler,Medium,SC,No,Yes,Yes,TN-SCH-07
+73,Male,807963,13.99,Owned,Groundnut,Conventional,Mayiladuthurai,Canal,Large,General,No,Yes,No,TN-SCH-07
+46,Male,151262,2.82,Owned,Millets,Organic,Erode,Borewell,Small,OBC,Yes,No,No,TN-SCH-01
+61,Female,274653,7.86,Owned,Coconut,Organic,Vellore,Drip,Medium,OBC,No,Yes,No,TN-SCH-03
+35,Male,141733,4.26,Owned,Millets,Conventional,Theni,Rainfed,Small,SC,No,Yes,Yes,TN-SCH-04
+55,Male,323641,10.09,Leased,Groundnut,Conventional,Madurai,Open Well,Large,MBC,Yes,No,No,TN-SCH-06
+35,Male,55001,0.9,Owned,Millets,Conventional,Dindigul,Drip,Marginal,General,Yes,Yes,No,TN-SCH-11
+40,Male,153406,4.89,Owned,Cotton,Integrated,Dharmapuri,Drip,Small,OBC,No,Yes,Yes,TN-SCH-03
+70,Male,98510,4.27,Owned,Groundnut,Integrated,Theni,Borewell,Small,SC,No,No,Yes,TN-SCH-09
+45,Male,331973,5.62,Owned,Groundnut,Conventional,Thanjavur,Sprinkler,Medium,General,Yes,No,Yes,TN-SCH-12
+50,Female,138684,4.34,Owned,Flowers,Conventional,Nagapattinam,Borewell,Small,MBC,No,Yes,Yes,TN-SCH-07
+58,Female,247630,9.62,Owned,Sugarcane,Conventional,Sivaganga,Sprinkler,Medium,SC,No,Yes,Yes,TN-SCH-03
+53,Male,438105,8.52,Owned,Banana,Organic,Dharmapuri,Canal,Medium,OBC,Yes,Yes,No,TN-SCH-07
+49,Male,204536,5.14,Owned,Pulses,Conventional,Madurai,Sprinkler,Medium,SC,Yes,No,Yes,TN-SCH-12
+52,Male,163612,3.07,Owned,Banana,Conventional,Coimbatore,Open Well,Small,MBC,No,Yes,Yes,TN-SCH-07
+76,Male,179583,3.67,Leased,Cotton,Conventional,Dharmapuri,Borewell,Small,SC,Yes,No,No,TN-SCH-06
+47,Male,216304,4.48,Owned,Paddy,Conventional,Vellore,Borewell,Small,MBC,No,No,No,TN-SCH-06
+50,Male,93506,4.46,Owned,Coconut,Natural,Pudukkottai,Borewell,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+60,Male,35335,0.28,Owned,Flowers,Conventional,Pudukkottai,Sprinkler,Marginal,SC,No,Yes,No,TN-SCH-01
+61,Female,257209,8.27,Leased,Coconut,Organic,Coimbatore,Drip,Medium,SC,No,Yes,Yes,TN-SCH-03
+62,Male,532710,13.54,Owned,Pulses,Integrated,Nagapattinam,Sprinkler,Large,OBC,No,No,No,TN-SCH-06
+55,Male,200244,8.15,Owned,Millets,Organic,Ramanathapuram,Rainfed,Medium,General,No,Yes,Yes,TN-SCH-07
+34,Male,105770,3.63,Owned,Flowers,Conventional,Ramanathapuram,Canal,Small,MBC,No,Yes,Yes,TN-SCH-07
+67,Male,438034,9.53,Owned,Flowers,Organic,Villupuram,Rainfed,Medium,OBC,Yes,Yes,Yes,TN-SCH-07
+34,Male,335252,5.21,Leased,Flowers,Organic,Tiruvarur,Borewell,Medium,MBC,No,Yes,Yes,TN-SCH-06
+51,Male,127343,3.54,Owned,Paddy,Conventional,Pudukkottai,Rainfed,Small,OBC,No,Yes,Yes,TN-SCH-07
+38,Male,77374,1.43,Owned,Banana,Conventional,Krishnagiri,Open Well,Marginal,SC,No,Yes,No,TN-SCH-09
+47,Male,404061,5.95,Owned,Vegetables,Integrated,Theni,Canal,Medium,SC,No,Yes,No,TN-SCH-12
+51,Male,47025,1.2,Owned,Vegetables,Organic,Salem,Open Well,Marginal,OBC,Yes,Yes,No,TN-SCH-09
+51,Male,48740,1.83,Owned,Flowers,Conventional,Madurai,Canal,Marginal,OBC,No,Yes,Yes,TN-SCH-06
+53,Male,143307,4.81,Owned,Paddy,Organic,Ramanathapuram,Drip,Small,OBC,No,No,Yes,TN-SCH-01
+67,Male,107712,4.04,Owned,Paddy,Integrated,Tirunelveli,Borewell,Small,General,No,No,No,TN-SCH-01
+53,Male,129165,4.37,Leased,Vegetables,Conventional,Tirunelveli,Borewell,Small,SC,No,Yes,Yes,TN-SCH-03
+45,Female,44221,0.33,Owned,Sugarcane,Conventional,Krishnagiri,Canal,Marginal,OBC,Yes,No,No,TN-SCH-01
+59,Male,41691,0.23,Owned,Flowers,Natural,Theni,Canal,Marginal,OBC,No,Yes,No,TN-SCH-07
+62,Male,59580,1.2,Leased,Cotton,Conventional,Vellore,Open Well,Marginal,General,No,No,No,TN-SCH-02
+33,Male,166072,2.56,Owned,Millets,Organic,Tiruchirappalli,Sprinkler,Small,SC,No,No,No,TN-SCH-04
+55,Female,766202,22.05,Owned,Vegetables,Conventional,Sivaganga,Borewell,Large,SC,Yes,Yes,Yes,TN-SCH-07
+56,Male,211217,3.76,Owned,Paddy,Conventional,Dharmapuri,Canal,Small,General,No,No,Yes,TN-SCH-06
+44,Male,88278,1.18,Owned,Sugarcane,Conventional,Vellore,Open Well,Marginal,General,No,No,No,TN-SCH-01
+64,Male,123557,3.88,Owned,Millets,Integrated,Nagapattinam,Borewell,Small,General,Yes,No,No,TN-SCH-01
+46,Male,112218,1.5,Owned,Vegetables,Conventional,Villupuram,Sprinkler,Marginal,MBC,Yes,Yes,No,TN-SCH-03
+49,Male,61940,1.26,Owned,Banana,Conventional,Coimbatore,Open Well,Marginal,OBC,No,Yes,No,TN-SCH-07
+45,Female,81389,4.44,Owned,Banana,Conventional,Erode,Drip,Small,SC,Yes,Yes,Yes,TN-SCH-11
+48,Female,182328,4.52,Owned,Groundnut,Natural,Thanjavur,Canal,Small,SC,Yes,No,No,TN-SCH-01
+34,Female,283337,5.41,Leased,Coconut,Conventional,Thanjavur,Sprinkler,Medium,MBC,No,Yes,No,TN-SCH-06
+30,Male,84154,1.87,Shared,Coconut,Natural,Theni,Sprinkler,Marginal,MBC,Yes,Yes,No,TN-SCH-07
+67,Female,80254,1.39,Leased,Flowers,Conventional,Dindigul,Rainfed,Marginal,General,Yes,Yes,No,TN-SCH-07
+37,Male,96831,2.7,Owned,Pulses,Integrated,Dharmapuri,Open Well,Small,MBC,Yes,No,No,TN-SCH-04
+36,Male,115605,0.98,Owned,Sugarcane,Integrated,Erode,Sprinkler,Marginal,OBC,No,Yes,No,TN-SCH-01
+22,Male,42841,1.03,Owned,Pulses,Conventional,Vellore,Rainfed,Marginal,MBC,No,No,No,TN-SCH-01
+40,Male,116442,1.4,Owned,Vegetables,Conventional,Sivaganga,Canal,Marginal,OBC,Yes,Yes,No,TN-SCH-07
+32,Male,99599,2.25,Owned,Vegetables,Conventional,Coimbatore,Open Well,Marginal,OBC,No,Yes,No,TN-SCH-01
+67,Female,93368,4.61,Owned,Vegetables,Conventional,Erode,Drip,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+60,Male,43553,2.4,Leased,Millets,Natural,Coimbatore,Rainfed,Marginal,MBC,No,No,Yes,TN-SCH-06
+39,Male,128093,4.65,Owned,Paddy,Organic,Coimbatore,Open Well,Small,OBC,No,No,Yes,TN-SCH-08
+75,Male,180548,3.53,Owned,Groundnut,Conventional,Salem,Open Well,Small,General,No,No,No,TN-SCH-06
+59,Male,120360,1.38,Leased,Coconut,Conventional,Tiruvarur,Sprinkler,Marginal,SC,No,Yes,Yes,TN-SCH-03
+44,Male,149433,1.34,Owned,Millets,Conventional,Coimbatore,Sprinkler,Marginal,OBC,Yes,No,No,TN-SCH-01
+18,Male,163423,4.17,Leased,Coconut,Conventional,Tirunelveli,Drip,Small,MBC,No,Yes,No,TN-SCH-03
+75,Female,101892,0.5,Owned,Paddy,Integrated,Tiruchirappalli,Rainfed,Marginal,MBC,No,Yes,Yes,TN-SCH-07
+31,Male,108601,4.25,Owned,Coconut,Conventional,Sivaganga,Sprinkler,Small,SC,No,Yes,Yes,TN-SCH-07
+28,Male,88260,0.32,Leased,Paddy,Conventional,Tiruvarur,Sprinkler,Marginal,MBC,No,No,Yes,TN-SCH-08
+60,Female,334017,9.22,Owned,Flowers,Conventional,Villupuram,Drip,Medium,General,No,Yes,Yes,TN-SCH-03
+77,Male,70790,1.86,Owned,Pulses,Conventional,Thanjavur,Drip,Marginal,MBC,No,No,Yes,TN-SCH-06
+64,Male,389678,6.81,Owned,Banana,Conventional,Cuddalore,Rainfed,Medium,OBC,Yes,Yes,Yes,TN-SCH-06
+54,Male,111032,1.73,Shared,Banana,Organic,Tiruchirappalli,Canal,Marginal,OBC,Yes,Yes,No,TN-SCH-11
+55,Male,174256,4.33,Shared,Paddy,Conventional,Cuddalore,Canal,Small,General,No,No,No,TN-SCH-08
+58,Male,182504,7.63,Owned,Coconut,Conventional,Ramanathapuram,Drip,Medium,OBC,Yes,Yes,No,TN-SCH-03
+57,Male,858591,23.46,Owned,Flowers,Conventional,Erode,Borewell,Large,ST,No,Yes,Yes,TN-SCH-06
+51,Male,199152,3.05,Owned,Millets,Integrated,Dharmapuri,Borewell,Small,OBC,No,No,Yes,TN-SCH-06
+49,Female,404897,24.22,Owned,Sugarcane,Integrated,Madurai,Rainfed,Large,MBC,Yes,No,Yes,TN-SCH-02
+47,Female,149428,3.18,Owned,Cotton,Organic,Madurai,Canal,Small,OBC,Yes,No,No,TN-SCH-01
+38,Male,122826,1.16,Owned,Cotton,Conventional,Salem,Rainfed,Marginal,OBC,Yes,No,No,TN-SCH-11
+44,Male,86967,0.36,Owned,Coconut,Natural,Thanjavur,Canal,Marginal,SC,No,Yes,No,TN-SCH-02
+27,Male,147463,2.39,Leased,Coconut,Conventional,Dindigul,Sprinkler,Marginal,SC,Yes,Yes,No,TN-SCH-03
+46,Male,340310,8.43,Owned,Coconut,Conventional,Mayiladuthurai,Canal,Medium,MBC,No,Yes,No,TN-SCH-07
+36,Male,144661,2.22,Leased,Groundnut,Integrated,Erode,Drip,Marginal,General,No,No,No,TN-SCH-01
+34,Male,342536,5.53,Owned,Cotton,Conventional,Dindigul,Rainfed,Medium,MBC,No,No,No,TN-SCH-01
+50,Male,220415,4.36,Owned,Paddy,Conventional,Sivaganga,Open Well,Small,ST,No,No,Yes,TN-SCH-09
+64,Male,40745,0.28,Owned,Coconut,Conventional,Sivaganga,Rainfed,Marginal,SC,Yes,Yes,No,TN-SCH-07
+59,Male,110505,3.75,Owned,Banana,Conventional,Mayiladuthurai,Canal,Small,ST,No,Yes,No,TN-SCH-04
+29,Male,98523,4.72,Leased,Paddy,Conventional,Mayiladuthurai,Canal,Small,General,No,No,Yes,TN-SCH-05
+36,Male,339413,7.49,Owned,Flowers,Conventional,Pudukkottai,Rainfed,Medium,OBC,Yes,Yes,No,TN-SCH-06
+59,Female,180478,4.73,Owned,Pulses,Organic,Nagapattinam,Sprinkler,Small,MBC,No,No,Yes,TN-SCH-06
+36,Female,123786,4.86,Owned,Paddy,Integrated,Mayiladuthurai,Canal,Small,OBC,Yes,Yes,Yes,TN-SCH-08
+45,Male,82309,1.72,Owned,Vegetables,Integrated,Cuddalore,Open Well,Marginal,General,Yes,Yes,Yes,TN-SCH-09
+54,Male,217438,9.87,Owned,Paddy,Integrated,Tirunelveli,Drip,Medium,OBC,No,No,Yes,TN-SCH-08
+36,Male,278968,8.73,Owned,Cotton,Conventional,Pudukkottai,Open Well,Medium,MBC,Yes,No,Yes,TN-SCH-06
+49,Male,96650,1.15,Owned,Sugarcane,Organic,Ramanathapuram,Drip,Marginal,OBC,Yes,Yes,No,TN-SCH-03
+31,Male,98321,2.06,Leased,Paddy,Conventional,Cuddalore,Rainfed,Marginal,MBC,No,No,No,TN-SCH-01
+40,Female,154407,5.92,Owned,Coconut,Integrated,Nagapattinam,Canal,Medium,MBC,No,Yes,No,TN-SCH-02
+51,Male,85336,3.2,Owned,Flowers,Conventional,Madurai,Open Well,Small,OBC,No,Yes,Yes,TN-SCH-09
+28,Female,93421,3.47,Owned,Banana,Conventional,Erode,Borewell,Small,OBC,Yes,Yes,No,TN-SCH-09
+53,Male,92421,3.14,Leased,Millets,Conventional,Pudukkottai,Rainfed,Small,OBC,No,Yes,Yes,TN-SCH-06
+47,Female,155418,8.48,Leased,Sugarcane,Conventional,Tiruvarur,Rainfed,Medium,OBC,No,No,Yes,TN-SCH-06
+54,Male,203287,7.3,Owned,Coconut,Conventional,Tiruchirappalli,Sprinkler,Medium,OBC,Yes,Yes,Yes,TN-SCH-06
+50,Female,110862,4.22,Leased,Vegetables,Organic,Madurai,Canal,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+64,Female,113761,1.44,Owned,Sugarcane,Integrated,Tiruvarur,Canal,Marginal,MBC,No,Yes,No,TN-SCH-07
+49,Male,135613,0.38,Owned,Cotton,Conventional,Theni,Drip,Marginal,General,Yes,No,No,TN-SCH-11
+42,Male,720396,13.85,Owned,Coconut,Conventional,Nagapattinam,Sprinkler,Large,MBC,No,Yes,Yes,TN-SCH-07
+49,Male,217084,3.88,Owned,Millets,Conventional,Villupuram,Borewell,Small,MBC,No,Yes,No,TN-SCH-07
+54,Male,55586,1.38,Owned,Paddy,Organic,Nagapattinam,Open Well,Marginal,OBC,Yes,No,Yes,TN-SCH-09
+48,Female,257982,8.87,Owned,Coconut,Conventional,Erode,Borewell,Medium,OBC,No,Yes,No,TN-SCH-07
+48,Male,192017,3.03,Shared,Groundnut,Conventional,Erode,Sprinkler,Small,OBC,Yes,No,No,TN-SCH-08
+39,Male,83461,0.93,Owned,Groundnut,Conventional,Vellore,Rainfed,Marginal,General,Yes,No,No,TN-SCH-11
+40,Male,312252,7.91,Owned,Millets,Conventional,Dindigul,Canal,Medium,General,No,Yes,Yes,TN-SCH-02
+31,Male,32291,2.37,Owned,Groundnut,Organic,Dindigul,Rainfed,Marginal,SC,Yes,Yes,No,TN-SCH-07
+68,Male,141860,2.0,Owned,Banana,Integrated,Nagapattinam,Canal,Marginal,SC,No,Yes,No,TN-SCH-07
+33,Male,815958,10.16,Owned,Sugarcane,Conventional,Tiruvarur,Open Well,Large,OBC,No,No,No,TN-SCH-06
+39,Male,75438,3.98,Owned,Paddy,Conventional,Tirunelveli,Drip,Small,General,No,Yes,Yes,TN-SCH-01
+39,Female,78184,4.49,Owned,Groundnut,Conventional,Cuddalore,Rainfed,Small,MBC,No,No,Yes,TN-SCH-06
+58,Male,557044,23.17,Owned,Pulses,Conventional,Krishnagiri,Rainfed,Large,SC,No,Yes,Yes,TN-SCH-01
+44,Male,257752,9.7,Owned,Millets,Conventional,Coimbatore,Rainfed,Medium,MBC,Yes,No,No,TN-SCH-02
+62,Male,628498,23.63,Owned,Coconut,Organic,Nagapattinam,Drip,Large,MBC,Yes,Yes,Yes,TN-SCH-03
+39,Male,232590,4.22,Shared,Pulses,Integrated,Salem,Open Well,Small,OBC,Yes,No,Yes,TN-SCH-06
+51,Male,71752,0.55,Owned,Sugarcane,Integrated,Thanjavur,Drip,Marginal,OBC,Yes,Yes,No,TN-SCH-03
+37,Female,143642,0.61,Owned,Cotton,Organic,Madurai,Borewell,Marginal,OBC,Yes,Yes,No,TN-SCH-03
+73,Male,70955,3.35,Owned,Coconut,Integrated,Pudukkottai,Drip,Small,OBC,Yes,Yes,Yes,TN-SCH-03
+33,Female,63790,2.24,Owned,Flowers,Natural,Dindigul,Open Well,Marginal,MBC,No,Yes,No,TN-SCH-07
+51,Female,141994,3.92,Owned,Vegetables,Integrated,Tiruchirappalli,Canal,Small,OBC,Yes,Yes,Yes,TN-SCH-11
+55,Male,60700,0.61,Owned,Paddy,Conventional,Vellore,Rainfed,Marginal,MBC,Yes,Yes,No,TN-SCH-11
+52,Female,86825,4.8,Owned,Banana,Conventional,Sivaganga,Canal,Small,OBC,No,Yes,No,TN-SCH-01
+45,Female,133142,3.01,Owned,Coconut,Conventional,Pudukkottai,Canal,Small,MBC,No,Yes,Yes,TN-SCH-06
+46,Female,197570,4.2,Owned,Cotton,Conventional,Dindigul,Drip,Small,OBC,No,No,No,TN-SCH-01
+48,Male,438433,6.35,Owned,Paddy,Organic,Tirunelveli,Rainfed,Medium,General,Yes,Yes,No,TN-SCH-12
+46,Male,37099,2.28,Owned,Groundnut,Conventional,Nagapattinam,Open Well,Marginal,OBC,No,No,Yes,TN-SCH-02
+59,Male,71735,2.97,Owned,Paddy,Integrated,Madurai,Borewell,Small,General,No,Yes,Yes,TN-SCH-06
+74,Male,365355,6.19,Owned,Banana,Conventional,Tiruvarur,Sprinkler,Medium,General,Yes,Yes,No,TN-SCH-03
+41,Male,398453,6.13,Owned,Flowers,Conventional,Vellore,Open Well,Medium,OBC,No,Yes,No,TN-SCH-06
+31,Male,236307,4.45,Leased,Flowers,Conventional,Nagapattinam,Open Well,Small,OBC,No,Yes,Yes,TN-SCH-09
+46,Male,402644,6.29,Owned,Groundnut,Conventional,Pudukkottai,Canal,Medium,MBC,No,No,Yes,TN-SCH-06
+78,Female,136175,1.09,Owned,Vegetables,Conventional,Villupuram,Drip,Marginal,SC,Yes,Yes,Yes,TN-SCH-11
+38,Female,123456,1.48,Owned,Groundnut,Conventional,Erode,Rainfed,Marginal,General,Yes,No,No,TN-SCH-08
+67,Male,50072,1.53,Leased,Banana,Conventional,Salem,Borewell,Marginal,OBC,No,Yes,No,TN-SCH-01
+68,Male,492336,18.32,Leased,Sugarcane,Conventional,Madurai,Rainfed,Large,OBC,No,No,No,TN-SCH-06
+41,Male,178709,3.48,Owned,Sugarcane,Conventional,Tirunelveli,Rainfed,Small,MBC,Yes,Yes,Yes,TN-SCH-08
+54,Female,93795,0.33,Owned,Cotton,Organic,Coimbatore,Open Well,Marginal,SC,Yes,No,No,TN-SCH-11
+67,Male,62049,2.36,Owned,Vegetables,Conventional,Vellore,Rainfed,Marginal,MBC,No,Yes,No,TN-SCH-04
+43,Male,340718,9.42,Shared,Millets,Conventional,Salem,Borewell,Medium,OBC,Yes,No,No,TN-SCH-12
+45,Female,74392,0.96,Owned,Paddy,Integrated,Pudukkottai,Sprinkler,Marginal,OBC,No,No,Yes,TN-SCH-06
+41,Male,74545,1.93,Leased,Vegetables,Conventional,Cuddalore,Open Well,Marginal,SC,No,Yes,No,TN-SCH-09
+35,Female,148475,1.78,Owned,Banana,Organic,Erode,Drip,Marginal,OBC,Yes,Yes,No,TN-SCH-03
+40,Male,274636,5.77,Leased,Groundnut,Conventional,Mayiladuthurai,Open Well,Medium,SC,Yes,No,Yes,TN-SCH-06
+33,Female,158996,9.43,Owned,Flowers,Conventional,Mayiladuthurai,Sprinkler,Medium,SC,Yes,Yes,Yes,TN-SCH-03
+48,Male,393851,14.21,Leased,Groundnut,Organic,Theni,Rainfed,Large,SC,Yes,No,No,TN-SCH-06
+38,Female,97812,4.04,Leased,Coconut,Conventional,Thanjavur,Drip,Small,MBC,Yes,Yes,Yes,TN-SCH-07
+50,Male,86163,0.61,Owned,Groundnut,Organic,Mayiladuthurai,Canal,Marginal,MBC,No,No,No,TN-SCH-02
+29,Male,344723,6.8,Owned,Paddy,Organic,Tiruvarur,Canal,Medium,SC,Yes,Yes,Yes,TN-SCH-07
+51,Male,108540,3.95,Owned,Sugarcane,Conventional,Ramanathapuram,Borewell,Small,MBC,No,No,Yes,TN-SCH-03
+58,Male,96209,3.34,Owned,Banana,Conventional,Cuddalore,Rainfed,Small,General,No,Yes,Yes,TN-SCH-07
+24,Male,129269,1.55,Owned,Cotton,Conventional,Salem,Borewell,Marginal,OBC,No,Yes,No,TN-SCH-09
+52,Male,113219,1.24,Owned,Millets,Conventional,Coimbatore,Borewell,Marginal,OBC,Yes,No,No,TN-SCH-11
+62,Male,154631,3.43,Owned,Coconut,Conventional,Mayiladuthurai,Borewell,Small,SC,Yes,Yes,Yes,TN-SCH-03
+33,Male,316086,9.04,Shared,Coconut,Conventional,Pudukkottai,Rainfed,Medium,SC,No,Yes,No,TN-SCH-02
+68,Female,247293,7.34,Owned,Banana,Organic,Erode,Borewell,Medium,OBC,Yes,Yes,No,TN-SCH-02
+53,Female,894233,15.19,Owned,Banana,Conventional,Ramanathapuram,Rainfed,Large,SC,No,Yes,Yes,TN-SCH-07
+39,Female,149148,2.15,Owned,Cotton,Integrated,Dindigul,Open Well,Marginal,MBC,No,No,No,TN-SCH-09
+47,Male,116164,3.78,Owned,Groundnut,Conventional,Dharmapuri,Canal,Small,SC,No,No,Yes,TN-SCH-02
+54,Female,382430,5.35,Owned,Vegetables,Conventional,Tiruchirappalli,Rainfed,Medium,General,No,Yes,Yes,TN-SCH-07
+48,Male,124890,1.81,Owned,Millets,Conventional,Tiruvarur,Open Well,Marginal,OBC,Yes,Yes,No,TN-SCH-09
+54,Female,110787,1.89,Owned,Vegetables,Organic,Dindigul,Open Well,Marginal,General,No,Yes,No,TN-SCH-09
+36,Male,101426,3.36,Shared,Paddy,Organic,Dharmapuri,Borewell,Small,General,Yes,No,Yes,TN-SCH-09
+50,Male,82459,2.86,Leased,Pulses,Conventional,Salem,Borewell,Small,MBC,No,No,No,TN-SCH-02
+31,Male,88064,1.28,Owned,Pulses,Conventional,Nagapattinam,Borewell,Marginal,OBC,No,No,No,TN-SCH-01
+46,Male,212912,3.35,Owned,Pulses,Conventional,Salem,Rainfed,Small,MBC,Yes,No,Yes,TN-SCH-01
+37,Female,47367,0.71,Owned,Sugarcane,Conventional,Tiruchirappalli,Sprinkler,Marginal,General,Yes,No,No,TN-SCH-01
+39,Male,141547,2.5,Owned,Flowers,Conventional,Pudukkottai,Drip,Small,OBC,Yes,Yes,No,TN-SCH-07
+62,Male,420783,16.3,Owned,Vegetables,Conventional,Theni,Rainfed,Large,ST,Yes,Yes,Yes,TN-SCH-07
+61,Female,76334,1.5,Owned,Pulses,Conventional,Erode,Drip,Marginal,MBC,No,No,Yes,TN-SCH-04
+55,Male,101227,1.73,Owned,Banana,Conventional,Thanjavur,Open Well,Marginal,OBC,Yes,Yes,No,TN-SCH-01
+34,Male,166885,3.84,Owned,Pulses,Conventional,Dindigul,Drip,Small,OBC,No,No,No,TN-SCH-06
+44,Female,124267,1.76,Owned,Pulses,Organic,Tirunelveli,Canal,Marginal,OBC,Yes,No,No,TN-SCH-11
+62,Male,219755,3.04,Owned,Groundnut,Conventional,Villupuram,Canal,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+49,Male,228980,3.64,Leased,Coconut,Conventional,Ramanathapuram,Rainfed,Small,MBC,Yes,Yes,Yes,TN-SCH-07
+75,Male,188726,7.8,Owned,Sugarcane,Integrated,Tiruchirappalli,Drip,Medium,MBC,Yes,No,No,TN-SCH-03
+52,Male,383323,5.65,Owned,Cotton,Conventional,Tiruvarur,Canal,Medium,General,No,Yes,No,TN-SCH-06
+50,Male,93181,3.35,Owned,Cotton,Conventional,Mayiladuthurai,Rainfed,Small,SC,No,No,Yes,TN-SCH-06
+44,Female,70393,3.63,Owned,Sugarcane,Conventional,Villupuram,Sprinkler,Small,MBC,Yes,No,Yes,TN-SCH-03
+49,Male,95044,0.69,Leased,Paddy,Conventional,Theni,Borewell,Marginal,OBC,No,Yes,No,TN-SCH-03
+46,Male,139118,2.94,Owned,Paddy,Conventional,Mayiladuthurai,Open Well,Small,OBC,No,No,No,TN-SCH-06
+56,Male,345337,9.84,Owned,Pulses,Integrated,Madurai,Open Well,Medium,OBC,No,No,No,TN-SCH-06
+59,Male,76381,2.95,Owned,Millets,Conventional,Salem,Canal,Small,OBC,Yes,Yes,No,TN-SCH-11
+38,Female,70412,1.19,Owned,Cotton,Conventional,Tiruchirappalli,Borewell,Marginal,OBC,Yes,Yes,No,TN-SCH-09
+32,Male,215837,6.13,Owned,Vegetables,Integrated,Erode,Drip,Medium,OBC,No,Yes,Yes,TN-SCH-07
+25,Male,173644,4.36,Owned,Millets,Conventional,Theni,Borewell,Small,SC,Yes,No,Yes,TN-SCH-09
+54,Male,208731,4.35,Shared,Cotton,Conventional,Tiruchirappalli,Canal,Small,OBC,Yes,No,Yes,TN-SCH-01
+34,Male,365309,5.45,Owned,Banana,Integrated,Tiruchirappalli,Open Well,Medium,General,Yes,Yes,No,TN-SCH-02
+22,Female,124589,4.16,Leased,Vegetables,Conventional,Erode,Canal,Small,MBC,Yes,Yes,Yes,TN-SCH-11
+52,Female,386585,7.16,Owned,Banana,Conventional,Dharmapuri,Open Well,Medium,OBC,Yes,Yes,No,TN-SCH-07
+77,Male,115513,1.37,Owned,Banana,Organic,Krishnagiri,Borewell,Marginal,OBC,Yes,Yes,Yes,TN-SCH-03
+47,Female,93709,0.3,Owned,Paddy,Integrated,Krishnagiri,Borewell,Marginal,MBC,No,Yes,No,TN-SCH-09
+58,Male,295419,9.23,Shared,Cotton,Conventional,Tiruvarur,Sprinkler,Medium,OBC,No,Yes,Yes,TN-SCH-08
+48,Male,76537,1.28,Owned,Cotton,Integrated,Erode,Borewell,Marginal,MBC,Yes,Yes,Yes,TN-SCH-07
+46,Male,437434,6.87,Shared,Paddy,Conventional,Salem,Rainfed,Medium,OBC,Yes,No,Yes,TN-SCH-01
+59,Male,71996,4.71,Owned,Paddy,Organic,Vellore,Borewell,Small,General,No,Yes,No,TN-SCH-07
+44,Male,142613,2.94,Owned,Banana,Conventional,Salem,Sprinkler,Small,MBC,No,Yes,No,TN-SCH-03
+51,Male,155261,7.78,Owned,Vegetables,Conventional,Nagapattinam,Open Well,Medium,OBC,Yes,Yes,Yes,TN-SCH-06
+51,Male,141472,2.1,Owned,Cotton,Organic,Villupuram,Canal,Marginal,OBC,Yes,No,No,TN-SCH-02
+39,Male,192862,4.48,Owned,Paddy,Conventional,Tiruchirappalli,Drip,Small,OBC,No,No,Yes,TN-SCH-06
+59,Female,121233,1.64,Owned,Paddy,Integrated,Tiruvarur,Open Well,Marginal,MBC,Yes,No,Yes,TN-SCH-05
+45,Male,345761,12.59,Owned,Coconut,Conventional,Tirunelveli,Rainfed,Large,SC,Yes,Yes,Yes,TN-SCH-07
+38,Male,87676,4.64,Owned,Sugarcane,Conventional,Ramanathapuram,Sprinkler,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+54,Male,299348,9.49,Owned,Flowers,Natural,Krishnagiri,Borewell,Medium,SC,No,Yes,Yes,TN-SCH-02
+37,Female,120353,2.81,Leased,Sugarcane,Conventional,Tiruchirappalli,Sprinkler,Small,OBC,Yes,Yes,No,TN-SCH-03
+48,Male,56034,0.76,Leased,Groundnut,Organic,Mayiladuthurai,Rainfed,Marginal,OBC,No,Yes,No,TN-SCH-08
+47,Male,328218,7.88,Owned,Groundnut,Organic,Sivaganga,Sprinkler,Medium,MBC,Yes,No,Yes,TN-SCH-12
+61,Male,190059,4.29,Owned,Paddy,Conventional,Tiruvarur,Open Well,Small,SC,Yes,No,Yes,TN-SCH-09
+53,Male,93535,0.74,Owned,Coconut,Integrated,Coimbatore,Rainfed,Marginal,General,No,Yes,No,TN-SCH-01
+47,Female,80139,3.97,Owned,Coconut,Integrated,Cuddalore,Rainfed,Small,OBC,No,Yes,Yes,TN-SCH-01
+57,Male,417887,7.46,Owned,Cotton,Conventional,Salem,Drip,Medium,OBC,No,No,No,TN-SCH-08
+64,Male,163865,3.09,Owned,Paddy,Conventional,Mayiladuthurai,Canal,Small,OBC,Yes,No,Yes,TN-SCH-02
+54,Female,117398,1.82,Owned,Coconut,Organic,Nagapattinam,Drip,Marginal,OBC,Yes,Yes,No,TN-SCH-07
+48,Female,116802,1.86,Owned,Banana,Integrated,Ramanathapuram,Canal,Marginal,MBC,No,Yes,No,TN-SCH-07
+32,Male,144782,1.53,Owned,Flowers,Conventional,Mayiladuthurai,Sprinkler,Marginal,MBC,No,Yes,No,TN-SCH-07
+35,Female,72828,4.26,Owned,Vegetables,Conventional,Madurai,Drip,Small,OBC,Yes,Yes,No,TN-SCH-03
+44,Male,104009,0.65,Owned,Pulses,Conventional,Ramanathapuram,Borewell,Marginal,OBC,No,No,No,TN-SCH-01
+40,Female,176658,3.57,Owned,Pulses,Organic,Madurai,Drip,Small,OBC,No,No,Yes,TN-SCH-06
+45,Male,355800,7.24,Owned,Groundnut,Conventional,Dharmapuri,Sprinkler,Medium,OBC,Yes,No,No,TN-SCH-08
+48,Male,147917,3.19,Owned,Cotton,Natural,Dindigul,Drip,Small,MBC,Yes,No,Yes,TN-SCH-11
+54,Male,109545,1.53,Leased,Vegetables,Natural,Krishnagiri,Canal,Marginal,OBC,Yes,Yes,Yes,TN-SCH-07
+47,Male,102219,0.84,Owned,Paddy,Conventional,Tiruvarur,Sprinkler,Marginal,OBC,No,Yes,No,TN-SCH-03
+53,Male,152019,2.6,Owned,Coconut,Integrated,Pudukkottai,Borewell,Small,MBC,No,Yes,No,TN-SCH-03
+48,Male,427636,5.07,Owned,Millets,Organic,Vellore,Canal,Medium,General,No,No,No,TN-SCH-08
+24,Male,475670,15.36,Owned,Groundnut,Integrated,Pudukkottai,Sprinkler,Large,OBC,No,No,No,TN-SCH-12
+36,Male,97539,3.77,Owned,Paddy,Organic,Tiruvarur,Canal,Small,MBC,Yes,No,Yes,TN-SCH-11
+46,Female,136877,4.75,Leased,Millets,Conventional,Erode,Drip,Small,MBC,Yes,Yes,Yes,TN-SCH-07
+33,Female,280856,8.0,Owned,Banana,Integrated,Dharmapuri,Open Well,Medium,SC,Yes,Yes,Yes,TN-SCH-07
+55,Female,476937,19.71,Owned,Groundnut,Conventional,Thanjavur,Drip,Large,OBC,No,No,Yes,TN-SCH-08
+66,Female,310313,9.01,Owned,Paddy,Organic,Dindigul,Drip,Medium,SC,Yes,Yes,No,TN-SCH-03
+62,Male,181930,3.45,Owned,Sugarcane,Conventional,Nagapattinam,Rainfed,Small,MBC,No,No,Yes,TN-SCH-06
+45,Male,174972,4.26,Owned,Millets,Conventional,Pudukkottai,Rainfed,Small,MBC,Yes,No,Yes,TN-SCH-06
+65,Male,125707,4.85,Leased,Pulses,Conventional,Theni,Canal,Small,OBC,No,No,No,TN-SCH-02
+49,Male,55778,1.01,Leased,Groundnut,Conventional,Madurai,Drip,Marginal,SC,No,No,Yes,TN-SCH-01
+43,Male,214058,3.12,Owned,Cotton,Conventional,Sivaganga,Canal,Small,OBC,Yes,Yes,Yes,TN-SCH-06
+40,Male,236668,4.7,Owned,Paddy,Integrated,Villupuram,Sprinkler,Small,OBC,Yes,No,Yes,TN-SCH-11
+44,Male,82175,2.02,Owned,Sugarcane,Conventional,Dindigul,Open Well,Marginal,OBC,No,No,No,TN-SCH-01
+43,Female,42885,1.44,Owned,Flowers,Organic,Villupuram,Borewell,Marginal,OBC,Yes,Yes,No,TN-SCH-03
+50,Male,169591,7.89,Owned,Cotton,Conventional,Tirunelveli,Borewell,Medium,SC,Yes,No,Yes,TN-SCH-02
+49,Male,74928,3.91,Owned,Sugarcane,Conventional,Tiruvarur,Canal,Small,OBC,No,Yes,No,TN-SCH-07
+48,Male,139631,3.8,Owned,Groundnut,Integrated,Krishnagiri,Open Well,Small,OBC,No,No,No,TN-SCH-01
+53,Male,210060,4.6,Owned,Millets,Integrated,Dharmapuri,Rainfed,Small,MBC,No,No,Yes,TN-SCH-06
+62,Male,194291,3.9,Owned,Sugarcane,Integrated,Sivaganga,Borewell,Small,OBC,No,Yes,Yes,TN-SCH-03
+59,Male,234132,3.22,Owned,Sugarcane,Integrated,Dindigul,Open Well,Small,MBC,No,No,Yes,TN-SCH-09
+30,Male,105686,4.03,Owned,Millets,Conventional,Krishnagiri,Drip,Small,SC,No,No,Yes,TN-SCH-06
+18,Female,416252,7.82,Owned,Pulses,Conventional,Thanjavur,Rainfed,Medium,SC,Yes,Yes,Yes,TN-SCH-07
+59,Female,81027,1.43,Owned,Pulses,Integrated,Villupuram,Borewell,Marginal,OBC,Yes,No,No,TN-SCH-11
+31,Male,183719,4.35,Owned,Banana,Conventional,Salem,Rainfed,Small,OBC,No,Yes,Yes,TN-SCH-07
+45,Male,322051,5.62,Owned,Groundnut,Organic,Dharmapuri,Borewell,Medium,MBC,Yes,Yes,Yes,TN-SCH-08
+33,Male,65920,2.13,Owned,Cotton,Organic,Vellore,Drip,Marginal,General,No,No,No,TN-SCH-01
+26,Male,91158,1.72,Owned,Vegetables,Conventional,Sivaganga,Sprinkler,Marginal,OBC,Yes,Yes,No,TN-SCH-03
+54,Male,441298,8.68,Owned,Millets,Organic,Nagapattinam,Rainfed,Medium,SC,No,No,Yes,TN-SCH-08
+57,Male,42151,2.13,Owned,Cotton,Integrated,Tirunelveli,Drip,Marginal,SC,No,No,Yes,TN-SCH-06
+41,Male,149612,1.51,Owned,Vegetables,Conventional,Cuddalore,Canal,Marginal,OBC,No,Yes,No,TN-SCH-01
+18,Male,104814,2.17,Leased,Millets,Conventional,Vellore,Rainfed,Marginal,SC,Yes,No,Yes,TN-SCH-11
+41,Male,97225,0.62,Owned,Banana,Conventional,Thanjavur,Drip,Marginal,ST,Yes,Yes,No,TN-SCH-07
+52,Female,147058,4.12,Leased,Pulses,Conventional,Krishnagiri,Borewell,Small,MBC,No,Yes,Yes,TN-SCH-03
+30,Male,408080,9.5,Leased,Pulses,Integrated,Thanjavur,Borewell,Medium,OBC,No,No,No,TN-SCH-06
+50,Male,399429,6.16,Owned,Coconut,Conventional,Dindigul,Rainfed,Medium,SC,No,Yes,Yes,TN-SCH-01
+47,Male,754535,21.83,Owned,Paddy,Conventional,Erode,Borewell,Large,OBC,Yes,No,Yes,TN-SCH-12
+54,Male,118273,3.01,Owned,Flowers,Conventional,Dharmapuri,Canal,Small,SC,No,Yes,Yes,TN-SCH-06
+49,Male,440797,9.28,Owned,Coconut,Natural,Tiruchirappalli,Borewell,Medium,OBC,No,Yes,Yes,TN-SCH-06
+36,Female,108284,0.28,Owned,Flowers,Conventional,Vellore,Borewell,Marginal,General,No,Yes,No,TN-SCH-09
+62,Male,133109,2.88,Owned,Coconut,Conventional,Coimbatore,Rainfed,Small,General,No,Yes,No,TN-SCH-07
+46,Female,33379,2.29,Leased,Flowers,Conventional,Pudukkottai,Borewell,Marginal,MBC,Yes,Yes,Yes,TN-SCH-03
+47,Male,94506,3.22,Owned,Paddy,Conventional,Tirunelveli,Open Well,Small,SC,Yes,No,Yes,TN-SCH-09
+36,Male,134852,2.74,Owned,Flowers,Conventional,Tiruvarur,Canal,Small,OBC,No,Yes,Yes,TN-SCH-07
+42,Male,110195,4.37,Shared,Banana,Conventional,Villupuram,Canal,Small,MBC,Yes,Yes,Yes,TN-SCH-11
+37,Male,70024,0.74,Owned,Paddy,Conventional,Ramanathapuram,Canal,Marginal,MBC,No,No,Yes,TN-SCH-06
+45,Male,97964,1.99,Owned,Flowers,Conventional,Krishnagiri,Canal,Marginal,MBC,No,Yes,No,TN-SCH-01
+68,Male,183287,9.89,Owned,Coconut,Conventional,Tiruchirappalli,Canal,Medium,OBC,Yes,Yes,No,TN-SCH-06
+31,Male,205100,9.42,Owned,Sugarcane,Integrated,Madurai,Rainfed,Medium,OBC,Yes,Yes,No,TN-SCH-06
+28,Male,83529,1.83,Owned,Banana,Conventional,Dharmapuri,Drip,Marginal,MBC,Yes,Yes,Yes,TN-SCH-07
+65,Female,128200,1.22,Leased,Paddy,Conventional,Pudukkottai,Rainfed,Marginal,OBC,No,Yes,Yes,TN-SCH-07
+45,Male,232364,2.77,Leased,Pulses,Natural,Pudukkottai,Canal,Small,OBC,No,No,No,TN-SCH-02
+39,Male,224411,4.4,Owned,Vegetables,Conventional,Krishnagiri,Borewell,Small,OBC,No,Yes,Yes,TN-SCH-03
+60,Male,209546,3.05,Owned,Sugarcane,Integrated,Pudukkottai,Sprinkler,Small,OBC,Yes,No,Yes,TN-SCH-03
+40,Male,228659,4.33,Leased,Vegetables,Organic,Salem,Sprinkler,Small,SC,No,Yes,Yes,TN-SCH-03
+69,Female,231599,3.58,Owned,Banana,Conventional,Krishnagiri,Canal,Small,OBC,Yes,Yes,Yes,TN-SCH-07
+56,Male,89000,1.84,Owned,Paddy,Conventional,Madurai,Open Well,Marginal,SC,Yes,Yes,No,TN-SCH-09
+42,Male,78396,1.77,Owned,Pulses,Organic,Coimbatore,Canal,Marginal,MBC,No,Yes,No,TN-SCH-07
+73,Male,132704,1.48,Leased,Vegetables,Conventional,Nagapattinam,Sprinkler,Marginal,MBC,No,Yes,No,TN-SCH-01
+40,Female,372003,8.56,Owned,Paddy,Conventional,Sivaganga,Drip,Medium,General,No,Yes,No,TN-SCH-03
+56,Male,324378,15.83,Owned,Pulses,Conventional,Thanjavur,Sprinkler,Large,OBC,Yes,No,Yes,TN-SCH-06
+51,Male,348645,6.56,Owned,Millets,Natural,Pudukkottai,Rainfed,Medium,OBC,Yes,No,Yes,TN-SCH-06
+63,Male,258905,5.06,Owned,Cotton,Integrated,Dindigul,Open Well,Medium,OBC,No,No,No,TN-SCH-08
+66,Female,46553,0.33,Owned,Banana,Conventional,Thanjavur,Rainfed,Marginal,MBC,Yes,Yes,No,TN-SCH-07
+48,Male,150338,6.42,Owned,Banana,Conventional,Cuddalore,Canal,Medium,OBC,Yes,Yes,Yes,TN-SCH-07
+38,Male,207796,8.12,Owned,Banana,Conventional,Tirunelveli,Borewell,Medium,OBC,No,Yes,No,TN-SCH-03
+53,Male,89753,2.76,Owned,Sugarcane,Conventional,Villupuram,Rainfed,Small,OBC,Yes,No,No,TN-SCH-06
+39,Male,114965,3.03,Owned,Paddy,Conventional,Villupuram,Canal,Small,General,Yes,No,Yes,TN-SCH-06
+72,Female,142626,4.72,Leased,Sugarcane,Organic,Theni,Borewell,Small,General,Yes,No,Yes,TN-SCH-03
+49,Female,738307,21.58,Owned,Groundnut,Conventional,Erode,Drip,Large,MBC,Yes,No,No,TN-SCH-06
+43,Male,336611,5.12,Owned,Cotton,Natural,Dindigul,Canal,Medium,OBC,No,No,No,TN-SCH-06
+50,Female,899503,11.25,Owned,Banana,Conventional,Pudukkottai,Borewell,Large,SC,No,Yes,No,TN-SCH-02
+31,Female,769903,23.98,Owned,Banana,Conventional,Madurai,Open Well,Large,ST,No,Yes,No,TN-SCH-06
+36,Male,211077,3.64,Owned,Pulses,Natural,Tiruchirappalli,Canal,Small,MBC,Yes,No,Yes,TN-SCH-11
+62,Male,58235,0.52,Leased,Cotton,Organic,Erode,Open Well,Marginal,General,No,No,Yes,TN-SCH-09
+40,Female,172782,4.52,Owned,Banana,Conventional,Theni,Open Well,Small,OBC,No,Yes,No,TN-SCH-09
+35,Male,103495,1.68,Owned,Coconut,Integrated,Salem,Sprinkler,Marginal,General,Yes,Yes,No,TN-SCH-03
+54,Male,218653,3.19,Owned,Banana,Conventional,Krishnagiri,Rainfed,Small,General,Yes,Yes,Yes,TN-SCH-07
+62,Female,179501,6.7,Owned,Paddy,Conventional,Mayiladuthurai,Borewell,Medium,General,No,Yes,No,TN-SCH-05
+56,Male,173921,2.62,Owned,Vegetables,Organic,Krishnagiri,Canal,Small,SC,No,Yes,No,TN-SCH-07
+59,Female,149940,0.56,Owned,Sugarcane,Integrated,Salem,Sprinkler,Marginal,OBC,Yes,Yes,No,TN-SCH-07
+38,Female,185032,7.33,Owned,Flowers,Conventional,Mayiladuthurai,Rainfed,Medium,General,Yes,Yes,No,TN-SCH-12
+30,Male,355122,9.61,Owned,Paddy,Integrated,Sivaganga,Rainfed,Medium,OBC,No,No,Yes,TN-SCH-06
+66,Male,54723,0.47,Owned,Millets,Conventional,Vellore,Borewell,Marginal,OBC,Yes,No,No,TN-SCH-01
+44,Male,108538,2.63,Owned,Vegetables,Organic,Mayiladuthurai,Canal,Small,OBC,No,Yes,No,TN-SCH-07
+44,Male,120980,1.51,Owned,Groundnut,Conventional,Cuddalore,Drip,Marginal,OBC,Yes,No,No,TN-SCH-01
+63,Female,95643,1.96,Owned,Millets,Conventional,Pudukkottai,Open Well,Marginal,OBC,Yes,No,Yes,TN-SCH-11
+54,Female,146433,0.61,Owned,Vegetables,Organic,Mayiladuthurai,Sprinkler,Marginal,General,No,Yes,No,TN-SCH-03
+53,Male,206143,2.55,Owned,Sugarcane,Natural,Theni,Drip,Small,MBC,No,No,No,TN-SCH-06
+73,Male,78788,0.45,Owned,Banana,Conventional,Tirunelveli,Drip,Marginal,General,Yes,Yes,No,TN-SCH-11
+40,Male,213564,6.38,Owned,Pulses,Integrated,Mayiladuthurai,Sprinkler,Medium,SC,No,Yes,Yes,TN-SCH-12
+59,Male,218589,6.55,Owned,Sugarcane,Organic,Madurai,Open Well,Medium,SC,No,No,No,TN-SCH-02
+48,Male,248998,8.01,Leased,Coconut,Integrated,Tirunelveli,Canal,Medium,General,Yes,Yes,Yes,TN-SCH-07
+51,Male,792157,17.36,Owned,Vegetables,Organic,Ramanathapuram,Canal,Large,OBC,No,Yes,Yes,TN-SCH-06
+66,Male,207220,3.68,Owned,Cotton,Conventional,Madurai,Sprinkler,Small,OBC,Yes,No,Yes,TN-SCH-08
+54,Male,120258,2.55,Owned,Vegetables,Organic,Tirunelveli,Rainfed,Small,SC,No,Yes,Yes,TN-SCH-07
+54,Female,37337,1.21,Owned,Flowers,Conventional,Krishnagiri,Canal,Marginal,OBC,No,Yes,No,TN-SCH-07
+60,Male,152734,3.02,Owned,Cotton,Integrated,Tirunelveli,Sprinkler,Small,General,No,No,Yes,TN-SCH-08
+43,Female,69879,1.44,Owned,Coconut,Conventional,Cuddalore,Drip,Marginal,ST,Yes,Yes,Yes,TN-SCH-03
+37,Male,108324,0.22,Leased,Cotton,Conventional,Cuddalore,Borewell,Marginal,OBC,Yes,No,No,TN-SCH-11
+35,Male,56146,1.53,Owned,Vegetables,Integrated,Krishnagiri,Rainfed,Marginal,OBC,No,Yes,No,TN-SCH-01
+24,Female,654793,24.9,Owned,Banana,Conventional,Coimbatore,Canal,Large,MBC,Yes,Yes,Yes,TN-SCH-02
+72,Male,40056,1.12,Owned,Pulses,Conventional,Dindigul,Drip,Marginal,OBC,No,No,No,TN-SCH-01
+34,Male,219912,3.7,Owned,Millets,Organic,Dharmapuri,Open Well,Small,OBC,Yes,No,Yes,TN-SCH-09
+45,Male,78292,0.66,Owned,Flowers,Integrated,Madurai,Rainfed,Marginal,OBC,Yes,Yes,Yes,TN-SCH-01
+44,Female,173147,3.68,Owned,Sugarcane,Integrated,Dharmapuri,Drip,Small,OBC,Yes,No,No,TN-SCH-11
+51,Female,80979,0.43,Owned,Paddy,Integrated,Ramanathapuram,Borewell,Marginal,MBC,No,No,No,TN-SCH-02
+57,Male,410630,23.36,Owned,Groundnut,Integrated,Cuddalore,Drip,Large,SC,No,No,No,TN-SCH-08
+58,Male,383559,7.18,Owned,Paddy,Integrated,Dindigul,Canal,Medium,OBC,Yes,No,Yes,TN-SCH-06
+41,Female,49189,1.98,Owned,Flowers,Conventional,Erode,Drip,Marginal,SC,No,Yes,No,TN-SCH-07
+45,Male,103893,2.14,Owned,Coconut,Conventional,Sivaganga,Open Well,Marginal,OBC,No,Yes,Yes,TN-SCH-07
+51,Male,321777,5.78,Owned,Cotton,Integrated,Cuddalore,Open Well,Medium,MBC,Yes,No,No,TN-SCH-12
+45,Male,236129,3.23,Owned,Flowers,Conventional,Ramanathapuram,Open Well,Small,MBC,Yes,Yes,No,TN-SCH-07
+67,Male,140173,3.37,Leased,Banana,Conventional,Thanjavur,Canal,Small,OBC,No,Yes,Yes,TN-SCH-07
+53,Male,74568,0.37,Owned,Cotton,Conventional,Tirunelveli,Sprinkler,Marginal,General,Yes,No,No,TN-SCH-11
+56,Male,50132,0.21,Owned,Sugarcane,Conventional,Theni,Canal,Marginal,OBC,No,Yes,No,TN-SCH-08
+55,Female,160017,8.35,Owned,Pulses,Organic,Cuddalore,Sprinkler,Medium,SC,No,No,Yes,TN-SCH-02
+62,Male,198963,6.93,Owned,Banana,Organic,Villupuram,Canal,Medium,SC,No,Yes,Yes,TN-SCH-07
+50,Male,462133,14.04,Owned,Pulses,Conventional,Tiruchirappalli,Canal,Large,OBC,No,No,Yes,TN-SCH-06
+32,Male,78178,2.33,Owned,Flowers,Integrated,Nagapattinam,Drip,Marginal,OBC,Yes,Yes,No,TN-SCH-01
+52,Male,445795,6.68,Owned,Pulses,Conventional,Mayiladuthurai,Borewell,Medium,OBC,Yes,No,Yes,TN-SCH-02
+40,Female,91043,1.67,Owned,Groundnut,Integrated,Cuddalore,Drip,Marginal,OBC,Yes,No,No,TN-SCH-11
+41,Male,196110,2.88,Owned,Groundnut,Organic,Pudukkottai,Open Well,Small,SC,Yes,No,No,TN-SCH-11
+55,Female,46748,1.78,Owned,Sugarcane,Conventional,Ramanathapuram,Open Well,Marginal,OBC,No,No,Yes,TN-SCH-02
+62,Female,96065,4.56,Owned,Coconut,Organic,Nagapattinam,Sprinkler,Small,OBC,No,Yes,Yes,TN-SCH-03
+48,Male,30890,2.24,Owned,Flowers,Conventional,Pudukkottai,Drip,Marginal,General,No,Yes,No,TN-SCH-01
+51,Male,357165,16.45,Owned,Paddy,Natural,Sivaganga,Borewell,Large,OBC,Yes,No,Yes,TN-SCH-01
+68,Male,50615,1.83,Owned,Vegetables,Conventional,Dindigul,Rainfed,Marginal,MBC,No,Yes,No,TN-SCH-07
+50,Female,121874,2.9,Owned,Millets,Conventional,Salem,Rainfed,Small,OBC,Yes,No,Yes,TN-SCH-11
+79,Male,109642,1.8,Owned,Banana,Organic,Cuddalore,Open Well,Marginal,OBC,No,Yes,No,TN-SCH-09
+54,Male,447410,21.89,Owned,Sugarcane,Conventional,Erode,Open Well,Large,MBC,No,No,Yes,TN-SCH-02
+26,Male,226155,2.5,Owned,Paddy,Integrated,Dindigul,Sprinkler,Small,OBC,No,Yes,No,TN-SCH-03
+57,Male,107333,2.7,Owned,Cotton,Conventional,Theni,Sprinkler,Small,MBC,Yes,No,No,TN-SCH-11
+52,Male,141811,2.32,Owned,Flowers,Conventional,Madurai,Drip,Marginal,MBC,No,Yes,No,TN-SCH-07
+63,Male,117834,2.81,Owned,Millets,Conventional,Krishnagiri,Canal,Small,General,Yes,No,No,TN-SCH-11
+56,Female,147964,0.44,Owned,Vegetables,Conventional,Salem,Canal,Marginal,General,Yes,Yes,No,TN-SCH-07
+46,Male,71875,0.42,Owned,Sugarcane,Integrated,Tirunelveli,Rainfed,Marginal,OBC,No,No,No,TN-SCH-01
+33,Female,55011,2.09,Leased,Pulses,Integrated,Erode,Open Well,Marginal,OBC,No,No,No,TN-SCH-09
+45,Male,84712,2.55,Owned,Pulses,Conventional,Dharmapuri,Sprinkler,Small,MBC,Yes,No,No,TN-SCH-11
+37,Female,50186,1.89,Owned,Millets,Conventional,Erode,Drip,Marginal,MBC,Yes,No,No,TN-SCH-11
+41,Male,260916,8.79,Owned,Vegetables,Conventional,Coimbatore,Borewell,Medium,OBC,Yes,Yes,Yes,TN-SCH-07
+55,Male,101474,2.31,Owned,Coconut,Conventional,Coimbatore,Open Well,Marginal,MBC,Yes,Yes,No,TN-SCH-09
+68,Male,400568,7.96,Owned,Pulses,Conventional,Tiruvarur,Borewell,Medium,OBC,No,No,Yes,TN-SCH-06
+52,Male,138783,1.31,Owned,Groundnut,Conventional,Erode,Borewell,Marginal,OBC,No,No,No,TN-SCH-02
+33,Female,185504,3.62,Shared,Cotton,Conventional,Cuddalore,Drip,Small,MBC,No,No,Yes,TN-SCH-06
+53,Male,75704,3.96,Owned,Banana,Conventional,Tiruvarur,Drip,Small,OBC,No,Yes,Yes,TN-SCH-03
+62,Female,165556,4.52,Owned,Groundnut,Conventional,Thanjavur,Borewell,Small,OBC,Yes,No,Yes,TN-SCH-06
+40,Female,82803,1.26,Leased,Paddy,Conventional,Salem,Drip,Marginal,OBC,Yes,No,No,TN-SCH-01
+46,Male,83817,3.17,Owned,Coconut,Conventional,Thanjavur,Drip,Small,OBC,Yes,Yes,No,TN-SCH-03
+48,Female,211305,7.81,Owned,Coconut,Natural,Tiruchirappalli,Rainfed,Medium,MBC,Yes,Yes,No,TN-SCH-01
+38,Female,93629,3.87,Owned,Flowers,Organic,Mayiladuthurai,Canal,Small,OBC,Yes,Yes,No,TN-SCH-07
+55,Female,212619,2.99,Leased,Vegetables,Conventional,Nagapattinam,Borewell,Small,MBC,Yes,Yes,No,TN-SCH-01
+46,Male,48470,0.46,Leased,Cotton,Conventional,Dindigul,Borewell,Marginal,OBC,Yes,No,No,TN-SCH-09
+53,Male,105061,2.88,Leased,Coconut,Organic,Ramanathapuram,Rainfed,Small,SC,Yes,Yes,No,TN-SCH-04
+37,Male,147407,1.44,Owned,Paddy,Conventional,Vellore,Drip,Marginal,MBC,Yes,No,No,TN-SCH-08
+42,Female,201881,3.73,Owned,Paddy,Organic,Coimbatore,Rainfed,Small,OBC,No,No,Yes,TN-SCH-01
+56,Male,106907,1.03,Leased,Sugarcane,Organic,Coimbatore,Open Well,Marginal,SC,No,Yes,No,TN-SCH-09
+43,Female,347450,9.51,Owned,Sugarcane,Conventional,Krishnagiri,Open Well,Medium,General,Yes,No,Yes,TN-SCH-02
+68,Female,303953,6.0,Leased,Paddy,Conventional,Pudukkottai,Sprinkler,Medium,MBC,Yes,No,No,TN-SCH-06
+43,Male,239744,6.45,Owned,Millets,Conventional,Krishnagiri,Canal,Medium,MBC,No,No,No,TN-SCH-02
+50,Female,80757,1.39,Leased,Sugarcane,Conventional,Ramanathapuram,Rainfed,Marginal,MBC,No,No,Yes,TN-SCH-06
+59,Male,104988,0.24,Leased,Paddy,Conventional,Vellore,Rainfed,Marginal,MBC,No,No,No,TN-SCH-04
+30,Female,101259,4.01,Leased,Millets,Conventional,Erode,Sprinkler,Small,MBC,Yes,No,No,TN-SCH-11
+26,Female,55793,2.13,Shared,Paddy,Conventional,Sivaganga,Sprinkler,Marginal,General,Yes,Yes,No,TN-SCH-07
+29,Female,224977,8.45,Owned,Flowers,Conventional,Cuddalore,Canal,Medium,OBC,No,Yes,No,TN-SCH-07
+63,Female,60701,1.88,Owned,Coconut,Conventional,Nagapattinam,Drip,Marginal,MBC,Yes,Yes,No,TN-SCH-01
+41,Female,98394,2.12,Owned,Cotton,Conventional,Dharmapuri,Sprinkler,Marginal,OBC,Yes,Yes,No,TN-SCH-03
+78,Male,337478,7.96,Owned,Vegetables,Conventional,Krishnagiri,Open Well,Medium,MBC,No,Yes,No,TN-SCH-06
+41,Male,102579,0.76,Owned,Banana,Conventional,Cuddalore,Borewell,Marginal,SC,Yes,Yes,No,TN-SCH-07
+50,Male,103232,0.96,Owned,Pulses,Organic,Ramanathapuram,Rainfed,Marginal,SC,No,Yes,No,TN-SCH-01
+66,Female,578394,18.34,Owned,Flowers,Conventional,Dharmapuri,Sprinkler,Large,OBC,Yes,Yes,Yes,TN-SCH-03
+72,Male,837127,22.11,Owned,Sugarcane,Organic,Coimbatore,Open Well,Large,OBC,Yes,No,Yes,TN-SCH-06
+72,Male,164901,6.42,Leased,Vegetables,Natural,Vellore,Borewell,Medium,SC,Yes,Yes,No,TN-SCH-03
+62,Female,38486,2.26,Owned,Sugarcane,Conventional,Tirunelveli,Canal,Marginal,OBC,No,No,Yes,TN-SCH-01
+60,Female,197930,6.88,Owned,Groundnut,Conventional,Madurai,Canal,Medium,OBC,Yes,No,Yes,TN-SCH-01
+55,Female,865966,11.53,Leased,Pulses,Integrated,Pudukkottai,Drip,Large,OBC,No,No,No,TN-SCH-02
