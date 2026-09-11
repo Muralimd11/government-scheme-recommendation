@@ -70,11 +70,11 @@ export const FarmerDashboardPage: React.FC = () => {
 
             <div className="flex gap-2">
               <Link
-                to="/farmer/eligibility"
-                className="bg-[#2E7D32] hover:bg-green-800 text-white px-4 py-2 rounded text-xs font-bold transition flex items-center gap-1.5 shadow-xs"
+                to="/farmer/profile"
+                className="bg-white hover:bg-neutral-50 text-[#003366] border border-[#003366] px-3.5 py-1.5 rounded text-xs font-semibold transition flex items-center gap-1.5 shadow-xs"
               >
-                <EligibilityIcon style={{ fontSize: 16 }} />
-                <span>{t("checkEligibility")}</span>
+                <TuneIcon style={{ fontSize: 16 }} />
+                <span>{language === "ta" ? "சுயவிவரத்தை திருத்து" : "Update Farm Profile"}</span>
               </Link>
             </div>
           </div>

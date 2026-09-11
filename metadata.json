@@ -1,6 +1,6 @@
 {
-  "name": "TN Farmer Schemes AI",
-  "description": "AI-Powered Government Scheme Recommendation System for Farmers in Tamil Nadu",
+  "name": "FARMERS FRIEND",
+  "description": "AI-Powered Scheme Recommendation and Eligibility System for Farmers",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

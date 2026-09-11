@@ -2,10 +2,10 @@ export type Language = "en" | "ta";
 
 export const translations = {
   en: {
-    stateGovName: "Government of Tamil Nadu",
+    stateGovName: "FARMERS FRIEND",
     departmentName: "Department of Agriculture and Farmers Welfare",
-    projectTitle: "AI-Powered Government Scheme Recommendation System for Farmers",
-    projectShortTitle: "TN Farmer Schemes AI",
+    projectTitle: "FARMERS FRIEND - AI-Powered Government Scheme Recommendation System",
+    projectShortTitle: "FARMERS FRIEND",
     home: "Home",
     schemes: "Explore Schemes",
     checkEligibility: "Check Eligibility",
@@ -82,10 +82,10 @@ export const translations = {
     helplineText: "Kisan Call Centre Toll-Free: 1800-180-1551 | Uzhavan Helpline: 155304"
   },
   ta: {
-    stateGovName: "தமிழ்நாடு அரசு",
+    stateGovName: "உழவர் தோழன் (FARMERS FRIEND)",
     departmentName: "வேளாண்மை மற்றும் உழவர் நலத்துறை",
-    projectTitle: "விவசாயிகளுக்கான செயற்கை நுண்ணறிவு அரசு நலத்திட்ட பரிந்துரை அமைப்பு",
-    projectShortTitle: "தமிழ்நாடு உழவர் நலத்திட்டங்கள்",
+    projectTitle: "உழவர் தோழன் - விவசாயிகளுக்கான செயற்கை நுண்ணறிவு அரசு நலத்திட்ட பரிந்துரை அமைப்பு",
+    projectShortTitle: "உழவர் தோழன்",
     home: "முகப்பு",
     schemes: "அரசு திட்டங்கள்",
     checkEligibility: "தகுதி சரிபார்த்தல்",

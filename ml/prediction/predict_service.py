@@ -29,22 +29,49 @@ def predict_scheme_probabilities(farmer_data):
     """
     pipeline = get_model()
 
-    # Normalize defaults
+    # Normalize defaults with backward compatibility and new structured fields
+    has_livestock = (
+        str(farmer_data.get("livestock", farmer_data.get("livestockOwnership", "No"))).lower() in ["yes", "true", "1"]
+        or farmer_data.get("dairyFarming") == "Yes"
+        or farmer_data.get("goatSheepFarming") == "Yes"
+        or farmer_data.get("poultryFarming") == "Yes"
+        or float(farmer_data.get("cowCount", 0)) > 0
+        or float(farmer_data.get("goatCount", 0)) > 0
+    )
+
+    has_horticulture = (
+        str(farmer_data.get("horticulture", farmer_data.get("horticultureActivity", "No"))).lower() in ["yes", "true", "1"]
+        or (farmer_data.get("horticultureType") and farmer_data.get("horticultureType") != "None")
+        or float(farmer_data.get("horticultureArea", 0)) > 0
+    )
+
+    machinery_list = farmer_data.get("machineryList", [])
+    has_machinery = (
+        str(farmer_data.get("machinery", farmer_data.get("machineryOwnership", "No"))).lower() in ["yes", "true", "1"]
+        or (isinstance(machinery_list, list) and len(machinery_list) > 0)
+    )
+
+    land_ownership = farmer_data.get("landOwnership", "Owned")
+    if farmer_data.get("landOwnershipType") in ["Leased Land", "Tenant Farmer"]:
+        land_ownership = "Leased"
+    elif farmer_data.get("landOwnershipType") == "Sharecropper":
+        land_ownership = "Shared"
+
     row = {
         "age": float(farmer_data.get("age", 45)),
         "gender": farmer_data.get("gender", "Male"),
         "income": float(farmer_data.get("income", farmer_data.get("annualIncome", 120000))),
         "landSize": float(farmer_data.get("landSize", 2.0)),
-        "landOwnership": farmer_data.get("landOwnership", "Owned"),
-        "cropType": farmer_data.get("cropType", "Paddy"),
+        "landOwnership": land_ownership,
+        "cropType": farmer_data.get("cropType", farmer_data.get("primaryCrop", "Paddy")),
         "farmingType": farmer_data.get("farmingType", "Conventional"),
         "district": farmer_data.get("district", "Thanjavur"),
-        "irrigationType": farmer_data.get("irrigationType", "Canal"),
+        "irrigationType": farmer_data.get("irrigationType", farmer_data.get("irrigationSource", "Canal")),
         "farmerType": farmer_data.get("farmerType", "Small"),
         "socialCategory": farmer_data.get("socialCategory", "OBC"),
-        "livestock": "Yes" if str(farmer_data.get("livestock", farmer_data.get("livestockOwnership", "No"))).lower() in ["yes", "true", "1"] else "No",
-        "horticulture": "Yes" if str(farmer_data.get("horticulture", farmer_data.get("horticultureActivity", "No"))).lower() in ["yes", "true", "1"] else "No",
-        "machinery": "Yes" if str(farmer_data.get("machinery", farmer_data.get("machineryOwnership", "No"))).lower() in ["yes", "true", "1"] else "No",
+        "livestock": "Yes" if has_livestock else "No",
+        "horticulture": "Yes" if has_horticulture else "No",
+        "machinery": "Yes" if has_machinery else "No",
     }
 
     df = pd.DataFrame([row])

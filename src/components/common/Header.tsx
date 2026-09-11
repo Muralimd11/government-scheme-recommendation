@@ -33,9 +33,8 @@ export const Header: React.FC = () => {
   const navLinks = [
     { label: t("home"), path: "/" },
     { label: t("schemes"), path: "/schemes" },
-    { label: t("checkEligibility"), path: "/eligibility" },
-    { label: t("about"), path: "/about" },
-    { label: t("help"), path: "/help" }
+    ...(!isFarmer ? [{ label: t("checkEligibility"), path: "/eligibility" }] : []),
+    ...(isFarmer ? [{ label: language === "ta" ? "பரிந்துரைகள்" : "Recommendations", path: "/recommendations" }] : [])
   ];
 
   return (
@@ -44,8 +43,8 @@ export const Header: React.FC = () => {
       <div className="bg-[#003366] text-white text-xs px-4 py-1.5">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
           <div className="flex items-center gap-3">
-            <span className="font-semibold tracking-wide">
-              {language === "ta" ? "தமிழ்நாடு அரசு" : "GOVERNMENT OF TAMIL NADU"}
+            <span className="font-bold tracking-wider text-amber-300">
+              {language === "ta" ? "உழவர் தோழன் (FARMERS FRIEND)" : "FARMERS FRIEND"}
             </span>
             <span className="hidden sm:inline text-neutral-300">|</span>
             <span className="hidden sm:inline text-neutral-200">
@@ -72,51 +71,66 @@ export const Header: React.FC = () => {
       </div>
 
       {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        {/* Logo & Portal Identity */}
-        <Link to="/" className="flex items-center gap-3 group">
-          <TamilNaduEmblem size={52} />
+      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+        {/* Left: Logo & Portal Identity */}
+        <Link to="/" className="flex items-center gap-3 group shrink-0">
+          <TamilNaduEmblem size={50} />
           <div className="flex flex-col">
-            <span className="text-[#003366] font-bold text-lg leading-tight group-hover:text-blue-900 transition">
-              {language === "ta"
-                ? "உழவர் நலத்திட்ட பரிந்துரை தளம்"
-                : "TN Farmer Schemes AI"}
+            <span className="text-[#003366] font-black text-lg leading-tight group-hover:text-blue-900 transition flex items-center gap-2">
+              <span>{language === "ta" ? "உழவர் தோழன்" : "FARMERS FRIEND"}</span>
+              <span className="text-[11px] font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-300">
+                AI
+              </span>
             </span>
             <span className="text-neutral-600 text-xs font-medium">
               {language === "ta"
-                ? "செயற்கை நுண்ணறிவு அடிப்படையிலான அரசு நலத்திட்டங்கள்"
-                : "AI-Powered Government Scheme Recommendation System"}
+                ? "விவசாயிகளுக்கான உழவர் நலத்திட்ட வழிகாட்டி"
+                : "Tamil Nadu Farmer Scheme Recommendation Portal"}
             </span>
           </div>
         </Link>
 
-        {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-1">
-          {navLinks.map((link) => {
-            const isActive = location.pathname === link.path;
-            return (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`px-3 py-2 rounded text-sm font-medium transition ${
-                  isActive
-                    ? "text-[#003366] bg-blue-50 font-semibold"
-                    : "text-neutral-700 hover:text-[#003366] hover:bg-neutral-50"
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
+        {/* Right: Consolidated Navigation Bar & Action Controls */}
+        <div className="hidden lg:flex items-center gap-4 ml-auto">
+          {/* Navigation Links moved to the right */}
+          <nav className="flex items-center gap-1 bg-slate-100/90 p-1 rounded-xl border border-slate-200/90">
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.path;
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition whitespace-nowrap ${
+                    isActive
+                      ? "text-[#003366] bg-white shadow-xs font-semibold border border-slate-200"
+                      : "text-slate-700 hover:text-[#003366] hover:bg-slate-200/70"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
 
-        {/* Auth Buttons / Profile */}
-        <div className="hidden md:flex items-center gap-3">
+          <div className="h-6 w-px bg-slate-200" />
+
+          {/* Profile / Auth Controls */}
           {isAuthenticated && user ? (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
+              <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="font-semibold text-slate-800 max-w-[130px] truncate">
+                  {user.fullName || (isAdmin ? "Admin Officer" : "Farmer")}
+                </span>
+                <span className="text-slate-400">|</span>
+                <span className="text-slate-500 font-medium text-[11px] uppercase tracking-wider">
+                  {user.role}
+                </span>
+              </div>
+
               <Link
                 to={isAdmin ? "/admin/dashboard" : "/farmer/dashboard"}
-                className="flex items-center gap-1.5 bg-blue-50 text-[#003366] hover:bg-blue-100 border border-blue-200 px-3 py-1.5 rounded text-sm font-medium transition"
+                className="flex items-center gap-1.5 bg-[#003366] hover:bg-blue-900 text-white px-3.5 py-2 rounded-lg text-sm font-semibold shadow-xs transition"
               >
                 <DashboardIcon style={{ fontSize: 18 }} />
                 <span>{isAdmin ? "Admin Portal" : t("dashboard")}</span>
@@ -124,26 +138,27 @@ export const Header: React.FC = () => {
 
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-1 text-neutral-600 hover:text-red-700 px-2.5 py-1.5 text-sm transition"
+                className="flex items-center justify-center text-slate-600 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg text-sm transition"
                 title="Logout"
               >
                 <LogoutIcon style={{ fontSize: 18 }} />
-                <span>{t("logout")}</span>
+                <span className="sr-only">{t("logout")}</span>
               </button>
             </div>
           ) : (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               <Link
                 to="/login"
-                className="text-[#003366] hover:bg-neutral-100 px-3 py-1.5 rounded text-sm font-semibold border border-[#003366] transition"
+                className="text-[#003366] hover:bg-slate-50 px-3.5 py-1.5 rounded-lg text-sm font-semibold border border-slate-300 transition"
               >
                 {t("login")}
               </Link>
               <Link
                 to="/register"
-                className="bg-[#2E7D32] hover:bg-green-800 text-white px-3.5 py-1.5 rounded text-sm font-semibold shadow-sm transition"
+                className="inline-flex items-center gap-1.5 bg-[#2E7D32] hover:bg-green-800 text-white px-4 py-1.5 rounded-lg text-sm font-semibold shadow-xs transition"
               >
-                {t("register")}
+                <AgriIcon style={{ fontSize: 18 }} />
+                <span>{t("register")}</span>
               </Link>
             </div>
           )}

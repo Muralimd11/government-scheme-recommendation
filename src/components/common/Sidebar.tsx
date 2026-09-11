@@ -38,12 +38,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ type }) => {
   const farmerNavItems = [
     { label: t("dashboard"), path: "/farmer/dashboard", icon: <DashboardIcon fontSize="small" /> },
     { label: t("myProfile"), path: "/farmer/profile", icon: <PersonIcon fontSize="small" /> },
-    { label: t("checkEligibility"), path: "/farmer/eligibility", icon: <EligibilityIcon fontSize="small" /> },
     { label: language === "ta" ? "பரிந்துரைக்கப்பட்ட திட்டங்கள்" : "Recommended Schemes", path: "/recommendations", icon: <RecommendIcon fontSize="small" /> },
     { label: t("applications"), path: "/farmer/applications", icon: <ApplicationIcon fontSize="small" /> },
     { label: t("documents"), path: "/farmer/documents", icon: <DocumentIcon fontSize="small" /> },
-    { label: t("notifications"), path: "/farmer/notifications", icon: <NotificationIcon fontSize="small" /> },
-    { label: t("help"), path: "/help", icon: <HelpIcon fontSize="small" /> }
+    { label: t("notifications"), path: "/farmer/notifications", icon: <NotificationIcon fontSize="small" /> }
   ];
 
   const adminNavItems = [

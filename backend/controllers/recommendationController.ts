@@ -10,23 +10,11 @@ export async function getRecommendations(req: AuthRequest, res: Response): Promi
 
     // If user is authenticated and fields aren't supplied in body, merge with user's db profile
     if (req.user) {
-      const user = await User.findById(req.user._id).lean();
+      const user = await User.findById(req.user._id).select("-passwordHash").lean();
       if (user) {
         profileData = {
-          age: profileData.age || user.age,
-          gender: profileData.gender || user.gender,
-          district: profileData.district || user.district,
-          landSize: profileData.landSize !== undefined ? profileData.landSize : user.landSize,
-          landOwnership: profileData.landOwnership || user.landOwnership,
-          cropType: profileData.cropType || user.cropType,
-          farmingType: profileData.farmingType || user.farmingType,
-          irrigationType: profileData.irrigationType || user.irrigationType,
-          farmerType: profileData.farmerType || user.farmerType,
-          annualIncome: profileData.annualIncome !== undefined ? profileData.annualIncome : user.annualIncome,
-          socialCategory: profileData.socialCategory || user.socialCategory,
-          livestockOwnership: profileData.livestockOwnership !== undefined ? profileData.livestockOwnership : user.livestockOwnership,
-          horticultureActivity: profileData.horticultureActivity !== undefined ? profileData.horticultureActivity : user.horticultureActivity,
-          machineryOwnership: profileData.machineryOwnership !== undefined ? profileData.machineryOwnership : user.machineryOwnership
+          ...user,
+          ...req.body
         };
       }
     }

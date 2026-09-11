@@ -62,7 +62,7 @@ export default function App() {
                   path="/farmer/eligibility"
                   element={
                     <ProtectedRoute requiredRole="FARMER">
-                      <EligibilityPage />
+                      <Navigate to="/recommendations" replace />
                     </ProtectedRoute>
                   }
                 />

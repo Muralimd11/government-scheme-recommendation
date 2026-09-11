@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
+import { useAuth } from "../context/AuthContext";
+import heroIllustration from "../assets/images/scheme_citizens_hero_1789015037268.jpg";
 import {
-  Search as SearchIcon,
   Psychology as AIIcon,
   FactCheck as CheckIcon,
   TrackChanges as TrackIcon,
@@ -18,17 +19,8 @@ import {
 
 export const LandingPage: React.FC = () => {
   const { t, language } = useLanguage();
+  const { isAuthenticated, isFarmer } = useAuth();
   const navigate = useNavigate();
-  const [quickSearch, setQuickSearch] = useState("");
-
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (quickSearch.trim()) {
-      navigate(`/schemes?search=${encodeURIComponent(quickSearch.trim())}`);
-    } else {
-      navigate("/schemes");
-    }
-  };
 
   const services = [
     {
@@ -42,32 +34,23 @@ export const LandingPage: React.FC = () => {
       title: t("service2Title"),
       desc: t("service2Desc"),
       icon: <AIIcon className="text-[#2E7D32]" style={{ fontSize: 36 }} />,
-      link: "/eligibility",
-      cta: language === "ta" ? "AI பரிந்துரை பெற" : "Get AI Advice"
+      link: "/recommendations",
+      cta: language === "ta" ? "AI பரிந்துரை பெற" : "View Recommendations"
     },
     {
-      title: t("service3Title"),
-      desc: t("service3Desc"),
+      title: language === "ta" ? "விவசாயி சுயவிவரம்" : "Farmer Profile & Attributes",
+      desc: language === "ta" ? "உங்கள் பயிர், நிலம், மண் மற்றும் நலத்திட்ட விவரங்களை நிர்வகியுங்கள்." : "Keep your agricultural parameters, soil details, and livestock records up to date.",
       icon: <CheckIcon className="text-[#003366]" style={{ fontSize: 36 }} />,
-      link: "/eligibility",
-      cta: language === "ta" ? "தகுதி சரிபார்க்க" : "Check Now"
+      link: isAuthenticated ? (isFarmer ? "/farmer/profile" : "/admin/farmers") : "/login",
+      cta: isAuthenticated ? (language === "ta" ? "சுயவிவரம் பார்க்க" : "View Profile") : (language === "ta" ? "உள்நுழைய" : "Login")
     },
     {
       title: t("service4Title"),
       desc: t("service4Desc"),
       icon: <TrackIcon className="text-[#2E7D32]" style={{ fontSize: 36 }} />,
-      link: "/farmer/applications",
+      link: isAuthenticated ? "/farmer/applications" : "/login",
       cta: language === "ta" ? "நிலையை அறிய" : "Track Status"
     }
-  ];
-
-  const popularTags = [
-    { label: language === "ta" ? "நெல் சாகுபடி" : "Paddy Schemes", query: "paddy" },
-    { label: language === "ta" ? "சொட்டு நீர் பாசனம்" : "Micro Irrigation", query: "irrigation" },
-    { label: language === "ta" ? "சூரிய மின் மோட்டார்" : "Solar Pumps", query: "solar" },
-    { label: language === "ta" ? "டிராக்டர் மானியம்" : "Farm Machinery", query: "mechanization" },
-    { label: language === "ta" ? "தோட்டக்கலை" : "Horticulture", query: "horticulture" },
-    { label: language === "ta" ? "பயிர் காப்பீடு" : "Crop Insurance", query: "insurance" }
   ];
 
   return (
@@ -86,69 +69,95 @@ export const LandingPage: React.FC = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="bg-white border-b border-neutral-200 py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-[#2E7D32] border border-green-200 mb-4">
-              <VerifiedIcon style={{ fontSize: 14 }} />
-              {language === "ta" ? "தமிழ்நாடு அரசு உழவர் நலத்துறை" : "Tamil Nadu Agriculture & Farmers Welfare"}
-            </span>
+      <section className="bg-white border-b border-neutral-200 py-10 md:py-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Column: Information, Action CTAs, and Verified Metrics */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-emerald-50 text-emerald-800 border border-emerald-200">
+                <VerifiedIcon style={{ fontSize: 15 }} className="text-emerald-700" />
+                <span>
+                  {language === "ta"
+                    ? "தமிழ்நாடு அரசு • உழவர் நல சேவை"
+                    : "GOVERNMENT OF TAMIL NADU • CITIZEN SERVICE"}
+                </span>
+              </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#003366] leading-tight mb-4">
-              {t("heroTitle")}
-            </h1>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#003366] leading-tight tracking-tight">
+                {t("heroTitle")}
+              </h1>
 
-            <p className="text-base sm:text-lg text-neutral-700 leading-relaxed mb-8">
-              {t("heroSubtitle")}
-            </p>
+              <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-2xl font-normal">
+                {language === "ta"
+                  ? "தமிழ்நாடு குடிமக்களுக்கான தனிப்பயனாக்கப்பட்ட AI பரிந்துரைகள். உங்கள் தகுதியை சில நிமிடங்களில் தமிழ் அல்லது ஆங்கிலத்தில் சரிபார்க்கவும்."
+                  : "AI-powered personalized recommendations for Tamil Nadu citizens. Check your eligibility in minutes, in English or தமிழ்."}
+              </p>
 
-            {/* Quick Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 mb-10">
-              <Link
-                to="/eligibility"
-                className="bg-[#2E7D32] hover:bg-green-800 text-white px-6 py-3.5 rounded font-bold text-base shadow-sm transition flex items-center gap-2"
-              >
-                <span>{t("checkEligibilityBtn")}</span>
-                <ArrowIcon fontSize="small" />
-              </Link>
-              <Link
-                to="/schemes"
-                className="bg-white hover:bg-neutral-50 text-[#003366] border-2 border-[#003366] px-6 py-3.5 rounded font-bold text-base transition"
-              >
-                {t("exploreSchemesBtn")}
-              </Link>
+              {/* Quick Action Buttons */}
+              <div className="flex flex-wrap items-center gap-4 pt-1">
+                <Link
+                  to={isAuthenticated ? (isFarmer ? "/recommendations" : "/admin/dashboard") : "/eligibility"}
+                  className="bg-[#003366] hover:bg-blue-900 text-white px-6 py-3.5 rounded-lg font-bold text-sm sm:text-base shadow-sm hover:shadow transition flex items-center gap-2"
+                >
+                  <span>{language === "ta" ? "தகுதியை சரிபார்க்க" : "Check Eligibility"}</span>
+                  <ArrowIcon fontSize="small" />
+                </Link>
+                <Link
+                  to="/schemes"
+                  className="bg-white hover:bg-neutral-50 text-neutral-800 border border-neutral-300 px-6 py-3.5 rounded-lg font-bold text-sm sm:text-base transition"
+                >
+                  <span>{language === "ta" ? "மேலும் அறிய" : "Learn More"}</span>
+                </Link>
+                {!isAuthenticated && (
+                  <Link
+                    to="/login"
+                    className="text-[#003366] hover:underline px-3 py-2 text-sm font-semibold transition"
+                  >
+                    {t("login")} →
+                  </Link>
+                )}
+              </div>
+
+              {/* Verified Metrics Counter Bar */}
+              <div className="pt-6 border-t border-neutral-200 grid grid-cols-3 gap-4 sm:gap-6 max-w-lg">
+                <div>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-[#003366]">380+</div>
+                  <div className="text-xs sm:text-sm text-neutral-600 font-medium mt-0.5">
+                    {language === "ta" ? "திட்டங்கள்" : "Schemes listed"}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-[#003366]">38</div>
+                  <div className="text-xs sm:text-sm text-neutral-600 font-medium mt-0.5">
+                    {language === "ta" ? "மாவட்டங்கள்" : "Districts covered"}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-[#003366]">1.2 L</div>
+                  <div className="text-xs sm:text-sm text-neutral-600 font-medium mt-0.5">
+                    {language === "ta" ? "பயனாளிகள்" : "Citizens assisted"}
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Integrated Search Bar */}
-            <form onSubmit={handleSearchSubmit} className="flex items-center gap-2 bg-neutral-50 p-2 rounded-lg border border-neutral-300 max-w-2xl">
-              <SearchIcon className="text-neutral-500 ml-2" />
-              <input
-                type="text"
-                value={quickSearch}
-                onChange={(e) => setQuickSearch(e.target.value)}
-                placeholder={t("searchPlaceholder")}
-                className="w-full bg-transparent text-sm focus:outline-none px-2 text-neutral-900"
-              />
-              <button
-                type="submit"
-                className="bg-[#003366] hover:bg-blue-900 text-white px-5 py-2 rounded text-sm font-semibold transition shrink-0 cursor-pointer"
-              >
-                {t("searchBtn")}
-              </button>
-            </form>
-
-            {/* Popular Search Pills */}
-            <div className="flex flex-wrap items-center gap-2 mt-4 text-xs text-neutral-600">
-              <span className="font-semibold text-neutral-700">{language === "ta" ? "விரைவு தேடல்:" : "Popular Categories:"}</span>
-              {popularTags.map((tag) => (
-                <button
-                  key={tag.query}
-                  onClick={() => navigate(`/schemes?search=${tag.query}`)}
-                  className="bg-white hover:bg-blue-50 text-[#003366] border border-neutral-300 px-2.5 py-1 rounded transition cursor-pointer"
-                >
-                  {tag.label}
-                </button>
-              ))}
+            {/* Right Column: Hero Illustration Card Covering Whitespace */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-md lg:max-w-none bg-white rounded-2xl border border-neutral-200/90 p-2.5 sm:p-3.5 shadow-md overflow-hidden group hover:shadow-lg transition">
+                <img
+                  src={heroIllustration}
+                  alt="Tamil Nadu Government Scheme Beneficiaries and Citizens"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-auto rounded-xl object-cover"
+                />
+                <div className="mt-2.5 px-2 py-1 flex items-center justify-between text-[11px] text-neutral-500 font-medium">
+                  <span className="flex items-center gap-1">
+                    <VerifiedIcon style={{ fontSize: 13 }} className="text-emerald-600" />
+                    <span>{language === "ta" ? "தமிழ்நாடு உழவர் நலத்துறை" : "Govt of Tamil Nadu • Citizen First"}</span>
+                  </span>
+                  <span className="text-neutral-400">AI Scheme Sahayam</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -246,26 +255,24 @@ export const LandingPage: React.FC = () => {
 
       {/* Quick Help & Grievance banner */}
       <section className="py-10 max-w-7xl mx-auto px-4">
-        <div className="bg-[#003366] text-white rounded-lg p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-[#003366] text-white rounded-xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
           <div className="flex items-center gap-4">
-            <SupportIcon style={{ fontSize: 48 }} className="text-green-400 shrink-0" />
+            <SupportIcon style={{ fontSize: 44 }} className="text-green-400 shrink-0" />
             <div>
               <h3 className="text-xl font-bold">
                 {language === "ta" ? "விவசாயிகளுக்கு உடனடி உதவி தேவையா?" : "Need Assistance with Scheme Eligibility?"}
               </h3>
               <p className="text-sm text-neutral-200 mt-1">
                 {language === "ta"
-                  ? "கிசான் அழைப்பு மையத்தின் இலவச எண்: 1800-180-1551 அல்லது அருகிலுள்ள வேளாண் விரிவாக்க மையத்தை அணுகவும்."
-                  : "Contact Kisan Call Centre Toll-Free 1800-180-1551 (24x7) or visit your Block Agricultural Extension Centre."}
+                  ? "கிசான் அழைப்பு மையத்தின் இலவச எண்: 1800-180-1551 (24x7) அல்லது உழவன் உதவி எண் 155304 அணுகவும்."
+                  : "Contact Kisan Call Centre Toll-Free 1800-180-1551 (24x7) or Uzhavan Helpline 155304 for immediate guidance."}
               </p>
             </div>
           </div>
-          <Link
-            to="/help"
-            className="bg-white text-[#003366] hover:bg-neutral-100 font-bold px-6 py-3 rounded text-sm shrink-0 transition"
-          >
-            {language === "ta" ? "அலுவலர் தொடர்பு விவரங்கள்" : "Contact Extension Officers"}
-          </Link>
+          <div className="flex items-center gap-3 bg-[#002244] border border-blue-900 px-5 py-3 rounded-lg text-sm text-neutral-200 shrink-0">
+            <span className="text-xs uppercase tracking-wider text-green-400 font-semibold">Toll-Free 24x7:</span>
+            <span className="text-white font-bold text-base">1800-180-1551</span>
+          </div>
         </div>
       </section>
     </div>

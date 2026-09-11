@@ -1,315 +1,342 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useLanguage } from "../context/LanguageContext";
 import { api } from "../services/api";
+import { Sidebar } from "../components/common/Sidebar";
+import { ALL_TN_DISTRICTS } from "../data/tamilNaduLocations";
 import {
-  FactCheck as CheckIcon,
-  Agriculture as AgriIcon,
-  Person as PersonIcon,
-  AccountBalanceWallet as MoneyIcon,
-  Groups as GroupIcon,
-  CheckCircle as VerifyIcon,
-  Psychology as AIIcon,
-  HelpOutlined as HelpIcon
-} from "@mui/icons-material";
-
-const TN_DISTRICTS = [
-  "Ariyalur", "Chengalpattu", "Chennai", "Coimbatore", "Cuddalore",
-  "Dharmapuri", "Dindigul", "Erode", "Kallakurichi", "Kanchipuram",
-  "Kanyakumari", "Karur", "Krishnagiri", "Madurai", "Mayiladuthurai",
-  "Nagapattinam", "Namakkal", "Nilgiris", "Perambalur", "Pudukkottai",
-  "Ramanathapuram", "Ranipet", "Salem", "Sivaganga", "Tenkasi",
-  "Thanjavur", "Theni", "Thoothukudi", "Tiruchirappalli", "Tirunelveli",
-  "Tirupathur", "Tiruppur", "Tiruvallur", "Tiruvannamalai", "Tiruvarur",
-  "Vellore", "Viluppuram", "Virudhunagar"
-];
-
-const CROPS = [
-  "Paddy", "Sugarcane", "Banana", "Coconut", "Cotton", "Millets",
-  "Pulses", "Vegetables", "Flowers", "Groundnut", "Spices", "Oilseeds"
-];
+  ShieldCheck,
+  CheckCircle2,
+  XCircle,
+  AlertCircle,
+  ArrowRight,
+  SlidersHorizontal,
+  Sparkles,
+  HelpCircle,
+  RefreshCw,
+  ExternalLink,
+  ChevronRight,
+  UserCheck,
+  Building
+} from "lucide-react";
 
 export const EligibilityPage: React.FC = () => {
-  const { user } = useAuth();
-  const { t, language } = useLanguage();
+  const { user, isAuthenticated, isFarmer } = useAuth();
+  const { language } = useLanguage();
   const navigate = useNavigate();
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  // Form state
-  const [formData, setFormData] = useState({
-    fullName: user?.fullName || "",
-    age: user?.age || 42,
-    gender: user?.gender || "Male",
-    district: user?.district || "Thanjavur",
-    state: "Tamil Nadu",
-    farmerStatus: user?.farmerStatus || "Owner",
-    landOwnership: user?.landOwnership || "Owned",
-    landSize: user?.landSize !== undefined ? user.landSize : 3.5,
-    landType: user?.landType || "Wet Land (Nanjai)",
-    cropType: user?.cropType || "Paddy",
-    farmingType: user?.farmingType || "Conventional",
-    irrigationType: user?.irrigationType || "Canal",
-    farmerType: user?.farmerType || "Small",
-    annualIncome: user?.annualIncome || 120000,
-    socialCategory: user?.socialCategory || "MBC",
-    livestockOwnership: user?.livestockOwnership || false,
-    horticultureActivity: user?.horticultureActivity || false,
-    machineryOwnership: user?.machineryOwnership || false,
-    declaration: true
+  // If unauthenticated: Quick criteria inputs
+  const [quickCriteria, setQuickCriteria] = useState({
+    district: "Thanjavur",
+    landSize: 2.5,
+    cropType: "Paddy",
+    socialCategory: "OBC",
+    irrigationType: "Canal",
+    annualIncome: 120000
   });
 
-  // Pre-populate if user logs in
-  useEffect(() => {
-    if (user) {
-      setFormData((prev) => ({
-        ...prev,
-        fullName: user.fullName || prev.fullName,
-        age: user.age || prev.age,
-        gender: user.gender || prev.gender,
-        district: user.district || prev.district,
-        landSize: user.landSize !== undefined ? user.landSize : prev.landSize,
-        cropType: user.cropType || prev.cropType,
-        farmerType: user.farmerType || prev.farmerType,
-        annualIncome: user.annualIncome || prev.annualIncome,
-        socialCategory: user.socialCategory || prev.socialCategory
-      }));
-    }
-  }, [user]);
+  // What-if simulation parameters (if logged in)
+  const [simulatedParams, setSimulatedParams] = useState({
+    dripInstalled: false,
+    solarPumpRequired: true,
+    horticultureCrop: "None",
+    organicFarming: false,
+    livestockAdded: false
+  });
 
-  // Handle auto-classification of farmer type based on land size
-  const handleLandSizeChange = (size: number) => {
-    let calculatedType: "Marginal" | "Small" | "Medium" | "Large" = "Small";
-    if (size <= 2.5) {
-      calculatedType = "Marginal";
-    } else if (size <= 5.0) {
-      calculatedType = "Small";
-    } else if (size <= 10.0) {
-      calculatedType = "Medium";
-    } else {
-      calculatedType = "Large";
-    }
-    setFormData((prev) => ({
-      ...prev,
-      landSize: size,
-      farmerType: calculatedType
-    }));
-  };
+  const [simulatedResults, setSimulatedResults] = useState<any[]>([]);
+  const [evaluating, setEvaluating] = useState(false);
+  const [evaluated, setEvaluated] = useState(false);
 
-  // Quick Preset Profiles for seamless instant testing
-  const loadPreset = (presetName: string) => {
-    if (presetName === "paddy") {
-      setFormData({
-        fullName: "Muthuvel K",
-        age: 45,
-        gender: "Male",
-        district: "Thanjavur",
-        state: "Tamil Nadu",
-        farmerStatus: "Owner",
-        landOwnership: "Owned",
-        landSize: 3.0,
-        landType: "Wet Land (Nanjai)",
-        cropType: "Paddy",
-        farmingType: "Conventional",
-        irrigationType: "Canal",
-        farmerType: "Small",
-        annualIncome: 140000,
-        socialCategory: "MBC",
-        livestockOwnership: true,
-        horticultureActivity: false,
-        machineryOwnership: false,
-        declaration: true
-      });
-    } else if (presetName === "horticulture") {
-      setFormData({
-        fullName: "Kavitha Selvam",
-        age: 38,
-        gender: "Female",
-        district: "Dindigul",
-        state: "Tamil Nadu",
-        farmerStatus: "Owner",
-        landOwnership: "Owned",
-        landSize: 1.8,
-        landType: "Garden Land (Thottam)",
-        cropType: "Vegetables",
-        farmingType: "Organic",
-        irrigationType: "Drip / Sprinkler",
-        farmerType: "Marginal",
-        annualIncome: 95000,
-        socialCategory: "OBC",
-        livestockOwnership: true,
-        horticultureActivity: true,
-        machineryOwnership: false,
-        declaration: true
-      });
-    } else if (presetName === "dryland") {
-      setFormData({
-        fullName: "Arumugam P",
-        age: 52,
-        gender: "Male",
-        district: "Ramanathapuram",
-        state: "Tamil Nadu",
-        farmerStatus: "Owner",
-        landOwnership: "Owned",
-        landSize: 4.5,
-        landType: "Dry Land (Punjai)",
-        cropType: "Pulses",
-        farmingType: "Conventional",
-        irrigationType: "Rainfed",
-        farmerType: "Small",
-        annualIncome: 80000,
-        socialCategory: "SC",
-        livestockOwnership: false,
-        horticultureActivity: false,
-        machineryOwnership: false,
-        declaration: true
-      });
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.declaration) {
-      setError("Please check the declaration box to proceed.");
-      return;
-    }
-
+  // If user is authenticated, run evaluation using their real profile or simulation
+  const runEvaluation = async (simulate = false) => {
     try {
-      setLoading(true);
-      setError(null);
-      const res = await api.getRecommendations(formData);
-      if (res.data.success) {
-        // Save results to session storage for seamless reload and view
-        sessionStorage.setItem("last_recommendations", JSON.stringify(res.data.data));
-        navigate("/recommendations");
+      setEvaluating(true);
+      const payload = isAuthenticated && user
+        ? {
+            ...user,
+            ...(simulate
+              ? {
+                  dripAvailable: simulatedParams.dripInstalled ? "Yes" : "No",
+                  solarPumpInterest: simulatedParams.solarPumpRequired,
+                  horticultureActivity: simulatedParams.horticultureCrop !== "None",
+                  horticultureType: simulatedParams.horticultureCrop,
+                  organicCertified: simulatedParams.organicFarming,
+                  livestockOwnership: simulatedParams.livestockAdded
+                }
+              : {})
+          }
+        : {
+            ...quickCriteria,
+            farmerType: quickCriteria.landSize <= 2.5 ? "Marginal" : quickCriteria.landSize <= 5 ? "Small" : "Medium"
+          };
+
+      const res = await api.getRecommendations(payload);
+      if (res.data?.success) {
+        setSimulatedResults(res.data.data.recommendations || []);
+        setEvaluated(true);
       }
-    } catch (err: any) {
-      setError(err.message || "Failed to generate scheme recommendations.");
+    } catch (err) {
+      console.error("Evaluation error:", err);
     } finally {
-      setLoading(false);
+      setEvaluating(false);
     }
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      runEvaluation(false);
+    }
+  }, [isAuthenticated]);
 
   return (
-    <div className="w-full bg-[#F5F5F5] min-h-screen py-8">
-      <div className="max-w-4xl mx-auto px-4">
-        {/* Header */}
-        <div className="bg-white rounded-lg border border-neutral-200 p-6 sm:p-8 shadow-xs mb-6">
-          <div className="flex items-center gap-3 mb-2">
-            <AIIcon className="text-[#2E7D32]" style={{ fontSize: 32 }} />
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#003366]">
-              {language === "ta" ? "விவசாயி தகுதி சரிபார்த்தல் & AI பரிந்துரை" : "Scheme Eligibility Assessment"}
-            </h1>
-          </div>
-          <p className="text-sm text-neutral-600 leading-relaxed">
-            {language === "ta"
-              ? "உங்கள் விவசாய நிலம், பயிர், மாவட்டம் மற்றும் வருமான விவரங்களை உள்ளிட்டு, தமிழ்நாடு மற்றும் மத்திய அரசின் தகுதியான நலத்திட்டங்களை உடனடியாக அறியுங்கள்."
-              : "Enter your farming profile below. Our two-stage eligibility engine applies official government conditions and Scikit-learn Random Forest model ranking to match relevant schemes."}
-          </p>
+    <div className="min-h-screen bg-slate-50 flex">
+      {isFarmer && <Sidebar type="FARMER" />}
 
-          {/* Quick Preset Buttons */}
-          <div className="mt-5 pt-4 border-t border-neutral-200">
-            <span className="text-xs font-bold text-neutral-700 block mb-2">
-              Quick Demo Fill:
-            </span>
-            <div className="flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={() => loadPreset("paddy")}
-                className="bg-blue-50 hover:bg-blue-100 text-[#003366] border border-blue-200 px-3 py-1 rounded text-xs font-medium cursor-pointer transition"
-              >
-                Paddy Farmer (Thanjavur, 3 Ac)
-              </button>
-              <button
-                type="button"
-                onClick={() => loadPreset("horticulture")}
-                className="bg-green-50 hover:bg-green-100 text-[#2E7D32] border border-green-200 px-3 py-1 rounded text-xs font-medium cursor-pointer transition"
-              >
-                Horticulture (Dindigul, 1.8 Ac)
-              </button>
-              <button
-                type="button"
-                onClick={() => loadPreset("dryland")}
-                className="bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 px-3 py-1 rounded text-xs font-medium cursor-pointer transition"
-              >
-                Dryland Pulses (Ramnad, 4.5 Ac)
-              </button>
-            </div>
+      <main className="flex-1 p-4 md:p-8 max-w-5xl mx-auto space-y-6">
+        {/* Header Title */}
+        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-800 text-xs font-semibold rounded-full mb-2 border border-emerald-200">
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>STATUTORY SCHEME ELIGIBILITY AUDIT</span>
           </div>
+          <h1 className="text-2xl md:text-3xl font-bold text-slate-900">
+            {language === "ta" ? "அரசு நலத்திட்ட தகுதி சரிபார்ப்பு" : "Scheme Eligibility Audit & Simulator"}
+          </h1>
+          <p className="text-sm text-slate-600 mt-1">
+            {language === "ta"
+              ? "உங்கள் விவசாய அளவுருக்கள் மாநில மற்றும் மத்திய அரசு திட்டங்களின் அதிகாரப்பூர்வ விதிகளுடன் எவ்வாறு பொருந்துகின்றன என்பதை சரிபார்க்கவும்."
+              : "Cross-reference farming parameters against official state and central eligibility guidelines."}
+          </p>
         </div>
 
-        {error && (
-          <div className="bg-red-50 border border-red-200 text-red-800 p-4 rounded text-sm mb-6">
-            {error}
+        {/* LOGGED-IN FARMER VIEW */}
+        {isAuthenticated && user ? (
+          <div className="space-y-6">
+            {/* Active Verified Profile Card */}
+            <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-base">
+                    {user.fullName ? user.fullName[0].toUpperCase() : "F"}
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                      <span>{user.fullName || "Verified Farmer"}</span>
+                      <span className="text-[11px] font-medium px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded">
+                        Active Profile
+                      </span>
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Location: {user.village ? `${user.village}, ` : ""}{user.block ? `${user.block}, ` : ""}{user.district || "TN"}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <Link
+                    to="/farmer/profile"
+                    className="inline-flex items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-lg border border-slate-300 transition"
+                  >
+                    <SlidersHorizontal className="w-3.5 h-3.5" />
+                    <span>{language === "ta" ? "சுயவிவரம் திருத்து" : "Edit 15-Point Profile"}</span>
+                  </Link>
+                  <Link
+                    to="/recommendations"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold rounded-lg shadow-sm transition"
+                  >
+                    <span>{language === "ta" ? "பரிந்துரைகள் பட்டியல்" : "View Recommendations"}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Snapshot of Verified Profile */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4 text-xs">
+                <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                  <span className="text-slate-500 block text-[11px]">Cultivable Land</span>
+                  <strong className="text-slate-900 block font-semibold">
+                    {user.cultivableArea ?? user.landSize ?? 2.5} Acres
+                  </strong>
+                </div>
+
+                <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                  <span className="text-slate-500 block text-[11px]">Primary Crop</span>
+                  <strong className="text-slate-900 block font-semibold">{user.cropType || "Paddy"}</strong>
+                </div>
+
+                <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                  <span className="text-slate-500 block text-[11px]">Irrigation Source</span>
+                  <strong className="text-slate-900 block font-semibold">{user.irrigationType || "Canal"}</strong>
+                </div>
+
+                <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                  <span className="text-slate-500 block text-[11px]">Farmer Category</span>
+                  <strong className="text-emerald-800 block font-bold">
+                    {user.farmerType || (Number(user.landSize || 2.5) <= 2.5 ? "Marginal" : Number(user.landSize || 2.5) <= 5 ? "Small" : "Medium/Large")}
+                  </strong>
+                </div>
+              </div>
+            </div>
+
+            {/* WHAT-IF SIMULATOR (Adds Distinct Value to Eligibility Checker) */}
+            <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+              <div className="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-emerald-700" />
+                  <h3 className="text-base font-bold text-slate-900">
+                    {language === "ta" ? "திட்ட தகுதி உருவகப்படுத்துதல் (What-If Simulator)" : "Simulate Farm Adjustments (What-If Analysis)"}
+                  </h3>
+                </div>
+                <span className="text-[11px] text-slate-500">
+                  Does not alter your permanent saved registration
+                </span>
+              </div>
+
+              <p className="text-xs text-slate-600 mb-4">
+                Explore how adopting new agricultural practices, micro-irrigation, or allied livestock would unlock additional high-subsidy government schemes:
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4 text-xs">
+                <label className="flex items-center gap-2.5 p-3 bg-slate-50 border border-slate-200 rounded-lg cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={simulatedParams.dripInstalled}
+                    onChange={(e) => setSimulatedParams({ ...simulatedParams, dripInstalled: e.target.checked })}
+                    className="rounded text-emerald-700 focus:ring-emerald-500 w-4 h-4"
+                  />
+                  <span>Install Micro-Irrigation (Drip / Sprinkler)</span>
+                </label>
+
+                <label className="flex items-center gap-2.5 p-3 bg-slate-50 border border-slate-200 rounded-lg cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={simulatedParams.organicFarming}
+                    onChange={(e) => setSimulatedParams({ ...simulatedParams, organicFarming: e.target.checked })}
+                    className="rounded text-emerald-700 focus:ring-emerald-500 w-4 h-4"
+                  />
+                  <span>Adopt Certified Organic Farming</span>
+                </label>
+
+                <label className="flex items-center gap-2.5 p-3 bg-slate-50 border border-slate-200 rounded-lg cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={simulatedParams.livestockAdded}
+                    onChange={(e) => setSimulatedParams({ ...simulatedParams, livestockAdded: e.target.checked })}
+                    className="rounded text-emerald-700 focus:ring-emerald-500 w-4 h-4"
+                  />
+                  <span>Add Dairy / Livestock Component</span>
+                </label>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => runEvaluation(true)}
+                disabled={evaluating}
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-xs font-semibold shadow-xs transition"
+              >
+                <RefreshCw className={`w-3.5 h-3.5 ${evaluating ? "animate-spin" : ""}`} />
+                <span>{evaluating ? "Simulating Scheme Rules..." : "Re-Calculate Simulated Eligibility"}</span>
+              </button>
+            </div>
+
+            {/* Results Display */}
+            {evaluated && (
+              <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-base font-bold text-slate-900">
+                    Eligibility Audit Results ({simulatedResults.filter((s) => s.isEligible !== false).length} Eligible Schemes)
+                  </h3>
+                  <Link
+                    to="/recommendations"
+                    className="text-xs font-bold text-emerald-800 hover:underline"
+                  >
+                    Open Recommendations Workspace →
+                  </Link>
+                </div>
+
+                <div className="space-y-3">
+                  {simulatedResults.map((scheme, idx) => {
+                    const isEligible = scheme.isEligible !== false;
+                    return (
+                      <div
+                        key={idx}
+                        className={`p-4 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs ${
+                          isEligible
+                            ? "border-slate-200 bg-white"
+                            : "border-amber-200 bg-amber-50/20"
+                        }`}
+                      >
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-2">
+                            {isEligible ? (
+                              <span className="inline-flex items-center gap-1 text-emerald-700 font-bold">
+                                <CheckCircle2 className="w-4 h-4" />
+                                <span>{scheme.matchScore}% Match • Eligible</span>
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center gap-1 text-amber-800 font-bold">
+                                <XCircle className="w-4 h-4 text-amber-700" />
+                                <span>Ineligible</span>
+                              </span>
+                            )}
+                            <span className="text-slate-500">[{scheme.schemeId}]</span>
+                            <span className="text-slate-700 font-medium">{scheme.governmentLevel}</span>
+                          </div>
+                          <h4 className="text-sm font-bold text-slate-900">{scheme.schemeName}</h4>
+                          <p className="text-slate-600 line-clamp-1">{scheme.benefits}</p>
+                          {!isEligible && scheme.ineligibleReason && (
+                            <p className="text-amber-900 font-medium bg-amber-50 px-2 py-0.5 rounded border border-amber-200 inline-block mt-1">
+                              Reason: {scheme.ineligibleReason}
+                            </p>
+                          )}
+                        </div>
+
+                        <div className="shrink-0 flex items-center gap-2">
+                          <Link
+                            to={`/schemes/${scheme.schemeId}`}
+                            className="px-3 py-1.5 border border-slate-300 rounded-md text-slate-700 hover:bg-slate-50 font-medium"
+                          >
+                            Guidelines
+                          </Link>
+                          {isEligible && (
+                            <Link
+                              to={`/farmer/applications/new?scheme=${scheme.schemeId}`}
+                              className="px-3 py-1.5 bg-emerald-700 text-white rounded-md font-semibold hover:bg-emerald-800"
+                            >
+                              Apply
+                            </Link>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
-        )}
+        ) : (
+          /* GUEST / UNREGISTERED QUICK CHECKER */
+          <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-6">
+            <div>
+              <h2 className="text-lg font-bold text-slate-900 mb-1">
+                {language === "ta" ? "விரைவு தகுதி கணக்கீடு (பதிவு தேவையில்லை)" : "Quick Scheme Eligibility Calculator (No Login Required)"}
+              </h2>
+              <p className="text-xs text-slate-600">
+                Enter primary parameters below to preview matched schemes. To lock in permanent benefits and submit applications, create your official farmer profile.
+              </p>
+            </div>
 
-        {/* Multi-Section Eligibility Form */}
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Section 1: Personal Information */}
-          <div className="bg-white rounded-lg border border-neutral-200 p-6 shadow-xs">
-            <h2 className="text-base font-bold text-[#003366] mb-4 flex items-center gap-2 border-b border-neutral-200 pb-2">
-              <PersonIcon fontSize="small" />
-              <span>1. {t("personalInfo")}</span>
-            </h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
               <div>
-                <label className="block text-neutral-700 font-semibold mb-1">
-                  {t("fullName")} *
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.fullName}
-                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  placeholder="Farmer name as per Aadhaar"
-                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
-                />
-              </div>
-
-              <div>
-                <label className="block text-neutral-700 font-semibold mb-1">
-                  Age (Years) *
-                </label>
-                <input
-                  type="number"
-                  min={18}
-                  max={95}
-                  required
-                  value={formData.age}
-                  onChange={(e) => setFormData({ ...formData, age: Number(e.target.value) })}
-                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
-                />
-              </div>
-
-              <div>
-                <label className="block text-neutral-700 font-semibold mb-1">
-                  Gender *
-                </label>
+                <label className="block font-semibold text-slate-700 mb-1">District</label>
                 <select
-                  value={formData.gender}
-                  onChange={(e) => setFormData({ ...formData, gender: e.target.value as any })}
-                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
+                  value={quickCriteria.district}
+                  onChange={(e) => setQuickCriteria({ ...quickCriteria, district: e.target.value })}
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm"
                 >
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-neutral-700 font-semibold mb-1">
-                  {t("district")} *
-                </label>
-                <select
-                  value={formData.district}
-                  onChange={(e) => setFormData({ ...formData, district: e.target.value })}
-                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
-                >
-                  {TN_DISTRICTS.map((d) => (
+                  {ALL_TN_DISTRICTS.map((d) => (
                     <option key={d} value={d}>
                       {d}
                     </option>
@@ -318,268 +345,125 @@ export const EligibilityPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-neutral-700 font-semibold mb-1">
-                  State
-                </label>
-                <input
-                  type="text"
-                  disabled
-                  value="Tamil Nadu"
-                  className="w-full border border-neutral-200 rounded px-3 py-2 text-sm bg-neutral-100 text-neutral-600"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Section 2: Agricultural Information */}
-          <div className="bg-white rounded-lg border border-neutral-200 p-6 shadow-xs">
-            <h2 className="text-base font-bold text-[#003366] mb-4 flex items-center gap-2 border-b border-neutral-200 pb-2">
-              <AgriIcon fontSize="small" />
-              <span>2. {t("agriInfo")}</span>
-            </h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs">
-              <div>
-                <label className="block text-neutral-700 font-semibold mb-1">
-                  Farmer Status *
-                </label>
-                <select
-                  value={formData.farmerStatus}
-                  onChange={(e) => setFormData({ ...formData, farmerStatus: e.target.value as any })}
-                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
-                >
-                  <option value="Owner">Land Owner (பட்டா நில உரிமையாளர்)</option>
-                  <option value="Tenant">Tenant Cultivator (குத்தகை உழவர்)</option>
-                  <option value="Sharecropper">Sharecropper (வாரம் சாகுபடியாளர்)</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-neutral-700 font-semibold mb-1">
-                  Land Ownership Type *
-                </label>
-                <select
-                  value={formData.landOwnership}
-                  onChange={(e) => setFormData({ ...formData, landOwnership: e.target.value as any })}
-                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
-                >
-                  <option value="Owned">Solely Owned</option>
-                  <option value="Shared">Joint / Family Patta</option>
-                  <option value="Leased">Registered Lease</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-neutral-700 font-semibold mb-1">
-                  {t("landSize")} *
-                </label>
+                <label className="block font-semibold text-slate-700 mb-1">Cultivable Land (Acres)</label>
                 <input
                   type="number"
                   step="0.1"
                   min="0.1"
-                  max="100"
-                  required
-                  value={formData.landSize}
-                  onChange={(e) => handleLandSizeChange(Number(e.target.value))}
-                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
+                  value={quickCriteria.landSize}
+                  onChange={(e) => setQuickCriteria({ ...quickCriteria, landSize: Number(e.target.value) })}
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm"
                 />
-                <span className="text-[11px] text-neutral-500 mt-0.5 block">
-                  Category: <strong className="text-[#003366]">{formData.farmerType} Farmer</strong>
-                </span>
               </div>
 
               <div>
-                <label className="block text-neutral-700 font-semibold mb-1">
-                  Land Classification *
-                </label>
+                <label className="block font-semibold text-slate-700 mb-1">Primary Crop</label>
                 <select
-                  value={formData.landType}
-                  onChange={(e) => setFormData({ ...formData, landType: e.target.value })}
-                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
+                  value={quickCriteria.cropType}
+                  onChange={(e) => setQuickCriteria({ ...quickCriteria, cropType: e.target.value })}
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm"
                 >
-                  <option value="Wet Land (Nanjai)">Wet Land (நஞ்சை)</option>
-                  <option value="Dry Land (Punjai)">Dry Land (புஞ்சை)</option>
-                  <option value="Garden Land (Thottam)">Garden Land (தோட்டம்)</option>
+                  <option value="Paddy">Paddy (நெல்)</option>
+                  <option value="Sugarcane">Sugarcane (கரும்பு)</option>
+                  <option value="Millets">Millets (சிறு தானியங்கள்)</option>
+                  <option value="Pulses">Pulses (பருப்பு வகைகள்)</option>
+                  <option value="Banana">Banana (வாழை)</option>
+                  <option value="Coconut">Coconut (தென்னை)</option>
+                  <option value="Cotton">Cotton (பருத்தி)</option>
+                  <option value="Groundnut">Groundnut (நிலக்கடலை)</option>
+                  <option value="Vegetables">Vegetables (காய்கறிகள்)</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-neutral-700 font-semibold mb-1">
-                  {t("cropType")} *
-                </label>
+                <label className="block font-semibold text-slate-700 mb-1">Social Category</label>
                 <select
-                  value={formData.cropType}
-                  onChange={(e) => setFormData({ ...formData, cropType: e.target.value })}
-                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
+                  value={quickCriteria.socialCategory}
+                  onChange={(e) => setQuickCriteria({ ...quickCriteria, socialCategory: e.target.value })}
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm"
                 >
-                  {CROPS.map((c) => (
-                    <option key={c} value={c}>
-                      {c}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-neutral-700 font-semibold mb-1">
-                  {t("farmingType")} *
-                </label>
-                <select
-                  value={formData.farmingType}
-                  onChange={(e) => setFormData({ ...formData, farmingType: e.target.value })}
-                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
-                >
-                  <option value="Conventional">Conventional / Chemical</option>
-                  <option value="Organic">Certified Organic Farming</option>
-                  <option value="Natural">ZBNF / Natural Farming</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-neutral-700 font-semibold mb-1">
-                  {t("irrigationType")} *
-                </label>
-                <select
-                  value={formData.irrigationType}
-                  onChange={(e) => setFormData({ ...formData, irrigationType: e.target.value })}
-                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
-                >
-                  <option value="Canal">Canal Irrigation (கால்வாய்)</option>
-                  <option value="Well / Borewell">Open Well / Borewell (கிணறு)</option>
-                  <option value="Drip / Sprinkler">Micro Irrigation (சொட்டு நீர்)</option>
-                  <option value="Rainfed">Rainfed / Monsoon (மானாவாரி)</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          {/* Section 3 & 4: Financial & Social Category */}
-          <div className="bg-white rounded-lg border border-neutral-200 p-6 shadow-xs">
-            <h2 className="text-base font-bold text-[#003366] mb-4 flex items-center gap-2 border-b border-neutral-200 pb-2">
-              <MoneyIcon fontSize="small" />
-              <span>3. Financial & Social Category</span>
-            </h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-              <div>
-                <label className="block text-neutral-700 font-semibold mb-1">
-                  {t("annualIncome")} *
-                </label>
-                <input
-                  type="number"
-                  min="0"
-                  max="10000000"
-                  step="5000"
-                  required
-                  value={formData.annualIncome}
-                  onChange={(e) => setFormData({ ...formData, annualIncome: Number(e.target.value) })}
-                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
-                />
-                <span className="text-[11px] text-neutral-500 mt-0.5 block">
-                  Family annual income from all sources
-                </span>
-              </div>
-
-              <div>
-                <label className="block text-neutral-700 font-semibold mb-1">
-                  {t("socialCategory")} *
-                </label>
-                <select
-                  value={formData.socialCategory}
-                  onChange={(e) => setFormData({ ...formData, socialCategory: e.target.value as any })}
-                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
-                >
-                  <option value="MBC">MBC / DNC</option>
                   <option value="OBC">BC / OBC</option>
-                  <option value="SC">SC (Scheduled Caste)</option>
-                  <option value="ST">ST (Scheduled Tribe)</option>
+                  <option value="MBC">MBC</option>
+                  <option value="SC">SC</option>
+                  <option value="ST">ST</option>
                   <option value="General">General / OC</option>
                 </select>
               </div>
+
+              <div>
+                <label className="block font-semibold text-slate-700 mb-1">Irrigation Source</label>
+                <select
+                  value={quickCriteria.irrigationType}
+                  onChange={(e) => setQuickCriteria({ ...quickCriteria, irrigationType: e.target.value })}
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm"
+                >
+                  <option value="Canal">Canal (வாய்க்கால்)</option>
+                  <option value="Borewell">Borewell (ஆழ்துளை கிணறு)</option>
+                  <option value="Open Well">Open Well (திறந்தவெளி கிணறு)</option>
+                  <option value="Rainfed">Rainfed (மானாவாரி)</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block font-semibold text-slate-700 mb-1">Annual Income (₹)</label>
+                <input
+                  type="number"
+                  step="5000"
+                  value={quickCriteria.annualIncome}
+                  onChange={(e) => setQuickCriteria({ ...quickCriteria, annualIncome: Number(e.target.value) })}
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm"
+                />
+              </div>
             </div>
-          </div>
 
-          {/* Section 5: Additional Agricultural Details */}
-          <div className="bg-white rounded-lg border border-neutral-200 p-6 shadow-xs">
-            <h2 className="text-base font-bold text-[#003366] mb-4 flex items-center gap-2 border-b border-neutral-200 pb-2">
-              <VerifyIcon fontSize="small" />
-              <span>4. {t("additionalAgriInfo")}</span>
-            </h2>
+            <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+              <button
+                type="button"
+                onClick={() => runEvaluation(false)}
+                disabled={evaluating}
+                className="px-6 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-bold shadow-xs transition"
+              >
+                {evaluating ? "Evaluating..." : "Check Eligible Schemes"}
+              </button>
 
-            <div className="space-y-3 text-xs">
-              <label className="flex items-center gap-3 p-2 rounded hover:bg-neutral-50 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={formData.livestockOwnership}
-                  onChange={(e) => setFormData({ ...formData, livestockOwnership: e.target.checked })}
-                  className="w-4 h-4 rounded text-[#003366]"
-                />
-                <span className="text-neutral-800 font-medium">
-                  {t("livestockQuestion")} (Cows, Buffaloes, Goats, Sheep, Poultry)
-                </span>
-              </label>
-
-              <label className="flex items-center gap-3 p-2 rounded hover:bg-neutral-50 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={formData.horticultureActivity}
-                  onChange={(e) => setFormData({ ...formData, horticultureActivity: e.target.checked })}
-                  className="w-4 h-4 rounded text-[#003366]"
-                />
-                <span className="text-neutral-800 font-medium">
-                  {t("horticultureQuestion")} (Coconut, Banana, Mango, Spices, Flowers, Veggies)
-                </span>
-              </label>
-
-              <label className="flex items-center gap-3 p-2 rounded hover:bg-neutral-50 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={formData.machineryOwnership}
-                  onChange={(e) => setFormData({ ...formData, machineryOwnership: e.target.checked })}
-                  className="w-4 h-4 rounded text-[#003366]"
-                />
-                <span className="text-neutral-800 font-medium">
-                  {t("machineryQuestion")} (Tractor, Power Tiller, Transplanter, Harvester)
-                </span>
-              </label>
+              <Link
+                to="/register"
+                className="text-xs font-bold text-emerald-800 hover:text-emerald-950 inline-flex items-center gap-1"
+              >
+                <span>Register for Permanent Farmer ID & Online Subsidies</span>
+                <ChevronRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
-          </div>
 
-          {/* Section 6: Declaration & Submit */}
-          <div className="bg-white rounded-lg border border-neutral-200 p-6 shadow-xs">
-            <label className="flex items-start gap-3 cursor-pointer text-xs mb-6">
-              <input
-                type="checkbox"
-                required
-                checked={formData.declaration}
-                onChange={(e) => setFormData({ ...formData, declaration: e.target.checked })}
-                className="w-4 h-4 rounded text-[#003366] mt-0.5"
-              />
-              <span className="text-neutral-700 leading-relaxed font-medium">
-                {t("declarationText")}
-              </span>
-            </label>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-[#2E7D32] hover:bg-green-800 text-white font-bold py-3.5 px-6 rounded text-base shadow-sm transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
-            >
-              {loading ? (
-                <>
-                  <div className="inline-block animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent" />
-                  <span>Evaluating Government Schemes via AI...</span>
-                </>
-              ) : (
-                <>
-                  <AIIcon />
-                  <span>{t("submitEligibility")}</span>
-                </>
-              )}
-            </button>
+            {/* Guest Results */}
+            {evaluated && (
+              <div className="mt-6 pt-6 border-t border-slate-200">
+                <h3 className="text-sm font-bold text-slate-900 mb-3">
+                  Preliminary Evaluation Matches ({simulatedResults.filter((s) => s.isEligible !== false).length} Eligible Schemes)
+                </h3>
+                <div className="space-y-3">
+                  {simulatedResults.slice(0, 5).map((scheme, idx) => (
+                    <div key={idx} className="p-3 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-between gap-3 text-xs">
+                      <div>
+                        <strong className="text-slate-900 block">{scheme.schemeName}</strong>
+                        <span className="text-slate-500">{scheme.department} • {scheme.matchScore}% Match</span>
+                      </div>
+                      <Link
+                        to="/register"
+                        className="px-3 py-1 bg-emerald-700 text-white rounded text-[11px] font-semibold hover:bg-emerald-800 shrink-0"
+                      >
+                        Register to Claim
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
-        </form>
-      </div>
+        )}
+      </main>
     </div>
   );
 };
+
+export default EligibilityPage;
