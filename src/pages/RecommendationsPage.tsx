@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 
 export const RecommendationsPage: React.FC = () => {
-  const { user, isAuthenticated, isFarmer } = useAuth();
+  const { user, isAuthenticated, isFarmer, isAdmin } = useAuth();
   const { t, language } = useLanguage();
   const navigate = useNavigate();
 
@@ -198,31 +198,28 @@ export const RecommendationsPage: React.FC = () => {
         <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
           <button
             onClick={() => setStatusFilter("ELIGIBLE")}
-            className={`px-3 py-1.5 rounded-md font-semibold transition ${
-              statusFilter === "ELIGIBLE"
+            className={`px-3 py-1.5 rounded-md font-semibold transition ${statusFilter === "ELIGIBLE"
                 ? "bg-emerald-700 text-white shadow-xs"
                 : "text-slate-700 hover:text-slate-900"
-            }`}
+              }`}
           >
             {language === "ta" ? `தகுதியானவை (${totalEligible})` : `Eligible (${totalEligible})`}
           </button>
           <button
             onClick={() => setStatusFilter("INELIGIBLE")}
-            className={`px-3 py-1.5 rounded-md font-semibold transition ${
-              statusFilter === "INELIGIBLE"
+            className={`px-3 py-1.5 rounded-md font-semibold transition ${statusFilter === "INELIGIBLE"
                 ? "bg-amber-700 text-white shadow-xs"
                 : "text-slate-700 hover:text-slate-900"
-            }`}
+              }`}
           >
             {language === "ta" ? `தகுதியில்லாதவை (${totalIneligible})` : `Ineligible (${totalIneligible})`}
           </button>
           <button
             onClick={() => setStatusFilter("ALL")}
-            className={`px-3 py-1.5 rounded-md font-semibold transition ${
-              statusFilter === "ALL"
+            className={`px-3 py-1.5 rounded-md font-semibold transition ${statusFilter === "ALL"
                 ? "bg-slate-800 text-white shadow-xs"
                 : "text-slate-700 hover:text-slate-900"
-            }`}
+              }`}
           >
             {language === "ta" ? `அனைத்தும் (${recommendations.length})` : `All Evaluated (${recommendations.length})`}
           </button>
@@ -297,11 +294,10 @@ export const RecommendationsPage: React.FC = () => {
             return (
               <div
                 key={scheme.schemeId || idx}
-                className={`bg-white rounded-xl border p-6 shadow-xs transition hover:shadow-sm ${
-                  isEligible
+                className={`bg-white rounded-xl border p-6 shadow-xs transition hover:shadow-sm ${isEligible
                     ? "border-slate-200 hover:border-emerald-600"
                     : "border-amber-200 bg-amber-50/20"
-                }`}
+                  }`}
               >
                 {/* Header Row: Score + Eligibility Tag + Jurisdiction */}
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
@@ -320,11 +316,10 @@ export const RecommendationsPage: React.FC = () => {
                     )}
 
                     <span
-                      className={`text-xs font-semibold px-2.5 py-0.5 rounded border ${
-                        scheme.governmentLevel === "Tamil Nadu Government"
+                      className={`text-xs font-semibold px-2.5 py-0.5 rounded border ${scheme.governmentLevel === "Tamil Nadu Government"
                           ? "bg-green-50 text-green-800 border-green-200"
                           : "bg-blue-50 text-blue-800 border-blue-200"
-                      }`}
+                        }`}
                     >
                       {scheme.governmentLevel}
                     </span>
@@ -447,9 +442,9 @@ export const RecommendationsPage: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
-      {isFarmer && <Sidebar type="FARMER" />}
-      <main className="flex-1 p-4 md:p-8 max-w-6xl mx-auto">
+    <div className="min-h-screen bg-slate-50 flex flex-col md:flex-row items-start">
+      {isAuthenticated && <Sidebar type={isAdmin ? "ADMIN" : "FARMER"} />}
+      <main className="flex-1 p-4 md:p-8 max-w-6xl mx-auto w-full">
         {content}
       </main>
     </div>

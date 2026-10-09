@@ -4,13 +4,23 @@ import path from "path";
 export interface MLPredictionResult {
   schemeId: string;
   probability: number;
+  confidenceRate?: string;
+  confidenceScore?: number;
+}
+
+function getPythonCommand(): string {
+  if (process.env.PYTHON_PATH) {
+    return process.env.PYTHON_PATH;
+  }
+  return process.platform === "win32" ? "python" : "python3";
 }
 
 export async function runMLPrediction(farmerData: Record<string, any>): Promise<MLPredictionResult[]> {
   return new Promise((resolve) => {
     try {
       const scriptPath = path.join(process.cwd(), "ml", "predict.py");
-      const pythonProcess = spawn("python3", [scriptPath, JSON.stringify(farmerData)]);
+      const pythonCmd = getPythonCommand();
+      const pythonProcess = spawn(pythonCmd, [scriptPath, JSON.stringify(farmerData)]);
 
       let stdoutData = "";
       let stderrData = "";
@@ -50,7 +60,7 @@ export async function runMLPrediction(farmerData: Record<string, any>): Promise<
 
       pythonProcess.on("error", (err) => {
         clearTimeout(timer);
-        console.warn("[ML Service] Failed to spawn python3:", err.message);
+        console.warn(`[ML Service] Failed to spawn '${pythonCmd}':`, err.message);
         resolve(fallbackPrediction(farmerData));
       });
     } catch (err) {
@@ -86,11 +96,17 @@ function fallbackPrediction(data: Record<string, any>): MLPredictionResult[] {
     "TN-SCH-12": 0.25
   };
 
-  const results = Object.entries(scores).map(([schemeId, probability]) => ({
-    schemeId,
-    probability: Math.round(probability * 1000) / 1000
-  }));
+  const results: MLPredictionResult[] = Object.entries(scores).map(([schemeId, probability]) => {
+    const rounded = Math.round(probability * 1000) / 1000;
+    return {
+      schemeId,
+      probability: rounded,
+      confidenceRate: `${(rounded * 100).toFixed(1)}%`,
+      confidenceScore: Math.round(rounded * 100)
+    };
+  });
 
   results.sort((a, b) => b.probability - a.probability);
   return results;
 }
+

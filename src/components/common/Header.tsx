@@ -3,8 +3,10 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { TamilNaduEmblem } from "./Emblem";
 import { useLanguage } from "../../context/LanguageContext";
 import { useAuth } from "../../context/AuthContext";
+import { useSidebar } from "../../context/SidebarContext";
 import {
   Menu as MenuIcon,
+  MenuOpen as MenuOpenIcon,
   Close as CloseIcon,
   Language as LangIcon,
   AccountCircle as UserIcon,
@@ -17,6 +19,7 @@ import {
 export const Header: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
   const { user, isAuthenticated, isAdmin, isFarmer, logout } = useAuth();
+  const { isCollapsed, toggleSidebar } = useSidebar();
   const navigate = useNavigate();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -33,8 +36,7 @@ export const Header: React.FC = () => {
   const navLinks = [
     { label: t("home"), path: "/" },
     { label: t("schemes"), path: "/schemes" },
-    ...(!isFarmer ? [{ label: t("checkEligibility"), path: "/eligibility" }] : []),
-    ...(isFarmer ? [{ label: language === "ta" ? "பரிந்துரைகள்" : "Recommendations", path: "/recommendations" }] : [])
+    { label: t("checkEligibility"), path: "/eligibility" }
   ];
 
   return (
@@ -73,53 +75,73 @@ export const Header: React.FC = () => {
       {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
         {/* Left: Logo & Portal Identity */}
-        <Link to="/" className="flex items-center gap-3 group shrink-0">
-          <TamilNaduEmblem size={50} />
-          <div className="flex flex-col">
-            <span className="text-[#003366] font-black text-lg leading-tight group-hover:text-blue-900 transition flex items-center gap-2">
-              <span>{language === "ta" ? "உழவர் தோழன்" : "FARMERS FRIEND"}</span>
-              <span className="text-[11px] font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-300">
-                AI
+        <div className="flex items-center gap-3">
+          {isAuthenticated && (
+            <button
+              onClick={toggleSidebar}
+              className="p-2 text-slate-700 hover:text-[#003366] hover:bg-slate-100 rounded-lg border border-slate-200 transition cursor-pointer flex items-center justify-center"
+              title={isCollapsed ? "Expand left sidebar" : "Collapse left sidebar"}
+              aria-label="Toggle navigation sidebar"
+            >
+              {isCollapsed ? <MenuIcon style={{ fontSize: 22 }} /> : <MenuOpenIcon style={{ fontSize: 22 }} />}
+            </button>
+          )}
+
+          <Link
+            to={!isAuthenticated ? "/" : isAdmin ? "/admin/dashboard" : "/farmer/dashboard"}
+            className="flex items-center gap-3 group shrink-0"
+          >
+            <TamilNaduEmblem size={50} />
+            <div className="flex flex-col">
+              <span className="text-[#003366] font-black text-lg leading-tight group-hover:text-blue-900 transition flex items-center gap-2">
+                <span>{language === "ta" ? "உழவர் தோழன்" : "FARMERS FRIEND"}</span>
+                <span className="text-[11px] font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-300">
+                  AI
+                </span>
               </span>
-            </span>
-            <span className="text-neutral-600 text-xs font-medium">
-              {language === "ta"
-                ? "விவசாயிகளுக்கான உழவர் நலத்திட்ட வழிகாட்டி"
-                : "Tamil Nadu Farmer Scheme Recommendation Portal"}
-            </span>
-          </div>
-        </Link>
+              <span className="text-neutral-600 text-xs font-medium">
+                {language === "ta"
+                  ? "விவசாயிகளுக்கான உழவர் நலத்திட்ட வழிகாட்டி"
+                  : "Tamil Nadu Farmer Scheme Recommendation Portal"}
+              </span>
+            </div>
+          </Link>
+        </div>
 
-        {/* Right: Consolidated Navigation Bar & Action Controls */}
+        {/* Right: Navigation Bar & Action Controls */}
         <div className="hidden lg:flex items-center gap-4 ml-auto">
-          {/* Navigation Links moved to the right */}
-          <nav className="flex items-center gap-1 bg-slate-100/90 p-1 rounded-xl border border-slate-200/90">
-            {navLinks.map((link) => {
-              const isActive = location.pathname === link.path;
-              return (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition whitespace-nowrap ${
-                    isActive
-                      ? "text-[#003366] bg-white shadow-xs font-semibold border border-slate-200"
-                      : "text-slate-700 hover:text-[#003366] hover:bg-slate-200/70"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
+          {/* Navigation Links - ONLY rendered for unauthenticated guests */}
+          {!isAuthenticated && (
+            <>
+              <nav className="flex items-center gap-1 bg-slate-100/90 p-1 rounded-xl border border-slate-200/90">
+                {navLinks.map((link) => {
+                  const isActive = location.pathname === link.path;
+                  return (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition whitespace-nowrap ${
+                        isActive
+                          ? "text-[#003366] bg-white shadow-xs font-semibold border border-slate-200"
+                          : "text-slate-700 hover:text-[#003366] hover:bg-slate-200/70"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
+              </nav>
 
-          <div className="h-6 w-px bg-slate-200" />
+              <div className="h-6 w-px bg-slate-200" />
+            </>
+          )}
 
           {/* Profile / Auth Controls */}
           {isAuthenticated && user ? (
             <div className="flex items-center gap-2.5">
-              <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs">
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="font-semibold text-slate-800 max-w-[130px] truncate">
+                <span className="font-semibold text-slate-800 max-w-[150px] truncate">
                   {user.fullName || (isAdmin ? "Admin Officer" : "Farmer")}
                 </span>
                 <span className="text-slate-400">|</span>
@@ -128,21 +150,13 @@ export const Header: React.FC = () => {
                 </span>
               </div>
 
-              <Link
-                to={isAdmin ? "/admin/dashboard" : "/farmer/dashboard"}
-                className="flex items-center gap-1.5 bg-[#003366] hover:bg-blue-900 text-white px-3.5 py-2 rounded-lg text-sm font-semibold shadow-xs transition"
-              >
-                <DashboardIcon style={{ fontSize: 18 }} />
-                <span>{isAdmin ? "Admin Portal" : t("dashboard")}</span>
-              </Link>
-
               <button
                 onClick={handleLogout}
-                className="flex items-center justify-center text-slate-600 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg text-sm transition"
+                className="flex items-center gap-1.5 text-slate-600 hover:text-red-700 hover:bg-red-50 px-3 py-1.5 border border-slate-200 rounded-lg text-xs font-semibold transition cursor-pointer"
                 title="Logout"
               >
                 <LogoutIcon style={{ fontSize: 18 }} />
-                <span className="sr-only">{t("logout")}</span>
+                <span>{t("logout")}</span>
               </button>
             </div>
           ) : (
@@ -179,32 +193,36 @@ export const Header: React.FC = () => {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <div className="lg:hidden border-t border-neutral-200 bg-white px-4 pt-2 pb-4 space-y-2">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              onClick={() => setMobileOpen(false)}
-              className="block px-3 py-2 rounded text-base font-medium text-neutral-800 hover:bg-blue-50 hover:text-[#003366]"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <div className="pt-2 border-t border-neutral-200">
+          {!isAuthenticated &&
+            navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                onClick={() => setMobileOpen(false)}
+                className="block px-3 py-2 rounded text-base font-medium text-neutral-800 hover:bg-blue-50 hover:text-[#003366]"
+              >
+                {link.label}
+              </Link>
+            ))}
+          <div className={!isAuthenticated ? "pt-2 border-t border-neutral-200" : ""}>
             {isAuthenticated && user ? (
               <div className="space-y-2">
-                <Link
-                  to={isAdmin ? "/admin/dashboard" : "/farmer/dashboard"}
-                  onClick={() => setMobileOpen(false)}
-                  className="block w-full text-center bg-[#003366] text-white py-2 rounded font-medium"
-                >
-                  {isAdmin ? "Admin Portal" : t("dashboard")}
-                </Link>
+                <div className="flex items-center gap-2 px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs mb-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="font-semibold text-slate-800 truncate">
+                    {user.fullName || (isAdmin ? "Admin Officer" : "Farmer")}
+                  </span>
+                  <span className="text-slate-400">|</span>
+                  <span className="text-slate-500 font-medium text-[11px] uppercase tracking-wider">
+                    {user.role}
+                  </span>
+                </div>
                 <button
                   onClick={() => {
                     setMobileOpen(false);
                     handleLogout();
                   }}
-                  className="block w-full text-center text-red-700 py-2 font-medium"
+                  className="block w-full text-center text-red-700 py-2 border border-red-200 bg-red-50 rounded font-medium"
                 >
                   {t("logout")}
                 </button>

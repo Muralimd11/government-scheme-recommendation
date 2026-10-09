@@ -1,3 +1,8 @@
+import dns from "dns";
+
+dns.setServers(["8.8.8.8"]);
+
+import "dotenv/config";
 import { createApp } from "./backend/app";
 import { connectDB } from "./backend/config/db";
 import express from "express";
@@ -5,7 +10,12 @@ import path from "path";
 import fs from "fs";
 import { createServer as createViteServer } from "vite";
 
+
+
+
 const PORT = 3000;
+
+
 
 async function startServer() {
   console.log("[Server] Initializing Tamil Nadu Farmer Scheme Recommendation System...");

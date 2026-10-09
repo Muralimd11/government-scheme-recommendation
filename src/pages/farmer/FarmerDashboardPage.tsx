@@ -48,10 +48,10 @@ export const FarmerDashboardPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full bg-[#F5F5F5] min-h-screen flex flex-col md:flex-row">
+    <div className="w-full bg-[#F5F5F5] min-h-screen flex flex-col md:flex-row items-start">
       <Sidebar type="FARMER" />
 
-      <main className="flex-1 p-4 md:p-8 max-w-6xl">
+      <main className="flex-1 p-4 md:p-8 max-w-6xl w-full">
         {/* Welcome Header */}
         <div className="bg-white rounded-lg border border-neutral-200 p-6 shadow-xs mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">

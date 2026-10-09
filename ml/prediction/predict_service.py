@@ -80,11 +80,15 @@ def predict_scheme_probabilities(farmer_data):
 
     results = []
     for scheme_id, prob in zip(classes, probabilities):
+        prob_val = float(prob)
         results.append({
             "schemeId": scheme_id,
-            "probability": round(float(prob), 4)
+            "probability": round(prob_val, 4),
+            "confidenceRate": f"{prob_val * 100:.1f}%",
+            "confidenceScore": round(prob_val * 100, 1)
         })
 
     # Sort descending by probability
     results.sort(key=lambda x: x["probability"], reverse=True)
     return results
+

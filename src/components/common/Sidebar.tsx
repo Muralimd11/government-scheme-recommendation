@@ -2,22 +2,23 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useLanguage } from "../../context/LanguageContext";
+import { useSidebar } from "../../context/SidebarContext";
 import {
   Dashboard as DashboardIcon,
   Person as PersonIcon,
-  FactCheck as EligibilityIcon,
   Recommend as RecommendIcon,
   Description as ApplicationIcon,
   UploadFile as DocumentIcon,
   Notifications as NotificationIcon,
-  HelpOutlined as HelpIcon,
   People as FarmersIcon,
   AccountTree as SchemesIcon,
   VerifiedUser as VerifyIcon,
   BarChart as AnalyticsIcon,
   Assessment as ReportsIcon,
   History as AuditIcon,
-  ExitToApp as LogoutIcon
+  ExitToApp as LogoutIcon,
+  ChevronLeft as ChevronLeftIcon,
+  ChevronRight as ChevronRightIcon
 } from "@mui/icons-material";
 
 interface SidebarProps {
@@ -29,6 +30,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ type }) => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
   const { t, language } = useLanguage();
+  const { isCollapsed, toggleSidebar } = useSidebar();
 
   const handleLogout = () => {
     logout();
@@ -39,6 +41,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ type }) => {
     { label: t("dashboard"), path: "/farmer/dashboard", icon: <DashboardIcon fontSize="small" /> },
     { label: t("myProfile"), path: "/farmer/profile", icon: <PersonIcon fontSize="small" /> },
     { label: language === "ta" ? "பரிந்துரைக்கப்பட்ட திட்டங்கள்" : "Recommended Schemes", path: "/recommendations", icon: <RecommendIcon fontSize="small" /> },
+    { label: language === "ta" ? "திட்டங்களை ஆராய்க" : "Explore Schemes", path: "/schemes", icon: <SchemesIcon fontSize="small" /> },
     { label: t("applications"), path: "/farmer/applications", icon: <ApplicationIcon fontSize="small" /> },
     { label: t("documents"), path: "/farmer/documents", icon: <DocumentIcon fontSize="small" /> },
     { label: t("notifications"), path: "/farmer/notifications", icon: <NotificationIcon fontSize="small" /> }
@@ -58,33 +61,75 @@ export const Sidebar: React.FC<SidebarProps> = ({ type }) => {
   const items = type === "ADMIN" ? adminNavItems : farmerNavItems;
 
   return (
-    <aside className="w-full md:w-64 bg-white border-r border-neutral-200 flex flex-col shrink-0 min-h-[calc(100vh-120px)]">
-      {/* User Mini Card */}
-      <div className="p-4 border-b border-neutral-200 bg-neutral-50">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center font-bold text-base">
+    <aside
+      className={`bg-white border-r border-neutral-200 flex flex-col shrink-0 transition-all duration-300 ease-in-out md:sticky md:top-[65px] md:h-[calc(100vh-65px)] md:overflow-y-auto z-40 ${
+        isCollapsed ? "w-full md:w-16" : "w-full md:w-64"
+      }`}
+    >
+      {/* Header & Collapse Toggle */}
+      <div className="p-3 border-b border-neutral-200 bg-neutral-50 flex items-center justify-between gap-2">
+        {!isCollapsed ? (
+          <div className="flex items-center gap-3 overflow-hidden">
+            <div className="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center font-bold text-base shrink-0">
+              {user?.fullName?.charAt(0) || "U"}
+            </div>
+            <div className="overflow-hidden">
+              <p className="text-sm font-semibold text-neutral-900 truncate">
+                {user?.fullName || "User"}
+              </p>
+              <p className="text-xs text-neutral-500 truncate">
+                {type === "ADMIN" ? "Agricultural Officer" : user?.district ? `${user.district}, TN` : "Tamil Nadu"}
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div
+            className="w-10 h-10 mx-auto rounded-full bg-[#003366] text-white flex items-center justify-center font-bold text-base cursor-pointer shrink-0"
+            title={`${user?.fullName || "User"} (${type})`}
+            onClick={toggleSidebar}
+          >
             {user?.fullName?.charAt(0) || "U"}
           </div>
-          <div className="overflow-hidden">
-            <p className="text-sm font-semibold text-neutral-900 truncate">
-              {user?.fullName || "User"}
-            </p>
-            <p className="text-xs text-neutral-500 truncate">
-              {type === "ADMIN" ? "Agricultural Officer" : user?.district ? `${user.district}, TN` : "Tamil Nadu"}
-            </p>
-          </div>
-        </div>
-        {user?.farmerRegistrationId && (
-          <div className="mt-2 text-[11px] bg-blue-50 text-[#003366] px-2 py-0.5 rounded border border-blue-200 font-mono">
-            ID: {user.farmerRegistrationId}
-          </div>
         )}
+
+        <button
+          onClick={toggleSidebar}
+          className="hidden md:flex p-1.5 text-slate-500 hover:text-[#003366] hover:bg-slate-200 rounded transition cursor-pointer shrink-0"
+          title={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+          aria-label="Toggle sidebar"
+        >
+          {isCollapsed ? <ChevronRightIcon fontSize="small" /> : <ChevronLeftIcon fontSize="small" />}
+        </button>
       </div>
 
+      {!isCollapsed && user?.farmerRegistrationId && (
+        <div className="px-4 py-1.5 bg-blue-50 border-b border-blue-100 text-[11px] text-[#003366] font-mono truncate">
+          ID: {user.farmerRegistrationId}
+        </div>
+      )}
+
       {/* Navigation List */}
-      <nav className="p-2 space-y-1 flex-1">
+      <nav className={`p-2 space-y-1 flex-1 ${isCollapsed ? "flex flex-col items-center" : ""}`}>
         {items.map((item) => {
           const isActive = location.pathname === item.path;
+
+          if (isCollapsed) {
+            return (
+              <Link
+                key={item.path}
+                to={item.path}
+                title={item.label}
+                className={`w-10 h-10 flex items-center justify-center rounded-lg transition ${
+                  isActive
+                    ? "bg-[#003366] text-white shadow-xs"
+                    : "text-neutral-600 hover:bg-neutral-100 hover:text-[#003366]"
+                }`}
+              >
+                {item.icon}
+              </Link>
+            );
+          }
+
           return (
             <Link
               key={item.path}
@@ -98,7 +143,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ type }) => {
               <span className={isActive ? "text-white" : "text-neutral-500"}>
                 {item.icon}
               </span>
-              <span>{item.label}</span>
+              <span className="truncate">{item.label}</span>
             </Link>
           );
         })}
@@ -106,13 +151,23 @@ export const Sidebar: React.FC<SidebarProps> = ({ type }) => {
 
       {/* Logout button */}
       <div className="p-3 border-t border-neutral-200">
-        <button
-          onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-3 py-2 text-sm text-red-700 hover:bg-red-50 rounded font-medium transition cursor-pointer"
-        >
-          <LogoutIcon fontSize="small" />
-          <span>{t("logout")}</span>
-        </button>
+        {isCollapsed ? (
+          <button
+            onClick={handleLogout}
+            title={t("logout")}
+            className="w-10 h-10 mx-auto flex items-center justify-center text-red-700 hover:bg-red-50 rounded-lg transition cursor-pointer"
+          >
+            <LogoutIcon fontSize="small" />
+          </button>
+        ) : (
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center gap-3 px-3 py-2 text-sm text-red-700 hover:bg-red-50 rounded font-medium transition cursor-pointer"
+          >
+            <LogoutIcon fontSize="small" />
+            <span>{t("logout")}</span>
+          </button>
+        )}
       </div>
     </aside>
   );

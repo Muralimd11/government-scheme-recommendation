@@ -1,6 +1,8 @@
 {
-  "modelName": "RandomForestClassifier",
-  "algorithm": "Random Forest Ensemble",
+  "modelName": "CalibratedRandomForestClassifier",
+  "algorithm": "Random Forest Ensemble with Platt Sigmoid Probability Calibration",
+  "calibrationMethod": "sigmoid",
+  "crossValidationFolds": 5,
   "trainingSamples": 1200,
   "testSamples": 300,
   "classes": [
@@ -17,10 +19,15 @@
     "TN-SCH-12"
   ],
   "metrics": {
-    "accuracy": 0.3933,
-    "precision": 0.3981,
-    "recall": 0.3933,
-    "f1Score": 0.3765
+    "top1Accuracy": 0.3867,
+    "top3Accuracy": 0.7833,
+    "top5Accuracy": 0.9367,
+    "precisionWeighted": 0.3511,
+    "recallWeighted": 0.3867,
+    "f1ScoreWeighted": 0.3541,
+    "f1ScoreMacro": 0.2639,
+    "logLoss": 1.6547
   },
-  "targetState": "Tamil Nadu"
+  "targetState": "Tamil Nadu",
+  "notes": "Probability scores are calibrated empirical posteriors suitable for direct confidence percentage display."
 }

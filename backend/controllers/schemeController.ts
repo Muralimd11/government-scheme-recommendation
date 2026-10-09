@@ -15,7 +15,7 @@ export async function getSchemes(req: Request, res: Response): Promise<void> {
       sortBy = "schemeName"
     } = req.query;
 
-    const filter: Record<string, any> = { status: "ACTIVE" };
+    const filter: Record<string, any> = { status: { $ne: "DISABLED" } };
 
     if (search) {
       const searchRegex = new RegExp(String(search).trim(), "i");

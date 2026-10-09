@@ -813,8 +813,8 @@ export const FarmerProfilePage: React.FC = () => {
                 {Number(formData.landSize) <= 2.5
                   ? "Marginal Farmer (குறு விவசாயி)"
                   : Number(formData.landSize) <= 5.0
-                  ? "Small Farmer (சிறு விவசாயி)"
-                  : "Medium/Large Farmer"}
+                    ? "Small Farmer (சிறு விவசாயி)"
+                    : "Medium/Large Farmer"}
               </span>
             </div>
 
@@ -1498,11 +1498,10 @@ export const FarmerProfilePage: React.FC = () => {
                 {MACHINERY_OPTIONS.map((item) => (
                   <label
                     key={item}
-                    className={`flex items-center gap-2 p-2.5 rounded-lg border text-xs cursor-pointer transition ${
-                      formData.machineryList.includes(item)
+                    className={`flex items-center gap-2 p-2.5 rounded-lg border text-xs cursor-pointer transition ${formData.machineryList.includes(item)
                         ? "bg-emerald-50 border-emerald-300 text-emerald-900 font-medium"
                         : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"
-                    }`}
+                      }`}
                   >
                     <input
                       type="checkbox"
@@ -1524,11 +1523,10 @@ export const FarmerProfilePage: React.FC = () => {
                 {INFRASTRUCTURE_OPTIONS.map((item) => (
                   <label
                     key={item}
-                    className={`flex items-center gap-2 p-2.5 rounded-lg border text-xs cursor-pointer transition ${
-                      formData.infrastructureList.includes(item)
+                    className={`flex items-center gap-2 p-2.5 rounded-lg border text-xs cursor-pointer transition ${formData.infrastructureList.includes(item)
                         ? "bg-emerald-50 border-emerald-300 text-emerald-900 font-medium"
                         : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"
-                    }`}
+                      }`}
                   >
                     <input
                       type="checkbox"
@@ -1903,11 +1901,10 @@ export const FarmerProfilePage: React.FC = () => {
               {ASSISTANCE_OPTIONS.map((item) => (
                 <label
                   key={item}
-                  className={`flex items-start gap-3 p-3 rounded-lg border text-xs cursor-pointer transition ${
-                    formData.assistanceRequired.includes(item)
+                  className={`flex items-start gap-3 p-3 rounded-lg border text-xs cursor-pointer transition ${formData.assistanceRequired.includes(item)
                       ? "bg-emerald-50 border-emerald-300 text-emerald-950 font-semibold"
                       : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"
-                  }`}
+                    }`}
                 >
                   <input
                     type="checkbox"

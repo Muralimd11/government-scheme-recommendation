@@ -3,6 +3,8 @@ import { Link, useSearchParams } from "react-router-dom";
 import { api } from "../services/api";
 import { SchemeItem } from "../types";
 import { useLanguage } from "../context/LanguageContext";
+import { useAuth } from "../context/AuthContext";
+import { Sidebar } from "../components/common/Sidebar";
 import {
   Search as SearchIcon,
   FilterList as FilterIcon,
@@ -38,6 +40,7 @@ const CATEGORIES = ["All", "Subsidy", "Irrigation", "Credit", "Insurance", "Mech
 
 export const ExploreSchemesPage: React.FC = () => {
   const { t, language } = useLanguage();
+  const { isAuthenticated, isAdmin } = useAuth();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [schemes, setSchemes] = useState<SchemeItem[]>([]);
@@ -99,8 +102,9 @@ export const ExploreSchemesPage: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-[#F5F5F5] min-h-screen py-8">
-      <div className="max-w-7xl mx-auto px-4">
+    <div className="w-full bg-[#F5F5F5] min-h-screen flex flex-col md:flex-row items-start">
+      {isAuthenticated && <Sidebar type={isAdmin ? "ADMIN" : "FARMER"} />}
+      <main className="flex-1 p-4 md:p-8 max-w-7xl w-full">
         {/* Header */}
         <div className="mb-6">
           <h1 className="text-2xl sm:text-3xl font-bold text-[#003366]">
@@ -359,7 +363,7 @@ export const ExploreSchemesPage: React.FC = () => {
             </button>
           </div>
         )}
-      </div>
+      </main>
     </div>
   );
 };

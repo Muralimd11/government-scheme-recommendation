@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { LanguageProvider } from "./context/LanguageContext";
+import { SidebarProvider } from "./context/SidebarContext";
 import { Header } from "./components/common/Header";
 import { Footer } from "./components/common/Footer";
 import { ProtectedRoute } from "./components/common/ProtectedRoute";
@@ -35,7 +36,8 @@ export default function App() {
   return (
     <LanguageProvider>
       <AuthProvider>
-        <BrowserRouter>
+        <SidebarProvider>
+          <BrowserRouter>
           <div className="min-h-screen flex flex-col bg-[#F5F5F5] text-neutral-900">
             <Header />
             <div className="flex-1 flex flex-col">
@@ -172,6 +174,7 @@ export default function App() {
             <Footer />
           </div>
         </BrowserRouter>
+        </SidebarProvider>
       </AuthProvider>
     </LanguageProvider>
   );

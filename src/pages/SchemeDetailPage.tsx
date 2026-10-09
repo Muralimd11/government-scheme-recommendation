@@ -3,6 +3,8 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { api } from "../services/api";
 import { SchemeItem } from "../types";
 import { useLanguage } from "../context/LanguageContext";
+import { useAuth } from "../context/AuthContext";
+import { Sidebar } from "../components/common/Sidebar";
 import {
   ArrowBack as BackIcon,
   Verified as VerifiedIcon,
@@ -19,6 +21,7 @@ export const SchemeDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { t, language } = useLanguage();
+  const { isAuthenticated, isAdmin } = useAuth();
 
   const [scheme, setScheme] = useState<SchemeItem | null>(null);
   const [loading, setLoading] = useState(true);
@@ -66,8 +69,9 @@ export const SchemeDetailPage: React.FC = () => {
   }
 
   return (
-    <div className="w-full bg-[#F5F5F5] min-h-screen py-8">
-      <div className="max-w-4xl mx-auto px-4">
+    <div className="w-full bg-[#F5F5F5] min-h-screen flex flex-col md:flex-row items-start">
+      {isAuthenticated && <Sidebar type={isAdmin ? "ADMIN" : "FARMER"} />}
+      <main className="flex-1 p-4 md:p-8 max-w-5xl w-full">
         {/* Back Link */}
         <button
           onClick={() => navigate(-1)}
@@ -250,7 +254,7 @@ export const SchemeDetailPage: React.FC = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

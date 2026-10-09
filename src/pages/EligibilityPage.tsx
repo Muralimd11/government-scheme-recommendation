@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 
 export const EligibilityPage: React.FC = () => {
-  const { user, isAuthenticated, isFarmer } = useAuth();
+  const { user, isAuthenticated, isFarmer, isAdmin } = useAuth();
   const { language } = useLanguage();
   const navigate = useNavigate();
 
@@ -55,22 +55,22 @@ export const EligibilityPage: React.FC = () => {
       setEvaluating(true);
       const payload = isAuthenticated && user
         ? {
-            ...user,
-            ...(simulate
-              ? {
-                  dripAvailable: simulatedParams.dripInstalled ? "Yes" : "No",
-                  solarPumpInterest: simulatedParams.solarPumpRequired,
-                  horticultureActivity: simulatedParams.horticultureCrop !== "None",
-                  horticultureType: simulatedParams.horticultureCrop,
-                  organicCertified: simulatedParams.organicFarming,
-                  livestockOwnership: simulatedParams.livestockAdded
-                }
-              : {})
-          }
+          ...user,
+          ...(simulate
+            ? {
+              dripAvailable: simulatedParams.dripInstalled ? "Yes" : "No",
+              solarPumpInterest: simulatedParams.solarPumpRequired,
+              horticultureActivity: simulatedParams.horticultureCrop !== "None",
+              horticultureType: simulatedParams.horticultureCrop,
+              organicCertified: simulatedParams.organicFarming,
+              livestockOwnership: simulatedParams.livestockAdded
+            }
+            : {})
+        }
         : {
-            ...quickCriteria,
-            farmerType: quickCriteria.landSize <= 2.5 ? "Marginal" : quickCriteria.landSize <= 5 ? "Small" : "Medium"
-          };
+          ...quickCriteria,
+          farmerType: quickCriteria.landSize <= 2.5 ? "Marginal" : quickCriteria.landSize <= 5 ? "Small" : "Medium"
+        };
 
       const res = await api.getRecommendations(payload);
       if (res.data?.success) {
@@ -91,10 +91,10 @@ export const EligibilityPage: React.FC = () => {
   }, [isAuthenticated]);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
-      {isFarmer && <Sidebar type="FARMER" />}
+    <div className="min-h-screen bg-slate-50 flex flex-col md:flex-row items-start">
+      {isAuthenticated && <Sidebar type={isAdmin ? "ADMIN" : "FARMER"} />}
 
-      <main className="flex-1 p-4 md:p-8 max-w-5xl mx-auto space-y-6">
+      <main className="flex-1 p-4 md:p-8 max-w-5xl mx-auto space-y-6 w-full">
         {/* Header Title */}
         <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-800 text-xs font-semibold rounded-full mb-2 border border-emerald-200">
@@ -262,11 +262,10 @@ export const EligibilityPage: React.FC = () => {
                     return (
                       <div
                         key={idx}
-                        className={`p-4 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs ${
-                          isEligible
+                        className={`p-4 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs ${isEligible
                             ? "border-slate-200 bg-white"
                             : "border-amber-200 bg-amber-50/20"
-                        }`}
+                          }`}
                       >
                         <div className="space-y-1">
                           <div className="flex items-center gap-2">
