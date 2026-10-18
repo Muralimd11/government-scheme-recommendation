@@ -112,6 +112,8 @@ export interface UserProfile {
 export interface SchemeItem {
   _id: string;
   schemeId: string;
+  legacySchemeId?: string;
+  aliases?: string[];
   schemeName: string;
   schemeNameTamil?: string;
   governmentLevel: "Tamil Nadu Government" | "Central Government";

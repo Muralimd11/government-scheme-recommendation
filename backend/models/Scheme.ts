@@ -40,13 +40,26 @@ export interface IScheme extends MongooseDoc {
   status: "ACTIVE" | "DISABLED";
   lastVerifiedDate: Date;
   isDemonstrationData: boolean;
+  verificationStatus?: string;
+  schemeStatus?: string;
+  exclusionCriteria?: string;
+  otherConditions?: string;
+  sourceType?: string;
+  sourceTitle?: string;
+  additionalNotes?: string;
+  rawEligibilityText?: string;
+  rawMinAge?: number | null;
+  rawMaxAge?: number | null;
+  rawAnnualIncomeLimit?: number | null;
+  rawLandMinAcres?: number | null;
+  rawLandMaxAcres?: number | null;
   createdAt: Date;
   updatedAt: Date;
 }
 
 const schemeSchema = new Schema<IScheme>(
   {
-    schemeId: { type: String, required: true, unique: true, uppercase: true, trim: true },
+    schemeId: { type: String, required: true, unique: true, trim: true },
     schemeName: { type: String, required: true, trim: true },
     schemeNameTamil: { type: String, trim: true },
     governmentLevel: {
@@ -88,13 +101,25 @@ const schemeSchema = new Schema<IScheme>(
     applicationUrl: { type: String, default: "" },
     status: { type: String, enum: ["ACTIVE", "DISABLED"], default: "ACTIVE" },
     lastVerifiedDate: { type: Date, default: Date.now },
-    isDemonstrationData: { type: Boolean, default: true }
+    isDemonstrationData: { type: Boolean, default: false },
+    verificationStatus: { type: String, default: "Requires verification" },
+    schemeStatus: { type: String, default: "Requires verification" },
+    exclusionCriteria: { type: String },
+    otherConditions: { type: String },
+    sourceType: { type: String },
+    sourceTitle: { type: String },
+    additionalNotes: { type: String },
+    rawEligibilityText: { type: String },
+    rawMinAge: { type: Number, default: null },
+    rawMaxAge: { type: Number, default: null },
+    rawAnnualIncomeLimit: { type: Number, default: null },
+    rawLandMinAcres: { type: Number, default: null },
+    rawLandMaxAcres: { type: Number, default: null }
   },
   { timestamps: true }
 );
 
 // Indexes
-schemeSchema.index({ schemeId: 1 });
 schemeSchema.index({ schemeName: 1 });
 schemeSchema.index({ department: 1 });
 schemeSchema.index({ category: 1 });

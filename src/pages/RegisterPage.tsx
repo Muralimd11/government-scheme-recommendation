@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useLanguage } from "../context/LanguageContext";
@@ -25,59 +25,116 @@ export const RegisterPage: React.FC = () => {
     fullName: "",
     mobile: "",
     email: "",
-    age: 45,
-    gender: "Male",
-    socialCategory: "MBC",
+    age: "" as string | number,
+    gender: "",
+    socialCategory: "",
     password: "",
     confirmPassword: "",
     preferredLanguage: "en",
-    district: "Thanjavur",
-    block: "Thanjavur",
-    village: "Vallam",
+    district: "",
+    block: "",
+    village: "",
     farmerStatus: "Owner",
     landOwnership: "Owned",
-    landSize: 2.5,
-    cropType: "Paddy",
-    annualIncome: 120000
+    landSize: "" as string | number,
+    cropType: "",
+    annualIncome: "" as string | number
   });
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Prevent browser password managers from auto-injecting credentials before user enters them
+  useEffect(() => {
+    const clearAutofill = () => {
+      setFormData((prev) => ({
+        ...prev,
+        email: "",
+        password: "",
+        confirmPassword: ""
+      }));
+      const emailEl = document.getElementById("register_email_input") as HTMLInputElement | null;
+      const passEl = document.getElementById("register_password_input") as HTMLInputElement | null;
+      const confirmEl = document.getElementById("register_confirm_password_input") as HTMLInputElement | null;
+      if (emailEl) emailEl.value = "";
+      if (passEl) passEl.value = "";
+      if (confirmEl) confirmEl.value = "";
+    };
+
+    clearAutofill();
+    const t1 = setTimeout(clearAutofill, 50);
+    const t2 = setTimeout(clearAutofill, 250);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, []);
+
   // Dynamic blocks and villages for selected district
   const availableBlocks = useMemo(() => {
+    if (!formData.district) return [];
     return getBlocksForDistrict(formData.district);
   }, [formData.district]);
 
   const availableVillages = useMemo(() => {
+    if (!formData.district || !formData.block) return [];
     return getVillagesForBlock(formData.district, formData.block);
   }, [formData.district, formData.block]);
 
   const handleDistrictChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newDistrict = e.target.value;
+    if (!newDistrict) {
+      setFormData((prev) => ({
+        ...prev,
+        district: "",
+        block: "",
+        village: ""
+      }));
+      return;
+    }
     const blocks = getBlocksForDistrict(newDistrict);
-    const newBlock = blocks[0]?.name || `${newDistrict} Central`;
-    const villages = getVillagesForBlock(newDistrict, newBlock);
+    const newBlock = blocks[0]?.name || "";
+    const villages = newBlock ? getVillagesForBlock(newDistrict, newBlock) : [];
     setFormData((prev) => ({
       ...prev,
       district: newDistrict,
       block: newBlock,
-      village: villages[0] || "Gramam 1"
+      village: villages[0] || ""
     }));
   };
 
   const handleBlockChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newBlock = e.target.value;
-    const villages = getVillagesForBlock(formData.district, newBlock);
+    const villages = newBlock ? getVillagesForBlock(formData.district, newBlock) : [];
     setFormData((prev) => ({
       ...prev,
       block: newBlock,
-      village: villages[0] || "Gramam 1"
+      village: villages[0] || ""
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.district) {
+      setError("Please select your District.");
+      return;
+    }
+    if (!formData.cropType) {
+      setError("Please select your Primary Crop.");
+      return;
+    }
+    if (!formData.gender) {
+      setError("Please select your Gender.");
+      return;
+    }
+    if (!formData.socialCategory) {
+      setError("Please select your Social Category.");
+      return;
+    }
+    if (!formData.age || Number(formData.age) < 18) {
+      setError("Please enter a valid age (18 years or older).");
+      return;
+    }
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match.");
       return;
@@ -90,8 +147,8 @@ export const RegisterPage: React.FC = () => {
         ...formData,
         role: "FARMER",
         age: Number(formData.age),
-        landSize: Number(formData.landSize),
-        annualIncome: Number(formData.annualIncome)
+        landSize: Number(formData.landSize) || 0,
+        annualIncome: Number(formData.annualIncome) || 0
       });
 
       if (res.data.success) {
@@ -128,7 +185,25 @@ export const RegisterPage: React.FC = () => {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6" autoComplete="off">
+          {/* Decoy hidden inputs to prevent Chrome password manager from pre-populating credentials */}
+          <input
+            type="text"
+            name="decoy_user_field"
+            style={{ position: "absolute", opacity: 0, height: 0, width: 0, zIndex: -1, pointerEvents: "none" }}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+          />
+          <input
+            type="password"
+            name="decoy_pass_field"
+            style={{ position: "absolute", opacity: 0, height: 0, width: 0, zIndex: -1, pointerEvents: "none" }}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+          />
+
           {/* Section 1: Personal & Identity Information */}
           <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
             <div className="flex items-center justify-between pb-2 mb-3 border-b border-slate-200">
@@ -181,8 +256,8 @@ export const RegisterPage: React.FC = () => {
                   max="100"
                   required
                   value={formData.age}
-                  onChange={(e) => setFormData({ ...formData, age: Number(e.target.value) })}
-                  placeholder="e.g. 45"
+                  onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+                  placeholder="e.g. 42"
                   className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
                 />
               </div>
@@ -192,10 +267,12 @@ export const RegisterPage: React.FC = () => {
                   {language === "ta" ? "பாலினம்" : "Gender"} *
                 </label>
                 <select
+                  required
                   value={formData.gender}
                   onChange={(e) => setFormData({ ...formData, gender: e.target.value as any })}
                   className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
                 >
+                  <option value="" disabled>-- Select Gender (பாலினம்) --</option>
                   <option value="Male">Male (ஆண்)</option>
                   <option value="Female">Female (பெண்)</option>
                   <option value="Other">Other (இதர)</option>
@@ -207,10 +284,12 @@ export const RegisterPage: React.FC = () => {
                   {t("socialCategory")} *
                 </label>
                 <select
+                  required
                   value={formData.socialCategory}
                   onChange={(e) => setFormData({ ...formData, socialCategory: e.target.value })}
                   className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
                 >
+                  <option value="" disabled>-- Select Social Category (பிரிவு) --</option>
                   <option value="MBC">MBC / DNC (மிகவும் பிற்படுத்தப்பட்டோர்)</option>
                   <option value="OBC">BC / OBC (பிற்படுத்தப்பட்டோர்)</option>
                   <option value="SC">SC (ஆதிதிராவிடர்)</option>
@@ -225,6 +304,9 @@ export const RegisterPage: React.FC = () => {
                 </label>
                 <input
                   type="email"
+                  id="register_email_input"
+                  name="farmer_reg_email_field"
+                  autoComplete="off"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="farmer@example.com"
@@ -238,6 +320,9 @@ export const RegisterPage: React.FC = () => {
                 </label>
                 <input
                   type="password"
+                  id="register_password_input"
+                  name="farmer_reg_new_pwd"
+                  autoComplete="new-password"
                   required
                   minLength={6}
                   value={formData.password}
@@ -253,6 +338,9 @@ export const RegisterPage: React.FC = () => {
                 </label>
                 <input
                   type="password"
+                  id="register_confirm_password_input"
+                  name="farmer_reg_confirm_pwd"
+                  autoComplete="new-password"
                   required
                   value={formData.confirmPassword}
                   onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
@@ -281,10 +369,12 @@ export const RegisterPage: React.FC = () => {
                   {t("district")} *
                 </label>
                 <select
+                  required
                   value={formData.district}
                   onChange={handleDistrictChange}
                   className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366] font-medium"
                 >
+                  <option value="" disabled>-- Select District (மாவட்டம்) --</option>
                   {ALL_TN_DISTRICTS.map((d) => (
                     <option key={d} value={d}>
                       {d}
@@ -298,10 +388,13 @@ export const RegisterPage: React.FC = () => {
                   {language === "ta" ? "வட்டாரம் / தாலுகா" : "Block / Taluk"} *
                 </label>
                 <select
+                  required
                   value={formData.block}
                   onChange={handleBlockChange}
-                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366] font-medium"
+                  disabled={!formData.district}
+                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366] font-medium disabled:bg-neutral-100"
                 >
+                  <option value="" disabled>-- Select Block / Taluk --</option>
                   {availableBlocks.map((b) => (
                     <option key={b.id || b.name} value={b.name}>
                       {b.name} {b.nameTamil ? `(${b.nameTamil})` : ""}
@@ -315,10 +408,13 @@ export const RegisterPage: React.FC = () => {
                   {language === "ta" ? "வருவாய் கிராமம்" : "Revenue Village"} *
                 </label>
                 <select
+                  required
                   value={formData.village}
                   onChange={(e) => setFormData({ ...formData, village: e.target.value })}
-                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366] font-medium"
+                  disabled={!formData.block}
+                  className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366] font-medium disabled:bg-neutral-100"
                 >
+                  <option value="" disabled>-- Select Revenue Village --</option>
                   {availableVillages.map((v) => (
                     <option key={v} value={v}>
                       {v}
@@ -353,7 +449,8 @@ export const RegisterPage: React.FC = () => {
                   min="0.1"
                   required
                   value={formData.landSize}
-                  onChange={(e) => setFormData({ ...formData, landSize: Number(e.target.value) })}
+                  onChange={(e) => setFormData({ ...formData, landSize: e.target.value })}
+                  placeholder="e.g. 2.5"
                   className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
                 />
               </div>
@@ -363,10 +460,12 @@ export const RegisterPage: React.FC = () => {
                   {t("cropType")} *
                 </label>
                 <select
+                  required
                   value={formData.cropType}
                   onChange={(e) => setFormData({ ...formData, cropType: e.target.value })}
                   className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
                 >
+                  <option value="" disabled>-- Select Primary Crop (பயிர்) --</option>
                   {CROPS.map((c) => (
                     <option key={c} value={c}>
                       {c}
@@ -384,7 +483,8 @@ export const RegisterPage: React.FC = () => {
                   step="5000"
                   required
                   value={formData.annualIncome}
-                  onChange={(e) => setFormData({ ...formData, annualIncome: Number(e.target.value) })}
+                  onChange={(e) => setFormData({ ...formData, annualIncome: e.target.value })}
+                  placeholder="e.g. 100000"
                   className="w-full border border-neutral-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-[#003366]"
                 />
               </div>

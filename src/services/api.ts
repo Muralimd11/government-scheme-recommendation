@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API_BASE = "/api";
+const API_BASE = import.meta.env.VITE_API_URL 
+  ? `${import.meta.env.VITE_API_URL.replace(/\/+$/, "")}/api`
+  : "/api";
 
 export const apiClient = axios.create({
   baseURL: API_BASE,
@@ -62,6 +64,9 @@ export const api = {
 
   // Admin
   getAdminStats: () => apiClient.get("/admin/analytics"),
+  getAdminApplications: (params?: any) => apiClient.get("/admin/applications", { params }),
+  updateAdminApplicationStatus: (id: string, data: { status: string; adminRemarks?: string }) =>
+    apiClient.put(`/admin/applications/${id}/status`, data),
   getAdminFarmers: (params?: any) => apiClient.get("/admin/farmers", { params }),
   updateFarmerStatus: (id: string, accountStatus: string) =>
     apiClient.put(`/admin/farmers/${id}/status`, { accountStatus }),

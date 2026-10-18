@@ -1,143 +1,148 @@
 """
-Synthetic Dataset Generator for Tamil Nadu Farmer Scheme Recommendation
-Generates training data reflecting real agricultural conditions and eligibility rules in Tamil Nadu.
+Synthetic Dataset Generator for ML Pipeline Testing and Benchmarking
+IMPORTANT DISCLAIMER:
+This module generates synthetic data explicitly for pipeline verification, algorithm testing,
+and development benchmarking. It does NOT represent real-world farmer interaction records or
+ground-truth official application data. Real-world evaluation should ingest verified historical
+farmer-scheme applications.
 """
 import os
+import sys
 import random
+import json
 import pandas as pd
 import numpy as np
+
+# Ensure project root is in python path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(os.path.dirname(current_dir))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
+from ml.catalogue.catalogue_loader import load_excel_catalogue
+from ml.eligibility.eligibility_engine import evaluate_scheme_eligibility
+from ml.ranking.baseline_ranker import calculate_baseline_relevance
 
 random.seed(42)
 np.random.seed(42)
 
-DISTRICTS = [
-    "Thanjavur", "Tiruvarur", "Nagapattinam", "Mayiladuthurai", "Madurai",
-    "Tiruchirappalli", "Salem", "Coimbatore", "Erode", "Tirunelveli",
-    "Dindigul", "Theni", "Cuddalore", "Villupuram", "Vellore",
-    "Dharmapuri", "Krishnagiri", "Pudukkottai", "Ramanathapuram", "Sivaganga"
+TN_DISTRICTS = [
+    "Ariyalur", "Chengalpattu", "Chennai", "Coimbatore", "Cuddalore",
+    "Dharmapuri", "Dindigul", "Erode", "Kallakurichi", "Kanchipuram",
+    "Kanyakumari", "Karur", "Krishnagiri", "Madurai", "Mayiladuthurai",
+    "Nagapattinam", "Namakkal", "Nilgiris", "Perambalur", "Pudukkottai",
+    "Ramanathapuram", "Ranipet", "Salem", "Sivaganga", "Tenkasi",
+    "Thanjavur", "Theni", "Thoothukudi", "Tiruchirappalli", "Tirunelveli",
+    "Tirupathur", "Tiruppur", "Tiruvallur", "Tiruvannamalai", "Tiruvarur",
+    "Vellore", "Viluppuram", "Virudhunagar"
 ]
 
-CROP_TYPES = [
+CROPS = [
     "Paddy", "Sugarcane", "Banana", "Cotton", "Groundnut",
-    "Millets", "Vegetables", "Flowers", "Coconut", "Pulses"
+    "Millets", "Vegetables", "Flowers", "Coconut", "Pulses",
+    "Turmeric", "Maize", "Tea", "Coffee", "Pepper"
 ]
 
-IRRIGATION_TYPES = [
-    "Canal", "Borewell", "Open Well", "Drip", "Sprinkler", "Rainfed"
-]
-
+IRRIGATION_SOURCES = ["Canal", "Borewell", "Open Well", "Drip", "Sprinkler", "Rainfed"]
 FARMER_TYPES = ["Marginal", "Small", "Medium", "Large"]
 SOCIAL_CATEGORIES = ["General", "OBC", "MBC", "SC", "ST"]
+LAND_OWNERSHIPS = ["Owned", "Leased", "Shared"]
+FARMING_TYPES = ["Conventional", "Organic", "Integrated", "Natural"]
 
-SCHEMES = [
-    "TN-SCH-01",  # PM-KISAN (Central) - Small/Marginal farmers, income <= 250000, land <= 5 acres
-    "TN-SCH-02",  # Tamil Nadu Free Electricity for Agriculture (Pumpsets/Wells)
-    "TN-SCH-03",  # Tamil Nadu Micro Irrigation Scheme (Per Drop More Crop - Drip/Sprinkler)
-    "TN-SCH-04",  # Kalaignarin All Village Integrated Agriculture Development Programme (KAVIADP)
-    "TN-SCH-05",  # Kuruvai Special Package Scheme (Cauvery Delta: Thanjavur, Tiruvarur, Nagapattinam, etc., Paddy)
-    "TN-SCH-06",  # Agricultural Mechanization Scheme (Subsidies on Tractors, Tillers)
-    "TN-SCH-07",  # National Horticulture Mission Tamil Nadu (Fruits, Vegetables, Flowers)
-    "TN-SCH-08",  # PM Fasal Bima Yojana (Crop Insurance TN)
-    "TN-SCH-09",  # Chief Minister Solar Powered Pump Sets Scheme TN (Off-grid solar pumps)
-    "TN-SCH-10",  # Sub-Mission on Agroforestry & Tree Cultivation (Private Lands)
-    "TN-SCH-11",  # Dairy Cattle & Livestock Development Scheme for TN Small Farmers
-    "TN-SCH-12",  # Soil Health Card & Organic Farming Promotion Scheme
+ASSISTANCE_AREAS = [
+    "Drip Irrigation", "Organic Seeds", "Tractor Subsidy",
+    "Solar Pump", "Crop Insurance", "Dairy Farming", "Horticulture", "Soil Health"
 ]
 
-def determine_primary_scheme(row):
-    # Determine the most optimal scheme based on characteristics
-    district = row["district"]
-    crop = row["cropType"]
-    irrigation = row["irrigationType"]
-    farmer_type = row["farmerType"]
-    income = row["income"]
-    land_size = row["landSize"]
-    social = row["socialCategory"]
-    livestock = row["livestock"]
-    horticulture = row["horticulture"]
-    machinery = row["machinery"]
+def generate_synthetic_benchmark(n_samples: int = 1500, catalogue_schemes: list = None) -> pd.DataFrame:
+    """
+    Generates synthetic farmer benchmark records annotated with Stage A verified eligibility
+    and Stage B baseline ranking targets.
+    """
+    if catalogue_schemes is None:
+        # Load directly from Excel catalogue
+        excel_path = os.path.join(project_root, "Farmers_Schemes_34_Columns.xlsx")
+        from ml.catalogue.catalogue_loader import transform_record_for_mongo
+        raw_df, _ = load_excel_catalogue(excel_path)
+        catalogue_schemes = [transform_record_for_mongo(row) for _, row in raw_df.iterrows()]
 
-    # Kuruvai Delta package
-    if district in ["Thanjavur", "Tiruvarur", "Nagapattinam", "Mayiladuthurai", "Cuddalore"] and crop == "Paddy":
-        if random.random() < 0.40:
-            return "TN-SCH-05"
-
-    # Micro Irrigation
-    if irrigation in ["Drip", "Sprinkler", "Borewell"] and (horticulture == "Yes" or crop in ["Vegetables", "Flowers", "Banana", "Sugarcane"]):
-        if random.random() < 0.45:
-            return "TN-SCH-03"
-
-    # Solar Pump Scheme
-    if irrigation in ["Borewell", "Open Well"] and farmer_type in ["Marginal", "Small"] and random.random() < 0.35:
-        return "TN-SCH-09"
-
-    # Horticulture Mission
-    if horticulture == "Yes" or crop in ["Vegetables", "Flowers", "Banana", "Coconut"]:
-        if random.random() < 0.50:
-            return "TN-SCH-07"
-
-    # Dairy / Livestock
-    if livestock == "Yes" and farmer_type in ["Marginal", "Small"] and random.random() < 0.50:
-        return "TN-SCH-11"
-
-    # Agricultural Mechanization
-    if machinery == "Yes" or land_size >= 2.5:
-        if random.random() < 0.40:
-            return "TN-SCH-06"
-
-    # Free Electricity
-    if irrigation in ["Borewell", "Open Well", "Canal"]:
-        if random.random() < 0.40:
-            return "TN-SCH-02"
-
-    # KAVIADP (State Village Integrated Scheme)
-    if social in ["SC", "ST", "MBC"] and farmer_type in ["Marginal", "Small"]:
-        if random.random() < 0.45:
-            return "TN-SCH-04"
-
-    # PM Fasal Bima Yojana
-    if crop in ["Paddy", "Cotton", "Groundnut", "Sugarcane", "Millets"] and random.random() < 0.35:
-        return "TN-SCH-08"
-
-    # PM-KISAN
-    if land_size <= 5.0 and income <= 250000:
-        return "TN-SCH-01"
-
-    # Default fallback to Soil Health Card or Free Electricity
-    return random.choice(["TN-SCH-12", "TN-SCH-02", "TN-SCH-01"])
-
-def generate_samples(n=1500):
     records = []
-    for _ in range(n):
+
+    for idx in range(n_samples):
         age = int(np.random.normal(48, 12))
         age = max(18, min(80, age))
 
-        farmer_type = random.choices(FARMER_TYPES, weights=[0.40, 0.35, 0.18, 0.07])[0]
+        farmer_type = random.choices(FARMER_TYPES, weights=[0.42, 0.35, 0.16, 0.07])[0]
 
         if farmer_type == "Marginal":
             land_size = round(random.uniform(0.2, 2.4), 2)
-            income = int(random.uniform(30000, 150000))
+            income = int(random.uniform(30000, 160000))
         elif farmer_type == "Small":
             land_size = round(random.uniform(2.5, 4.9), 2)
-            income = int(random.uniform(70000, 240000))
+            income = int(random.uniform(80000, 250000))
         elif farmer_type == "Medium":
             land_size = round(random.uniform(5.0, 9.9), 2)
-            income = int(random.uniform(150000, 450000))
+            income = int(random.uniform(180000, 480000))
         else:
             land_size = round(random.uniform(10.0, 25.0), 2)
-            income = int(random.uniform(300000, 900000))
+            income = int(random.uniform(350000, 950000))
 
-        district = random.choice(DISTRICTS)
-        crop_type = random.choice(CROP_TYPES)
-        irrigation_type = random.choice(IRRIGATION_TYPES)
-        social_category = random.choices(SOCIAL_CATEGORIES, weights=[0.10, 0.45, 0.25, 0.18, 0.02])[0]
-        gender = random.choices(["Male", "Female"], weights=[0.75, 0.25])[0]
-        land_ownership = random.choices(["Owned", "Leased", "Shared"], weights=[0.80, 0.15, 0.05])[0]
-        farming_type = random.choices(["Conventional", "Organic", "Integrated", "Natural"], weights=[0.65, 0.15, 0.15, 0.05])[0]
+        district = random.choice(TN_DISTRICTS)
+        crop = random.choice(CROPS)
+        irrigation = random.choice(IRRIGATION_SOURCES)
+        social = random.choices(SOCIAL_CATEGORIES, weights=[0.10, 0.45, 0.25, 0.18, 0.02])[0]
+        gender = random.choices(["Male", "Female"], weights=[0.72, 0.28])[0]
+        land_ownership = random.choices(LAND_OWNERSHIPS, weights=[0.80, 0.15, 0.05])[0]
+        farming_type = random.choices(FARMING_TYPES, weights=[0.65, 0.15, 0.15, 0.05])[0]
 
         livestock = "Yes" if random.random() < 0.45 else "No"
-        horticulture = "Yes" if crop_type in ["Vegetables", "Flowers", "Banana", "Coconut"] or random.random() < 0.25 else "No"
+        cow_count = random.randint(1, 5) if livestock == "Yes" else 0
+        horticulture = "Yes" if crop in ["Vegetables", "Flowers", "Banana", "Coconut"] or random.random() < 0.25 else "No"
         machinery = "Yes" if land_size > 3.0 and random.random() < 0.55 else ("Yes" if random.random() < 0.20 else "No")
+        solar_interest = random.random() < 0.30
+
+        assistance = random.sample(ASSISTANCE_AREAS, k=random.randint(1, 2))
+
+        farmer_dict = {
+            "age": age,
+            "gender": gender,
+            "income": income,
+            "annualIncome": income,
+            "landSize": land_size,
+            "landOwnership": land_ownership,
+            "cropType": crop,
+            "farmingType": farming_type,
+            "district": district,
+            "irrigationType": irrigation,
+            "farmerType": farmer_type,
+            "socialCategory": social,
+            "livestock": livestock,
+            "cowCount": cow_count,
+            "horticulture": horticulture,
+            "machinery": machinery,
+            "solarPumpInterest": solar_interest,
+            "assistanceRequired": assistance
+        }
+
+        # Stage A: Find eligible candidates among catalogue
+        eligible_candidates = []
+        for scheme in catalogue_schemes:
+            is_elig, status, reasons, inelig_reason = evaluate_scheme_eligibility(scheme, farmer_dict)
+            if is_elig:
+                rel_score = calculate_baseline_relevance(farmer_dict, scheme)
+                eligible_candidates.append({
+                    "schemeId": scheme["schemeId"],
+                    "relevance": rel_score
+                })
+
+        if eligible_candidates:
+            # Sort by relevance descending
+            eligible_candidates.sort(key=lambda x: x["relevance"], reverse=True)
+            primary_scheme = eligible_candidates[0]["schemeId"]
+            top_schemes = [c["schemeId"] for c in eligible_candidates[:5]]
+        else:
+            primary_scheme = "kvyoj"
+            top_schemes = ["kvyoj"]
 
         row = {
             "age": age,
@@ -145,27 +150,41 @@ def generate_samples(n=1500):
             "income": income,
             "landSize": land_size,
             "landOwnership": land_ownership,
-            "cropType": crop_type,
+            "cropType": crop,
             "farmingType": farming_type,
             "district": district,
-            "irrigationType": irrigation_type,
+            "irrigationType": irrigation,
             "farmerType": farmer_type,
-            "socialCategory": social_category,
+            "socialCategory": social,
             "livestock": livestock,
             "horticulture": horticulture,
             "machinery": machinery,
+            "schemeId": primary_scheme,
+            "top5TargetSchemes": json.dumps(top_schemes),
+            "isSynthetic": True
         }
-
-        row["schemeId"] = determine_primary_scheme(row)
         records.append(row)
 
     df = pd.DataFrame(records)
-    out_dir = os.path.dirname(os.path.abspath(__file__))
-    csv_path = os.path.join(out_dir, "farmer_schemes_dataset.csv")
-    df.to_csv(csv_path, index=False)
-    print(f"Generated {len(df)} samples saved to {csv_path}")
-    print("Class distribution:")
-    print(df["schemeId"].value_counts())
+    return df
+
+def main():
+    print("[Synthetic Generator] Generating benchmark dataset for pipeline validation...")
+    df = generate_synthetic_benchmark(n_samples=1800)
+
+    dataset_dir = os.path.join(project_root, "ml", "dataset")
+    os.makedirs(dataset_dir, exist_ok=True)
+
+    # Save dedicated synthetic benchmark file
+    benchmark_path = os.path.join(dataset_dir, "synthetic_farmer_benchmark.csv")
+    df.to_csv(benchmark_path, index=False)
+    print(f"[Synthetic Generator] Saved {len(df)} synthetic benchmark samples to: {benchmark_path}")
+
+    # Also update farmer_schemes_dataset.csv for backward compatibility
+    legacy_path = os.path.join(dataset_dir, "farmer_schemes_dataset.csv")
+    df.to_csv(legacy_path, index=False)
+    print(f"[Synthetic Generator] Updated legacy dataset path: {legacy_path}")
+    print(f"[Synthetic Generator] Unique schemes represented: {df['schemeId'].nunique()}")
 
 if __name__ == "__main__":
-    generate_samples()
+    main()

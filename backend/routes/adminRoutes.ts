@@ -8,6 +8,8 @@ import {
   deleteScheme,
   getAllDocuments,
   verifyDocument,
+  getAllApplications,
+  updateApplicationStatus,
   getReports,
   getAuditLogs
 } from "../controllers/adminController";
@@ -21,6 +23,9 @@ router.use(authenticateUser, authorizeAdmin);
 router.get("/analytics", getDashboardStats);
 router.get("/farmers", getFarmersList);
 router.put("/farmers/:id/status", updateFarmerStatus);
+
+router.get("/applications", getAllApplications);
+router.put("/applications/:id/status", updateApplicationStatus);
 
 router.post("/schemes", createScheme);
 router.put("/schemes/:id", updateScheme);

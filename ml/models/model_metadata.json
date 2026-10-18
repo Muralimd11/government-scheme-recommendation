@@ -1,33 +1,62 @@
 {
   "modelName": "CalibratedRandomForestClassifier",
-  "algorithm": "Random Forest Ensemble with Platt Sigmoid Probability Calibration",
-  "calibrationMethod": "sigmoid",
-  "crossValidationFolds": 5,
-  "trainingSamples": 1200,
-  "testSamples": 300,
-  "classes": [
-    "TN-SCH-01",
-    "TN-SCH-02",
-    "TN-SCH-03",
-    "TN-SCH-04",
-    "TN-SCH-05",
-    "TN-SCH-06",
-    "TN-SCH-07",
-    "TN-SCH-08",
-    "TN-SCH-09",
-    "TN-SCH-11",
-    "TN-SCH-12"
-  ],
-  "metrics": {
-    "top1Accuracy": 0.3867,
-    "top3Accuracy": 0.7833,
-    "top5Accuracy": 0.9367,
-    "precisionWeighted": 0.3511,
-    "recallWeighted": 0.3867,
-    "f1ScoreWeighted": 0.3541,
-    "f1ScoreMacro": 0.2639,
-    "logLoss": 1.6547
+  "algorithm": "Random Forest Ensemble with Sigmoid Platt Calibration",
+  "dataset": {
+    "sourcePath": "synthetic_farmer_benchmark.csv",
+    "isSynthetic": true,
+    "disclaimer": "Trained on synthetic pipeline benchmark data for algorithm verification. The 227-scheme catalogue describes scheme rules; it does not by itself constitute a supervised historical interaction dataset. Supervised production accuracy should be verified against officially reviewed farmer application histories.",
+    "trainingSamples": 1440,
+    "testSamples": 360
   },
-  "targetState": "Tamil Nadu",
-  "notes": "Probability scores are calibrated empirical posteriors suitable for direct confidence percentage display."
+  "classes": [
+    "acandabc",
+    "ahtn",
+    "ami",
+    "cbsp-stc",
+    "cpis",
+    "docsom",
+    "doshc",
+    "dsctaecc",
+    "dsctassgcsccm",
+    "dsctawa",
+    "eebdsrs",
+    "gvyoj",
+    "inspire-i",
+    "isfepqiisaradocscildie",
+    "kcc",
+    "lhadc",
+    "midh",
+    "needs",
+    "obdopmtig",
+    "pcaardfh",
+    "pcardah",
+    "pcwfstfpi",
+    "qpsd",
+    "rad",
+    "smsopm"
+  ],
+  "standardClassificationMetrics": {
+    "top1Accuracy": 0.4889,
+    "top3Accuracy": 0.8583,
+    "top5Accuracy": 0.95,
+    "precisionWeighted": 0.4926,
+    "recallWeighted": 0.4889,
+    "f1ScoreWeighted": 0.476,
+    "f1ScoreMacro": 0.3819
+  },
+  "rankingEvaluation": {
+    "evaluatedQueries": 360,
+    "mlModel": {
+      "precision@5": 0.4956,
+      "recall@5": 0.4956,
+      "ndcg@5": 0.5631
+    },
+    "baselineRuleRanker": {
+      "precision@5": 0.76,
+      "recall@5": 0.76,
+      "ndcg@5": 0.7835
+    },
+    "deltaNDCG@5": -0.2204
+  },
+  "targetJurisdiction": "Tamil Nadu"
 }

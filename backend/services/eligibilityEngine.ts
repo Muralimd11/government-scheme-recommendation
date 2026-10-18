@@ -27,6 +27,7 @@ export interface RecommendationOutput {
   applicationUrl: string;
   applicationDeadline: string;
   isDemonstrationData: boolean;
+  verificationStatus?: string;
   mlConfidenceRate?: string;
   mlProbability?: number;
 }
@@ -99,51 +100,93 @@ export function evaluateSchemeEligibility(scheme: IScheme, farmer: Record<string
     ? farmer.previousApplications
     : [];
 
-  // 1. Age check
-  if (scheme.minimumAge && age < scheme.minimumAge) {
+  // 1. Age check (only if explicitly specified in source data; otherwise unknown)
+  const minAge = scheme.rawMinAge !== undefined && scheme.rawMinAge !== null 
+    ? scheme.rawMinAge 
+    : (scheme.minimumAge > 0 && scheme.minimumAge !== 18 ? scheme.minimumAge : null);
+  const maxAge = scheme.rawMaxAge !== undefined && scheme.rawMaxAge !== null 
+    ? scheme.rawMaxAge 
+    : (scheme.maximumAge < 100 && scheme.maximumAge !== 80 ? scheme.maximumAge : null);
+
+  if (minAge !== null && age < minAge) {
     return {
       isEligible: false,
       reasons: [],
-      ineligibleReason: `Minimum age required is ${scheme.minimumAge} years (your age: ${age}).`
+      ineligibleReason: `Minimum age required is ${minAge} years (your age: ${age}).`
     };
-  }
-  if (scheme.maximumAge && age > scheme.maximumAge) {
-    return {
-      isEligible: false,
-      reasons: [],
-      ineligibleReason: `Maximum age limit is ${scheme.maximumAge} years (your age: ${age}).`
-    };
+  } else if (minAge !== null) {
+    reasons.push(`Farmer age (${age} years) satisfies verified minimum requirement of ${minAge} years`);
   }
 
-  // 2. Income limit
-  if (scheme.incomeLimit !== null && scheme.incomeLimit !== undefined && scheme.incomeLimit > 0) {
-    if (income > scheme.incomeLimit) {
+  if (maxAge !== null && age > maxAge) {
+    return {
+      isEligible: false,
+      reasons: [],
+      ineligibleReason: `Maximum age limit is ${maxAge} years (your age: ${age}).`
+    };
+  } else if (maxAge !== null) {
+    reasons.push(`Farmer age (${age} years) is within verified maximum limit of ${maxAge} years`);
+  }
+
+  // 2. Income limit (only if explicitly specified in source data; otherwise unknown)
+  const incomeLimit = scheme.rawAnnualIncomeLimit !== undefined && scheme.rawAnnualIncomeLimit !== null 
+    ? scheme.rawAnnualIncomeLimit 
+    : scheme.incomeLimit;
+  if (incomeLimit !== null && incomeLimit !== undefined && incomeLimit > 0) {
+    if (income > incomeLimit) {
       return {
         isEligible: false,
         reasons: [],
-        ineligibleReason: `Annual household income (₹${income.toLocaleString("en-IN")}) exceeds the scheme ceiling of ₹${scheme.incomeLimit.toLocaleString("en-IN")}.`
+        ineligibleReason: `Annual household income (₹${income.toLocaleString("en-IN")}) exceeds the verified scheme ceiling of ₹${incomeLimit.toLocaleString("en-IN")}.`
       };
     }
-    reasons.push(`Annual income (₹${income.toLocaleString("en-IN")}) is within the ceiling of ₹${scheme.incomeLimit.toLocaleString("en-IN")}`);
+    reasons.push(`Annual income (₹${income.toLocaleString("en-IN")}) is within the verified ceiling of ₹${incomeLimit.toLocaleString("en-IN")}`);
   }
 
-  // 3. Landholding requirements
-  if (scheme.landholdingMin > 0 && land < scheme.landholdingMin) {
+  // 3. Gender verification
+  const farmerGender = String(farmer.gender || "Male").trim().toLowerCase();
+  if (scheme.gender && scheme.gender !== "All") {
+    if (scheme.gender.toLowerCase() === "female" && farmerGender !== "female") {
+      return {
+        isEligible: false,
+        reasons: [],
+        ineligibleReason: "This scheme is exclusively reserved for women / female applicants."
+      };
+    }
+    if (scheme.gender.toLowerCase() === "male" && farmerGender !== "male") {
+      return {
+        isEligible: false,
+        reasons: [],
+        ineligibleReason: "This scheme is reserved for male applicants."
+      };
+    }
+    reasons.push(`Gender eligibility condition (${scheme.gender}) verified`);
+  }
+
+  // 4. Landholding requirements
+  const landMin = scheme.rawLandMinAcres !== undefined && scheme.rawLandMinAcres !== null
+    ? scheme.rawLandMinAcres
+    : scheme.landholdingMin;
+  const landMax = scheme.rawLandMaxAcres !== undefined && scheme.rawLandMaxAcres !== null
+    ? scheme.rawLandMaxAcres
+    : scheme.landholdingMax;
+
+  if (landMin > 0 && land < landMin) {
     return {
       isEligible: false,
       reasons: [],
-      ineligibleReason: `Minimum landholding required is ${scheme.landholdingMin} Acres (your landholding: ${land} Acres).`
+      ineligibleReason: `Minimum landholding required is ${landMin} Acres (your landholding: ${land} Acres).`
     };
   }
-  if (scheme.landholdingMax < 900 && land > scheme.landholdingMax) {
+  if (landMax < 900 && land > landMax) {
     return {
       isEligible: false,
       reasons: [],
-      ineligibleReason: `Your landholding (${land} Acres) exceeds the maximum limit of ${scheme.landholdingMax} Acres for this scheme.`
+      ineligibleReason: `Your landholding (${land} Acres) exceeds the maximum limit of ${landMax} Acres for this scheme.`
     };
   }
-  if (land > 0) {
-    reasons.push(`Landholding of ${land} Acres meets the ${scheme.landholdingMin > 0 ? `${scheme.landholdingMin}-` : ""}${scheme.landholdingMax < 900 ? `${scheme.landholdingMax} Acre` : ""} requirement`);
+  if (land > 0 && (landMin > 0 || landMax < 900)) {
+    reasons.push(`Landholding of ${land} Acres meets verified ${landMin > 0 ? `${landMin}-` : ""}${landMax < 900 ? `${landMax} Acre` : ""} requirement`);
   }
 
   // 4. District check
@@ -311,6 +354,104 @@ export function evaluateSchemeEligibility(scheme: IScheme, farmer: Record<string
   return { isEligible: true, reasons };
 }
 
+function cleanRequiredDocuments(rawDocs: any): string[] {
+  if (!rawDocs) return ["Aadhaar Card", "Patta / Chitta (Land Ownership Record)", "Bank Passbook (Aadhaar linked)", "Active Mobile Number"];
+
+  let list: string[] = [];
+  if (Array.isArray(rawDocs)) {
+    for (const item of rawDocs) {
+      if (typeof item === "string") {
+        const subList = item.split(/\r?\n|[•]+/).map((s) => s.trim()).filter(Boolean);
+        list.push(...subList);
+      } else if (item && typeof item === "object") {
+        list.push(item.documentType || item.name || JSON.stringify(item));
+      }
+    }
+  } else if (typeof rawDocs === "string") {
+    list = rawDocs.split(/\r?\n|[•]+/).map((s) => s.trim()).filter(Boolean);
+  }
+
+  // Rejoin fragmented items that end with 'or' or 'and'
+  const merged: string[] = [];
+  for (let i = 0; i < list.length; i++) {
+    let item = String(list[i]).trim();
+    if (!item) continue;
+    if (/\b(or|and)$/i.test(item) && i + 1 < list.length) {
+      item = item + " " + String(list[i + 1]).trim();
+      i++;
+    }
+    merged.push(item);
+  }
+
+  const standardRules = [
+    { pattern: /aadhaar/i, label: "Aadhaar Card" },
+    { pattern: /patta|chitta|land record|land ownership/i, label: "Patta / Chitta (Land Ownership Record)" },
+    { pattern: /bank|passbook|account/i, label: "Bank Passbook (Aadhaar linked)" },
+    { pattern: /mobile|phone/i, label: "Active Mobile Number" },
+    { pattern: /caste|community/i, label: "Community / Caste Certificate" },
+    { pattern: /bpl|ration|income certificate/i, label: "BPL / Ration Card" },
+    { pattern: /age proof|birth/i, label: "Age Proof Certificate" },
+    { pattern: /khadi|artisan/i, label: "Khadi Artisan / Institution Certificate" },
+    { pattern: /project proposal|workshed/i, label: "Project Proposal / Work-shed Details" },
+  ];
+
+  const results: string[] = [];
+  const seen = new Set<string>();
+
+  for (let d of merged) {
+    let cleaned = d.replace(/^[\s•\-\*\d\.\)]+/, "").trim();
+    let matched = false;
+    for (const rule of standardRules) {
+      if (rule.pattern.test(cleaned)) {
+        if (!seen.has(rule.label)) {
+          seen.add(rule.label);
+          results.push(rule.label);
+        }
+        matched = true;
+        break;
+      }
+    }
+    if (!matched) {
+      cleaned = cleaned
+        .replace(/\s+(or|and)$/i, "")
+        .replace(/\(if applicable\)|\(if required\)/gi, "")
+        .trim();
+      if (cleaned.length > 3 && !seen.has(cleaned.toLowerCase())) {
+        seen.add(cleaned.toLowerCase());
+        const formatted = cleaned.replace(/\b\w/g, (c) => c.toUpperCase());
+        results.push(formatted);
+      }
+    }
+  }
+
+  if (results.length === 0) {
+    return ["Aadhaar Card", "Patta / Chitta (Land Ownership Record)", "Bank Passbook (Aadhaar linked)", "Active Mobile Number"];
+  }
+
+  return results.slice(0, 5);
+}
+
+function cleanBenefitSummary(benefits: any): string {
+  if (!benefits) return "Financial and agricultural welfare subsidy";
+  let text = String(benefits).trim();
+
+  // If text contains multiple bullets '•' or newlines, split them
+  const parts = text.split(/\r?\n|[•]+/)
+    .map((p) => p.replace(/^[\s\-\*–—:]+/, "").trim())
+    .filter((p) => p.length > 5);
+
+  if (parts.length === 0) return text.slice(0, 150);
+
+  let summary = parts[0];
+  if (parts.length > 1 && summary.length < 90) {
+    summary += " • " + parts[1];
+  }
+  if (summary.length > 180) {
+    summary = summary.slice(0, 177) + "...";
+  }
+  return summary;
+}
+
 export async function getRecommendationsForFarmer(farmerProfile: Record<string, any>): Promise<RecommendationOutput[]> {
   // Step 1: Query all non-disabled schemes from MongoDB
   const allSchemes = await Scheme.find({ status: { $ne: "DISABLED" } });
@@ -353,8 +494,28 @@ export async function getRecommendationsForFarmer(farmerProfile: Record<string, 
   // Step 4: Map Eligible Schemes with two-stage hybrid match scoring and transparent reasons
   const eligibleResults: RecommendationOutput[] = eligibleSchemes.map(({ scheme, ruleReasons }) => {
     const schemeId = scheme.schemeId || String(scheme._id);
-    const mlProb = mlScoreMap.get(schemeId) || mlScoreMap.get(scheme.schemeId) || 0.05;
-    const confidenceRate = mlConfidenceMap.get(schemeId) || `${(mlProb * 100).toFixed(1)}%`;
+    const legacyId = (scheme as any).legacySchemeId;
+    const aliases = (scheme as any).aliases || [];
+
+    let mlProb = mlScoreMap.get(schemeId);
+    let confidenceRate = mlConfidenceMap.get(schemeId);
+    if (mlProb === undefined && legacyId && mlScoreMap.has(legacyId)) {
+      mlProb = mlScoreMap.get(legacyId);
+      confidenceRate = mlConfidenceMap.get(legacyId);
+    }
+    if (mlProb === undefined && Array.isArray(aliases)) {
+      for (const alias of aliases) {
+        if (mlScoreMap.has(alias)) {
+          mlProb = mlScoreMap.get(alias);
+          confidenceRate = mlConfidenceMap.get(alias);
+          break;
+        }
+      }
+    }
+    if (mlProb === undefined) {
+      mlProb = 0.05;
+      confidenceRate = `${(mlProb * 100).toFixed(1)}%`;
+    }
     const normalizedMl = mlProb / maxMlProb; // 0 to 1
 
     const category = scheme.category || "General Subsidies";
@@ -369,6 +530,13 @@ export async function getRecommendationsForFarmer(farmerProfile: Record<string, 
     const calculatedScore = Math.min(99, Math.round(70 + (normalizedMl * 20) + Math.min(6, ruleReasons.length * 1.2) + intentBonus));
 
     const whyRecommended = [...ruleReasons];
+    
+    // Add concise benefit highlight to criteria breakdown
+    const benefitHighlight = cleanBenefitSummary(scheme.benefits);
+    if (benefitHighlight && !whyRecommended.some(r => r.toLowerCase().includes("benefit") || r.toLowerCase().includes("subsidy"))) {
+      whyRecommended.push(`Recommended for: ${benefitHighlight}`);
+    }
+
     if (mlProb > 0.15) {
       whyRecommended.push(`High statistical suitability match (${confidenceRate} calibrated confidence) based on Random Forest profile analysis`);
     }
@@ -376,25 +544,35 @@ export async function getRecommendationsForFarmer(farmerProfile: Record<string, 
       whyRecommended.push("General state agricultural welfare eligibility");
     }
 
+    const isUnverified = scheme.schemeStatus === "Requires verification" ||
+      String(scheme.verificationStatus || "").toLowerCase().includes("not independently verified") ||
+      scheme.isDemonstrationData === true;
+    const statusVal = (isUnverified ? "Potentially Eligible" : "Eligible") as "Eligible" | "Potentially Eligible";
+
+    if (isUnverified) {
+      whyRecommended.push("Preliminary criteria satisfied (official departmental verification required)");
+    }
+
+    const cleanedDocs = cleanRequiredDocuments(scheme.requiredDocuments);
+
     return {
       schemeId,
       schemeName,
       schemeNameTamil: scheme.schemeNameTamil,
       matchScore: calculatedScore,
       isEligible: true,
-      eligibilityStatus: "Eligible" as const,
+      eligibilityStatus: statusVal,
       whyRecommended,
+      verificationStatus: scheme.verificationStatus || (isUnverified ? "Requires verification" : "Verified"),
       mlConfidenceRate: confidenceRate,
       mlProbability: mlProb,
       governmentLevel: scheme.governmentLevel || "Tamil Nadu Government",
       department: scheme.department || "Department of Agriculture",
       category,
-      benefits: scheme.benefits || scheme.description || "Financial and agricultural subsidy benefits",
+      benefits: cleanBenefitSummary(scheme.benefits) || scheme.description || "Financial and agricultural subsidy benefits",
       benefitsTamil: scheme.benefitsTamil,
       description: scheme.description || scheme.benefits || "",
-      requiredDocuments: Array.isArray(scheme.requiredDocuments) && scheme.requiredDocuments.length > 0
-        ? scheme.requiredDocuments
-        : ["Aadhaar Card", "Patta / Chitta", "Bank Passbook"],
+      requiredDocuments: cleanedDocs,
       officialWebsite: scheme.officialWebsite || "https://tnagrisnet.tn.gov.in",
       applicationUrl: scheme.applicationUrl || "",
       applicationDeadline: scheme.applicationDeadline || "Ongoing",
@@ -415,12 +593,10 @@ export async function getRecommendationsForFarmer(farmerProfile: Record<string, 
     governmentLevel: scheme.governmentLevel || "Tamil Nadu Government",
     department: scheme.department || "Department of Agriculture",
     category: scheme.category || "General Subsidies",
-    benefits: scheme.benefits || scheme.description || "Financial and agricultural subsidy benefits",
+    benefits: cleanBenefitSummary(scheme.benefits) || scheme.description || "Financial and agricultural subsidy benefits",
     benefitsTamil: scheme.benefitsTamil,
     description: scheme.description || scheme.benefits || "",
-    requiredDocuments: Array.isArray(scheme.requiredDocuments) && scheme.requiredDocuments.length > 0
-      ? scheme.requiredDocuments
-      : ["Aadhaar Card", "Patta / Chitta", "Bank Passbook"],
+    requiredDocuments: cleanRequiredDocuments(scheme.requiredDocuments),
     officialWebsite: scheme.officialWebsite || "https://tnagrisnet.tn.gov.in",
     applicationUrl: scheme.applicationUrl || "",
     applicationDeadline: scheme.applicationDeadline || "Ongoing",

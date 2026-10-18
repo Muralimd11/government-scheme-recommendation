@@ -14,26 +14,67 @@ export async function createApplication(req: AuthRequest, res: Response): Promis
       return;
     }
 
-    const scheme = await Scheme.findOne({
-      $or: [{ _id: schemeId.match(/^[0-9a-fA-F]{24}$/) ? schemeId : null }, { schemeId: schemeId.toUpperCase() }]
+    const rawId = String(schemeId || "").trim();
+
+    // 1. Case-insensitive and multi-field lookup
+    let scheme = await Scheme.findOne({
+      $or: [
+        { _id: rawId.match(/^[0-9a-fA-F]{24}$/) ? rawId : null },
+        { schemeId: rawId },
+        { schemeId: rawId.toUpperCase() },
+        { schemeId: rawId.toLowerCase() },
+        { schemeName: rawId },
+        { schemeName: new RegExp(`^${rawId.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i") }
+      ].filter(Boolean)
     });
 
+    // 2. Fallback check by schemeName or schemeCode from request body
+    if (!scheme && req.body.schemeName) {
+      scheme = await Scheme.findOne({
+        $or: [
+          { schemeName: req.body.schemeName },
+          { schemeName: new RegExp(`^${req.body.schemeName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i") },
+          { schemeId: req.body.schemeCode }
+        ]
+      });
+    }
+
+    // 3. If scheme is still not registered in Scheme master table, create it dynamically so it is tracked in admin portal
     if (!scheme) {
-      res.status(404).json({ success: false, message: "Scheme not found." });
-      return;
+      const fallbackName = req.body.schemeName || rawId;
+      const fallbackCode = req.body.schemeCode || rawId;
+      scheme = await Scheme.create({
+        schemeId: fallbackCode,
+        schemeName: fallbackName,
+        department: req.body.department || "Agriculture & Farmers Welfare Department",
+        category: req.body.category || "Agricultural Welfare Subsidy",
+        governmentLevel: req.body.governmentLevel || "Tamil Nadu Government",
+        benefits: req.body.benefits || "Direct Benefit Transfer and subsidy assistance",
+        applicationUrl: req.body.applicationUrl || req.body.officialWebsite || "https://tnagrisnet.tn.gov.in",
+        officialWebsite: req.body.officialWebsite || req.body.applicationUrl || "https://tnagrisnet.tn.gov.in",
+        status: "ACTIVE"
+      });
     }
 
     // Check if duplicate active application exists for this scheme by this farmer
     const existing = await Application.findOne({
       farmerId,
-      schemeId: scheme._id,
+      $or: [
+        { schemeId: scheme._id },
+        { schemeCode: scheme.schemeId }
+      ],
       status: { $in: ["SUBMITTED", "PENDING", "UNDER_VERIFICATION", "APPROVED"] }
     });
 
     if (existing) {
-      res.status(400).json({
-        success: false,
-        message: `You have already submitted an application (${existing.applicationId}) for ${scheme.schemeName}. Current status: ${existing.status}`
+      const redirectUrl = scheme.applicationUrl || scheme.officialWebsite || req.body.applicationUrl || req.body.officialWebsite || "https://tnagrisnet.tn.gov.in";
+      res.status(200).json({
+        success: true,
+        message: `Existing application (${existing.applicationId}) logged in Admin Portal. Redirecting to official portal...`,
+        data: {
+          application: existing,
+          redirectUrl
+        }
       });
       return;
     }
@@ -60,16 +101,34 @@ export async function createApplication(req: AuthRequest, res: Response): Promis
         {
           status: "SUBMITTED",
           updatedBy: req.user?.fullName || "Farmer",
-          remarks: "Application submitted with supporting documents.",
+          remarks: req.body.remarks || "Application submitted with supporting documents via farmer portal.",
           timestamp: new Date()
         }
       ]
     });
 
+    // Also record in administrative security audit log
+    await AuditLog.create({
+      action: "APPLICATION_SUBMITTED",
+      adminId: farmerId,
+      entityType: "APPLICATION",
+      entityId: String(newApp._id),
+      details: {
+        applicationId: newApp.applicationId,
+        schemeName: scheme.schemeName,
+        farmerName: req.user?.fullName
+      }
+    });
+
+    const redirectUrl = scheme.applicationUrl || scheme.officialWebsite || req.body.applicationUrl || req.body.officialWebsite || "https://tnagrisnet.tn.gov.in";
+
     res.status(201).json({
       success: true,
-      message: "Application submitted successfully.",
-      data: { application: newApp }
+      message: "Application recorded in Government portal successfully.",
+      data: {
+        application: newApp,
+        redirectUrl
+      }
     });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message || "Failed to submit application." });
@@ -79,9 +138,11 @@ export async function createApplication(req: AuthRequest, res: Response): Promis
 export async function getMyApplications(req: AuthRequest, res: Response): Promise<void> {
   try {
     const farmerId = req.user?._id;
-    const applications = await Application.find({ farmerId })
+    const filter = req.user?.role === "ADMIN" ? {} : { farmerId };
+    const applications = await Application.find(filter)
+      .populate("farmerId", "fullName email mobile district village farmerRegistrationId")
       .populate("schemeId")
-      .sort({ submittedDate: -1 })
+      .sort({ submittedDate: -1, createdAt: -1 })
       .lean();
 
     res.status(200).json({

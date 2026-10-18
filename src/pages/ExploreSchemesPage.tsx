@@ -5,6 +5,7 @@ import { SchemeItem } from "../types";
 import { useLanguage } from "../context/LanguageContext";
 import { useAuth } from "../context/AuthContext";
 import { Sidebar } from "../components/common/Sidebar";
+import { ApplySchemeModal } from "../components/common/ApplySchemeModal";
 import {
   Search as SearchIcon,
   FilterList as FilterIcon,
@@ -54,6 +55,7 @@ export const ExploreSchemesPage: React.FC = () => {
   const [selectedDistrict, setSelectedDistrict] = useState("All");
 
   const [pagination, setPagination] = useState({ page: 1, limit: 12, total: 0, totalPages: 1 });
+  const [applyingScheme, setApplyingScheme] = useState<SchemeItem | null>(null);
 
   const fetchSchemes = async () => {
     try {
@@ -328,13 +330,13 @@ export const ExploreSchemesPage: React.FC = () => {
                   >
                     {t("viewDetails")}
                   </Link>
-                  <Link
-                    to={`/farmer/applications/new?schemeId=${scheme._id}`}
-                    className="bg-[#2E7D32] hover:bg-green-800 text-white text-xs font-semibold px-3.5 py-1.5 rounded transition flex items-center gap-1"
+                  <button
+                    onClick={() => setApplyingScheme(scheme)}
+                    className="bg-[#2E7D32] hover:bg-green-800 text-white text-xs font-semibold px-3.5 py-1.5 rounded transition flex items-center gap-1 cursor-pointer shadow-xs"
                   >
                     <span>{t("applyNow")}</span>
                     <ArrowIcon style={{ fontSize: 14 }} />
-                  </Link>
+                  </button>
                 </div>
               </div>
             ))}
@@ -364,6 +366,13 @@ export const ExploreSchemesPage: React.FC = () => {
           </div>
         )}
       </main>
+
+      {/* Pop-up Screen to Apply Directly */}
+      <ApplySchemeModal
+        isOpen={Boolean(applyingScheme)}
+        onClose={() => setApplyingScheme(null)}
+        scheme={applyingScheme}
+      />
     </div>
   );
 };

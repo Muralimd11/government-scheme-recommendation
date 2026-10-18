@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSearchParams, useNavigate, Link } from "react-router-dom";
+import { useSearchParams, useParams, useNavigate, Link } from "react-router-dom";
 import { api } from "../../services/api";
 import { ApplicationItem, SchemeItem, DocumentItem } from "../../types";
 import { Sidebar } from "../../components/common/Sidebar";
@@ -17,6 +17,7 @@ import {
 
 export const ApplicationsPage: React.FC = () => {
   const [searchParams] = useSearchParams();
+  const { id: routeAppId } = useParams();
   const navigate = useNavigate();
   const { t, language } = useLanguage();
 
@@ -27,8 +28,9 @@ export const ApplicationsPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   // New Application Modal State
-  const [isApplying, setIsApplying] = useState(Boolean(searchParams.get("schemeId")));
-  const [selectedSchemeId, setSelectedSchemeId] = useState(searchParams.get("schemeId") || "");
+  const initialSchemeParam = searchParams.get("schemeId") || searchParams.get("scheme") || "";
+  const [isApplying, setIsApplying] = useState(Boolean(initialSchemeParam));
+  const [selectedSchemeId, setSelectedSchemeId] = useState(initialSchemeParam);
   const [selectedDocs, setSelectedDocs] = useState<string[]>([]);
   const [submitLoading, setSubmitLoading] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -47,7 +49,18 @@ export const ApplicationsPage: React.FC = () => {
         api.getMyDocuments()
       ]);
 
-      if (appRes.data.success) setApplications(appRes.data.data.applications);
+      if (appRes.data.success) {
+        const apps: ApplicationItem[] = appRes.data.data.applications;
+        setApplications(apps);
+
+        const targetAppId = routeAppId || searchParams.get("appId");
+        if (targetAppId) {
+          const found = apps.find(
+            (a) => a._id === targetAppId || a.applicationId === targetAppId
+          );
+          if (found) setActiveApp(found);
+        }
+      }
       if (schemeRes.data.success) setSchemes(schemeRes.data.data.schemes);
       if (docRes.data.success) setMyDocs(docRes.data.data.documents);
     } catch (err: any) {

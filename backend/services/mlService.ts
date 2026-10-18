@@ -27,9 +27,9 @@ export async function runMLPrediction(farmerData: Record<string, any>): Promise<
 
       const timer = setTimeout(() => {
         pythonProcess.kill();
-        console.warn("[ML Service] Python process timed out after 4s. Using statistical fallback.");
+        console.warn("[ML Service] Python process timed out after 8s. Using statistical fallback.");
         resolve(fallbackPrediction(farmerData));
-      }, 4000);
+      }, 8000);
 
       pythonProcess.stdout.on("data", (data) => {
         stdoutData += data.toString();
@@ -48,8 +48,20 @@ export async function runMLPrediction(farmerData: Record<string, any>): Promise<
 
         try {
           const parsed = JSON.parse(stdoutData.trim());
-          if (parsed && parsed.success && Array.isArray(parsed.predictions)) {
-            return resolve(parsed.predictions);
+          if (parsed && parsed.success) {
+            if (Array.isArray(parsed.predictions) && parsed.predictions.length > 0) {
+              return resolve(parsed.predictions);
+            }
+            if (Array.isArray(parsed.recommendations) && parsed.recommendations.length > 0) {
+              return resolve(
+                parsed.recommendations.map((r: any) => ({
+                  schemeId: r.schemeId,
+                  probability: (Number(r.matchScore) || 75) / 100,
+                  confidenceRate: `${r.matchScore || 75}%`,
+                  confidenceScore: r.matchScore || 75
+                }))
+              );
+            }
           }
           resolve(fallbackPrediction(farmerData));
         } catch (e) {
@@ -71,29 +83,51 @@ export async function runMLPrediction(farmerData: Record<string, any>): Promise<
 }
 
 function fallbackPrediction(data: Record<string, any>): MLPredictionResult[] {
-  // Analytical decision-tree scoring based on the same model features
-  const crop = (data.cropType || "").toLowerCase();
+  // Analytical decision-tree scoring based on the calibrated model features
+  const crop = (data.cropType || data.primaryCrop || "").toLowerCase();
   const district = (data.district || "").toLowerCase();
   const land = Number(data.landSize) || 2.0;
   const income = Number(data.income || data.annualIncome) || 120000;
-  const irrigation = (data.irrigationType || "").toLowerCase();
+  const irrigation = (data.irrigationType || data.irrigationSource || "").toLowerCase();
   const livestock = String(data.livestock || data.livestockOwnership).toLowerCase() === "true" || String(data.livestock) === "yes";
   const horticulture = String(data.horticulture || data.horticultureActivity).toLowerCase() === "true" || String(data.horticulture) === "yes";
   const machinery = String(data.machinery || data.machineryOwnership).toLowerCase() === "true" || String(data.machinery) === "yes";
 
   const scores: Record<string, number> = {
-    "TN-SCH-01": land <= 5.0 && income <= 250000 ? 0.35 : 0.05,
-    "TN-SCH-02": irrigation.includes("well") || irrigation.includes("bore") ? 0.32 : 0.08,
-    "TN-SCH-03": horticulture || ["drip", "sprinkler"].includes(irrigation) ? 0.40 : 0.12,
-    "TN-SCH-04": land <= 5.0 ? 0.28 : 0.06,
-    "TN-SCH-05": ["thanjavur", "tiruvarur", "nagapattinam", "cuddalore"].includes(district) && crop.includes("paddy") ? 0.45 : 0.02,
-    "TN-SCH-06": machinery || land >= 2.5 ? 0.38 : 0.08,
-    "TN-SCH-07": horticulture || ["vegetables", "flowers", "banana", "coconut"].includes(crop) ? 0.42 : 0.05,
-    "TN-SCH-08": ["paddy", "cotton", "groundnut", "sugarcane"].includes(crop) ? 0.30 : 0.09,
-    "TN-SCH-09": land <= 5.0 && (irrigation.includes("bore") || irrigation.includes("well")) ? 0.34 : 0.05,
-    "TN-SCH-10": land >= 1.0 ? 0.22 : 0.08,
-    "TN-SCH-11": livestock && income <= 150000 ? 0.44 : 0.04,
-    "TN-SCH-12": 0.25
+    // New Meaningful IDs
+    "TN-AGRI-PM-KISAN": land <= 5.0 && income <= 250000 ? 0.42 : 0.08,
+    "TN-IRRIG-FREE-ELEC": irrigation.includes("well") || irrigation.includes("bore") ? 0.38 : 0.08,
+    "TN-IRRIG-PMKSY-MI": horticulture || ["drip", "sprinkler"].includes(irrigation) ? 0.45 : 0.12,
+    "TN-AGRI-KAVIADP": land <= 5.0 ? 0.35 : 0.06,
+    "TN-AGRI-KURUVAI-PKG": ["thanjavur", "tiruvarur", "nagapattinam", "cuddalore", "mayiladuthurai"].includes(district) && crop.includes("paddy") ? 0.48 : 0.02,
+    "TN-AGRI-SMAM": machinery || land >= 2.5 ? 0.40 : 0.08,
+    "TN-HORT-MIDH": horticulture || ["vegetables", "flowers", "banana", "coconut", "mango"].includes(crop) ? 0.46 : 0.05,
+    "TN-INS-PMFBY": ["paddy", "cotton", "groundnut", "sugarcane", "maize"].includes(crop) ? 0.38 : 0.09,
+    "TN-IRRIG-SOLAR-PUMP": land <= 5.0 && (irrigation.includes("bore") || irrigation.includes("well")) ? 0.41 : 0.05,
+    "TN-AGRI-TCPL-TN": land >= 1.0 ? 0.28 : 0.08,
+    "TN-ANIMAL-DAIRY-DEV": livestock && income <= 150000 ? 0.48 : 0.04,
+    "TN-HLTH-SOIL-HEALTH": 0.32,
+    "TN-FIN-KCC": 0.36,
+    "TN-INS-COCONUT-INS": crop.includes("coconut") ? 0.50 : 0.05,
+    "TN-ANIMAL-ANIMAL-HUSB": livestock ? 0.44 : 0.06,
+    "TN-IRRIG-ATAL-BHUJAL": 0.30,
+    "TN-ENTR-AC-ABC": 0.28,
+    "TN-ENTR-KHADI-VIKAS": 0.26,
+    "TN-INS-AABY": income <= 150000 ? 0.35 : 0.08,
+
+    // Legacy Aliases
+    "TN-SCH-01": land <= 5.0 && income <= 250000 ? 0.42 : 0.08,
+    "TN-SCH-02": irrigation.includes("well") || irrigation.includes("bore") ? 0.38 : 0.08,
+    "TN-SCH-03": horticulture || ["drip", "sprinkler"].includes(irrigation) ? 0.45 : 0.12,
+    "TN-SCH-04": land <= 5.0 ? 0.35 : 0.06,
+    "TN-SCH-05": ["thanjavur", "tiruvarur", "nagapattinam", "cuddalore", "mayiladuthurai"].includes(district) && crop.includes("paddy") ? 0.48 : 0.02,
+    "TN-SCH-06": machinery || land >= 2.5 ? 0.40 : 0.08,
+    "TN-SCH-07": horticulture || ["vegetables", "flowers", "banana", "coconut"].includes(crop) ? 0.46 : 0.05,
+    "TN-SCH-08": ["paddy", "cotton", "groundnut", "sugarcane"].includes(crop) ? 0.38 : 0.09,
+    "TN-SCH-09": land <= 5.0 && (irrigation.includes("bore") || irrigation.includes("well")) ? 0.41 : 0.05,
+    "TN-SCH-10": land >= 1.0 ? 0.28 : 0.08,
+    "TN-SCH-11": livestock && income <= 150000 ? 0.48 : 0.04,
+    "TN-SCH-12": 0.32
   };
 
   const results: MLPredictionResult[] = Object.entries(scores).map(([schemeId, probability]) => {

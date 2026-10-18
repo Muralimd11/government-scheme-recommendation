@@ -9,9 +9,22 @@ export async function connectDB(): Promise<void> {
     const mongoUri = process.env.MONGO_URI;
 
     if (mongoUri) {
-      console.log("[Database] Connecting to external MongoDB:", mongoUri);
-      await mongoose.connect(mongoUri);
-      console.log("[Database] Connected to external MongoDB successfully.");
+      try {
+        console.log("[Database] Connecting to external MongoDB...");
+        await mongoose.connect(mongoUri, { serverSelectionTimeoutMS: 5000 });
+        console.log("[Database] Connected to external MongoDB successfully.");
+      } catch (externalErr: any) {
+        console.warn("[Database] External MongoDB connection failed (" + externalErr.message + "). Falling back to in-memory database...");
+        mongodInstance = await MongoMemoryServer.create({
+          instance: {
+            dbName: "tnschemes_db",
+          }
+        });
+        const uri = mongodInstance.getUri();
+        console.log("[Database] In-memory MongoDB running at:", uri);
+        await mongoose.connect(uri);
+        console.log("[Database] Mongoose connected to in-memory MongoDB.");
+      }
     } else {
       console.log("[Database] No MONGO_URI provided. Initializing in-memory MongoDB instance...");
       mongodInstance = await MongoMemoryServer.create({

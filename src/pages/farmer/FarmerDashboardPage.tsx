@@ -83,23 +83,29 @@ export const FarmerDashboardPage: React.FC = () => {
           <div className="mt-5 pt-4 border-t border-neutral-200 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-3 text-xs">
             <div className="p-2.5 bg-neutral-50 rounded border border-neutral-200">
               <span className="text-neutral-500 block">Land Size</span>
-              <strong className="text-neutral-900 text-sm">{user?.landSize} Acres</strong>
+              <strong className="text-neutral-900 text-sm">
+                {user?.landSize ? `${user.landSize} Acres` : "Not specified"}
+              </strong>
             </div>
             <div className="p-2.5 bg-neutral-50 rounded border border-neutral-200">
               <span className="text-neutral-500 block">Classification</span>
-              <strong className="text-[#003366] text-sm">{user?.farmerType} Farmer</strong>
+              <strong className="text-[#003366] text-sm">
+                {user?.farmerType ? `${user.farmerType} Farmer` : "General Farmer"}
+              </strong>
             </div>
             <div className="p-2.5 bg-neutral-50 rounded border border-neutral-200">
               <span className="text-neutral-500 block">Primary Crop</span>
-              <strong className="text-neutral-900 text-sm">{user?.cropType}</strong>
+              <strong className="text-neutral-900 text-sm">{user?.cropType || "Not specified"}</strong>
             </div>
             <div className="p-2.5 bg-neutral-50 rounded border border-neutral-200">
               <span className="text-neutral-500 block">Farming Type</span>
-              <strong className="text-neutral-900 text-sm">{user?.farmingType}</strong>
+              <strong className="text-neutral-900 text-sm">{user?.farmingType || "General Farming"}</strong>
             </div>
             <div className="p-2.5 bg-neutral-50 rounded border border-neutral-200 col-span-2 sm:col-span-1">
               <span className="text-neutral-500 block">Annual Income</span>
-              <strong className="text-neutral-900 text-sm">₹{user?.annualIncome?.toLocaleString("en-IN")}</strong>
+              <strong className="text-neutral-900 text-sm">
+                {user?.annualIncome ? `₹${Number(user.annualIncome).toLocaleString("en-IN")}` : "Not specified"}
+              </strong>
             </div>
           </div>
         </div>
@@ -110,7 +116,7 @@ export const FarmerDashboardPage: React.FC = () => {
             <div>
               <span className="text-xs text-neutral-500 font-semibold block">Recommended Schemes</span>
               <span className="text-2xl font-bold text-[#003366] mt-1 block">
-                {stats.recommendedCount || 4}
+                {stats.recommendedCount}
               </span>
               <Link to="/recommendations" className="text-[11px] text-[#2E7D32] hover:underline font-semibold mt-1 inline-block">
                 View Recommendations →
@@ -174,7 +180,7 @@ export const FarmerDashboardPage: React.FC = () => {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
             <Link
-              to="/farmer/eligibility"
+              to="/recommendations"
               className="p-4 rounded border border-neutral-200 hover:border-[#003366] hover:bg-blue-50/50 transition flex items-center gap-3"
             >
               <EligibilityIcon className="text-[#003366]" />

@@ -33,8 +33,33 @@ export const AdminReportsPage: React.FC = () => {
   }, [reportType]);
 
   const handleDownloadCSV = () => {
-    const token = localStorage.getItem("tn_farmer_token");
-    window.open(`/api/admin/reports?type=${reportType}&format=csv&token=${token}`, "_blank");
+    if (reportData?.rows && reportData.rows.length > 0) {
+      const headers = Object.keys(reportData.rows[0]);
+      const csvContent = [
+        headers.join(","),
+        ...reportData.rows.map((row: any) =>
+          headers
+            .map((h) => {
+              const val = row[h];
+              const str = typeof val === "object" ? JSON.stringify(val) : String(val ?? "");
+              return `"${str.replace(/"/g, '""')}"`;
+            })
+            .join(",")
+        )
+      ].join("\n");
+
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `TN_Agri_Report_${reportType}_${Date.now()}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      const token = localStorage.getItem("token") || localStorage.getItem("tn_farmer_token");
+      window.open(`/api/admin/reports?type=${reportType}&format=csv&token=${token}`, "_blank");
+    }
   };
 
   return (

@@ -11,7 +11,7 @@ import {
   TrendingUp as RateIcon,
   Warning as PendingIcon,
   Assessment as ReportsIcon,
-  BarChart as ChartIcon
+  Launch as LaunchIcon
 } from "@mui/icons-material";
 
 export const AdminDashboardPage: React.FC = () => {
@@ -60,7 +60,7 @@ export const AdminDashboardPage: React.FC = () => {
               Agricultural Officer Dashboard
             </h1>
             <p className="text-xs text-neutral-600 mt-1">
-              Real-time monitoring of scheme disbursement, farmer enrollment, and ML recommendation analytics.
+              Real-time monitoring of scheme disbursement, farmer enrollment, and state agricultural administration.
             </p>
           </div>
 
@@ -124,9 +124,9 @@ export const AdminDashboardPage: React.FC = () => {
                   <span className="text-2xl font-bold text-neutral-900 mt-1 block">
                     {metrics.totalApplications}
                   </span>
-                  <span className="text-[11px] text-neutral-500 mt-1 block">
-                    State Submissions
-                  </span>
+                  <Link to="/admin/applications" className="text-[11px] text-[#003366] font-semibold hover:underline mt-1 block">
+                    Manage Applications →
+                  </Link>
                 </div>
                 <div className="p-3 bg-neutral-100 text-neutral-700 rounded-full">
                   <AppIcon />
@@ -177,6 +177,104 @@ export const AdminDashboardPage: React.FC = () => {
                   <RateIcon />
                 </div>
               </div>
+            </div>
+
+            {/* Recent Online Scheme Applications Section (Always visible by default) */}
+            <div className="bg-white rounded-lg border border-neutral-200 p-6 shadow-xs mb-8">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                <div>
+                  <h2 className="text-base font-bold text-[#003366] flex items-center gap-2">
+                    <AppIcon className="text-[#003366]" />
+                    <span>Recent Online Scheme Applications</span>
+                  </h2>
+                  <p className="text-xs text-neutral-500">
+                    Live submissions submitted online by farmers awaiting verification and sanction.
+                  </p>
+                </div>
+                <Link
+                  to="/admin/applications"
+                  className="text-xs font-bold text-[#003366] hover:underline"
+                >
+                  View All Submissions ({metrics.totalApplications}) →
+                </Link>
+              </div>
+
+              {(!stats?.recentApplications || stats.recentApplications.length === 0) ? (
+                <div className="p-8 text-center text-xs text-neutral-500 bg-neutral-50 rounded border border-neutral-100">
+                  <AppIcon style={{ fontSize: 36 }} className="text-neutral-300 mb-1" />
+                  <p className="font-semibold text-neutral-700">No applications submitted yet.</p>
+                  <p className="text-neutral-500 mt-0.5">Online applications submitted by farmers will appear here automatically.</p>
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse text-xs">
+                    <thead>
+                      <tr className="bg-neutral-50 text-neutral-600 font-bold uppercase tracking-wider text-[11px] border-b border-neutral-200">
+                        <th className="py-2.5 px-3">Application ID</th>
+                        <th className="py-2.5 px-3">Applicant Farmer</th>
+                        <th className="py-2.5 px-3">Scheme</th>
+                        <th className="py-2.5 px-3">Department</th>
+                        <th className="py-2.5 px-3">Submission Date</th>
+                        <th className="py-2.5 px-3">Status</th>
+                        <th className="py-2.5 px-3 text-right">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-neutral-100">
+                      {stats.recentApplications.map((app: any) => {
+                        const statusColors: Record<string, string> = {
+                          APPROVED: "bg-green-50 text-green-700 border-green-200",
+                          REJECTED: "bg-red-50 text-red-700 border-red-200",
+                          UNDER_VERIFICATION: "bg-amber-50 text-amber-700 border-amber-200",
+                          SUBMITTED: "bg-blue-50 text-[#003366] border-blue-200"
+                        };
+                        const badgeStyle = statusColors[app.status] || "bg-blue-50 text-[#003366] border-blue-200";
+
+                        return (
+                          <tr key={app._id} className="hover:bg-neutral-50 transition">
+                            <td className="py-2.5 px-3 font-mono font-bold text-[#003366]">
+                              {app.applicationId}
+                            </td>
+                            <td className="py-2.5 px-3">
+                              <span className="font-bold text-neutral-900 block">
+                                {app.farmerName}
+                              </span>
+                              <span className="text-[11px] text-neutral-500 block">
+                                {app.district} • {app.farmerMobile}
+                              </span>
+                            </td>
+                            <td className="py-2.5 px-3 max-w-xs font-medium text-neutral-800 truncate" title={app.schemeName}>
+                              {app.schemeName}
+                            </td>
+                            <td className="py-2.5 px-3 text-neutral-500 truncate max-w-[180px]">
+                              {app.department}
+                            </td>
+                            <td className="py-2.5 px-3 text-neutral-600">
+                              {new Date(app.submittedDate).toLocaleDateString("en-IN", {
+                                day: "2-digit",
+                                month: "short",
+                                year: "numeric"
+                              })}
+                            </td>
+                            <td className="py-2.5 px-3">
+                              <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${badgeStyle}`}>
+                                {app.status || "SUBMITTED"}
+                              </span>
+                            </td>
+                            <td className="py-2.5 px-3 text-right">
+                              <Link
+                                to="/admin/applications"
+                                className="px-2.5 py-1 bg-neutral-100 hover:bg-neutral-200 text-neutral-800 rounded font-semibold text-[11px] transition inline-flex items-center gap-1"
+                              >
+                                <span>Review</span>
+                              </Link>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </div>
 
             {/* Visual Analytics Sections */}
@@ -237,27 +335,6 @@ export const AdminDashboardPage: React.FC = () => {
                     );
                   })}
                 </div>
-              </div>
-            </div>
-
-            {/* Most Recommended Schemes by AI */}
-            <div className="bg-white rounded-lg border border-neutral-200 p-6 shadow-xs mb-8">
-              <h3 className="text-sm font-bold text-[#003366] uppercase tracking-wider mb-4 flex items-center gap-2">
-                <ChartIcon fontSize="small" />
-                <span>AI Recommendation Frequency (Scikit-Learn Model Output)</span>
-              </h3>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                {stats?.mostRecommended?.map((m: any, i: number) => (
-                  <div key={i} className="p-4 rounded border border-neutral-200 bg-neutral-50">
-                    <span className="text-neutral-500 block text-[11px]">Rank #{i + 1}</span>
-                    <strong className="text-sm text-neutral-900 block my-1">{m.name}</strong>
-                    <div className="flex justify-between text-neutral-600 mt-2 pt-2 border-t border-neutral-200">
-                      <span>Times Suggested: <strong>{m.count}</strong></span>
-                      <span>Avg Score: <strong className="text-green-700">{m.avgScore}%</strong></span>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </>

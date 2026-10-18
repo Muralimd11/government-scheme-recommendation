@@ -443,6 +443,17 @@ export const FarmerProfilePage: React.FC = () => {
 
       const finalPayload = {
         ...savePayload,
+        annualIncome: Number(savePayload.annualIncome) || 0,
+        agriculturalIncome: Number(savePayload.agriculturalIncome) || 0,
+        nonAgriculturalIncome: Number(savePayload.nonAgriculturalIncome) || 0,
+        landSize: Number(savePayload.landSize) || 0,
+        cultivableArea: Number(savePayload.cultivableArea) || 0,
+        irrigatedArea: Number(savePayload.irrigatedArea) || 0,
+        rainfedArea: Number(savePayload.rainfedArea) || 0,
+        primaryCropArea: Number(savePayload.primaryCropArea) || 0,
+        cowCount: Number(savePayload.cowCount) || 0,
+        goatCount: Number(savePayload.goatCount) || 0,
+        poultryCount: Number(savePayload.poultryCount) || 0,
         fullName: user?.fullName || formData.fullName,
         age: user?.age ?? formData.age,
         gender: user?.gender || formData.gender,
@@ -844,8 +855,8 @@ export const FarmerProfilePage: React.FC = () => {
                   type="number"
                   step="0.1"
                   min="0.1"
-                  value={formData.landSize}
-                  onChange={(e) => setFormData({ ...formData, landSize: Number(e.target.value) })}
+                  value={formData.landSize ?? ""}
+                  onChange={(e) => setFormData({ ...formData, landSize: e.target.value === "" ? ("" as any) : Number(e.target.value) })}
                   className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm font-bold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                   required
                 />
@@ -859,8 +870,8 @@ export const FarmerProfilePage: React.FC = () => {
                   type="number"
                   step="0.1"
                   min="0.1"
-                  value={formData.cultivableArea}
-                  onChange={(e) => setFormData({ ...formData, cultivableArea: Number(e.target.value) })}
+                  value={formData.cultivableArea ?? ""}
+                  onChange={(e) => setFormData({ ...formData, cultivableArea: e.target.value === "" ? ("" as any) : Number(e.target.value) })}
                   className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                   required
                 />
@@ -889,8 +900,8 @@ export const FarmerProfilePage: React.FC = () => {
                   type="number"
                   step="0.1"
                   min="0"
-                  value={formData.irrigatedArea}
-                  onChange={(e) => setFormData({ ...formData, irrigatedArea: Number(e.target.value) })}
+                  value={formData.irrigatedArea ?? ""}
+                  onChange={(e) => setFormData({ ...formData, irrigatedArea: e.target.value === "" ? ("" as any) : Number(e.target.value) })}
                   className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
@@ -903,8 +914,8 @@ export const FarmerProfilePage: React.FC = () => {
                   type="number"
                   step="0.1"
                   min="0"
-                  value={formData.rainfedArea}
-                  onChange={(e) => setFormData({ ...formData, rainfedArea: Number(e.target.value) })}
+                  value={formData.rainfedArea ?? ""}
+                  onChange={(e) => setFormData({ ...formData, rainfedArea: e.target.value === "" ? ("" as any) : Number(e.target.value) })}
                   className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
@@ -1014,8 +1025,8 @@ export const FarmerProfilePage: React.FC = () => {
                   type="number"
                   step="0.1"
                   min="0.1"
-                  value={formData.primaryCropArea}
-                  onChange={(e) => setFormData({ ...formData, primaryCropArea: Number(e.target.value) })}
+                  value={formData.primaryCropArea ?? ""}
+                  onChange={(e) => setFormData({ ...formData, primaryCropArea: e.target.value === "" ? ("" as any) : Number(e.target.value) })}
                   className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
@@ -1300,8 +1311,8 @@ export const FarmerProfilePage: React.FC = () => {
                     <input
                       type="number"
                       min="1"
-                      value={formData.cowCount}
-                      onChange={(e) => setFormData({ ...formData, cowCount: Number(e.target.value) })}
+                      value={formData.cowCount ?? ""}
+                      onChange={(e) => setFormData({ ...formData, cowCount: e.target.value === "" ? ("" as any) : Number(e.target.value) })}
                       className="w-full px-2.5 py-1 bg-white border border-slate-300 rounded text-sm mt-1"
                     />
                   </div>
@@ -1327,8 +1338,8 @@ export const FarmerProfilePage: React.FC = () => {
                     <input
                       type="number"
                       min="1"
-                      value={formData.goatCount}
-                      onChange={(e) => setFormData({ ...formData, goatCount: Number(e.target.value) })}
+                      value={formData.goatCount ?? ""}
+                      onChange={(e) => setFormData({ ...formData, goatCount: e.target.value === "" ? ("" as any) : Number(e.target.value) })}
                       className="w-full px-2.5 py-1 bg-white border border-slate-300 rounded text-sm mt-1"
                     />
                   </div>
@@ -1354,8 +1365,8 @@ export const FarmerProfilePage: React.FC = () => {
                     <input
                       type="number"
                       min="1"
-                      value={formData.poultryCount}
-                      onChange={(e) => setFormData({ ...formData, poultryCount: Number(e.target.value) })}
+                      value={formData.poultryCount ?? ""}
+                      onChange={(e) => setFormData({ ...formData, poultryCount: e.target.value === "" ? ("" as any) : Number(e.target.value) })}
                       className="w-full px-2.5 py-1 bg-white border border-slate-300 rounded text-sm mt-1"
                     />
                   </div>
@@ -1598,8 +1609,8 @@ export const FarmerProfilePage: React.FC = () => {
                         type="number"
                         min="2018"
                         max={new Date().getFullYear()}
-                        value={item.year}
-                        onChange={(e) => handleUpdatePreviousBenefit(idx, "year", Number(e.target.value))}
+                        value={item.year ?? ""}
+                        onChange={(e) => handleUpdatePreviousBenefit(idx, "year", e.target.value === "" ? "" : Number(e.target.value))}
                         className="w-full px-2.5 py-1.5 bg-white border border-slate-300 rounded text-xs"
                       />
                     </div>
@@ -1842,9 +1853,9 @@ export const FarmerProfilePage: React.FC = () => {
                 <input
                   type="number"
                   step="5000"
-                  min="10000"
-                  value={formData.annualIncome}
-                  onChange={(e) => setFormData({ ...formData, annualIncome: Number(e.target.value) })}
+                  min="0"
+                  value={formData.annualIncome ?? ""}
+                  onChange={(e) => setFormData({ ...formData, annualIncome: e.target.value === "" ? ("" as any) : Number(e.target.value) })}
                   className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm font-bold text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                   required
                 />
@@ -1859,8 +1870,8 @@ export const FarmerProfilePage: React.FC = () => {
                   type="number"
                   step="5000"
                   min="0"
-                  value={formData.agriculturalIncome}
-                  onChange={(e) => setFormData({ ...formData, agriculturalIncome: Number(e.target.value) })}
+                  value={formData.agriculturalIncome ?? ""}
+                  onChange={(e) => setFormData({ ...formData, agriculturalIncome: e.target.value === "" ? ("" as any) : Number(e.target.value) })}
                   className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
@@ -1873,8 +1884,8 @@ export const FarmerProfilePage: React.FC = () => {
                   type="number"
                   step="5000"
                   min="0"
-                  value={formData.nonAgriculturalIncome}
-                  onChange={(e) => setFormData({ ...formData, nonAgriculturalIncome: Number(e.target.value) })}
+                  value={formData.nonAgriculturalIncome ?? ""}
+                  onChange={(e) => setFormData({ ...formData, nonAgriculturalIncome: e.target.value === "" ? ("" as any) : Number(e.target.value) })}
                   className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>

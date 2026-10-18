@@ -67,6 +67,14 @@ export async function getDashboardStats(req: AuthRequest, res: Response): Promis
       { $limit: 6 }
     ]);
 
+    // Recent online applications submitted by farmers
+    const recentApplications = await Application.find()
+      .populate("farmerId", "fullName email mobile district village farmerRegistrationId")
+      .populate("schemeId", "schemeName department category officialWebsite applicationUrl")
+      .sort({ submittedDate: -1, createdAt: -1 })
+      .limit(10)
+      .lean();
+
     res.status(200).json({
       success: true,
       data: {
@@ -79,6 +87,22 @@ export async function getDashboardStats(req: AuthRequest, res: Response): Promis
           rejectedApplications,
           approvalRate
         },
+        recentApplications: recentApplications.map((app: any) => ({
+          _id: app._id,
+          applicationId: app.applicationId,
+          farmerName: app.farmerId?.fullName || "Registered Farmer",
+          farmerMobile: app.farmerId?.mobile || "N/A",
+          district: app.farmerId?.district || "Tamil Nadu",
+          village: app.farmerId?.village || "",
+          farmerRegistrationId: app.farmerId?.farmerRegistrationId || "",
+          schemeName: app.schemeName || app.schemeId?.schemeName || "State Agricultural Scheme",
+          schemeCode: app.schemeCode || app.schemeId?.schemeId || "TN-SCHEME",
+          department: app.schemeId?.department || "Agriculture & Farmers Welfare",
+          submittedDate: app.submittedDate || app.createdAt,
+          status: app.status || "SUBMITTED",
+          documentsCount: app.documents?.length || 0,
+          applicationUrl: app.schemeId?.applicationUrl || app.schemeId?.officialWebsite || "https://tnagrisnet.tn.gov.in"
+        })),
         districtDistribution: districtDistribution.map((d) => ({ district: d._id || "Other", count: d.count })),
         categoryDistribution: categoryDistribution.map((c) => ({ category: c._id || "General", count: c.count })),
         farmerTypeDistribution: farmerTypeDistribution.map((f) => ({ type: f._id || "Small", count: f.count })),
@@ -399,6 +423,90 @@ export async function getAuditLogs(req: AuthRequest, res: Response): Promise<voi
     res.status(200).json({
       success: true,
       data: { logs }
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+}
+
+export async function getAllApplications(req: AuthRequest, res: Response): Promise<void> {
+  try {
+    const { status, search } = req.query;
+    const filter: Record<string, any> = {};
+
+    if (status && status !== "ALL") {
+      filter.status = status;
+    }
+
+    if (search) {
+      filter.$or = [
+        { applicationId: new RegExp(String(search), "i") },
+        { schemeName: new RegExp(String(search), "i") },
+        { schemeCode: new RegExp(String(search), "i") }
+      ];
+    }
+
+    const applications = await Application.find(filter)
+      .populate("farmerId", "fullName email mobile district village farmerRegistrationId")
+      .populate("schemeId", "schemeName department category officialWebsite applicationUrl")
+      .sort({ submittedDate: -1, createdAt: -1 })
+      .lean();
+
+    res.status(200).json({
+      success: true,
+      data: { applications }
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+}
+
+export async function updateApplicationStatus(req: AuthRequest, res: Response): Promise<void> {
+  try {
+    const { id } = req.params;
+    const { status, adminRemarks } = req.body;
+
+    if (!["SUBMITTED", "PENDING", "UNDER_VERIFICATION", "APPROVED", "REJECTED"].includes(status)) {
+      res.status(400).json({ success: false, message: "Invalid application status." });
+      return;
+    }
+
+    const app = await Application.findOne({
+      $or: [{ _id: id.match(/^[0-9a-fA-F]{24}$/) ? id : null }, { applicationId: id }]
+    });
+
+    if (!app) {
+      res.status(404).json({ success: false, message: "Application not found." });
+      return;
+    }
+
+    app.status = status;
+    if (adminRemarks) {
+      app.adminRemarks = adminRemarks;
+    }
+    app.applicationHistory.push({
+      status,
+      updatedBy: req.user?.fullName || "Agriculture Officer",
+      remarks: adminRemarks || `Status updated to ${status} by administrative authority.`,
+      timestamp: new Date()
+    });
+
+    await app.save();
+
+    if (req.user?._id) {
+      await AuditLog.create({
+        adminId: req.user._id,
+        action: "APPLICATION_STATUS_UPDATED",
+        entityType: "APPLICATION",
+        entityId: app.applicationId,
+        details: { status, adminRemarks }
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: `Application ${app.applicationId} status updated to ${status}.`,
+      data: { application: app }
     });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });

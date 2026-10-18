@@ -5,6 +5,7 @@ import { useLanguage } from "../context/LanguageContext";
 import { api } from "../services/api";
 import { RecommendationResult } from "../types";
 import { Sidebar } from "../components/common/Sidebar";
+import { ApplySchemeModal } from "../components/common/ApplySchemeModal";
 import {
   Sparkles,
   ShieldCheck,
@@ -16,6 +17,7 @@ import {
   RefreshCw,
   ExternalLink,
   ChevronRight,
+  ChevronLeft,
   MapPin,
   Trees,
   Droplets,
@@ -24,6 +26,7 @@ import {
   FileCheck,
   Building
 } from "lucide-react";
+import { cleanBenefitSummary, parseRequiredDocuments } from "../utils/formatters";
 
 export const RecommendationsPage: React.FC = () => {
   const { user, isAuthenticated, isFarmer, isAdmin } = useAuth();
@@ -35,10 +38,15 @@ export const RecommendationsPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Pagination State (10 items per page)
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+
   // Filter States
   const [statusFilter, setStatusFilter] = useState<"ALL" | "ELIGIBLE" | "INELIGIBLE">("ELIGIBLE");
   const [govFilter, setGovFilter] = useState("All");
   const [sortBy, setSortBy] = useState<"match" | "name">("match");
+  const [applyingScheme, setApplyingScheme] = useState<any | null>(null);
 
   const loadRecommendations = async () => {
     try {
@@ -101,6 +109,18 @@ export const RecommendationsPage: React.FC = () => {
 
   const totalEligible = recommendations.filter((r) => r.isEligible !== false).length;
   const totalIneligible = recommendations.filter((r) => r.isEligible === false).length;
+
+  // Pagination Calculations (10 schemes per page)
+  const totalPages = Math.max(1, Math.ceil(filtered.length / itemsPerPage));
+  const paginatedSchemes = filtered.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  // Reset page when filter changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [statusFilter, govFilter, sortBy]);
 
   const content = (
     <div className="space-y-6">
@@ -289,7 +309,7 @@ export const RecommendationsPage: React.FC = () => {
         </div>
       ) : (
         <div className="space-y-4">
-          {filtered.map((scheme, idx) => {
+          {paginatedSchemes.map((scheme, idx) => {
             const isEligible = scheme.isEligible !== false;
             return (
               <div
@@ -342,13 +362,15 @@ export const RecommendationsPage: React.FC = () => {
                   Department: <span className="text-slate-800 font-semibold">{scheme.department}</span>
                 </p>
 
-                {/* Benefits Banner */}
-                <div className="bg-emerald-50/70 border border-emerald-200 rounded-lg p-3.5 mb-4">
-                  <p className="text-xs text-slate-800 leading-relaxed font-medium">
-                    <strong className="text-emerald-900 font-bold">Benefit Provision: </strong>
-                    {scheme.benefits}
-                  </p>
-                </div>
+                {/* Benefits Banner (Clean & Concise Highlight) */}
+                {scheme.benefits && (
+                  <div className="bg-emerald-50/70 border border-emerald-200 rounded-lg p-3.5 mb-4">
+                    <p className="text-xs text-slate-800 leading-relaxed font-medium">
+                      <strong className="text-emerald-900 font-bold">Benefit Provision: </strong>
+                      {cleanBenefitSummary(scheme.benefits)}
+                    </p>
+                  </div>
+                )}
 
                 {/* Transparent Ineligible Reason (if not eligible) */}
                 {!isEligible && scheme.ineligibleReason && (
@@ -382,15 +404,15 @@ export const RecommendationsPage: React.FC = () => {
                   </div>
                 )}
 
-                {/* Required Documents List */}
+                {/* Required Documents List (Clean Standard Badges Matching Image 1) */}
                 {scheme.requiredDocuments && scheme.requiredDocuments.length > 0 && (
                   <div className="mb-4 text-xs">
                     <span className="text-slate-500 font-semibold block mb-1">Required Verification Documents:</span>
                     <div className="flex flex-wrap gap-1.5">
-                      {scheme.requiredDocuments.map((doc, dIdx) => (
+                      {parseRequiredDocuments(scheme.requiredDocuments).map((doc, dIdx) => (
                         <span
                           key={dIdx}
-                          className="bg-slate-100 text-slate-700 px-2.5 py-0.5 rounded text-[11px] border border-slate-200"
+                          className="bg-slate-100 text-slate-700 px-2.5 py-0.5 rounded text-[11px] border border-slate-200 font-medium"
                         >
                           {doc}
                         </span>
@@ -423,19 +445,81 @@ export const RecommendationsPage: React.FC = () => {
                     )}
 
                     {isEligible && (
-                      <Link
-                        to={`/farmer/applications/new?scheme=${scheme.schemeId}`}
-                        className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-bold transition shadow-xs"
+                      <button
+                        onClick={() => setApplyingScheme(scheme)}
+                        className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-bold transition shadow-xs cursor-pointer"
                       >
                         <span>Apply Online</span>
                         <ArrowRight className="w-3.5 h-3.5" />
-                      </Link>
+                      </button>
                     )}
                   </div>
                 </div>
               </div>
             );
           })}
+
+          {/* Pagination Controls (10 schemes per page) */}
+          {filtered.length > itemsPerPage && (
+            <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 text-xs mt-6">
+              <span className="text-slate-600 font-medium">
+                Showing <strong className="text-slate-900">{(currentPage - 1) * itemsPerPage + 1}</strong> to{" "}
+                <strong className="text-slate-900">{Math.min(currentPage * itemsPerPage, filtered.length)}</strong> of{" "}
+                <strong className="text-slate-900">{filtered.length}</strong> evaluated schemes
+              </span>
+
+              <div className="flex items-center gap-1.5">
+                <button
+                  onClick={() => {
+                    setCurrentPage((p) => Math.max(1, p - 1));
+                    window.scrollTo({ top: 350, behavior: "smooth" });
+                  }}
+                  disabled={currentPage === 1}
+                  className="px-3 py-1.5 rounded-lg border border-slate-300 font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed inline-flex items-center gap-1 transition"
+                >
+                  <ChevronLeft className="w-3.5 h-3.5" />
+                  <span>Previous</span>
+                </button>
+
+                {Array.from({ length: totalPages }, (_, i) => i + 1)
+                  .filter((p) => p === 1 || p === totalPages || Math.abs(p - currentPage) <= 2)
+                  .map((pageNum, index, arr) => {
+                    const prev = arr[index - 1];
+                    const showEllipsis = prev && pageNum - prev > 1;
+                    return (
+                      <React.Fragment key={pageNum}>
+                        {showEllipsis && <span className="px-1 text-slate-400">...</span>}
+                        <button
+                          onClick={() => {
+                            setCurrentPage(pageNum);
+                            window.scrollTo({ top: 350, behavior: "smooth" });
+                          }}
+                          className={`w-8 h-8 rounded-lg font-bold text-xs transition ${
+                            currentPage === pageNum
+                              ? "bg-emerald-700 text-white shadow-xs"
+                              : "border border-slate-200 text-slate-700 hover:bg-slate-50"
+                          }`}
+                        >
+                          {pageNum}
+                        </button>
+                      </React.Fragment>
+                    );
+                  })}
+
+                <button
+                  onClick={() => {
+                    setCurrentPage((p) => Math.min(totalPages, p + 1));
+                    window.scrollTo({ top: 350, behavior: "smooth" });
+                  }}
+                  disabled={currentPage === totalPages}
+                  className="px-3 py-1.5 rounded-lg border border-slate-300 font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed inline-flex items-center gap-1 transition"
+                >
+                  <span>Next</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -447,6 +531,12 @@ export const RecommendationsPage: React.FC = () => {
       <main className="flex-1 p-4 md:p-8 max-w-6xl mx-auto w-full">
         {content}
       </main>
+
+      <ApplySchemeModal
+        isOpen={Boolean(applyingScheme)}
+        onClose={() => setApplyingScheme(null)}
+        scheme={applyingScheme}
+      />
     </div>
   );
 };

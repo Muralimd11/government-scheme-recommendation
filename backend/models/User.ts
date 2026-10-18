@@ -272,8 +272,6 @@ const userSchema = new Schema<IUser>(
 );
 
 // Indexes
-userSchema.index({ email: 1 });
-userSchema.index({ mobile: 1 });
 userSchema.index({ district: 1 });
 userSchema.index({ role: 1 });
 

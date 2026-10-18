@@ -4,6 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { useLanguage } from "../context/LanguageContext";
 import { api } from "../services/api";
 import { Sidebar } from "../components/common/Sidebar";
+import { ApplySchemeModal } from "../components/common/ApplySchemeModal";
 import { ALL_TN_DISTRICTS } from "../data/tamilNaduLocations";
 import {
   ShieldCheck,
@@ -25,6 +26,7 @@ export const EligibilityPage: React.FC = () => {
   const { user, isAuthenticated, isFarmer, isAdmin } = useAuth();
   const { language } = useLanguage();
   const navigate = useNavigate();
+  const [applyingScheme, setApplyingScheme] = useState<any | null>(null);
 
   // If unauthenticated: Quick criteria inputs
   const [quickCriteria, setQuickCriteria] = useState({
@@ -69,7 +71,9 @@ export const EligibilityPage: React.FC = () => {
         }
         : {
           ...quickCriteria,
-          farmerType: quickCriteria.landSize <= 2.5 ? "Marginal" : quickCriteria.landSize <= 5 ? "Small" : "Medium"
+          landSize: Number(quickCriteria.landSize) || 0,
+          annualIncome: Number(quickCriteria.annualIncome) || 0,
+          farmerType: (Number(quickCriteria.landSize) || 0) <= 2.5 ? "Marginal" : (Number(quickCriteria.landSize) || 0) <= 5 ? "Small" : "Medium"
         };
 
       const res = await api.getRecommendations(payload);
@@ -300,12 +304,12 @@ export const EligibilityPage: React.FC = () => {
                             Guidelines
                           </Link>
                           {isEligible && (
-                            <Link
-                              to={`/farmer/applications/new?scheme=${scheme.schemeId}`}
-                              className="px-3 py-1.5 bg-emerald-700 text-white rounded-md font-semibold hover:bg-emerald-800"
+                            <button
+                              onClick={() => setApplyingScheme(scheme)}
+                              className="px-3 py-1.5 bg-emerald-700 text-white rounded-md font-semibold hover:bg-emerald-800 cursor-pointer"
                             >
                               Apply
-                            </Link>
+                            </button>
                           )}
                         </div>
                       </div>
@@ -349,8 +353,8 @@ export const EligibilityPage: React.FC = () => {
                   type="number"
                   step="0.1"
                   min="0.1"
-                  value={quickCriteria.landSize}
-                  onChange={(e) => setQuickCriteria({ ...quickCriteria, landSize: Number(e.target.value) })}
+                  value={quickCriteria.landSize ?? ""}
+                  onChange={(e) => setQuickCriteria({ ...quickCriteria, landSize: e.target.value === "" ? ("" as any) : Number(e.target.value) })}
                   className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm"
                 />
               </div>
@@ -408,8 +412,8 @@ export const EligibilityPage: React.FC = () => {
                 <input
                   type="number"
                   step="5000"
-                  value={quickCriteria.annualIncome}
-                  onChange={(e) => setQuickCriteria({ ...quickCriteria, annualIncome: Number(e.target.value) })}
+                  value={quickCriteria.annualIncome ?? ""}
+                  onChange={(e) => setQuickCriteria({ ...quickCriteria, annualIncome: e.target.value === "" ? ("" as any) : Number(e.target.value) })}
                   className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm"
                 />
               </div>
@@ -447,12 +451,12 @@ export const EligibilityPage: React.FC = () => {
                         <strong className="text-slate-900 block">{scheme.schemeName}</strong>
                         <span className="text-slate-500">{scheme.department} • {scheme.matchScore}% Match</span>
                       </div>
-                      <Link
-                        to="/register"
-                        className="px-3 py-1 bg-emerald-700 text-white rounded text-[11px] font-semibold hover:bg-emerald-800 shrink-0"
+                      <button
+                        onClick={() => setApplyingScheme(scheme)}
+                        className="px-3 py-1 bg-emerald-700 text-white rounded text-[11px] font-semibold hover:bg-emerald-800 shrink-0 cursor-pointer"
                       >
-                        Register to Claim
-                      </Link>
+                        Apply Now
+                      </button>
                     </div>
                   ))}
                 </div>
@@ -461,6 +465,12 @@ export const EligibilityPage: React.FC = () => {
           </div>
         )}
       </main>
+
+      <ApplySchemeModal
+        isOpen={Boolean(applyingScheme)}
+        onClose={() => setApplyingScheme(null)}
+        scheme={applyingScheme}
+      />
     </div>
   );
 };

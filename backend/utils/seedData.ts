@@ -37,8 +37,8 @@ export async function seedDatabase() {
 
     // 2. Create Sample Farmers
     const farmer1 = await User.create({
-      fullName: "Muthuvel Karunanidhi",
-      email: "muthu.farmer@gmail.com",
+      fullName: "K. Arumugam",
+      email: "arumugam.farmer@tnagri.gov.in",
       mobile: "9841234567",
       passwordHash: farmerPasswordHash,
       role: "FARMER",
@@ -712,13 +712,13 @@ export async function seedDatabase() {
         documents: [
           {
             documentType: "Land Document",
-            fileName: "Patta_Chitta_Muthuvel.pdf",
+            fileName: "Patta_Chitta_Arumugam.pdf",
             fileUrl: "/uploads/sample_patta.pdf",
             verificationStatus: "VERIFIED"
           },
           {
             documentType: "Aadhaar Card",
-            fileName: "Aadhaar_Muthuvel.pdf",
+            fileName: "Aadhaar_Arumugam.pdf",
             fileUrl: "/uploads/sample_aadhaar.pdf",
             verificationStatus: "VERIFIED"
           }

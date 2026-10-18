@@ -31,6 +31,7 @@ import { AdminVerificationPage } from "./pages/admin/AdminVerificationPage";
 import { AdminReportsPage } from "./pages/admin/AdminReportsPage";
 import { AdminNotificationsPage } from "./pages/admin/AdminNotificationsPage";
 import { AdminAuditLogsPage } from "./pages/admin/AdminAuditLogsPage";
+import { AdminApplicationsPage } from "./pages/admin/AdminApplicationsPage";
 
 export default function App() {
   return (
@@ -85,6 +86,14 @@ export default function App() {
                   }
                 />
                 <Route
+                  path="/farmer/applications/:id"
+                  element={
+                    <ProtectedRoute requiredRole="FARMER">
+                      <ApplicationsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
                   path="/farmer/documents"
                   element={
                     <ProtectedRoute requiredRole="FARMER">
@@ -115,6 +124,14 @@ export default function App() {
                   element={
                     <ProtectedRoute requiredRole="ADMIN">
                       <AdminDashboardPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/applications"
+                  element={
+                    <ProtectedRoute requiredRole="ADMIN">
+                      <AdminApplicationsPage />
                     </ProtectedRoute>
                   }
                 />

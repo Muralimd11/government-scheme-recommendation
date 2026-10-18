@@ -1,0 +1,187 @@
+{
+  "catalogue_file": "Farmers_Schemes_34_Columns.xlsx",
+  "sheet_name": "Structured Schemes",
+  "total_records": 227,
+  "duplicate_scheme_ids": 0,
+  "empty_scheme_names": 0,
+  "invalid_official_urls_count": 0,
+  "invalid_application_urls_count": 2,
+  "records_requiring_verification": 227,
+  "verification_status_distribution": {
+    "Application URL status: Valid; scheme eligibility/status not independently verified": 206,
+    "Application URL status: Needs Verification; scheme eligibility/status not independently verified": 19,
+    "Application URL status: Invalid; scheme eligibility/status not independently verified": 2
+  },
+  "field_completeness": {
+    "scheme_id": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "scheme_name": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "level": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "department": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "category": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "benefit_summary": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "benefit_amount": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 227,
+      "completeness_pct": 0.0
+    },
+    "eligibility": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "min_age": {
+      "strictly_null_count": 199,
+      "unspecified_or_null_count": 199,
+      "completeness_pct": 12.33
+    },
+    "max_age": {
+      "strictly_null_count": 202,
+      "unspecified_or_null_count": 202,
+      "completeness_pct": 11.01
+    },
+    "annual_income_limit": {
+      "strictly_null_count": 208,
+      "unspecified_or_null_count": 208,
+      "completeness_pct": 8.37
+    },
+    "land_min_acres": {
+      "strictly_null_count": 227,
+      "unspecified_or_null_count": 227,
+      "completeness_pct": 0.0
+    },
+    "land_max_acres": {
+      "strictly_null_count": 227,
+      "unspecified_or_null_count": 227,
+      "completeness_pct": 0.0
+    },
+    "land_ownership_requirement": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "eligible_gender": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "eligible_social_categories": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "eligible_crops": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 227,
+      "completeness_pct": 0.0
+    },
+    "eligible_farming_types": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 227,
+      "completeness_pct": 0.0
+    },
+    "eligible_districts": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "irrigation_requirement": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 227,
+      "completeness_pct": 0.0
+    },
+    "livestock_requirement": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 227,
+      "completeness_pct": 0.0
+    },
+    "other_conditions": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 227,
+      "completeness_pct": 0.0
+    },
+    "exclusion_criteria": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "required_documents": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "application_process": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "application_url": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "official_url": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "scheme_status": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "validity_period": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 227,
+      "completeness_pct": 0.0
+    },
+    "source_type": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 227,
+      "completeness_pct": 0.0
+    },
+    "source_title": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 227,
+      "completeness_pct": 0.0
+    },
+    "last_verified_date": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "verification_status": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    },
+    "additional_notes": {
+      "strictly_null_count": 0,
+      "unspecified_or_null_count": 0,
+      "completeness_pct": 100.0
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useLanguage } from "../context/LanguageContext";
@@ -22,6 +22,25 @@ export const LoginPage: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Prevent browser password manager from automatically filling credentials before user enters them
+  useEffect(() => {
+    const clearAutofill = () => {
+      setIdentifier("");
+      setPassword("");
+      const idEl = document.getElementById("login_identifier_input") as HTMLInputElement | null;
+      const passEl = document.getElementById("login_password_input") as HTMLInputElement | null;
+      if (idEl) idEl.value = "";
+      if (passEl) passEl.value = "";
+    };
+    clearAutofill();
+    const t1 = setTimeout(clearAutofill, 50);
+    const t2 = setTimeout(clearAutofill, 250);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -80,7 +99,25 @@ export const LoginPage: React.FC = () => {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4" autoComplete="off">
+          {/* Decoy hidden inputs to prevent Chrome password manager from pre-populating credentials */}
+          <input
+            type="text"
+            name="decoy_login_user"
+            style={{ position: "absolute", opacity: 0, height: 0, width: 0, zIndex: -1, pointerEvents: "none" }}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+          />
+          <input
+            type="password"
+            name="decoy_login_pass"
+            style={{ position: "absolute", opacity: 0, height: 0, width: 0, zIndex: -1, pointerEvents: "none" }}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+          />
+
           <div>
             <label className="block text-xs font-semibold text-neutral-700 mb-1">
               Mobile Number or Email Address *
@@ -88,6 +125,9 @@ export const LoginPage: React.FC = () => {
             <div className="relative">
               <input
                 type="text"
+                id="login_identifier_input"
+                name="farmer_login_identifier_field"
+                autoComplete="off"
                 required
                 value={identifier}
                 onChange={(e) => setIdentifier(e.target.value)}
@@ -109,6 +149,9 @@ export const LoginPage: React.FC = () => {
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
+                id="login_password_input"
+                name="farmer_login_pwd_field"
+                autoComplete="new-password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -150,14 +193,14 @@ export const LoginPage: React.FC = () => {
               onClick={() => handleQuickLogin("FARMER_1")}
               className="text-left p-2 rounded bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 text-xs text-neutral-800 transition"
             >
-              🌾 <strong>Muthuvel K</strong> (Paddy Farmer - 9842100001 / Farmer@2026)
+              🌾 <strong>Farmer Account 1</strong> (Mobile: 9842100001 / Farmer@2026)
             </button>
             <button
               type="button"
               onClick={() => handleQuickLogin("FARMER_2")}
               className="text-left p-2 rounded bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 text-xs text-neutral-800 transition"
             >
-              🌱 <strong>Kavitha Selvam</strong> (Horticulture - 9842100002 / Farmer@2026)
+              🌱 <strong>Farmer Account 2</strong> (Mobile: 9842100002 / Farmer@2026)
             </button>
             <button
               type="button"

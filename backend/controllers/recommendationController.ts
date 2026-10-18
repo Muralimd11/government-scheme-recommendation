@@ -40,12 +40,17 @@ export async function getRecommendations(req: AuthRequest, res: Response): Promi
       });
     }
 
+    const eligible = recommendations.filter((r) => r.isEligible);
+    const topRecommendations = eligible.slice(0, 5);
+
     res.status(200).json({
       success: true,
-      message: `${recommendations.length} government schemes recommended based on your farming profile.`,
+      message: `${topRecommendations.length} top government schemes recommended based on your farming profile.`,
       data: {
-        totalEligible: recommendations.length,
+        totalEligible: eligible.length,
+        totalEvaluated: recommendations.length,
         farmerProfile: profileData,
+        topRecommendations,
         recommendations
       }
     });

@@ -5,6 +5,7 @@ import { SchemeItem } from "../types";
 import { useLanguage } from "../context/LanguageContext";
 import { useAuth } from "../context/AuthContext";
 import { Sidebar } from "../components/common/Sidebar";
+import { ApplySchemeModal } from "../components/common/ApplySchemeModal";
 import {
   ArrowBack as BackIcon,
   Verified as VerifiedIcon,
@@ -26,6 +27,7 @@ export const SchemeDetailPage: React.FC = () => {
   const [scheme, setScheme] = useState<SchemeItem | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
 
   useEffect(() => {
     async function loadScheme() {
@@ -123,12 +125,12 @@ export const SchemeDetailPage: React.FC = () => {
 
           {/* Action CTAs */}
           <div className="pt-4 flex flex-wrap items-center justify-between gap-4">
-            <Link
-              to={`/farmer/applications/new?schemeId=${scheme._id}`}
-              className="bg-[#2E7D32] hover:bg-green-800 text-white font-bold px-6 py-2.5 rounded text-sm shadow-sm transition"
+            <button
+              onClick={() => setIsApplyModalOpen(true)}
+              className="bg-[#2E7D32] hover:bg-green-800 text-white font-bold px-6 py-2.5 rounded text-sm shadow-sm transition cursor-pointer"
             >
               {t("applyNow")}
-            </Link>
+            </button>
 
             {scheme.officialWebsite && (
               <a
@@ -240,12 +242,12 @@ export const SchemeDetailPage: React.FC = () => {
           </p>
 
           <div className="mt-6 pt-4 border-t border-neutral-200 flex items-center justify-between">
-            <Link
-              to={`/farmer/applications/new?schemeId=${scheme._id}`}
-              className="bg-[#2E7D32] hover:bg-green-800 text-white font-bold px-6 py-2.5 rounded text-sm shadow-sm transition"
+            <button
+              onClick={() => setIsApplyModalOpen(true)}
+              className="bg-[#2E7D32] hover:bg-green-800 text-white font-bold px-6 py-2.5 rounded text-sm shadow-sm transition cursor-pointer"
             >
               Submit Application Online
-            </Link>
+            </button>
             <Link
               to="/schemes"
               className="text-xs font-semibold text-[#003366] hover:underline"
@@ -255,6 +257,12 @@ export const SchemeDetailPage: React.FC = () => {
           </div>
         </div>
       </main>
+
+      <ApplySchemeModal
+        isOpen={isApplyModalOpen}
+        onClose={() => setIsApplyModalOpen(false)}
+        scheme={scheme}
+      />
     </div>
   );
 };

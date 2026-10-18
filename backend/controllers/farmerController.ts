@@ -248,7 +248,16 @@ export async function getFarmerDashboardSummary(req: AuthRequest, res: Response)
 
     // Latest recommendation count
     const latestRecommendation = await Recommendation.findOne({ farmerId }).sort({ createdAt: -1 });
-    const recommendedCount = latestRecommendation ? latestRecommendation.recommendations.length : 0;
+    let recommendedCount = latestRecommendation ? latestRecommendation.recommendations.length : 0;
+
+    if (recommendedCount === 0 && farmerId) {
+      // Calculate live eligible recommendations dynamically so it does not default to 0
+      const userDoc = await User.findById(farmerId).lean();
+      if (userDoc) {
+        const liveRecs = await getRecommendationsForFarmer(userDoc);
+        recommendedCount = liveRecs.filter((r) => r.isEligible !== false).length;
+      }
+    }
 
     res.status(200).json({
       success: true,
