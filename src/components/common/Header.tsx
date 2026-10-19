@@ -46,7 +46,7 @@ export const Header: React.FC = () => {
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
           <div className="flex items-center gap-3">
             <span className="font-bold tracking-wider text-amber-300">
-              {language === "ta" ? "உழவர் தோழன் (FARMERS FRIEND)" : "FARMERS FRIEND"}
+              {language === "ta" ? "உழவர் தோழன்" : "FARMERS FRIEND"}
             </span>
             <span className="hidden sm:inline text-neutral-300">|</span>
             <span className="hidden sm:inline text-neutral-200">
@@ -146,7 +146,9 @@ export const Header: React.FC = () => {
                 </span>
                 <span className="text-slate-400">|</span>
                 <span className="text-slate-500 font-medium text-[11px] uppercase tracking-wider">
-                  {user.role}
+                  {language === "ta"
+                    ? user.role === "ADMIN" ? "நிர்வாகி" : "விவசாயி"
+                    : user.role}
                 </span>
               </div>
 
@@ -214,7 +216,9 @@ export const Header: React.FC = () => {
                   </span>
                   <span className="text-slate-400">|</span>
                   <span className="text-slate-500 font-medium text-[11px] uppercase tracking-wider">
-                    {user.role}
+                    {language === "ta"
+                      ? user.role === "ADMIN" ? "நிர்வாகி" : "விவசாயி"
+                      : user.role}
                   </span>
                 </div>
                 <button

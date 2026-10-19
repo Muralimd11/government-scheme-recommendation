@@ -6,7 +6,7 @@ interface StatusBadgeProps {
 }
 
 export const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   let bgClass = "bg-neutral-100 text-neutral-800 border-neutral-300";
   let label = status;
@@ -39,11 +39,11 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
       break;
     case "ACTIVE":
       bgClass = "bg-emerald-50 text-emerald-800 border-emerald-300";
-      label = "Active";
+      label = language === "ta" ? "செயலில் உள்ளது" : "Active";
       break;
     case "DISABLED":
       bgClass = "bg-neutral-100 text-neutral-600 border-neutral-300";
-      label = "Disabled";
+      label = language === "ta" ? "முடக்கப்பட்டது" : "Disabled";
       break;
   }
 

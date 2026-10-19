@@ -11,6 +11,7 @@ import applicationRoutes from "./routes/applicationRoutes";
 import documentRoutes from "./routes/documentRoutes";
 import adminRoutes from "./routes/adminRoutes";
 import notificationRoutes from "./routes/notificationRoutes";
+import translateRoutes from "./routes/translateRoutes";
 import { errorHandler } from "./middleware/errorHandler";
 
 export function createApp() {
@@ -47,6 +48,7 @@ export function createApp() {
   app.use("/api/documents", documentRoutes);
   app.use("/api/admin", adminRoutes);
   app.use("/api/notifications", notificationRoutes);
+  app.use("/api/translate", translateRoutes);
 
   // Centralized Error Handler
   app.use(errorHandler);

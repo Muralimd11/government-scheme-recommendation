@@ -24,7 +24,7 @@ const DOC_TYPES = [
 ];
 
 export const DocumentsPage: React.FC = () => {
-  const { language } = useLanguage();
+  const { language, t, tTerm } = useLanguage();
   const [documents, setDocuments] = useState<DocumentItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -57,7 +57,7 @@ export const DocumentsPage: React.FC = () => {
   const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedFile) {
-      setError("Please choose a file to upload.");
+      setError(language === "ta" ? "தயவுசெய்து பதிவேற்ற ஒரு கோப்பைத் தேர்ந்தெடுக்கவும்." : "Please choose a file to upload.");
       return;
     }
 
@@ -72,24 +72,24 @@ export const DocumentsPage: React.FC = () => {
 
       const res = await api.uploadDocument(formData);
       if (res.data.success) {
-        setUploadSuccess("Document uploaded successfully for officer verification.");
+        setUploadSuccess(language === "ta" ? "அதிகாரி சரிபார்ப்பிற்காக ஆவணம் வெற்றிகரமாக பதிவேற்றப்பட்டது." : "Document uploaded successfully for officer verification.");
         setSelectedFile(null);
         fetchDocs();
       }
     } catch (err: any) {
-      setError(err.message || "Failed to upload document.");
+      setError(err.message || (language === "ta" ? "ஆவணத்தை பதிவேற்ற முடியவில்லை." : "Failed to upload document."));
     } finally {
       setUploading(false);
     }
   };
 
   const handleDelete = async (docId: string) => {
-    if (!window.confirm("Are you sure you want to delete this document?")) return;
+    if (!window.confirm(language === "ta" ? "இந்த ஆவணத்தை நிச்சயமாக நீக்க விரும்புகிறீர்களா?" : "Are you sure you want to delete this document?")) return;
     try {
       await api.deleteDocument(docId);
       fetchDocs();
     } catch (err: any) {
-      setError(err.message || "Failed to delete document.");
+      setError(err.message || (language === "ta" ? "ஆவணத்தை நீக்க முடியவில்லை." : "Failed to delete document."));
     }
   };
 
@@ -103,7 +103,9 @@ export const DocumentsPage: React.FC = () => {
             {language === "ta" ? "உழவர் ஆவணங்கள் காப்பகம்" : "Farmer Document Repository"}
           </h1>
           <p className="text-xs text-neutral-600 mt-1">
-            Upload and securely store your Patta/Chitta, Aadhaar, and Bank Passbook. Attached documents are verified by the Block Agricultural Officer during scheme approval.
+            {language === "ta"
+              ? "உங்கள் பட்டா/சிட்டா, ஆதார் மற்றும் வங்கிக் கணக்கு புத்தகத்தை பாதுகாப்பாக பதிவேற்றவும். திட்ட ஒப்புதலின் போது வட்டார வேளாண்மை அலுவலரால் இவை சரிபார்க்கப்படும்."
+              : "Upload and securely store your Patta/Chitta, Aadhaar, and Bank Passbook. Attached documents are verified by the Block Agricultural Officer during scheme approval."}
           </p>
         </div>
 
@@ -123,13 +125,13 @@ export const DocumentsPage: React.FC = () => {
         <div className="bg-white rounded-lg border border-neutral-200 p-6 shadow-xs mb-8">
           <h2 className="text-sm font-bold text-[#003366] uppercase tracking-wider mb-4 border-b border-neutral-200 pb-2 flex items-center gap-2">
             <UploadIcon fontSize="small" />
-            <span>Upload New Verification Document</span>
+            <span>{language === "ta" ? "புதிய சரிபார்ப்பு ஆவணத்தை பதிவேற்றுக" : "Upload New Verification Document"}</span>
           </h2>
 
           <form onSubmit={handleUpload} className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs items-end">
             <div>
               <label className="block font-semibold text-neutral-700 mb-1">
-                Document Type *
+                {language === "ta" ? "ஆவண வகை *" : "Document Type *"}
               </label>
               <select
                 value={documentType}
@@ -138,7 +140,7 @@ export const DocumentsPage: React.FC = () => {
               >
                 {DOC_TYPES.map((dt) => (
                   <option key={dt} value={dt}>
-                    {dt}
+                    {language === "ta" ? tTerm(dt) : dt}
                   </option>
                 ))}
               </select>
@@ -146,7 +148,7 @@ export const DocumentsPage: React.FC = () => {
 
             <div>
               <label className="block font-semibold text-neutral-700 mb-1">
-                Select File (PDF, JPG, PNG up to 10MB) *
+                {language === "ta" ? "கோப்பைத் தேர்ந்தெடுக்கவும் (PDF, JPG, PNG 10MB வரை) *" : "Select File (PDF, JPG, PNG up to 10MB) *"}
               </label>
               <input
                 type="file"
@@ -164,7 +166,11 @@ export const DocumentsPage: React.FC = () => {
                 className="w-full bg-[#003366] hover:bg-blue-900 text-white font-bold py-2 px-4 rounded text-xs transition flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50"
               >
                 <UploadIcon fontSize="small" />
-                <span>{uploading ? "Uploading..." : "Upload Document"}</span>
+                <span>
+                  {uploading
+                    ? (language === "ta" ? "பதிவேற்றப்படுகிறது..." : "Uploading...")
+                    : (language === "ta" ? "ஆவணத்தை பதிவேற்றுக" : "Upload Document")}
+                </span>
               </button>
             </div>
           </form>
@@ -173,28 +179,28 @@ export const DocumentsPage: React.FC = () => {
         {/* Documents Table */}
         <div className="bg-white rounded-lg border border-neutral-200 shadow-xs overflow-hidden">
           <div className="p-4 border-b border-neutral-200 font-bold text-sm text-neutral-800">
-            Uploaded Documents ({documents.length})
+            {language === "ta" ? `பதிவேற்றப்பட்ட ஆவணங்கள் (${documents.length})` : `Uploaded Documents (${documents.length})`}
           </div>
 
           {loading ? (
             <div className="p-12 text-center text-xs text-neutral-500">
-              Loading uploaded documents...
+              {language === "ta" ? "பதிவேற்றப்பட்ட ஆவணங்கள் ஏற்றப்படுகின்றன..." : "Loading uploaded documents..."}
             </div>
           ) : documents.length === 0 ? (
             <div className="p-12 text-center text-xs text-neutral-500">
-              No documents uploaded yet. Upload your Patta/Chitta to expedite scheme approvals.
+              {language === "ta" ? "இதுவரை ஆவணங்கள் எதுவும் பதிவேற்றப்படவில்லை. திட்ட ஒப்புதல்களை விரைவுபடுத்த உங்கள் பட்டா/சிட்டாவை பதிவேற்றவும்." : "No documents uploaded yet. Upload your Patta/Chitta to expedite scheme approvals."}
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead className="bg-neutral-50 text-neutral-600 border-b border-neutral-200 font-semibold">
                   <tr>
-                    <th className="p-3.5">Document ID</th>
-                    <th className="p-3.5">Type</th>
-                    <th className="p-3.5">File Name</th>
-                    <th className="p-3.5">Uploaded Date</th>
-                    <th className="p-3.5">Verification</th>
-                    <th className="p-3.5 text-right">Actions</th>
+                    <th className="p-3.5">{language === "ta" ? "ஆவண எண்" : "Document ID"}</th>
+                    <th className="p-3.5">{language === "ta" ? "வகை" : "Type"}</th>
+                    <th className="p-3.5">{language === "ta" ? "கோப்பு பெயர்" : "File Name"}</th>
+                    <th className="p-3.5">{language === "ta" ? "பதிவேற்றப்பட்ட தேதி" : "Uploaded Date"}</th>
+                    <th className="p-3.5">{language === "ta" ? "சரிபார்ப்பு நிலை" : "Verification"}</th>
+                    <th className="p-3.5 text-right">{language === "ta" ? "செயல்கள்" : "Actions"}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-neutral-200">
@@ -204,13 +210,13 @@ export const DocumentsPage: React.FC = () => {
                         {doc.documentId}
                       </td>
                       <td className="p-3.5 font-medium text-neutral-900">
-                        {doc.documentType}
+                        {language === "ta" ? tTerm(doc.documentType) : doc.documentType}
                       </td>
                       <td className="p-3.5 text-neutral-600">
                         {doc.fileName}
                       </td>
                       <td className="p-3.5 text-neutral-500">
-                        {new Date(doc.uploadedAt).toLocaleDateString("en-IN")}
+                        {new Date(doc.uploadedAt).toLocaleDateString(language === "ta" ? "ta-IN" : "en-IN")}
                       </td>
                       <td className="p-3.5">
                         <StatusBadge status={doc.verificationStatus} />
@@ -222,13 +228,13 @@ export const DocumentsPage: React.FC = () => {
                           rel="noreferrer"
                           className="text-[#003366] font-bold hover:underline"
                         >
-                          View File
+                          {language === "ta" ? "கோப்பைக் காண்க" : "View File"}
                         </a>
                         <button
                           onClick={() => handleDelete(doc._id)}
                           className="text-red-700 font-medium hover:underline cursor-pointer"
                         >
-                          Delete
+                          {language === "ta" ? "நீக்குக" : "Delete"}
                         </button>
                       </td>
                     </tr>

@@ -5,13 +5,17 @@ export interface IScheme extends MongooseDoc {
   schemeName: string;
   schemeNameTamil?: string;
   governmentLevel: "Tamil Nadu Government" | "Central Government";
+  governmentLevelTamil?: string;
   department: string;
+  departmentTamil?: string;
   category: string;
+  categoryTamil?: string;
   description: string;
   descriptionTamil?: string;
   benefits: string;
   benefitsTamil?: string;
   eligibilityConditions: string[];
+  eligibilityConditionsTamil?: string[];
   minimumAge: number;
   maximumAge: number;
   gender: "All" | "Male" | "Female";
@@ -33,7 +37,9 @@ export interface IScheme extends MongooseDoc {
   horticultureRequirement: boolean;
   machineryRequirement: boolean;
   requiredDocuments: string[];
+  requiredDocumentsTamil?: string[];
   applicationProcess: string;
+  applicationProcessTamil?: string;
   applicationDeadline: string;
   officialWebsite: string;
   applicationUrl: string;
@@ -67,13 +73,17 @@ const schemeSchema = new Schema<IScheme>(
       enum: ["Tamil Nadu Government", "Central Government"],
       required: true
     },
+    governmentLevelTamil: { type: String, trim: true },
     department: { type: String, required: true, trim: true },
+    departmentTamil: { type: String, trim: true },
     category: { type: String, required: true, trim: true },
+    categoryTamil: { type: String, trim: true },
     description: { type: String, required: true },
     descriptionTamil: { type: String },
     benefits: { type: String, required: true },
     benefitsTamil: { type: String },
     eligibilityConditions: [{ type: String }],
+    eligibilityConditionsTamil: [{ type: String }],
     minimumAge: { type: Number, default: 18 },
     maximumAge: { type: Number, default: 80 },
     gender: { type: String, enum: ["All", "Male", "Female"], default: "All" },
@@ -95,7 +105,9 @@ const schemeSchema = new Schema<IScheme>(
     horticultureRequirement: { type: Boolean, default: false },
     machineryRequirement: { type: Boolean, default: false },
     requiredDocuments: [{ type: String }],
+    requiredDocumentsTamil: [{ type: String }],
     applicationProcess: { type: String, required: true },
+    applicationProcessTamil: { type: String },
     applicationDeadline: { type: String, default: "Ongoing / Per Financial Year" },
     officialWebsite: { type: String, required: true },
     applicationUrl: { type: String, default: "" },

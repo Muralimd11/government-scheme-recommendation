@@ -246,10 +246,10 @@ export const ApplySchemeModal: React.FC<ApplySchemeModalProps> = ({
             <div>
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-900/80 text-emerald-300 px-2 py-0.5 rounded border border-emerald-700">
-                  {scheme.governmentLevel || "Tamil Nadu Government"}
+                  {scheme.governmentLevel ? (language === "ta" && scheme.governmentLevelTamil ? scheme.governmentLevelTamil : scheme.governmentLevel) : (language === "ta" ? "தமிழ்நாடு அரசு" : "Tamil Nadu Government")}
                 </span>
                 <span className="text-[11px] text-neutral-300 font-medium">
-                  {scheme.category || "Agricultural Subsidy"}
+                  {scheme.category ? (language === "ta" && scheme.categoryTamil ? scheme.categoryTamil : scheme.category) : (language === "ta" ? "வேளாண் மானியம்" : "Agricultural Subsidy")}
                 </span>
               </div>
               <h2 className="text-lg font-bold text-white mt-1 leading-snug">
@@ -288,15 +288,15 @@ export const ApplySchemeModal: React.FC<ApplySchemeModalProps> = ({
             </div>
 
             <p className="text-[11px] text-neutral-600">
-              <strong>Department:</strong> {deptName}
+              <strong>{language === "ta" ? "துறை:" : "Department:"}</strong> {language === "ta" && scheme.departmentTamil ? scheme.departmentTamil : deptName}
             </p>
 
-            {scheme.benefits && (
+            {(scheme.benefitsTamil || scheme.benefits) && (
               <div className="p-2.5 rounded-lg bg-emerald-50/80 border border-emerald-200 text-emerald-950 text-[11px] leading-relaxed">
                 <strong className="text-emerald-800 block mb-0.5 font-bold">
                   {language === "ta" ? "வழங்கப்படும் நன்மைகள் & மானியம்:" : "Scheme Financial Benefits & Subsidy:"}
                 </strong>
-                {scheme.benefits}
+                {language === "ta" && scheme.benefitsTamil ? scheme.benefitsTamil : scheme.benefits}
               </div>
             )}
           </div>

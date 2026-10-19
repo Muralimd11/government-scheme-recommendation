@@ -30,7 +30,7 @@ import { cleanBenefitSummary, parseRequiredDocuments } from "../utils/formatters
 
 export const RecommendationsPage: React.FC = () => {
   const { user, isAuthenticated, isFarmer, isAdmin } = useAuth();
-  const { t, language } = useLanguage();
+  const { t, language, tTerm, tText } = useLanguage();
   const navigate = useNavigate();
 
   const [recommendations, setRecommendations] = useState<RecommendationResult[]>([]);
@@ -168,42 +168,54 @@ export const RecommendationsPage: React.FC = () => {
         {activeProfile && (
           <div className="mt-4 pt-4 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5 text-xs">
             <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-              <span className="text-slate-500 block text-[11px]">Location</span>
+              <span className="text-slate-500 block text-[11px]">
+                {language === "ta" ? "இருப்பிடம்" : "Location"}
+              </span>
               <strong className="text-slate-900 block truncate">
-                {activeProfile.village ? `${activeProfile.village}, ` : ""}{activeProfile.district || "Tamil Nadu"}
+                {activeProfile.village ? `${tTerm(activeProfile.village)}, ` : ""}{tTerm(activeProfile.district || "Tamil Nadu")}
               </strong>
             </div>
 
             <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-              <span className="text-slate-500 block text-[11px]">Cultivable Land</span>
+              <span className="text-slate-500 block text-[11px]">
+                {language === "ta" ? "பயிரிடக்கூடிய நிலம்" : "Cultivable Land"}
+              </span>
               <strong className="text-slate-900 block">
-                {activeProfile.cultivableArea ?? activeProfile.landSize} Acres ({activeProfile.landOwnershipType || "Own Land"})
+                {activeProfile.cultivableArea ?? activeProfile.landSize} {language === "ta" ? "ஏக்கர்" : "Acres"} ({tTerm(activeProfile.landOwnershipType || "Own Land")})
               </strong>
             </div>
 
             <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-              <span className="text-slate-500 block text-[11px]">Crop & Season</span>
+              <span className="text-slate-500 block text-[11px]">
+                {language === "ta" ? "பயிர் & பருவம்" : "Crop & Season"}
+              </span>
               <strong className="text-slate-900 block truncate">
-                {activeProfile.cropType} • {activeProfile.croppingSeason ? activeProfile.croppingSeason.split(" ")[0] : "Samba"}
+                {tTerm(activeProfile.cropType)} • {activeProfile.croppingSeason ? tTerm(activeProfile.croppingSeason.split(" ")[0]) : (language === "ta" ? "சம்பா" : "Samba")}
               </strong>
             </div>
 
             <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-              <span className="text-slate-500 block text-[11px]">Irrigation Source</span>
+              <span className="text-slate-500 block text-[11px]">
+                {language === "ta" ? "பாசன ஆதாரம்" : "Irrigation Source"}
+              </span>
               <strong className="text-slate-900 block">
-                {activeProfile.irrigationType || "Canal"} ({activeProfile.irrigationMethod || "Flood"})
+                {tTerm(activeProfile.irrigationType || "Canal")} ({tTerm(activeProfile.irrigationMethod || "Flood")})
               </strong>
             </div>
 
             <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-              <span className="text-slate-500 block text-[11px]">Farmer Category</span>
+              <span className="text-slate-500 block text-[11px]">
+                {language === "ta" ? "விவசாயி வகை" : "Farmer Category"}
+              </span>
               <strong className="text-emerald-800 font-bold block">
-                {activeProfile.farmerType || (activeProfile.landSize <= 2.5 ? "Marginal" : activeProfile.landSize <= 5 ? "Small" : "Medium/Large")}
+                {tTerm(activeProfile.farmerType || (activeProfile.landSize <= 2.5 ? "Marginal" : activeProfile.landSize <= 5 ? "Small" : "Medium/Large"))}
               </strong>
             </div>
 
             <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-              <span className="text-slate-500 block text-[11px]">Annual Income</span>
+              <span className="text-slate-500 block text-[11px]">
+                {language === "ta" ? "ஆண்டு வருமானம்" : "Annual Income"}
+              </span>
               <strong className="text-slate-900 block">
                 ₹{(activeProfile.annualIncome || 120000).toLocaleString("en-IN")}
               </strong>
@@ -248,27 +260,31 @@ export const RecommendationsPage: React.FC = () => {
         {/* Level & Sort Filters */}
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5">
-            <span className="text-slate-500 font-medium">Jurisdiction:</span>
+            <span className="text-slate-500 font-medium">
+              {language === "ta" ? "அரசு நிலை:" : "Jurisdiction:"}
+            </span>
             <select
               value={govFilter}
               onChange={(e) => setGovFilter(e.target.value)}
               className="px-2.5 py-1.5 bg-white border border-slate-300 rounded-md text-slate-800 font-medium"
             >
-              <option value="All">All Governments</option>
-              <option value="Tamil Nadu Government">Tamil Nadu State</option>
-              <option value="Central Government">Central Government</option>
+              <option value="All">{language === "ta" ? "அனைத்து அரசுகள்" : "All Governments"}</option>
+              <option value="Tamil Nadu Government">{language === "ta" ? "தமிழ்நாடு அரசு" : "Tamil Nadu State"}</option>
+              <option value="Central Government">{language === "ta" ? "மத்திய அரசு" : "Central Government"}</option>
             </select>
           </div>
 
           <div className="flex items-center gap-1.5">
-            <span className="text-slate-500 font-medium">Sort:</span>
+            <span className="text-slate-500 font-medium">
+              {language === "ta" ? "வரிசைப்படுத்து:" : "Sort:"}
+            </span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
               className="px-2.5 py-1.5 bg-white border border-slate-300 rounded-md text-slate-800 font-medium"
             >
-              <option value="match">Highest Priority Match</option>
-              <option value="name">Scheme Name (A-Z)</option>
+              <option value="match">{language === "ta" ? "அதிக பொருத்தம் முன்னுரிமை" : "Highest Priority Match"}</option>
+              <option value="name">{language === "ta" ? "திட்டத்தின் பெயர் (A-Z)" : "Scheme Name (A-Z)"}</option>
             </select>
           </div>
         </div>
@@ -326,12 +342,20 @@ export const RecommendationsPage: React.FC = () => {
                     {isEligible ? (
                       <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-300 rounded-full text-xs font-bold">
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
-                        <span>{scheme.matchScore}% Match • Fully Eligible</span>
+                        <span>
+                          {language === "ta"
+                            ? `${scheme.matchScore}% பொருத்தம் • முழு தகுதி`
+                            : `${scheme.matchScore}% Match • Fully Eligible`}
+                        </span>
                       </span>
                     ) : (
                       <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-100 text-amber-900 border border-amber-300 rounded-full text-xs font-bold">
                         <XCircle className="w-3.5 h-3.5 text-amber-700" />
-                        <span>Ineligible for Current Profile</span>
+                        <span>
+                          {language === "ta"
+                            ? "தற்போதைய சுயவிவரத்திற்கு தகுதியற்றது"
+                            : "Ineligible for Current Profile"}
+                        </span>
                       </span>
                     )}
 
@@ -341,12 +365,12 @@ export const RecommendationsPage: React.FC = () => {
                           : "bg-blue-50 text-blue-800 border-blue-200"
                         }`}
                     >
-                      {scheme.governmentLevel}
+                      {tTerm(scheme.governmentLevelTamil || scheme.governmentLevel)}
                     </span>
                   </div>
 
                   <span className="text-xs font-mono text-slate-500 font-medium">
-                    Scheme ID: {scheme.schemeId}
+                    {language === "ta" ? "திட்ட எண்: " : "Scheme ID: "}{scheme.schemeId}
                   </span>
                 </div>
 
@@ -359,26 +383,39 @@ export const RecommendationsPage: React.FC = () => {
                 )}
 
                 <p className="text-xs text-slate-600 font-medium mb-3">
-                  Department: <span className="text-slate-800 font-semibold">{scheme.department}</span>
+                  {language === "ta" ? "துறை: " : "Department: "}
+                  <span className="text-slate-800 font-semibold">
+                    {tTerm(scheme.departmentTamil || scheme.department)}
+                  </span>
                 </p>
 
                 {/* Benefits Banner (Clean & Concise Highlight) */}
-                {scheme.benefits && (
+                {(scheme.benefitsTamil || scheme.benefits) && (
                   <div className="bg-emerald-50/70 border border-emerald-200 rounded-lg p-3.5 mb-4">
                     <p className="text-xs text-slate-800 leading-relaxed font-medium">
-                      <strong className="text-emerald-900 font-bold">Benefit Provision: </strong>
-                      {cleanBenefitSummary(scheme.benefits)}
+                      <strong className="text-emerald-900 font-bold">
+                        {language === "ta" ? "திட்ட பயன்கள்: " : "Benefit Provision: "}
+                      </strong>
+                      {language === "ta" && scheme.benefitsTamil
+                        ? scheme.benefitsTamil
+                        : cleanBenefitSummary(scheme.benefits)}
                     </p>
                   </div>
                 )}
 
                 {/* Transparent Ineligible Reason (if not eligible) */}
-                {!isEligible && scheme.ineligibleReason && (
+                {!isEligible && (scheme.ineligibleReasonTamil || scheme.ineligibleReason) && (
                   <div className="bg-amber-50 border border-amber-300 rounded-lg p-3.5 mb-4 flex items-start gap-2.5 text-xs text-amber-950">
                     <AlertCircle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
                     <div>
-                      <strong className="font-bold block text-amber-900">Statutory Reason for Ineligibility:</strong>
-                      <span>{scheme.ineligibleReason}</span>
+                      <strong className="font-bold block text-amber-900">
+                        {language === "ta" ? "தகுதியின்மைக்கான அரசு விதிமுறை காரணம்:" : "Statutory Reason for Ineligibility:"}
+                      </strong>
+                      <span>
+                        {language === "ta" && scheme.ineligibleReasonTamil
+                          ? scheme.ineligibleReasonTamil
+                          : tText(scheme.ineligibleReason || "")}
+                      </span>
                     </div>
                   </div>
                 )}
@@ -388,33 +425,44 @@ export const RecommendationsPage: React.FC = () => {
                   <div className="mb-4">
                     <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
-                      <span>Evaluated Criteria Breakdown:</span>
+                      <span>
+                        {language === "ta" ? "சரிபார்க்கப்பட்ட தகுதி நிபந்தனைகள்:" : "Evaluated Criteria Breakdown:"}
+                      </span>
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                      {scheme.whyRecommended.map((reason, rIdx) => (
-                        <div
-                          key={rIdx}
-                          className="flex items-start gap-2 p-2 bg-slate-50 rounded-lg border border-slate-200"
-                        >
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                          <span className="text-slate-700 font-medium">{reason}</span>
-                        </div>
-                      ))}
+                      {scheme.whyRecommended.map((reason, rIdx) => {
+                        const tamilText = scheme.whyRecommendedTamil && scheme.whyRecommendedTamil[rIdx]
+                          ? scheme.whyRecommendedTamil[rIdx]
+                          : tText(reason);
+                        return (
+                          <div
+                            key={rIdx}
+                            className="flex items-start gap-2 p-2 bg-slate-50 rounded-lg border border-slate-200"
+                          >
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                            <span className="text-slate-700 font-medium">
+                              {language === "ta" ? tamilText : reason}
+                            </span>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 )}
 
-                {/* Required Documents List (Clean Standard Badges Matching Image 1) */}
+                {/* Required Documents List */}
                 {scheme.requiredDocuments && scheme.requiredDocuments.length > 0 && (
                   <div className="mb-4 text-xs">
-                    <span className="text-slate-500 font-semibold block mb-1">Required Verification Documents:</span>
+                    <span className="text-slate-500 font-semibold block mb-1">
+                      {language === "ta" ? "தேவையான சரிபார்ப்பு ஆவணங்கள்:" : "Required Verification Documents:"}
+                    </span>
                     <div className="flex flex-wrap gap-1.5">
                       {parseRequiredDocuments(scheme.requiredDocuments).map((doc, dIdx) => (
                         <span
                           key={dIdx}
                           className="bg-slate-100 text-slate-700 px-2.5 py-0.5 rounded text-[11px] border border-slate-200 font-medium"
                         >
-                          {doc}
+                          {tTerm(doc)}
                         </span>
                       ))}
                     </div>
@@ -427,7 +475,11 @@ export const RecommendationsPage: React.FC = () => {
                     to={`/schemes/${scheme.schemeId}`}
                     className="text-xs font-bold text-emerald-800 hover:text-emerald-950 inline-flex items-center gap-1"
                   >
-                    <span>View Complete Scheme Guidelines & Rules</span>
+                    <span>
+                      {language === "ta"
+                        ? "முழு திட்ட வழிகாட்டுதல்கள் மற்றும் விதிகளைப் பார்க்க"
+                        : "View Complete Scheme Guidelines & Rules"}
+                    </span>
                     <ChevronRight className="w-3.5 h-3.5" />
                   </Link>
 
@@ -439,7 +491,7 @@ export const RecommendationsPage: React.FC = () => {
                         rel="noreferrer"
                         className="inline-flex items-center gap-1 text-xs text-slate-600 hover:text-slate-900 border border-slate-300 px-3 py-1.5 rounded-lg font-medium transition"
                       >
-                        <span>Official Portal</span>
+                        <span>{language === "ta" ? "அதிகாரப்பூர்வ தளம்" : "Official Portal"}</span>
                         <ExternalLink className="w-3 h-3" />
                       </a>
                     )}
@@ -449,7 +501,7 @@ export const RecommendationsPage: React.FC = () => {
                         onClick={() => setApplyingScheme(scheme)}
                         className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-bold transition shadow-xs cursor-pointer"
                       >
-                        <span>Apply Online</span>
+                        <span>{language === "ta" ? "ஆன்லைனில் விண்ணப்பிக்க" : "Apply Online"}</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     )}
@@ -463,9 +515,19 @@ export const RecommendationsPage: React.FC = () => {
           {filtered.length > itemsPerPage && (
             <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 text-xs mt-6">
               <span className="text-slate-600 font-medium">
-                Showing <strong className="text-slate-900">{(currentPage - 1) * itemsPerPage + 1}</strong> to{" "}
-                <strong className="text-slate-900">{Math.min(currentPage * itemsPerPage, filtered.length)}</strong> of{" "}
-                <strong className="text-slate-900">{filtered.length}</strong> evaluated schemes
+                {language === "ta" ? (
+                  <>
+                    மதிப்பிடப்பட்ட <strong className="text-slate-900">{filtered.length}</strong> திட்டங்களில்{" "}
+                    <strong className="text-slate-900">{(currentPage - 1) * itemsPerPage + 1}</strong> முதல்{" "}
+                    <strong className="text-slate-900">{Math.min(currentPage * itemsPerPage, filtered.length)}</strong> வரை காட்டப்படுகிறது
+                  </>
+                ) : (
+                  <>
+                    Showing <strong className="text-slate-900">{(currentPage - 1) * itemsPerPage + 1}</strong> to{" "}
+                    <strong className="text-slate-900">{Math.min(currentPage * itemsPerPage, filtered.length)}</strong> of{" "}
+                    <strong className="text-slate-900">{filtered.length}</strong> evaluated schemes
+                  </>
+                )}
               </span>
 
               <div className="flex items-center gap-1.5">
@@ -478,7 +540,7 @@ export const RecommendationsPage: React.FC = () => {
                   className="px-3 py-1.5 rounded-lg border border-slate-300 font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed inline-flex items-center gap-1 transition"
                 >
                   <ChevronLeft className="w-3.5 h-3.5" />
-                  <span>Previous</span>
+                  <span>{language === "ta" ? "முந்தைய" : "Previous"}</span>
                 </button>
 
                 {Array.from({ length: totalPages }, (_, i) => i + 1)
@@ -514,7 +576,7 @@ export const RecommendationsPage: React.FC = () => {
                   disabled={currentPage === totalPages}
                   className="px-3 py-1.5 rounded-lg border border-slate-300 font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed inline-flex items-center gap-1 transition"
                 >
-                  <span>Next</span>
+                  <span>{language === "ta" ? "அடுத்தது" : "Next"}</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </button>
               </div>

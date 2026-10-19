@@ -497,7 +497,11 @@ export const FarmerProfilePage: React.FC = () => {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-800 text-xs font-semibold rounded-full mb-2 border border-emerald-200">
                 <ShieldCheck className="w-3.5 h-3.5" />
-                <span>GOVERNMENT OF TAMIL NADU • DEPARTMENT OF AGRICULTURE</span>
+                <span>
+                  {language === "ta"
+                    ? "தமிழ்நாடு அரசு • வேளாண்மை மற்றும் உழவர் நலத்துறை"
+                    : "GOVERNMENT OF TAMIL NADU • DEPARTMENT OF AGRICULTURE"}
+                </span>
               </div>
               <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
                 {language === "ta" ? "விவசாயி சுயவிவரம் மற்றும் தகுதி தரவு" : "Farmer Profile & Eligibility Registry"}

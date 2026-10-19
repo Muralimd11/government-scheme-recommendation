@@ -28,7 +28,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ type }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logout } = useAuth();
-  const { t, language } = useLanguage();
+  const { t, language, tTerm } = useLanguage();
   const { isCollapsed, toggleSidebar } = useSidebar();
 
   const handleLogout = () => {
@@ -47,14 +47,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ type }) => {
   ];
 
   const adminNavItems = [
-    { label: "Admin Dashboard", path: "/admin/dashboard", icon: <DashboardIcon fontSize="small" /> },
-    { label: "Online Applications", path: "/admin/applications", icon: <ApplicationIcon fontSize="small" /> },
-    { label: "Farmer Management", path: "/admin/farmers", icon: <FarmersIcon fontSize="small" /> },
-    { label: "Scheme Management", path: "/admin/schemes", icon: <SchemesIcon fontSize="small" /> },
-    { label: "Document Verification", path: "/admin/documents", icon: <VerifyIcon fontSize="small" /> },
-    { label: "Notifications Broadcast", path: "/admin/notifications", icon: <NotificationIcon fontSize="small" /> },
-    { label: "Government Reports", path: "/admin/reports", icon: <ReportsIcon fontSize="small" /> },
-    { label: "System Audit Logs", path: "/admin/audit-logs", icon: <AuditIcon fontSize="small" /> }
+    { label: language === "ta" ? "நிர்வாகக் கட்டுப்பாட்டு அறை" : "Admin Dashboard", path: "/admin/dashboard", icon: <DashboardIcon fontSize="small" /> },
+    { label: language === "ta" ? "ஆன்லைன் விண்ணப்பங்கள்" : "Online Applications", path: "/admin/applications", icon: <ApplicationIcon fontSize="small" /> },
+    { label: language === "ta" ? "விவசாயிகள் மேலாண்மை" : "Farmer Management", path: "/admin/farmers", icon: <FarmersIcon fontSize="small" /> },
+    { label: language === "ta" ? "திட்டங்கள் மேலாண்மை" : "Scheme Management", path: "/admin/schemes", icon: <SchemesIcon fontSize="small" /> },
+    { label: language === "ta" ? "ஆவண சரிபார்ப்பு" : "Document Verification", path: "/admin/documents", icon: <VerifyIcon fontSize="small" /> },
+    { label: language === "ta" ? "அறிவிப்புகள் வெளியீடு" : "Notifications Broadcast", path: "/admin/notifications", icon: <NotificationIcon fontSize="small" /> },
+    { label: language === "ta" ? "அரசு அறிக்கைகள்" : "Government Reports", path: "/admin/reports", icon: <ReportsIcon fontSize="small" /> },
+    { label: language === "ta" ? "கணினி தணிக்கை பதிவுகள்" : "System Audit Logs", path: "/admin/audit-logs", icon: <AuditIcon fontSize="small" /> }
   ];
 
   const items = type === "ADMIN" ? adminNavItems : farmerNavItems;
@@ -77,7 +77,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ type }) => {
                 {user?.fullName || "User"}
               </p>
               <p className="text-xs text-neutral-400 truncate">
-                {type === "ADMIN" ? "Agricultural Officer" : user?.district ? `${user.district}, TN` : "Tamil Nadu"}
+                {type === "ADMIN"
+                  ? (language === "ta" ? "வேளாண் அதிகாரி" : "Agricultural Officer")
+                  : user?.district
+                  ? `${language === "ta" ? tTerm(user.district) : user.district}, ${language === "ta" ? "த.நா" : "TN"}`
+                  : (language === "ta" ? "தமிழ்நாடு" : "Tamil Nadu")}
               </p>
             </div>
           </div>
@@ -94,7 +98,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ type }) => {
         <button
           onClick={toggleSidebar}
           className="hidden md:flex p-1.5 text-neutral-400 hover:text-white hover:bg-white/10 rounded transition cursor-pointer shrink-0"
-          title={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+          title={isCollapsed ? (language === "ta" ? "பக்கப்பட்டியை விரிவாக்கு" : "Expand sidebar") : (language === "ta" ? "பக்கப்பட்டியை சுருக்கு" : "Collapse sidebar")}
           aria-label="Toggle sidebar"
         >
           {isCollapsed ? <ChevronRightIcon fontSize="small" /> : <ChevronLeftIcon fontSize="small" />}
@@ -103,7 +107,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ type }) => {
 
       {!isCollapsed && user?.farmerRegistrationId && (
         <div className="px-4 py-1.5 bg-[#001428] border-b border-neutral-800 text-[11px] text-emerald-400 font-mono truncate">
-          ID: {user.farmerRegistrationId}
+          {language === "ta" ? "பதிவு எண்: " : "ID: "}{user.farmerRegistrationId}
         </div>
       )}
 

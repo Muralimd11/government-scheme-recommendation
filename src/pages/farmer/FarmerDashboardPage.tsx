@@ -18,7 +18,7 @@ import {
 
 export const FarmerDashboardPage: React.FC = () => {
   const { user } = useAuth();
-  const { t, language } = useLanguage();
+  const { t, language, tTerm } = useLanguage();
 
   const [stats, setStats] = useState({
     recommendedCount: 0,
@@ -63,7 +63,10 @@ export const FarmerDashboardPage: React.FC = () => {
                 {language === "ta" ? `வணக்கம், ${user?.fullName}` : `Welcome, ${user?.fullName}`}
               </h1>
               <p className="text-xs text-neutral-600 mt-1">
-                District: <strong>{user?.district || "Tamil Nadu"}</strong> • Farmer Registration ID:{" "}
+                {language === "ta" ? "மாவட்டம்: " : "District: "}
+                <strong>{language === "ta" ? tTerm(user?.district || "Tamil Nadu") : (user?.district || "Tamil Nadu")}</strong>
+                {" • "}
+                {language === "ta" ? "விவசாயி பதிவு எண்: " : "Farmer Registration ID: "}
                 <span className="font-mono text-[#003366] font-semibold">{user?.farmerRegistrationId || "TN-REG-DEMO"}</span>
               </p>
             </div>
@@ -82,29 +85,53 @@ export const FarmerDashboardPage: React.FC = () => {
           {/* Farmer Farm Profile Summary Bar */}
           <div className="mt-5 pt-4 border-t border-neutral-200 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-3 text-xs">
             <div className="p-2.5 bg-neutral-50 rounded border border-neutral-200">
-              <span className="text-neutral-500 block">Land Size</span>
+              <span className="text-neutral-500 block">
+                {language === "ta" ? "நில அளவு" : "Land Size"}
+              </span>
               <strong className="text-neutral-900 text-sm">
-                {user?.landSize ? `${user.landSize} Acres` : "Not specified"}
+                {user?.landSize ? `${user.landSize} ${language === "ta" ? "ஏக்கர்" : "Acres"}` : (language === "ta" ? "குறிப்பிடப்படவில்லை" : "Not specified")}
               </strong>
             </div>
             <div className="p-2.5 bg-neutral-50 rounded border border-neutral-200">
-              <span className="text-neutral-500 block">Classification</span>
+              <span className="text-neutral-500 block">
+                {language === "ta" ? "விவசாயி வகை" : "Classification"}
+              </span>
               <strong className="text-[#003366] text-sm">
-                {user?.farmerType ? `${user.farmerType} Farmer` : "General Farmer"}
+                {user?.farmerType
+                  ? language === "ta"
+                    ? tTerm(user.farmerType).includes("விவசாயி")
+                      ? tTerm(user.farmerType)
+                      : `${tTerm(user.farmerType)} விவசாயி`
+                    : user.farmerType.toLowerCase().includes("farmer")
+                    ? user.farmerType
+                    : `${user.farmerType} Farmer`
+                  : language === "ta"
+                  ? "பொது விவசாயி"
+                  : "General Farmer"}
               </strong>
             </div>
             <div className="p-2.5 bg-neutral-50 rounded border border-neutral-200">
-              <span className="text-neutral-500 block">Primary Crop</span>
-              <strong className="text-neutral-900 text-sm">{user?.cropType || "Not specified"}</strong>
+              <span className="text-neutral-500 block">
+                {language === "ta" ? "முக்கிய பயிர்" : "Primary Crop"}
+              </span>
+              <strong className="text-neutral-900 text-sm">
+                {user?.cropType ? (language === "ta" ? tTerm(user.cropType) : user.cropType) : (language === "ta" ? "குறிப்பிடப்படவில்லை" : "Not specified")}
+              </strong>
             </div>
             <div className="p-2.5 bg-neutral-50 rounded border border-neutral-200">
-              <span className="text-neutral-500 block">Farming Type</span>
-              <strong className="text-neutral-900 text-sm">{user?.farmingType || "General Farming"}</strong>
+              <span className="text-neutral-500 block">
+                {language === "ta" ? "விவசாய முறை" : "Farming Type"}
+              </span>
+              <strong className="text-neutral-900 text-sm">
+                {user?.farmingType ? (language === "ta" ? tTerm(user.farmingType) : user.farmingType) : (language === "ta" ? "பொது விவசாயம்" : "General Farming")}
+              </strong>
             </div>
             <div className="p-2.5 bg-neutral-50 rounded border border-neutral-200 col-span-2 sm:col-span-1">
-              <span className="text-neutral-500 block">Annual Income</span>
+              <span className="text-neutral-500 block">
+                {language === "ta" ? "ஆண்டு வருமானம்" : "Annual Income"}
+              </span>
               <strong className="text-neutral-900 text-sm">
-                {user?.annualIncome ? `₹${Number(user.annualIncome).toLocaleString("en-IN")}` : "Not specified"}
+                {user?.annualIncome ? `₹${Number(user.annualIncome).toLocaleString("en-IN")}` : (language === "ta" ? "குறிப்பிடப்படவில்லை" : "Not specified")}
               </strong>
             </div>
           </div>
@@ -114,12 +141,14 @@ export const FarmerDashboardPage: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           <div className="bg-white rounded-lg border border-neutral-200 p-5 shadow-xs flex items-center justify-between">
             <div>
-              <span className="text-xs text-neutral-500 font-semibold block">Recommended Schemes</span>
+              <span className="text-xs text-neutral-500 font-semibold block">
+                {language === "ta" ? "பரிந்துரைக்கப்பட்ட திட்டங்கள்" : "Recommended Schemes"}
+              </span>
               <span className="text-2xl font-bold text-[#003366] mt-1 block">
                 {stats.recommendedCount}
               </span>
               <Link to="/recommendations" className="text-[11px] text-[#2E7D32] hover:underline font-semibold mt-1 inline-block">
-                View Recommendations →
+                {language === "ta" ? "திட்டங்களை காண்க →" : "View Recommendations →"}
               </Link>
             </div>
             <div className="p-3 bg-blue-50 text-[#003366] rounded-full">
@@ -129,12 +158,14 @@ export const FarmerDashboardPage: React.FC = () => {
 
           <div className="bg-white rounded-lg border border-neutral-200 p-5 shadow-xs flex items-center justify-between">
             <div>
-              <span className="text-xs text-neutral-500 font-semibold block">Total Applications</span>
+              <span className="text-xs text-neutral-500 font-semibold block">
+                {language === "ta" ? "மொத்த விண்ணப்பங்கள்" : "Total Applications"}
+              </span>
               <span className="text-2xl font-bold text-neutral-900 mt-1 block">
                 {stats.totalApplications}
               </span>
               <Link to="/farmer/applications" className="text-[11px] text-neutral-600 hover:underline font-semibold mt-1 inline-block">
-                Manage Applications →
+                {language === "ta" ? "விண்ணப்பங்களை நிர்வகிக்க →" : "Manage Applications →"}
               </Link>
             </div>
             <div className="p-3 bg-neutral-100 text-neutral-700 rounded-full">
@@ -144,12 +175,14 @@ export const FarmerDashboardPage: React.FC = () => {
 
           <div className="bg-white rounded-lg border border-neutral-200 p-5 shadow-xs flex items-center justify-between">
             <div>
-              <span className="text-xs text-neutral-500 font-semibold block">Approved Schemes</span>
+              <span className="text-xs text-neutral-500 font-semibold block">
+                {language === "ta" ? "ஒப்புதல் பெற்ற திட்டங்கள்" : "Approved Schemes"}
+              </span>
               <span className="text-2xl font-bold text-green-700 mt-1 block">
                 {stats.approvedApplications}
               </span>
               <span className="text-[11px] text-neutral-500 mt-1 block">
-                Subsidies Disbursed
+                {language === "ta" ? "மானியங்கள் விடுவிக்கப்பட்டவை" : "Subsidies Disbursed"}
               </span>
             </div>
             <div className="p-3 bg-green-50 text-green-700 rounded-full">
@@ -159,12 +192,14 @@ export const FarmerDashboardPage: React.FC = () => {
 
           <div className="bg-white rounded-lg border border-neutral-200 p-5 shadow-xs flex items-center justify-between">
             <div>
-              <span className="text-xs text-neutral-500 font-semibold block">Pending / In Review</span>
+              <span className="text-xs text-neutral-500 font-semibold block">
+                {language === "ta" ? "நிலுவையில் உள்ளவை / ஆய்வில்" : "Pending / In Review"}
+              </span>
               <span className="text-2xl font-bold text-amber-700 mt-1 block">
                 {stats.pendingApplications}
               </span>
               <span className="text-[11px] text-neutral-500 mt-1 block">
-                Field Verification Stage
+                {language === "ta" ? "கள ஆய்வு நிலை" : "Field Verification Stage"}
               </span>
             </div>
             <div className="p-3 bg-amber-50 text-amber-700 rounded-full">
@@ -176,7 +211,7 @@ export const FarmerDashboardPage: React.FC = () => {
         {/* Quick Action Hub */}
         <div className="bg-white rounded-lg border border-neutral-200 p-6 shadow-xs mb-8">
           <h2 className="text-base font-bold text-[#003366] mb-4">
-            Quick Actions & Services
+            {language === "ta" ? "விரைவு சேவைகள் & செயல்பாடுகள்" : "Quick Actions & Services"}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
             <Link
@@ -185,8 +220,12 @@ export const FarmerDashboardPage: React.FC = () => {
             >
               <EligibilityIcon className="text-[#003366]" />
               <div>
-                <strong className="block text-neutral-900 font-bold">Check Eligibility</strong>
-                <span className="text-neutral-500">Run the AI recommendation model</span>
+                <strong className="block text-neutral-900 font-bold">
+                  {language === "ta" ? "தகுதி சரிபார்ப்பு" : "Check Eligibility"}
+                </strong>
+                <span className="text-neutral-500">
+                  {language === "ta" ? "AI பரிந்துரை மாதிரியை இயக்கவும்" : "Run the AI recommendation model"}
+                </span>
               </div>
             </Link>
 
@@ -196,8 +235,12 @@ export const FarmerDashboardPage: React.FC = () => {
             >
               <DocIcon className="text-[#2E7D32]" />
               <div>
-                <strong className="block text-neutral-900 font-bold">Upload Documents</strong>
-                <span className="text-neutral-500">Patta, Chitta, Aadhaar & Passbook</span>
+                <strong className="block text-neutral-900 font-bold">
+                  {language === "ta" ? "ஆவணங்களை பதிவேற்றுக" : "Upload Documents"}
+                </strong>
+                <span className="text-neutral-500">
+                  {language === "ta" ? "பட்டா, சிட்டா, ஆதார் & வங்கிக் கணக்கு" : "Patta, Chitta, Aadhaar & Passbook"}
+                </span>
               </div>
             </Link>
 
@@ -207,8 +250,12 @@ export const FarmerDashboardPage: React.FC = () => {
             >
               <TuneIcon className="text-amber-700" />
               <div>
-                <strong className="block text-neutral-900 font-bold">Update Profile</strong>
-                <span className="text-neutral-500">Change land size, crop, or district</span>
+                <strong className="block text-neutral-900 font-bold">
+                  {language === "ta" ? "சுயவிவரத்தை புதுப்பிக்க" : "Update Profile"}
+                </strong>
+                <span className="text-neutral-500">
+                  {language === "ta" ? "நில அளவு, பயிர் அல்லது மாவட்டத்தை மாற்றவும்" : "Change land size, crop, or district"}
+                </span>
               </div>
             </Link>
           </div>
@@ -218,24 +265,24 @@ export const FarmerDashboardPage: React.FC = () => {
         <div className="bg-white rounded-lg border border-neutral-200 shadow-xs overflow-hidden">
           <div className="p-5 border-b border-neutral-200 flex items-center justify-between">
             <h2 className="text-base font-bold text-[#003366]">
-              Recent Applications
+              {language === "ta" ? "சமீபத்திய விண்ணப்பங்கள்" : "Recent Applications"}
             </h2>
             <Link
               to="/farmer/applications"
               className="text-xs font-semibold text-[#003366] hover:underline"
             >
-              View All Applications →
+              {language === "ta" ? "அனைத்து விண்ணப்பங்களையும் பார்க்க →" : "View All Applications →"}
             </Link>
           </div>
 
           {recentApplications.length === 0 ? (
             <div className="p-8 text-center text-xs text-neutral-500">
-              <p>You haven't submitted any scheme applications yet.</p>
+              <p>{language === "ta" ? "நீங்கள் இதுவரை எந்த திட்டத்திற்கும் விண்ணப்பிக்கவில்லை." : "You haven't submitted any scheme applications yet."}</p>
               <Link
                 to="/recommendations"
                 className="mt-3 inline-block bg-[#2E7D32] text-white px-4 py-2 rounded font-semibold text-xs"
               >
-                Browse Recommended Schemes to Apply
+                {language === "ta" ? "விண்ணப்பிக்க பரிந்துரைக்கப்பட்ட திட்டங்களை காண்க" : "Browse Recommended Schemes to Apply"}
               </Link>
             </div>
           ) : (
@@ -243,11 +290,11 @@ export const FarmerDashboardPage: React.FC = () => {
               <table className="w-full text-left text-xs">
                 <thead className="bg-neutral-50 text-neutral-600 border-b border-neutral-200 font-semibold">
                   <tr>
-                    <th className="p-3.5">Application ID</th>
-                    <th className="p-3.5">Scheme Name</th>
-                    <th className="p-3.5">Date</th>
-                    <th className="p-3.5">Status</th>
-                    <th className="p-3.5 text-right">Action</th>
+                    <th className="p-3.5">{language === "ta" ? "விண்ணப்ப எண்" : "Application ID"}</th>
+                    <th className="p-3.5">{language === "ta" ? "திட்டத்தின் பெயர்" : "Scheme Name"}</th>
+                    <th className="p-3.5">{language === "ta" ? "தேதி" : "Date"}</th>
+                    <th className="p-3.5">{language === "ta" ? "நிலை" : "Status"}</th>
+                    <th className="p-3.5 text-right">{language === "ta" ? "செயல்" : "Action"}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-neutral-200">
@@ -257,10 +304,10 @@ export const FarmerDashboardPage: React.FC = () => {
                         {app.applicationId}
                       </td>
                       <td className="p-3.5 font-medium text-neutral-900">
-                        {app.schemeName}
+                        {language === "ta" && app.schemeNameTamil ? app.schemeNameTamil : app.schemeName}
                       </td>
                       <td className="p-3.5 text-neutral-500">
-                        {new Date(app.submittedDate).toLocaleDateString("en-IN")}
+                        {new Date(app.submittedDate).toLocaleDateString(language === "ta" ? "ta-IN" : "en-IN")}
                       </td>
                       <td className="p-3.5">
                         <StatusBadge status={app.status} />
@@ -270,7 +317,7 @@ export const FarmerDashboardPage: React.FC = () => {
                           to={`/farmer/applications/${app._id}`}
                           className="text-[#003366] font-semibold hover:underline"
                         >
-                          Details
+                          {language === "ta" ? "விவரங்கள்" : "Details"}
                         </Link>
                       </td>
                     </tr>

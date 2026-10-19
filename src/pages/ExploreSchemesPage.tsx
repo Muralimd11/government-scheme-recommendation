@@ -40,7 +40,7 @@ const GOV_LEVELS = ["All", "Tamil Nadu Government", "Central Government"];
 const CATEGORIES = ["All", "Subsidy", "Irrigation", "Credit", "Insurance", "Mechanization", "Infrastructure", "Organic Farming", "Marketing"];
 
 export const ExploreSchemesPage: React.FC = () => {
-  const { t, language } = useLanguage();
+  const { t, language, tTerm } = useLanguage();
   const { isAuthenticated, isAdmin } = useAuth();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -156,7 +156,7 @@ export const ExploreSchemesPage: React.FC = () => {
               >
                 {GOV_LEVELS.map((lvl) => (
                   <option key={lvl} value={lvl}>
-                    {lvl}
+                    {lvl === "All" ? (language === "ta" ? "அனைத்து அரசுகள்" : "All") : tTerm(lvl)}
                   </option>
                 ))}
               </select>
@@ -176,7 +176,7 @@ export const ExploreSchemesPage: React.FC = () => {
               >
                 {DEPARTMENTS.map((dept) => (
                   <option key={dept} value={dept}>
-                    {dept}
+                    {dept === "All" ? (language === "ta" ? "அனைத்து துறைகள்" : "All") : tTerm(dept)}
                   </option>
                 ))}
               </select>
@@ -184,7 +184,7 @@ export const ExploreSchemesPage: React.FC = () => {
 
             <div>
               <label className="block text-neutral-600 font-semibold mb-1">
-                Category
+                {language === "ta" ? "திட்ட பிரிவு" : "Category"}
               </label>
               <select
                 value={selectedCategory}
@@ -196,7 +196,7 @@ export const ExploreSchemesPage: React.FC = () => {
               >
                 {CATEGORIES.map((cat) => (
                   <option key={cat} value={cat}>
-                    {cat}
+                    {cat === "All" ? (language === "ta" ? "அனைத்து பிரிவுகள்" : "All") : tTerm(cat)}
                   </option>
                 ))}
               </select>
@@ -216,7 +216,7 @@ export const ExploreSchemesPage: React.FC = () => {
               >
                 {TN_DISTRICTS.map((d) => (
                   <option key={d} value={d}>
-                    {d}
+                    {d === "All" ? (language === "ta" ? "அனைத்து மாவட்டங்கள்" : "All") : tTerm(d)}
                   </option>
                 ))}
               </select>
@@ -233,7 +233,7 @@ export const ExploreSchemesPage: React.FC = () => {
                 onClick={clearFilters}
                 className="text-xs text-red-700 hover:underline cursor-pointer"
               >
-                Clear all filters
+                {language === "ta" ? "அனைத்து வடிப்பான்களையும் நீக்கு" : "Clear all filters"}
               </button>
             </div>
           )}
@@ -243,7 +243,9 @@ export const ExploreSchemesPage: React.FC = () => {
         {loading ? (
           <div className="text-center py-16">
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-[#003366] border-t-transparent mb-3" />
-            <p className="text-sm text-neutral-600">Loading government schemes repository...</p>
+            <p className="text-sm text-neutral-600">
+              {language === "ta" ? "அரசு நலத்திட்டங்கள் தொகுப்பு ஏற்றப்படுகிறது..." : "Loading government schemes repository..."}
+            </p>
           </div>
         ) : error ? (
           <div className="bg-red-50 border border-red-200 text-red-800 p-4 rounded text-center">
@@ -251,13 +253,17 @@ export const ExploreSchemesPage: React.FC = () => {
           </div>
         ) : schemes.length === 0 ? (
           <div className="bg-white border border-neutral-200 rounded p-8 text-center text-neutral-600">
-            <p className="text-base font-semibold">No schemes found matching your filter criteria.</p>
-            <p className="text-xs mt-1">Try relaxing some filters or search for generic terms like "paddy", "irrigation", or "subsidy".</p>
+            <p className="text-base font-semibold">
+              {language === "ta" ? "தேர்ந்தெடுக்கப்பட்ட வடிப்பான்களுக்கு ஏற்ப திட்டங்கள் ஏதும் இல்லை." : "No schemes found matching your filter criteria."}
+            </p>
+            <p className="text-xs mt-1">
+              {language === "ta" ? "வடிப்பான்களை தளர்த்தி மீண்டும் முயற்சிக்கவும்." : 'Try relaxing some filters or search for generic terms like "paddy", "irrigation", or "subsidy".'}
+            </p>
             <button
               onClick={clearFilters}
               className="mt-4 px-4 py-2 bg-[#003366] text-white rounded text-xs font-semibold"
             >
-              Reset Filters
+              {language === "ta" ? "வடிப்பான்களை மீட்டமைக்க" : "Reset Filters"}
             </button>
           </div>
         ) : (
@@ -277,7 +283,7 @@ export const ExploreSchemesPage: React.FC = () => {
                           : "bg-blue-100 text-blue-900 border border-blue-300"
                       }`}
                     >
-                      {scheme.governmentLevel}
+                      {tTerm(scheme.governmentLevelTamil || scheme.governmentLevel)}
                     </span>
                     <span className="text-[11px] text-neutral-500 font-mono">
                       {scheme.schemeId}
@@ -294,14 +300,16 @@ export const ExploreSchemesPage: React.FC = () => {
 
                   {/* Department */}
                   <p className="text-xs text-neutral-600 mb-3 font-medium">
-                    {scheme.department}
+                    {tTerm(scheme.departmentTamil || scheme.department)}
                   </p>
 
                   {/* Benefits summary */}
                   <div className="bg-neutral-50 p-2.5 rounded border border-neutral-200 mb-4">
                     <p className="text-xs text-neutral-800 leading-relaxed font-medium line-clamp-2">
-                      <span className="text-[#2E7D32] font-bold">Benefits: </span>
-                      {scheme.benefits}
+                      <span className="text-[#2E7D32] font-bold">
+                        {language === "ta" ? "பயன்கள்: " : "Benefits: "}
+                      </span>
+                      {language === "ta" && scheme.benefitsTamil ? scheme.benefitsTamil : scheme.benefits}
                     </p>
                   </div>
 
@@ -310,13 +318,17 @@ export const ExploreSchemesPage: React.FC = () => {
                     <div className="flex items-center gap-1.5">
                       <CheckIcon style={{ fontSize: 14 }} className="text-green-600 shrink-0" />
                       <span>
-                        Land Limit: {scheme.landholdingMax > 0 ? `Up to ${scheme.landholdingMax} Acres` : "No Upper Land Limit"}
+                        {language === "ta" ? "நில வரம்பு: " : "Land Limit: "}
+                        {scheme.landholdingMax > 0
+                          ? (language === "ta" ? `${scheme.landholdingMax} ஏக்கர் வரை` : `Up to ${scheme.landholdingMax} Acres`)
+                          : (language === "ta" ? "அனைத்து நில உரிமையாளர்களுக்கும்" : "No Upper Land Limit")}
                       </span>
                     </div>
                     <div className="flex items-center gap-1.5">
                       <CheckIcon style={{ fontSize: 14 }} className="text-green-600 shrink-0" />
                       <span className="truncate">
-                        Crops: {scheme.cropTypes.join(", ")}
+                        {language === "ta" ? "பயிர்கள்: " : "Crops: "}
+                        {scheme.cropTypes.map((c) => tTerm(c)).join(", ")}
                       </span>
                     </div>
                   </div>
@@ -351,17 +363,19 @@ export const ExploreSchemesPage: React.FC = () => {
               onClick={() => setPagination((p) => ({ ...p, page: p.page - 1 }))}
               className="px-3 py-1.5 border border-neutral-300 rounded text-xs disabled:opacity-40 disabled:cursor-not-allowed bg-white"
             >
-              Previous
+              {language === "ta" ? "முந்தைய" : "Previous"}
             </button>
             <span className="text-xs text-neutral-600">
-              Page {pagination.page} of {pagination.totalPages} ({pagination.total} Schemes)
+              {language === "ta"
+                ? `பக்கம் ${pagination.page} / ${pagination.totalPages} (மொத்தம் ${pagination.total} திட்டங்கள்)`
+                : `Page ${pagination.page} of ${pagination.totalPages} (${pagination.total} Schemes)`}
             </span>
             <button
               disabled={pagination.page >= pagination.totalPages}
               onClick={() => setPagination((p) => ({ ...p, page: p.page + 1 }))}
               className="px-3 py-1.5 border border-neutral-300 rounded text-xs disabled:opacity-40 disabled:cursor-not-allowed bg-white"
             >
-              Next
+              {language === "ta" ? "அடுத்தது" : "Next"}
             </button>
           </div>
         )}

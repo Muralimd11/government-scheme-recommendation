@@ -1,5 +1,6 @@
 import { Scheme, IScheme } from "../models/Scheme";
 import { runMLPrediction, MLPredictionResult } from "./mlService";
+import { translateContent } from "./geminiService";
 
 export interface EligibilityEvaluationResult {
   isEligible: boolean;
@@ -15,14 +16,21 @@ export interface RecommendationOutput {
   isEligible: boolean;
   eligibilityStatus: "Eligible" | "Potentially Eligible" | "Not Eligible";
   ineligibleReason?: string;
+  ineligibleReasonTamil?: string;
   whyRecommended: string[];
+  whyRecommendedTamil?: string[];
   governmentLevel: string;
+  governmentLevelTamil?: string;
   department: string;
+  departmentTamil?: string;
   category: string;
+  categoryTamil?: string;
   benefits: string;
   benefitsTamil?: string;
   description: string;
+  descriptionTamil?: string;
   requiredDocuments: string[];
+  requiredDocumentsTamil?: string[];
   officialWebsite: string;
   applicationUrl: string;
   applicationDeadline: string;
@@ -492,116 +500,157 @@ export async function getRecommendationsForFarmer(farmerProfile: Record<string, 
   const maxMlProb = Math.max(...Array.from(mlScoreMap.values()), 0.05);
 
   // Step 4: Map Eligible Schemes with two-stage hybrid match scoring and transparent reasons
-  const eligibleResults: RecommendationOutput[] = eligibleSchemes.map(({ scheme, ruleReasons }) => {
-    const schemeId = scheme.schemeId || String(scheme._id);
-    const legacyId = (scheme as any).legacySchemeId;
-    const aliases = (scheme as any).aliases || [];
+  const eligibleResults: RecommendationOutput[] = await Promise.all(
+    eligibleSchemes.map(async ({ scheme, ruleReasons }) => {
+      const schemeId = scheme.schemeId || String(scheme._id);
+      const legacyId = (scheme as any).legacySchemeId;
+      const aliases = (scheme as any).aliases || [];
 
-    let mlProb = mlScoreMap.get(schemeId);
-    let confidenceRate = mlConfidenceMap.get(schemeId);
-    if (mlProb === undefined && legacyId && mlScoreMap.has(legacyId)) {
-      mlProb = mlScoreMap.get(legacyId);
-      confidenceRate = mlConfidenceMap.get(legacyId);
-    }
-    if (mlProb === undefined && Array.isArray(aliases)) {
-      for (const alias of aliases) {
-        if (mlScoreMap.has(alias)) {
-          mlProb = mlScoreMap.get(alias);
-          confidenceRate = mlConfidenceMap.get(alias);
-          break;
+      let mlProb = mlScoreMap.get(schemeId);
+      let confidenceRate = mlConfidenceMap.get(schemeId);
+      if (mlProb === undefined && legacyId && mlScoreMap.has(legacyId)) {
+        mlProb = mlScoreMap.get(legacyId);
+        confidenceRate = mlConfidenceMap.get(legacyId);
+      }
+      if (mlProb === undefined && Array.isArray(aliases)) {
+        for (const alias of aliases) {
+          if (mlScoreMap.has(alias)) {
+            mlProb = mlScoreMap.get(alias);
+            confidenceRate = mlConfidenceMap.get(alias);
+            break;
+          }
         }
       }
-    }
-    if (mlProb === undefined) {
-      mlProb = 0.05;
-      confidenceRate = `${(mlProb * 100).toFixed(1)}%`;
-    }
-    const normalizedMl = mlProb / maxMlProb; // 0 to 1
+      if (mlProb === undefined) {
+        mlProb = 0.05;
+        confidenceRate = `${(mlProb * 100).toFixed(1)}%`;
+      }
+      const normalizedMl = mlProb / maxMlProb; // 0 to 1
 
-    const category = scheme.category || "General Subsidies";
-    const schemeName = scheme.schemeName || "Government Welfare Scheme";
+      const category = scheme.category || "General Subsidies";
+      const schemeName = scheme.schemeName || "Government Welfare Scheme";
 
-    // Assistance boost: +5% if farmer explicitly requested assistance in this domain
-    const intentMatch = assistanceList.some(
-      (a) => category.toLowerCase().includes(a.toLowerCase()) || schemeName.toLowerCase().includes(a.toLowerCase())
-    );
-    const intentBonus = intentMatch ? 5 : 0;
+      // Assistance boost: +5% if farmer explicitly requested assistance in this domain
+      const intentMatch = assistanceList.some(
+        (a) => category.toLowerCase().includes(a.toLowerCase()) || schemeName.toLowerCase().includes(a.toLowerCase())
+      );
+      const intentBonus = intentMatch ? 5 : 0;
 
-    const calculatedScore = Math.min(99, Math.round(70 + (normalizedMl * 20) + Math.min(6, ruleReasons.length * 1.2) + intentBonus));
+      const calculatedScore = Math.min(99, Math.round(70 + (normalizedMl * 20) + Math.min(6, ruleReasons.length * 1.2) + intentBonus));
 
-    const whyRecommended = [...ruleReasons];
-    
-    // Add concise benefit highlight to criteria breakdown
-    const benefitHighlight = cleanBenefitSummary(scheme.benefits);
-    if (benefitHighlight && !whyRecommended.some(r => r.toLowerCase().includes("benefit") || r.toLowerCase().includes("subsidy"))) {
-      whyRecommended.push(`Recommended for: ${benefitHighlight}`);
-    }
+      const whyRecommended = [...ruleReasons];
+      
+      // Add concise benefit highlight to criteria breakdown
+      const benefitHighlight = cleanBenefitSummary(scheme.benefits);
+      if (benefitHighlight && !whyRecommended.some(r => r.toLowerCase().includes("benefit") || r.toLowerCase().includes("subsidy"))) {
+        whyRecommended.push(`Recommended for: ${benefitHighlight}`);
+      }
 
-    if (mlProb > 0.15) {
-      whyRecommended.push(`High statistical suitability match (${confidenceRate} calibrated confidence) based on Random Forest profile analysis`);
-    }
-    if (whyRecommended.length === 0) {
-      whyRecommended.push("General state agricultural welfare eligibility");
-    }
+      if (mlProb > 0.15) {
+        whyRecommended.push(`High statistical suitability match (${confidenceRate} calibrated confidence) based on Random Forest profile analysis`);
+      }
+      if (whyRecommended.length === 0) {
+        whyRecommended.push("General state agricultural welfare eligibility");
+      }
 
-    const isUnverified = scheme.schemeStatus === "Requires verification" ||
-      String(scheme.verificationStatus || "").toLowerCase().includes("not independently verified") ||
-      scheme.isDemonstrationData === true;
-    const statusVal = (isUnverified ? "Potentially Eligible" : "Eligible") as "Eligible" | "Potentially Eligible";
+      const isUnverified = scheme.schemeStatus === "Requires verification" ||
+        String(scheme.verificationStatus || "").toLowerCase().includes("not independently verified") ||
+        scheme.isDemonstrationData === true;
+      const statusVal = (isUnverified ? "Potentially Eligible" : "Eligible") as "Eligible" | "Potentially Eligible";
 
-    if (isUnverified) {
-      whyRecommended.push("Preliminary criteria satisfied (official departmental verification required)");
-    }
+      if (isUnverified) {
+        whyRecommended.push("Preliminary criteria satisfied (official departmental verification required)");
+      }
 
-    const cleanedDocs = cleanRequiredDocuments(scheme.requiredDocuments);
+      const cleanedDocs = cleanRequiredDocuments(scheme.requiredDocuments);
+      const whyRecommendedTamil = await Promise.all(whyRecommended.map(r => translateContent(r, "ta")));
+      const governmentLevelTamil = await translateContent(scheme.governmentLevel || "Tamil Nadu Government", "ta");
+      const departmentTamil = await translateContent(scheme.department || "Department of Agriculture", "ta");
+      const categoryTamil = await translateContent(category, "ta");
+      const requiredDocumentsTamil = await Promise.all(cleanedDocs.map(d => translateContent(d, "ta")));
 
-    return {
-      schemeId,
-      schemeName,
-      schemeNameTamil: scheme.schemeNameTamil,
-      matchScore: calculatedScore,
-      isEligible: true,
-      eligibilityStatus: statusVal,
-      whyRecommended,
-      verificationStatus: scheme.verificationStatus || (isUnverified ? "Requires verification" : "Verified"),
-      mlConfidenceRate: confidenceRate,
-      mlProbability: mlProb,
-      governmentLevel: scheme.governmentLevel || "Tamil Nadu Government",
-      department: scheme.department || "Department of Agriculture",
-      category,
-      benefits: cleanBenefitSummary(scheme.benefits) || scheme.description || "Financial and agricultural subsidy benefits",
-      benefitsTamil: scheme.benefitsTamil,
-      description: scheme.description || scheme.benefits || "",
-      requiredDocuments: cleanedDocs,
-      officialWebsite: scheme.officialWebsite || "https://tnagrisnet.tn.gov.in",
-      applicationUrl: scheme.applicationUrl || "",
-      applicationDeadline: scheme.applicationDeadline || "Ongoing",
-      isDemonstrationData: Boolean(scheme.isDemonstrationData)
-    };
-  });
+      return {
+        schemeId,
+        schemeName,
+        schemeNameTamil: scheme.schemeNameTamil,
+        matchScore: calculatedScore,
+        isEligible: true,
+        eligibilityStatus: statusVal,
+        whyRecommended,
+        whyRecommendedTamil,
+        verificationStatus: scheme.verificationStatus || (isUnverified ? "Requires verification" : "Verified"),
+        mlConfidenceRate: confidenceRate,
+        mlProbability: mlProb,
+        governmentLevel: scheme.governmentLevel || "Tamil Nadu Government",
+        governmentLevelTamil,
+        department: scheme.department || "Department of Agriculture",
+        departmentTamil,
+        category,
+        categoryTamil,
+        benefits: cleanBenefitSummary(scheme.benefits) || scheme.description || "Financial and agricultural subsidy benefits",
+        benefitsTamil: scheme.benefitsTamil || (scheme.benefits ? await translateContent(cleanBenefitSummary(scheme.benefits), "ta") : undefined),
+        description: scheme.description || scheme.benefits || "",
+        descriptionTamil: scheme.descriptionTamil,
+        requiredDocuments: cleanedDocs,
+        requiredDocumentsTamil,
+        officialWebsite: scheme.officialWebsite || "https://tnagrisnet.tn.gov.in",
+        applicationUrl: scheme.applicationUrl || "",
+        applicationDeadline: scheme.applicationDeadline || "Ongoing",
+        isDemonstrationData: Boolean(scheme.isDemonstrationData)
+      };
+    })
+  );
 
   // Step 5: Also include ineligible schemes for full transparency
-  const ineligibleResults: RecommendationOutput[] = ineligibleSchemes.map(({ scheme, ineligibleReason }) => ({
-    schemeId: scheme.schemeId || String(scheme._id),
-    schemeName: scheme.schemeName || "Government Welfare Scheme",
-    schemeNameTamil: scheme.schemeNameTamil,
-    matchScore: 35,
-    isEligible: false,
-    eligibilityStatus: "Not Eligible" as const,
-    ineligibleReason,
-    whyRecommended: [],
-    governmentLevel: scheme.governmentLevel || "Tamil Nadu Government",
-    department: scheme.department || "Department of Agriculture",
-    category: scheme.category || "General Subsidies",
-    benefits: cleanBenefitSummary(scheme.benefits) || scheme.description || "Financial and agricultural subsidy benefits",
-    benefitsTamil: scheme.benefitsTamil,
-    description: scheme.description || scheme.benefits || "",
-    requiredDocuments: cleanRequiredDocuments(scheme.requiredDocuments),
-    officialWebsite: scheme.officialWebsite || "https://tnagrisnet.tn.gov.in",
-    applicationUrl: scheme.applicationUrl || "",
-    applicationDeadline: scheme.applicationDeadline || "Ongoing",
-    isDemonstrationData: Boolean(scheme.isDemonstrationData)
-  }));
+  const ineligibleResults: RecommendationOutput[] = await Promise.all(
+    ineligibleSchemes.map(async ({ scheme, ineligibleReason }) => {
+      const docs = cleanRequiredDocuments(scheme.requiredDocuments);
+      const [
+        ineligibleReasonTamil,
+        governmentLevelTamil,
+        departmentTamil,
+        categoryTamil,
+        requiredDocumentsTamil,
+        benefitsTamil
+      ] = await Promise.all([
+        translateContent(ineligibleReason, "ta"),
+        translateContent(scheme.governmentLevel || "Tamil Nadu Government", "ta"),
+        translateContent(scheme.department || "Department of Agriculture", "ta"),
+        translateContent(scheme.category || "General Subsidies", "ta"),
+        Promise.all(docs.map(d => translateContent(d, "ta"))),
+        scheme.benefitsTamil ? Promise.resolve(scheme.benefitsTamil) : translateContent(cleanBenefitSummary(scheme.benefits), "ta")
+      ]);
+
+      return {
+        schemeId: scheme.schemeId || String(scheme._id),
+        schemeName: scheme.schemeName || "Government Welfare Scheme",
+        schemeNameTamil: scheme.schemeNameTamil,
+        matchScore: 35,
+        isEligible: false,
+        eligibilityStatus: "Not Eligible" as const,
+        ineligibleReason,
+        ineligibleReasonTamil,
+        whyRecommended: [],
+        whyRecommendedTamil: [],
+        governmentLevel: scheme.governmentLevel || "Tamil Nadu Government",
+        governmentLevelTamil,
+        department: scheme.department || "Department of Agriculture",
+        departmentTamil,
+        category: scheme.category || "General Subsidies",
+        categoryTamil,
+        benefits: cleanBenefitSummary(scheme.benefits) || scheme.description || "Financial and agricultural subsidy benefits",
+        benefitsTamil,
+        description: scheme.description || scheme.benefits || "",
+        descriptionTamil: scheme.descriptionTamil,
+        requiredDocuments: docs,
+        requiredDocumentsTamil,
+        officialWebsite: scheme.officialWebsite || "https://tnagrisnet.tn.gov.in",
+        applicationUrl: scheme.applicationUrl || "",
+        applicationDeadline: scheme.applicationDeadline || "Ongoing",
+        isDemonstrationData: Boolean(scheme.isDemonstrationData)
+      };
+    })
+  );
 
   // Sort eligible schemes descending by match score
   eligibleResults.sort((a, b) => b.matchScore - a.matchScore);
