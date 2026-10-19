@@ -57,7 +57,7 @@ export const AdminReportsPage: React.FC = () => {
       link.click();
       document.body.removeChild(link);
     } else {
-      const token = localStorage.getItem("token") || localStorage.getItem("tn_farmer_token");
+      const token = sessionStorage.getItem("token") || localStorage.getItem("token") || localStorage.getItem("tn_farmer_token");
       window.open(`/api/admin/reports?type=${reportType}&format=csv&token=${token}`, "_blank");
     }
   };

@@ -16,29 +16,60 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [token, setToken] = useState<string | null>(() => localStorage.getItem("token"));
+  // Clear any legacy persistent storage so previously logged in user (e.g. muthu.farmer@gmail.com)
+  // does not persist across closing and reopening the website
+  const [token, setToken] = useState<string | null>(() => {
+    try {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      return sessionStorage.getItem("token");
+    } catch {
+      return null;
+    }
+  });
+
   const [user, setUser] = useState<UserProfile | null>(() => {
-    const stored = localStorage.getItem("user");
-    return stored ? JSON.parse(stored) : null;
+    try {
+      const stored = sessionStorage.getItem("user");
+      return stored ? JSON.parse(stored) : null;
+    } catch {
+      return null;
+    }
   });
 
   const login = (newToken: string, newUser: UserProfile) => {
     setToken(newToken);
     setUser(newUser);
-    localStorage.setItem("token", newToken);
-    localStorage.setItem("user", JSON.stringify(newUser));
+    try {
+      sessionStorage.setItem("token", newToken);
+      sessionStorage.setItem("user", JSON.stringify(newUser));
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+    } catch (e) {
+      console.warn("Could not save session:", e);
+    }
   };
 
   const logout = () => {
     setToken(null);
     setUser(null);
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    try {
+      sessionStorage.removeItem("token");
+      sessionStorage.removeItem("user");
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+    } catch (e) {
+      console.warn("Could not clear session:", e);
+    }
   };
 
   const updateUser = (updatedUser: UserProfile) => {
     setUser(updatedUser);
-    localStorage.setItem("user", JSON.stringify(updatedUser));
+    try {
+      sessionStorage.setItem("user", JSON.stringify(updatedUser));
+    } catch (e) {
+      console.warn("Could not update session:", e);
+    }
   };
 
   const isAuthenticated = !!token && !!user;
